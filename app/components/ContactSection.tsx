@@ -112,8 +112,15 @@ export const ContactSection: React.FC = () => {
           {/* Phone Number */}
           <button
             onClick={handleCallClick}
-            className="text-[7vw] md:text-[5vw] lg:text-[2vw] text-white font-semibold hover:text-blue-300 transition-colors tracking-wide"
+            className="text-[7vw] md:text-[5vw] flex items-center gap-2 lg:text-[2vw] text-white font-semibold hover:scale-103 transition-all duration-300 tracking-wide"
           >
+            <Image
+              src="/assets/call-icon-svg.svg"
+              alt="Call icon"
+              width={100}
+              height={100}
+              className="object-contain w-[4vw] md:w-[3vw] lg:w-[1.5vw] h-auto "
+            />
             {phoneNumber}
           </button>
         </div>

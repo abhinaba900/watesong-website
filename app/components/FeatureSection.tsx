@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import FloatingWaterImages from "./FloatingWaterImages";
 
+// Cleaned up floating items: Only the background decorations remain floating
 const floatingItems = [
   {
     id: "lotus-deco",
@@ -17,40 +18,18 @@ const floatingItems = [
     id: "flower-deco",
     src: "/assets/flower.webp",
   },
-  {
-    id: "family-living",
-    src: "/assets/features-so-thoughtful-you-feel-spcial.webp",
-    title: (
-      <>
-        Features so thoughtful
-        <br />
-        you feel special
-      </>
-    ),
-  },
-  {
-    id: "couple-balcony",
-    src: "/assets/a-lake-like-this-deserves-a-lake-lounge.webp",
-    title: (
-      <>
-        A lake like this deserves
-        <br />a lake lounge
-      </>
-    ),
-    subtitle: "Up to 200 sq ft lake lounge",
-  },
 ];
 
 export const FeatureSection: React.FC = () => {
   return (
     <>
-      {/* 1. Hero Section (Fixed h-screen to 100dvh) */}
+      {/* 1. Hero Section */}
       <section className="relative bg-[#113239] w-full h-[100dvh] lg:h-[60vh] xl:h-[100dvh] overflow-hidden text-white font-extrabold uppercase tracking-[-0.02em] leading-[1.1]">
-        {/* Next.js Image: fill handles the background sizing flawlessly */}
         <Image
           src="/assets/just-40-residences.webp"
           alt="Residential building"
           fill
+          priority
           sizes="100vw"
           className="object-cover z-0"
         />
@@ -69,9 +48,9 @@ export const FeatureSection: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Full-Screen Floating Features Section (Fixed min-h-screen to 100dvh) */}
-      <section className="relative w-full min-h-[100dvh] lg:min-h-[40vh] xl:min-h-[100dvh] overflow-hidden bg-[#52797e]">
-        {/* Static Background Image */}
+      {/* 2. Full-Screen Features Section */}
+      <section className="relative w-full min-h-[100dvh] overflow-hidden bg-[#52797e]">
+        {/* Static Background Texture */}
         <Image
           src="/assets/bg-in-feature-section.webp"
           alt="Interior design background"
@@ -86,11 +65,12 @@ export const FeatureSection: React.FC = () => {
           <FloatingWaterImages items={floatingItems} />
         </div>
 
-        {/* Text Content Layer (Fluid Paddings) */}
-        <div className="relative z-10 w-full mx-auto px-[5vw] py-[13vh] pb-[6vh] pointer-events-none">
-          <div className="w-full lg:w-6/12 flex flex-col gap-[5vh] text-white pointer-events-auto drop-shadow-xl pt-[5vh] pb-[5vh]">
+        {/* Content Layer: Split into Left (Text) and Right (Static Images) */}
+        <div className="relative z-20 w-full min-h-[100dvh] mx-auto px-[5vw] py-[13vh] flex flex-col lg:flex-row pointer-events-none">
+          {/* LEFT COLUMN: Text Content */}
+          <div className="w-full lg:w-[45%] flex flex-col gap-[5vh] text-white pointer-events-auto drop-shadow-xl z-20">
             {/* Fluid Text */}
-            <p className="font-normal text-[4vw] md:text-[2.5vw] lg:text-[1.4vw] leading-[1.4] tracking-[-0.03vw] lg:max-w-[40vw]">
+            <p className="font-normal text-[4vw] md:text-[2.5vw] lg:text-[1.35vw] leading-[1.4] tracking-[-0.03vw]">
               Homes at Watersong are so private, it feels like a villa. No doors
               face each other. No shared walls. Only generous private balconies,
               open air, and a calm lake as your neighbour: never cramped
@@ -120,6 +100,52 @@ export const FeatureSection: React.FC = () => {
               Provision for island kitchen
             </div>
           </div>
+
+          {/* RIGHT COLUMN: Static Circular Images */}
+          <div className="w-full lg:w-[55%] relative flex flex-col gap-[8vh] mt-[10vh] lg:mt-0 lg:block pointer-events-auto z-20">
+            {/* Top Image: Family Living (Staggered Right on Desktop) */}
+            {/* OPTIMIZATION: w-28vw -> w-20vw */}
+            <div className="lg:absolute top-[-4vh] right-[8vw] flex flex-col items-center w-[60vw] md:w-[45vw] lg:w-[28vw] mx-auto lg:mx-0">
+              {/* Fluid Image Wrapper */}
+              <div className="relative w-full aspect-square">
+                <Image
+                  src="/assets/features-so-thoughtful-you-feel-spcial.webp"
+                  alt="Family living"
+                  fill
+                  sizes="(max-width: 1024px) 70vw, 35vw"
+                  className="object-contain drop-shadow-2xl"
+                />
+              </div>
+              <h3 className="text-white text-center text-[4vw] md:text-[2vw] lg:text-[1vw] leading-[1.4] tracking-widest mt-[2vh] drop-shadow-md font-medium uppercase">
+                Features so thoughtful
+                <br />
+                you feel special
+              </h3>
+            </div>
+            
+
+            {/* Bottom Image: Couple Balcony (Staggered Left on Desktop) */}
+            {/* OPTIMIZATION: w-28vw -> w-20vw and top-42vh -> top-35vh */}
+            <div className="lg:absolute top-[28vh] left-[0vw] flex flex-col items-center w-[50vw] md:w-[35vw] lg:w-[20vw] mx-auto lg:mx-0">
+              {/* Fluid Image Wrapper */}
+              <div className="relative w-full aspect-square">
+                <Image
+                  src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
+                  alt="Couple on balcony"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 20vw"
+                  className="object-contain drop-shadow-2xl"
+                />
+              </div>
+              <h3 className="text-white text-center text-[4vw] md:text-[2vw] lg:text-[1vw] leading-[1.4] tracking-widest mt-[2vh] drop-shadow-md font-medium uppercase">
+                A lake like this deserves
+                <br />a lake lounge
+              </h3>
+              <p className="text-white/90 text-center text-[3.5vw] md:text-[1.8vw] lg:text-[0.9vw] font-light mt-[0.5vh] drop-shadow-md">
+                Up to 200 sq ft lake lounge
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -129,7 +155,7 @@ export const FeatureSection: React.FC = () => {
           src="/assets/Swimming-pool.webp"
           alt="Amenities showcase"
           width={1920}
-          height={588} // Maintains the 3.26 aspect ratio
+          height={588}
           sizes="100vw"
           className="w-full h-auto aspect-[3.26] object-cover object-center"
         />

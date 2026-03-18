@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
                         text-[3.5vw] md:text-[1.8vw] lg:text-[1.2vw] leading-[1.4] tracking-[-0.02vw]"
         >
           {/* Copyright Section */}
-          <div>© 2025 All Right Reserved by PRIVAE</div>
+          <div>© 2026 All Right Reserved by PRIVAE</div>
 
           {/* Links Section */}
           <div className="flex items-center gap-[2vw] md:gap-[1vw]">
