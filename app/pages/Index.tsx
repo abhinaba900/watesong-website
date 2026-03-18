@@ -36,7 +36,7 @@ const Index = () => {
   return (
     // Changed to overflow-x-hidden.
     // This prevents horizontal scrolling but stops Safari from clipping the vertical scroll!
-    <main className="min-h-screen bg-[#113239] overflow-x-hidden">
+    <main className="">
       <HeroSection />
       <FeatureSection />
 
