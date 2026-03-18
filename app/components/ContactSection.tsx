@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const SocialIconButton: React.FC<{ icon: string; index: number }> = ({
   icon,
@@ -38,13 +39,16 @@ const SocialIconButton: React.FC<{ icon: string; index: number }> = ({
         ease: "easeInOut",
         times: [0, 0.2, 0.5, 0.8, 1],
       }}
-      className="relative cursor-pointer select-none outline-none border-none will-change-transform"
+      // Removed will-change-transform to save GPU memory
+      className="relative cursor-pointer select-none outline-none border-none"
       aria-label={`Social media link ${index + 1}`}
     >
-      <img
+      <Image
         src={icon}
         alt={`Social icon ${index + 1}`}
-        className="aspect-square object-contain w-[12vw] md:w-[8vw] lg:w-[4vw]"
+        width={100}
+        height={100}
+        className="aspect-square object-contain w-[12vw] md:w-[8vw] lg:w-[4vw] h-auto"
       />
     </motion.button>
   );
@@ -65,22 +69,27 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-transparent w-full overflow-hidden px-[5vw] lg:px-[8vw] py-[4vh] lg:pt-[6vh] lg:pb-[2vh]">
+    // Removed overflow-hidden from the section
+    <section className="relative bg-transparent w-full px-[5vw] lg:px-[8vw] py-[4vh] lg:pt-[6vh] lg:pb-[2vh]">
       {/* Main Grid: Stacks on mobile, 3 columns on desktop */}
       <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-[8vw] lg:gap-[2vw]">
         {/* LEFT COLUMN: Logos & Address Info */}
         <div className="w-full lg:w-[35%] flex flex-col items-center lg:items-start text-center lg:text-left text-white font-semibold leading-[1.4]">
           {/* Privae Logo */}
-          <img
+          <Image
             src="/assets/navbar-right-logo.webp"
             alt="Privae logo"
-            className="object-contain w-[40vw] md:w-[25vw] lg:w-[12vw] mb-[2vh]"
+            width={300}
+            height={100}
+            className="object-contain w-[40vw] md:w-[25vw] lg:w-[12vw] mb-[2vh] h-auto"
           />
           {/* Watersong Logo */}
-          <img
+          <Image
             src="/assets/watersong-logo-blue.webp"
             alt="Watersong logo"
-            className="object-contain w-[70vw] md:w-[45vw] lg:w-[22vw]"
+            width={400}
+            height={150}
+            className="object-contain w-[70vw] md:w-[45vw] lg:w-[22vw] h-auto"
           />
           {/* Location Text */}
           <h3 className="text-[6vw] md:text-[4vw] lg:text-[1.8vw] tracking-[-0.04vw]">
@@ -111,10 +120,12 @@ export const ContactSection: React.FC = () => {
 
         {/* RIGHT COLUMN: Illustration / Map */}
         <div className="w-full lg:w-[35%] flex justify-center lg:justify-end">
-          <img
+          <Image
             src="/assets/lackfront-recidance.webp"
             alt="Contact illustration"
-            className="object-contain w-[80vw] md:w-[60vw] lg:w-[100%] aspect-[1.25]"
+            width={800}
+            height={640} // Maintains the 1.25 aspect ratio
+            className="object-contain w-[80vw] md:w-[60vw] lg:w-[100%] aspect-[1.25] h-auto"
           />
         </div>
       </div>

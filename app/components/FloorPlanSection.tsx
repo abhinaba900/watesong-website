@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 // --- Dynamic Data Structure ---
 const floorPlanData = {
   "TYPE - 1": {
-    image:
-      "https://api.builder.io/api/v1/image/assets/6a87a99b14594aa7ad16acbeeed4d4ac/1a3593ce613eb60a92e84229e85de7d30a376614",
+    image: "/assets/201.webp",
     roomsCol1: [
       { id: "1", name: "Lobby +", dims: "4206 X 3992 (13'8\" X 13'1\")" },
       {
@@ -44,8 +44,7 @@ const floorPlanData = {
     },
   },
   "TYPE - 2": {
-    image:
-      "https://api.builder.io/api/v1/image/assets/6a87a99b14594aa7ad16acbeeed4d4ac/1a3593ce613eb60a92e84229e85de7d30a376614", // Replace with Type 2 Image URL
+    image: "/assets/202.webp", // Replace with Type 2 Image URL
     roomsCol1: [
       { id: "1", name: "Lobby", dims: "4000 X 3800 (13'1\" X 12'5\")" },
       { id: "2", name: "Living Area", dims: "6500 X 9000 (21'3\" X 29'6\")" },
@@ -74,8 +73,7 @@ const floorPlanData = {
     },
   },
   "TYPE - 3": {
-    image:
-      "https://api.builder.io/api/v1/image/assets/6a87a99b14594aa7ad16acbeeed4d4ac/1a3593ce613eb60a92e84229e85de7d30a376614", // Replace with Type 3 Image URL
+    image: "/assets/203.webp", // Replace with Type 3 Image URL
     roomsCol1: [
       { id: "1", name: "Foyer", dims: "3500 X 3500 (11'5\" X 11'5\")" },
       {
@@ -102,8 +100,7 @@ const floorPlanData = {
     },
   },
   "TYPE - 4": {
-    image:
-      "https://api.builder.io/api/v1/image/assets/6a87a99b14594aa7ad16acbeeed4d4ac/1a3593ce613eb60a92e84229e85de7d30a376614", // Replace with Type 4 Image URL
+    image: "/assets/204.webp", // Replace with Type 4 Image URL
     roomsCol1: [
       { id: "1", name: "Entrance", dims: "3000 X 3000 (9'10\" X 9'10\")" },
       { id: "2", name: "Living Space", dims: "5500 X 7500 (18'0\" X 24'7\")" },
@@ -137,7 +134,7 @@ export const FloorPlanSection: React.FC = () => {
 
       {/* Main Content Grid: REMOVED h-[75vh] so items-center works properly */}
       <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[4vw] lg:gap-[3vw]">
-        {/* LEFT PANE: Tabs and Image (Removed h-full) */}
+        {/* LEFT PANE: Tabs and Image */}
         <div
           className="w-full lg:w-[45%] flex flex-col"
           style={{
@@ -169,16 +166,19 @@ export const FloorPlanSection: React.FC = () => {
 
           {/* Floor Plan Image */}
           <div className="flex justify-center items-center w-full relative pb-[2vh]">
-            <img
+            <Image
               key={activeTab}
               src={activeData.image}
               alt={`Floor plan ${activeTab}`}
-              className="object-contain w-full max-h-[50vh] lg:max-h-[60vh] drop-shadow-2xl animate-[fadeIn_0.5s_ease-in-out]"
+              width={800}
+              height={800}
+              // Reduced drop-shadow-2xl to drop-shadow-xl to save GPU memory
+              className="object-contain w-full h-auto max-h-[50vh] lg:max-h-[60vh] drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
             />
           </div>
         </div>
 
-        {/* RIGHT PANE: Lists and Area Table (Removed h-full) */}
+        {/* RIGHT PANE: Lists and Area Table */}
         <div className="w-full lg:w-[55%] flex flex-row gap-[3vw]">
           {/* Column 1 (Rooms 1-10) */}
           <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[2vh]">

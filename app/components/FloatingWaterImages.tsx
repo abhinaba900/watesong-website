@@ -3,6 +3,7 @@
 import { useEffect, useRef, useMemo, useState } from "react";
 import Matter from "matter-js";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface FloatingItemData {
   id: string;
@@ -86,7 +87,7 @@ export default function FloatingWaterImages({
     // Create engine with even lower iterations for ultra-spongy, smooth collisions
     const engine = Matter.Engine.create({
       gravity: { x: 0, y: 0, scale: 0 },
-      positionIterations: 3, // Dropped to 3: Makes the collision boundary very soft
+      positionIterations: 3,
       velocityIterations: 3,
     });
     engineRef.current = engine;
@@ -104,11 +105,11 @@ export default function FloatingWaterImages({
       const startY = viewportHeight + Math.random() * 500;
 
       return Matter.Bodies.circle(startX, startY, radiusPx, {
-        restitution: 0, // ZERO BOUNCE: Pure pushing force
-        frictionAir: 0.12, // HIGHER DRAG: Thick water resistance makes pushes slow and smooth
-        friction: 0, // Zero surface friction
-        density: item.isTextItem ? 0.001 : 0.0008, // Closer densities so big items don't flick small ones
-        slop: 1.5, // HIGH SLOP: Allows items to merge slightly before the engine separates them
+        restitution: 0,
+        frictionAir: 0.12,
+        friction: 0,
+        density: item.isTextItem ? 0.001 : 0.0008,
+        slop: 1.5,
       });
     });
 
@@ -145,12 +146,12 @@ export default function FloatingWaterImages({
           Matter.Body.setVelocity(body, { x: 0, y: 0 });
         }
 
-        // Apply Matter.js math to the DOM via direct Ref mutation
+        // OPTIMIZATION: Using translate3d offloads to GPU safely without will-change memory leaks
         if (itemRefs.current[i]) {
           itemRefs.current[i]!.style.transform = `
-            translate(${body.position.x}px, ${body.position.y}px) 
+            translate3d(${body.position.x}px, ${body.position.y}px, 0) 
             rotate(${body.angle}rad) 
-            translate(-50%, -50%)
+            translate3d(-50%, -50%, 0)
           `;
         }
       });
@@ -180,7 +181,8 @@ export default function FloatingWaterImages({
           ref={(el) => {
             itemRefs.current[index] = el;
           }}
-          className="absolute top-0 left-0 will-change-transform flex flex-col items-center justify-center"
+          // OPTIMIZATION: Removed will-change-transform
+          className="absolute top-0 left-0 flex flex-col items-center justify-center"
         >
           {/* Framer Motion controls this inner div's bobbing, swaying, and fade-in */}
           <motion.div
@@ -188,15 +190,12 @@ export default function FloatingWaterImages({
             animate={{
               opacity: 1,
               scale: 1,
-              y: ["-4%", "4%"], // Gentle vertical bob
-              rotate: [-3, 3], // Gentle side-to-side sway
+              y: ["-4%", "4%"],
+              rotate: [-3, 3],
             }}
             transition={{
-              // Mount animations (run once)
               opacity: { duration: 1.5, ease: "easeOut" },
               scale: { duration: 1.5, type: "spring", bounce: 0.4 },
-
-              // Continuous water bobbing animations (run infinitely)
               y: {
                 duration: item.bobDuration,
                 repeat: Infinity,
@@ -212,17 +211,20 @@ export default function FloatingWaterImages({
             }}
             className="flex flex-col items-center"
           >
-            <img
+            {/* OPTIMIZATION: Next.js Image with reduced shadow intensity */}
+            <Image
               src={item.src}
               alt={
                 typeof item.title === "string" ? item.title : "Floating graphic"
               }
-              className={`object-contain pointer-events-none select-none drop-shadow-2xl ${
+              width={500}
+              height={500}
+              className={`object-contain pointer-events-none select-none drop-shadow-lg ${
                 item.isTextItem
                   ? "w-[45vw] sm:w-[35vw] md:w-[25vw] lg:w-[18vw]"
                   : "w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[8vw]"
               }`}
-              style={{ opacity: 0.9 }}
+              style={{ opacity: 0.9, height: "auto" }}
             />
 
             {item.isTextItem && (
