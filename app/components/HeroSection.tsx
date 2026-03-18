@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 interface NavigationPillProps {
   label: string;
@@ -39,6 +38,8 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const triggerAnimation = () => {
+    // If it's already animating, we reset it to false for a split second
+    // to force a fresh restart from the beginning
     setIsAnimating(false);
     setTimeout(() => setIsAnimating(true), 10);
   };
@@ -47,6 +48,8 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label }) => {
     <motion.button
       onMouseEnter={triggerAnimation}
       onClick={triggerAnimation}
+      // The core fix: using 'animate' instead of 'whileHover'
+      // This ensures the sequence [1, 1.1, 0.95...] always completes.
       animate={
         isAnimating
           ? {
@@ -60,6 +63,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label }) => {
               scaleY: 1,
             }
       }
+      // Snap down effect on click (still works alongside the jiggle)
       whileTap={{ scale: 0.9 }}
       onAnimationComplete={() => setIsAnimating(false)}
       transition={{
@@ -67,10 +71,9 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label }) => {
         ease: "easeInOut",
         times: [0, 0.2, 0.5, 0.8, 1],
       }}
-      // Removed will-change-transform to save GPU memory on scroll
       className="relative font-medium flex items-center justify-center whitespace-nowrap cursor-pointer overflow-hidden
                  w-full lg:w-[8vw] h-12 lg:h-[2.5vh] xl:h-[4.5vh] text-[1rem] lg:text-[0.73vw]
-                 rounded-full select-none outline-none border-none"
+                 rounded-full select-none outline-none border-none will-change-transform"
       style={{
         backgroundColor: "rgba(177, 178, 176, 0.6)",
         boxShadow: `
@@ -108,14 +111,10 @@ export const HeroSection: React.FC = () => {
     "Contact Us",
   ];
 
-  // Fixed Safari scroll bug with 100dvh
-  if (!mounted)
-    return (
-      <section className="w-full h-[100dvh] lg:h-screen bg-[#113239] bg-cover bg-center" />
-    );
+  if (!mounted) return <section className="w-full h-screen bg-[#113239] bg-cover bg-center" />;
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#113239] bg-[url('/assets/hero-bg-image.webp')] bg-cover bg-center font-sans h-[100dvh] lg:h-screen">
+    <section className="relative w-full overflow-hidden bg-[#113239] bg-[url('/assets/hero-bg-image.webp')] bg-cover bg-center font-sans h-screen lg:h-[60vh] xl:h-screen">
       <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
       <AnimatePresence>
@@ -147,13 +146,10 @@ export const HeroSection: React.FC = () => {
       <div className="relative z-10 flex flex-col w-full h-full px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh] mx-auto">
         <header className="flex justify-between items-center w-full lg:mb-[2vh]">
           <div className="shrink-0 order-1 lg:order-2">
-            <Image
+            <img
               src="/assets/navbar-right-logo.webp"
               alt="Logo"
-              width={200}
-              height={100}
-              priority
-              className="w-24 md:w-36 lg:w-[8.5vw] h-auto object-contain"
+              className="w-24 md:w-36 lg:w-[8.5vw]"
             />
           </div>
           <nav className="hidden lg:flex flex-wrap gap-x-[2.5vw] gap-y-[1vh] order-2 lg:order-1">
@@ -191,21 +187,15 @@ export const HeroSection: React.FC = () => {
             className="bg-white/75 backdrop-blur-md shadow-2xl overflow-hidden flex flex-col lg:flex-row w-full lg:w-[50vw] rounded-2xl lg:rounded-[2.1vw] h-auto lg:h-[20vh] xl:h-[35vh] transition-all hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.3)]"
           >
             <div className="w-full lg:w-[55%] p-6 md:p-10 lg:p-[3vw] flex flex-col justify-center">
-              <Image
+              <img
                 src="/assets/card-inside-image-of-hero-section.webp"
+                className="w-16 md:w-28 lg:w-[7vw] mb-3 lg:mb-[2vh]"
                 alt="Brand"
-                width={100}
-                height={100}
-                priority
-                className="w-16 md:w-28 lg:w-[7vw] mb-3 lg:mb-[2vh] h-auto object-contain"
               />
-              <Image
+              <img
                 src="/assets/watersong-logo-blue.webp"
                 alt="Watersong"
-                width={300}
-                height={100}
-                priority
-                className="w-40 md:w-56 lg:w-[14.5vw] object-contain mb-2 h-auto"
+                className="w-40 md:w-56 lg:w-[14.5vw] object-contain mb-2"
               />
               <h2 className="text-[#0C637E] font-bold text-lg md:text-2xl lg:text-[1.25vw]">
                 Lakefront Residences
@@ -215,12 +205,10 @@ export const HeroSection: React.FC = () => {
               </p>
             </div>
             <div className="w-full lg:w-[45%] relative h-50 md:h-72 lg:h-full">
-              <Image
+              <img
                 src="/assets/lackfront-recidance.webp"
                 alt="Building"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
           </motion.article>

@@ -48,7 +48,7 @@ const Index = () => {
           src="/assets/bg-in-feature-section.webp"
           alt="Floor plan background"
           fill
-          quality={80}
+          quality={75}
           className="object-cover pointer-events-none z-0"
         />
 

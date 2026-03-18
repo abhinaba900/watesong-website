@@ -76,6 +76,7 @@ export const FeatureSection: React.FC = () => {
           src="/assets/bg-in-feature-section.webp"
           alt="Interior design background"
           fill
+          quality={75}
           sizes="100vw"
           className="object-cover z-0 mix-blend-overlay opacity-50 pointer-events-none"
         />
