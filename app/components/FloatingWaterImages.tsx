@@ -28,16 +28,60 @@ export default function FloatingWaterImages({
 }: FloatingImageProps) {
   const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const vantaRef = useRef<HTMLDivElement>(null);
+
+  // NEW: A dedicated layer just for our realistic water wakes
+  const rippleLayerRef = useRef<HTMLDivElement>(null);
+
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const engineRef = useRef<Matter.Engine | null>(null);
   const requestRef = useRef<number | null>(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
 
-  // 1. Hydration Safety: Only render physics/randomness on the client
+  // 1. Hydration Safety
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // 2. Prepare the data pool with pre-calculated Framer Motion randoms
+  // 2. Initialize Vanta.js
+  useEffect(() => {
+    if (!isMounted || !vantaRef.current || vantaEffect) return;
+
+    let effect: any;
+
+    const initVanta = async () => {
+      const THREE = await import("three");
+      // @ts-ignore
+      const WAVES = (await import("vanta/dist/vanta.waves.min")).default;
+
+      effect = WAVES({
+        el: vantaRef.current,
+        THREE: THREE,
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x52797e,
+        shininess: 25.0,
+        waveHeight: 12.0,
+        waveSpeed: 0.6,
+        zoom: 0.85,
+      });
+
+      setVantaEffect(effect);
+    };
+
+    initVanta();
+
+    return () => {
+      if (effect) effect.destroy();
+    };
+  }, [isMounted, vantaEffect]);
+
+  // 3. Prepare Data Pool
   const multipliedPool = useMemo(() => {
     if (!items.length) return [];
     const TARGET_POOL_SIZE = 15;
@@ -54,7 +98,6 @@ export default function FloatingWaterImages({
       ...item,
       uniqueId: id,
       isTextItem: isText,
-      // Randomize bobbing/swaying so they don't look robotic
       bobDuration: 3 + Math.random() * 2.5,
       rotDuration: 4 + Math.random() * 3,
     });
@@ -71,7 +114,6 @@ export default function FloatingWaterImages({
       }
     }
 
-    // Shuffle array
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -79,12 +121,11 @@ export default function FloatingWaterImages({
     return pool;
   }, [items]);
 
-  // 3. Initialize Matter.js Physics Engine
+  // 4. Initialize Matter.js Physics & Ripple Generation
   useEffect(() => {
     if (!isMounted || multipliedPool.length === 0 || !containerRef.current)
       return;
 
-    // Create engine with even lower iterations for ultra-spongy, smooth collisions
     const engine = Matter.Engine.create({
       gravity: { x: 0, y: 0, scale: 0 },
       positionIterations: 3,
@@ -92,15 +133,19 @@ export default function FloatingWaterImages({
     });
     engineRef.current = engine;
 
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    let viewportWidth = window.innerWidth;
+    let viewportHeight = window.innerHeight;
+
+    const handleResize = () => {
+      viewportWidth = window.innerWidth;
+      viewportHeight = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
 
     const bodies = multipliedPool.map((item) => {
-      // Physical bumper sizing
       const radiusVW = item.isTextItem ? 13 : 7;
       const radiusPx = (viewportWidth * radiusVW) / 100;
 
-      // Spawn slightly off-screen bottom-right
       const startX = viewportWidth + Math.random() * 500;
       const startY = viewportHeight + Math.random() * 500;
 
@@ -115,16 +160,16 @@ export default function FloatingWaterImages({
 
     Matter.Composite.add(engine.world, bodies);
 
-    // Physics Animation Loop
+    let frameCount = 0;
+
     const tick = () => {
       Matter.Engine.update(engine, 1000 / 60);
+      frameCount++;
 
       bodies.forEach((body, i) => {
-        // Continuous diagonal drift force
         const driftForce = { x: -0.00004 * body.mass, y: -0.00004 * body.mass };
         Matter.Body.applyForce(body, body.position, driftForce);
 
-        // Very strict speed limit for a lazy, floating feel
         const maxVelocity = 0.5;
         if (body.velocity.x < -maxVelocity)
           Matter.Body.setVelocity(body, {
@@ -137,7 +182,6 @@ export default function FloatingWaterImages({
             y: -maxVelocity,
           });
 
-        // Screen wrap (Top-Left to Bottom-Right)
         if (body.position.x < -400 || body.position.y < -400) {
           Matter.Body.setPosition(body, {
             x: viewportWidth + Math.random() * 400,
@@ -146,7 +190,6 @@ export default function FloatingWaterImages({
           Matter.Body.setVelocity(body, { x: 0, y: 0 });
         }
 
-        // OPTIMIZATION: Using translate3d offloads to GPU safely without will-change memory leaks
         if (itemRefs.current[i]) {
           itemRefs.current[i]!.style.transform = `
             translate3d(${body.position.x}px, ${body.position.y}px, 0) 
@@ -154,6 +197,35 @@ export default function FloatingWaterImages({
             translate3d(-50%, -50%, 0)
           `;
         }
+
+        // --- NEW: REALISTIC WATER TRAIL GENERATION ---
+        // Every ~15 frames, if the item is moving, leave a ripple behind
+        if (frameCount % 15 === 0 && rippleLayerRef.current) {
+          if (
+            Math.abs(body.velocity.x) > 0.1 ||
+            Math.abs(body.velocity.y) > 0.1
+          ) {
+            // Bypass React for raw performance: Create a DOM element
+            const ripple = document.createElement("div");
+            ripple.className = "realistic-water-wake";
+
+            // Size the ripple based on the physics body
+            const size = (body as any).circleRadius * 1.5 || 100;
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+            ripple.style.left = `${body.position.x}px`;
+            ripple.style.top = `${body.position.y}px`;
+
+            // Drop it onto the screen
+            rippleLayerRef.current.appendChild(ripple);
+
+            // Clean it up exactly when the CSS animation finishes (3 seconds)
+            setTimeout(() => {
+              if (ripple.parentNode) ripple.remove();
+            }, 3000);
+          }
+        }
+        // ---------------------------------------------
       });
 
       requestRef.current = requestAnimationFrame(tick);
@@ -162,6 +234,7 @@ export default function FloatingWaterImages({
     requestRef.current = requestAnimationFrame(tick);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
       Matter.Engine.clear(engine);
     };
@@ -174,17 +247,62 @@ export default function FloatingWaterImages({
       ref={containerRef}
       className="absolute inset-0 z-0 w-full h-full overflow-hidden pointer-events-none"
     >
+      {/* --- CSS FOR THE REALISTIC RIPPLES --- */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @keyframes expandWake {
+          0% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 1;
+            border-width: 3px;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(2.5);
+            opacity: 0;
+            border-width: 0px;
+          }
+        }
+        .realistic-water-wake {
+          position: absolute;
+          border-radius: 50%;
+          border: solid rgba(255, 255, 255, 0.4);
+          /* The magic happens here: Refracting the background and creating water highlights */
+          box-shadow: 
+            inset 0 4px 10px rgba(255, 255, 255, 0.5), 
+            inset 0 -4px 10px rgba(0, 0, 0, 0.1),
+            0 4px 15px rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(4px) contrast(1.1) brightness(1.1);
+          -webkit-backdrop-filter: blur(4px) contrast(1.1) brightness(1.1);
+          animation: expandWake 3s cubic-bezier(0.1, 0.4, 0.3, 1) forwards;
+          pointer-events: none;
+          z-index: 10;
+        }
+      `,
+        }}
+      />
+
+      {/* 1. REAL 3D FLOWING WATER BACKGROUND (Vanta) */}
+      <div
+        ref={vantaRef}
+        className="absolute inset-0 z-0 opacity-80 mix-blend-color-dodge pointer-events-none"
+      />
+
+      {/* 2. THE WAKE LAYER (Sits behind the items, rendering the realistic trails) */}
+      <div
+        ref={rippleLayerRef}
+        className="absolute inset-0 z-10 pointer-events-none overflow-hidden"
+      />
+
+      {/* 3. FLOATING ITEMS */}
       {multipliedPool.map((item, index) => (
         <div
           key={item.uniqueId}
-          // Matter.js controls this outer div's position and rotation
           ref={(el) => {
             itemRefs.current[index] = el;
           }}
-          // OPTIMIZATION: Removed will-change-transform
-          className="absolute top-0 left-0 flex flex-col items-center justify-center"
+          className="absolute top-0 left-0 flex flex-col items-center justify-center z-20"
         >
-          {/* Framer Motion controls this inner div's bobbing, swaying, and fade-in */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{
@@ -211,7 +329,6 @@ export default function FloatingWaterImages({
             }}
             className="flex flex-col items-center"
           >
-            {/* OPTIMIZATION: Next.js Image with reduced shadow intensity */}
             <Image
               src={item.src}
               alt={
@@ -219,7 +336,7 @@ export default function FloatingWaterImages({
               }
               width={500}
               height={500}
-              className={`object-contain pointer-events-none select-none drop-shadow-lg ${
+              className={`object-contain pointer-events-none select-none drop-shadow-lg relative z-10 ${
                 item.isTextItem
                   ? "w-[45vw] sm:w-[35vw] md:w-[25vw] lg:w-[18vw]"
                   : "w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[8vw]"
