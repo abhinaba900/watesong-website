@@ -4,6 +4,7 @@ import Image from "next/image";
 // 1. Keep Above-the-Fold components as static imports so they load instantly
 import { HeroSection } from "@/components/HeroSection";
 import { FeatureSection } from "@/components/FeatureSection";
+import { WaterRipple } from "@/components/WaterRipple";
 
 // 2. Dynamically import Below-the-Fold components.
 // This forces the browser to wait to download/render them until the user starts scrolling near them.
@@ -41,17 +42,10 @@ const Index = () => {
       <FeatureSection />
 
       {/* Removed "overflow-hidden" here to stop layout thrashing on mobile */}
-      <div className="relative w-full">
-        {/* 3. Replaced standard <img> with Next.js <Image /> */}
-        {/* This automatically compresses the WebP and handles memory purging natively */}
-        <Image
-          src="/assets/bg-in-feature-section.webp"
-          alt="Floor plan background"
-          fill
-          quality={75}
-          className="object-cover pointer-events-none z-0"
-        />
-
+      <WaterRipple
+        backgroundImage="/assets/bg-in-feature-section.webp"
+        className="relative w-full"
+      >
         <div className="relative z-10 flex flex-col w-full">
           <MasterPlanSection />
           <FloorPlanSection />
@@ -59,7 +53,7 @@ const Index = () => {
           <ContactSection />
           <Footer />
         </div>
-      </div>
+      </WaterRipple>
     </main>
   );
 };

@@ -23,7 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased overflow-x-hidden">{children}</body>
+      <body className="antialiased overflow-x-hidden" cz-shortcut-listen="true">
+        {children}
+      </body>
     </html>
   );
 }

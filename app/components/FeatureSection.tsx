@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import FloatingWaterImages from "./FloatingWaterImages";
 
-// Cleaned up floating items: Only the background decorations remain floating
+// Decoration items for the water surface
 const floatingItems = [
   {
     id: "lotus-deco",
@@ -48,65 +48,62 @@ export const FeatureSection: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Full-Screen Features Section */}
+      {/* 2. Full-Screen Features Section (Interactivity happens here) */}
       <section className="relative w-full min-h-[100dvh] overflow-hidden bg-[#52797e]">
-        {/* Static Background Texture */}
-        <Image
-          src="/assets/bg-in-feature-section.webp"
-          alt="Interior design background"
-          fill
-          quality={75}
-          sizes="100vw"
-          className="object-cover z-0 mix-blend-overlay opacity-50 pointer-events-none"
-        />
-
-        {/* FULL SCREEN FLOATING 3D CANVAS */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <FloatingWaterImages items={floatingItems} />
+        {/* A. Background Texture Overlay */}
+        <div className="absolute inset-0 z-0 opacity-40 mix-blend-overlay pointer-events-none">
+          <Image
+            src="/assets/bg-in-feature-section.webp"
+            alt="Interior design background"
+            fill
+            quality={75}
+            sizes="100vw"
+            className="object-cover pointer-events-none"
+          />
         </div>
 
-        {/* Content Layer: Split into Left (Text) and Right (Static Images) */}
+        {/* B. THE WATER CANVAS (The Interaction Layer) */}
+        {/* pointer-events-auto allows this layer to catch mouse move/clicks */}
+        <div className="absolute inset-0 z-10 overflow-hidden pointer-events-auto">
+          <FloatingWaterImages
+            items={floatingItems}
+            backgroundImage="/assets/bg-in-feature-section.webp"
+          />
+        </div>
+
+        {/* C. THE CONTENT LAYER (The UI Layer) */}
+        {/* pointer-events-none lets the mouse pass through to the water layer (z-10) */}
         <div className="relative z-20 w-full min-h-[100dvh] mx-auto px-[5vw] py-[13vh] flex flex-col lg:flex-row pointer-events-none">
           {/* LEFT COLUMN: Text Content */}
-          <div className="w-full lg:w-[45%] flex flex-col gap-[5vh] text-white pointer-events-auto drop-shadow-xl z-20">
-            {/* Fluid Text */}
-            <p className="font-normal text-[4vw] md:text-[2.5vw] lg:text-[1.35vw] leading-[1.4] tracking-[-0.03vw]">
-              Homes at Watersong are so private, it feels like a villa. No doors
-              face each other. No shared walls. Only generous private balconies,
-              open air, and a calm lake as your neighbour: never cramped
-              corridors, never nagging proximity.
-            </p>
+          <div className="w-full lg:w-[45%] flex flex-col gap-[5vh] text-white drop-shadow-xl z-20">
+            {/* If you want the text to be selectable, add pointer-events-auto here */}
+            <div className="pointer-events-none">
+              <p className="font-normal text-[4vw] md:text-[2.5vw] lg:text-[1.35vw] leading-[1.4] tracking-[-0.03vw]">
+                Homes at Watersong are so private, it feels like a villa. No
+                doors face each other. No shared walls. Only generous private
+                balconies, open air, and a calm lake as your neighbour: never
+                cramped corridors, never nagging proximity.
+              </p>
 
-            {/* Fluid List */}
-            <div className="font-normal text-[3.5vw] md:text-[2.2vw] lg:text-[1.3vw] leading-[2.2]">
-              3 BHK homes from 2700 to 3300 sq ft.
-              <br />
-              Higher UDS share
-              <br />
-              100% vaastu-compliant
-              <br />
-              Two homes per floor, two elevators per floor
-              <br />
-              Every home has a large lake lounge
-              <br />
-              Double-height car parking
-              <br />
-              3 balconies per home
-              <br />
-              Anti-skid tiles on the balcony
-              <br />
-              Seamless common areas
-              <br />
-              Provision for island kitchen
+              <div className="mt-[5vh] font-normal text-[3.5vw] md:text-[2.2vw] lg:text-[1.3vw] leading-[2.2]">
+                3 BHK homes from 2700 to 3300 sq ft.
+                <br /> Higher UDS share
+                <br /> 100% vaastu-compliant
+                <br /> Two homes per floor, two elevators per floor
+                <br /> Every home has a large lake lounge
+                <br /> Double-height car parking
+                <br /> 3 balconies per home
+                <br /> Anti-skid tiles on the balcony
+                <br /> Seamless common areas
+                <br /> Provision for island kitchen
+              </div>
             </div>
           </div>
 
           {/* RIGHT COLUMN: Static Circular Images */}
-          <div className="w-full lg:w-[55%] relative flex flex-col gap-[8vh] mt-[10vh] lg:mt-0 lg:block pointer-events-auto z-20">
-            {/* Top Image: Family Living (Staggered Right on Desktop) */}
-            {/* OPTIMIZATION: w-28vw -> w-20vw */}
-            <div className="lg:absolute top-[-4vh] right-[8vw] flex flex-col items-center w-[60vw] md:w-[45vw] lg:w-[28vw] mx-auto lg:mx-0">
-              {/* Fluid Image Wrapper */}
+          <div className="w-full lg:w-[55%] relative  pointer-events-none flex flex-col gap-[8vh] mt-[10vh] lg:mt-0 lg:block z-20">
+            {/* Top Image Card */}
+            <div className="lg:absolute top-[-4vh] pointer-events-none right-[8vw] flex flex-col items-center w-[60vw] md:w-[45vw] lg:w-[28vw] mx-auto lg:mx-0 pointer-events-auto">
               <div className="relative w-full aspect-square">
                 <Image
                   src="/assets/features-so-thoughtful-you-feel-spcial.webp"
@@ -122,19 +119,16 @@ export const FeatureSection: React.FC = () => {
                 you feel special
               </h3>
             </div>
-            
 
-            {/* Bottom Image: Couple Balcony (Staggered Left on Desktop) */}
-            {/* OPTIMIZATION: w-28vw -> w-20vw and top-42vh -> top-35vh */}
-            <div className="lg:absolute top-[28vh] left-[0vw] flex flex-col items-center w-[50vw] md:w-[35vw] lg:w-[20vw] mx-auto lg:mx-0">
-              {/* Fluid Image Wrapper */}
-              <div className="relative w-full aspect-square">
+            {/* Bottom Image Card */}
+            <div className="lg:absolute top-[28vh] left-[0vw] flex pointer-events-none flex-col items-center w-[50vw] md:w-[35vw] lg:w-[20vw] mx-auto lg:mx-0 pointer-events-auto">
+              <div className="relative w-full aspect-square pointer-events-none">
                 <Image
                   src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
                   alt="Couple on balcony"
                   fill
                   sizes="(max-width: 1024px) 50vw, 20vw"
-                  className="object-contain drop-shadow-2xl"
+                  className="object-contain drop-shadow-2xl pointer-events-none"
                 />
               </div>
               <h3 className="text-white text-center text-[4vw] md:text-[2vw] lg:text-[1vw] leading-[1.4] tracking-widest mt-[2vh] drop-shadow-md font-medium uppercase">
