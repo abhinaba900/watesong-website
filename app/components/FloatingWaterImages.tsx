@@ -81,6 +81,8 @@ export default function FloatingWaterImages({
       return;
 
     let $el: any;
+    let observer: IntersectionObserver | null = null;
+    let isVisible = true;
 
     const initScene = async () => {
       const { default: $ } = await import("jquery");
@@ -98,7 +100,7 @@ export default function FloatingWaterImages({
         resolution,
         dropRadius: 20,
         perturbance: 0.04,
-        interactive: true,
+        interactive: false,
         imageUrl: backgroundImage, // The plugin uses this for the WebGL texture
       });
 
@@ -119,6 +121,11 @@ export default function FloatingWaterImages({
 
       let frameCount = 0;
       const tick = () => {
+        if (!isVisible) {
+          requestRef.current = requestAnimationFrame(tick);
+          return; // Skip updates when hidden to save CPU/GPU
+        }
+
         Matter.Engine.update(engine, 1000 / 60);
         frameCount++;
 
@@ -142,7 +149,9 @@ export default function FloatingWaterImages({
 
           // Ripples trigger from the physics bodies
           if (frameCount % 15 === 0 && Math.abs(body.velocity.x) > 0.1) {
-            $el.ripples("drop", body.position.x, body.position.y, 15, 0.03);
+            if ($el && typeof $el.ripples === "function") {
+              $el.ripples("drop", body.position.x, body.position.y, 15, 0.03);
+            }
           }
         });
 
@@ -150,11 +159,29 @@ export default function FloatingWaterImages({
       };
 
       tick();
+
+      if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              isVisible = entry.isIntersecting;
+              if (isVisible) {
+                if ($el && typeof $el.ripples === "function") $el.ripples("play");
+              } else {
+                if ($el && typeof $el.ripples === "function") $el.ripples("pause");
+              }
+            });
+          },
+          { threshold: 0 }
+        );
+        observer.observe(containerRef.current!);
+      }
     };
 
     initScene();
 
     return () => {
+      if (observer) observer.disconnect();
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
       if ($el && typeof $el.ripples === "function") $el.ripples("destroy");
       if (engineRef.current) Matter.Engine.clear(engineRef.current);

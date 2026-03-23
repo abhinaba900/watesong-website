@@ -12,6 +12,7 @@ export default function RippleBackground({ image }: RippleBackgroundProps) {
   useEffect(() => {
     let $el: any;
     let cleanupMouse: any;
+    let observer: IntersectionObserver | null = null;
 
     const initRipples = async () => {
       const { default: $ } = await import("jquery");
@@ -26,20 +27,37 @@ export default function RippleBackground({ image }: RippleBackgroundProps) {
         resolution: 512,
         dropRadius: 20,
         perturbance: 0.04,
-        interactive: true,
+        interactive: false,
         imageUrl: image,
       });
 
+      if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                if ($el && typeof $el.ripples === "function") $el.ripples("play");
+              } else {
+                if ($el && typeof $el.ripples === "function") $el.ripples("pause");
+              }
+            });
+          },
+          { threshold: 0 }
+        );
+        observer.observe(containerRef.current!);
+      }
+
       // Strong ripple on click
       const handleClick = (e: MouseEvent) => {
-        const offset = $el.offset();
-        const x = e.pageX - offset.left;
-        const y = e.pageY - offset.top;
-
-        $el.ripples("drop", x, y, 30, 0.08);
+        if ($el && typeof $el.ripples === "function") {
+          const offset = $el.offset();
+          const x = e.pageX - offset.left;
+          const y = e.pageY - offset.top;
+          $el.ripples("drop", x, y, 30, 0.08);
+        }
       };
 
-      containerRef.current.addEventListener("mousedown", handleClick);
+      containerRef.current!.addEventListener("mousedown", handleClick, { passive: true });
 
       cleanupMouse = () => {
         containerRef.current?.removeEventListener("mousedown", handleClick);
@@ -50,6 +68,7 @@ export default function RippleBackground({ image }: RippleBackgroundProps) {
 
     return () => {
       if (cleanupMouse) cleanupMouse();
+      if (observer) observer.disconnect();
       if ($el && typeof $el.ripples === "function") {
         $el.ripples("destroy");
       }

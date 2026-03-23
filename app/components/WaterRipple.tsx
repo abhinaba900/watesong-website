@@ -38,6 +38,8 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
     const resolution = userResolution || (isMobile ? 256 : 512);
 
     let $el: any;
+    let cleanupEvents: (() => void) | null = null;
+    let observer: IntersectionObserver | null = null;
 
     const initRipple = async () => {
       try {
@@ -60,47 +62,52 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
             imageUrl: backgroundImage,
           });
 
+          if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+            observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    try {
+                      if (rippleRef.current && typeof rippleRef.current.ripples === "function") {
+                        rippleRef.current.ripples("play");
+                      }
+                    } catch (e) {}
+                  } else {
+                    try {
+                      if (rippleRef.current && typeof rippleRef.current.ripples === "function") {
+                        rippleRef.current.ripples("pause");
+                      }
+                    } catch (e) {}
+                  }
+                });
+              },
+              { threshold: 0 }
+            );
+            observer.observe(containerRef.current!);
+          }
+
           if (interactive) {
-            let lastEvent: MouseEvent | null = null;
-
-            const updateRipple = () => {
-              if (lastEvent && containerRef.current && rippleRef.current) {
-                const rect = containerRef.current.getBoundingClientRect();
-                const x = lastEvent.clientX - rect.left;
-                const y = lastEvent.clientY - rect.top;
-                
-                // Trigger drop based on event type
-                const radius = lastEvent.type === "mousedown" ? dropRadius * 1.5 : dropRadius;
-                const strength = lastEvent.type === "mousedown" ? perturbance * 2 : perturbance;
-                
-                rippleRef.current.ripples("drop", x, y, radius, strength);
-                lastEvent = null;
-              }
-              frameRef.current = requestAnimationFrame(updateRipple);
-            };
-
-            const handleMouseMove = (e: MouseEvent) => {
-              lastEvent = e;
-            };
-
             const handleClick = (e: MouseEvent) => {
-              lastEvent = e;
+              if (containerRef.current && rippleRef.current && typeof rippleRef.current.ripples === "function") {
+                const rect = containerRef.current.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const radius = dropRadius * 1.5;
+                const strength = perturbance * 2;
+                
+                try {
+                  rippleRef.current.ripples("drop", x, y, radius, strength);
+                } catch (err) {}
+              }
             };
 
             if (containerRef.current) {
-              containerRef.current.addEventListener("mousemove", handleMouseMove, { passive: true });
               containerRef.current.addEventListener("mousedown", handleClick, { passive: true });
+              cleanupEvents = () => {
+                containerRef.current?.removeEventListener("mousedown", handleClick);
+              };
             }
-            
-            frameRef.current = requestAnimationFrame(updateRipple);
-
-            return () => {
-              if (containerRef.current) {
-                containerRef.current.removeEventListener("mousemove", handleMouseMove);
-                containerRef.current.removeEventListener("mousedown", handleClick);
-              }
-              if (frameRef.current) cancelAnimationFrame(frameRef.current);
-            };
           }
         }
       } catch (error) {
@@ -108,9 +115,11 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
       }
     };
 
-    const cleanupPromise = initRipple();
+    initRipple();
 
     return () => {
+      if (cleanupEvents) cleanupEvents();
+      if (observer) observer.disconnect();
       if (rippleRef.current && typeof rippleRef.current.ripples === "function") {
         try {
           rippleRef.current.ripples("destroy");
