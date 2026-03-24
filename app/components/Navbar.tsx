@@ -143,13 +143,17 @@ export const Navbar: React.FC = () => {
               </button>
               <div className="flex flex-col gap-4">
                 {navigationItems.map((item, index) => (
-                  <NavigationPill 
-                    key={index} 
-                    label={item.label} 
-                    action={item.action ? () => {
-                      setIsOpen(false);
-                      item.action!();
-                    } : undefined} 
+                  <NavigationPill
+                    key={index}
+                    label={item.label}
+                    action={
+                      item.action
+                        ? () => {
+                            setIsOpen(false);
+                            item.action!();
+                          }
+                        : undefined
+                    }
                   />
                 ))}
               </div>
@@ -158,10 +162,10 @@ export const Navbar: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <header 
+      <header
         className={`fixed top-0 left-0 w-full z-[100] flex justify-between items-center transition-all duration-300 ${
-          scrolled 
-            ? "bg-[#113239]/90 backdrop-blur-md px-4 py-4 md:px-8 md:py-4 lg:px-[4vw] lg:py-[2vh] shadow-xl" 
+          scrolled
+            ? "bg-[#113239]/90 backdrop-blur-md px-4 py-4 md:px-8 md:py-4 lg:px-[4vw] lg:py-[2vh] shadow-xl"
             : "bg-transparent px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh]"
         }`}
       >
@@ -179,7 +183,11 @@ export const Navbar: React.FC = () => {
         </div>
         <nav className="hidden lg:flex flex-wrap gap-x-[2.5vw] gap-y-[1vh] order-2 lg:order-1">
           {navigationItems.map((item, index) => (
-            <NavigationPill key={index} label={item.label} action={item.action} />
+            <NavigationPill
+              key={index}
+              label={item.label}
+              action={item.action}
+            />
           ))}
         </nav>
         <button
@@ -197,66 +205,155 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-md p-4"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setIsModalOpen(false);
+            }}
           >
             <motion.div
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-[#113239] border border-white/10 shadow-[0_20px_50px_rgba(8,_112,_184,_0.3)] rounded-2xl w-full max-w-lg overflow-hidden flex flex-col relative"
+              className="relative w-full max-w-lg"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors p-2 z-10"
+              {/* 
+                Gradient border technique: 
+                Outer wrapper has the gradient background, inner card clips it to show as border
+              */}
+              <div
+                style={{
+                  padding: "3.67px",
+                  borderRadius: "16px",
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(235,235,235,0.4) 11.32%, rgba(161,160,160,0.5) 83.6%, rgba(255,255,255,0.5) 100%)",
+                }}
               >
-                <X size={24} />
-              </button>
-
-              {/* Modal Header */}
-              <div className="px-8 pt-10 pb-6 border-b border-white/5 relative">
-                {/* Subtle highlight gradient matching water reflection */}
-                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#C9A050]/10 to-transparent pointer-events-none" />
-                <h2 className="text-3xl font-semibold text-white tracking-tight">Enquire Now</h2>
-                <p className="text-white/60 mt-2 text-sm">Submit your details and our luxury property agent will contact you shortly.</p>
-              </div>
-
-              {/* Modal Body / Form */}
-              <div className="p-8 flex flex-col gap-5">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-white/80 text-sm font-medium ml-1">Full Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="Enter your name" 
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-[#C9A050] focus:bg-white/10 transition-colors"
-                  />
-                </div>
-                
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-white/80 text-sm font-medium ml-1">Email Address</label>
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-[#C9A050] focus:bg-white/10 transition-colors"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-white/80 text-sm font-medium ml-1">Phone Number</label>
-                  <input 
-                    type="tel" 
-                    placeholder="Enter your phone number" 
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-[#C9A050] focus:bg-white/10 transition-colors"
-                  />
-                </div>
-
-                <button 
-                  onClick={() => setIsModalOpen(false)}
-                  className="w-full mt-4 bg-[#C9A050] hover:bg-[#b58b41] text-[#113239] font-bold uppercase tracking-wider text-sm py-4 rounded-lg transition-all active:scale-95 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(201,160,80,0.3)]"
+                {/* Inner card */}
+                <div
+                  style={{
+                    background:
+                      "linear-gradient(160deg, #1a4a52 0%, #113239 40%, #0d2a31 100%)",
+                    borderRadius: "13px",
+                    backdropFilter: "blur(20px)",
+                  }}
+                  className="relative overflow-hidden flex flex-col"
                 >
-                  Submit Enquiry
-                </button>
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsModalOpen(false)}
+                    className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors p-2 z-10"
+                  >
+                    <X size={20} />
+                  </button>
+
+                  {/* Modal Header */}
+                  <div className="px-8 pt-8 pb-5"></div>
+
+                  {/* Modal Body / Form */}
+                  <div className="px-8 pb-8 flex flex-col gap-4">
+                    {/* Row: Name + Contact Number */}
+                    <div className="flex gap-4">
+                      <div className="flex flex-col gap-1.5 flex-1">
+                        <label className="text-white/80 text-xs font-medium">
+                          Name*
+                        </label>
+                        {/* Gradient-bordered input */}
+                        <div
+                          style={{
+                            padding: "2px",
+                            borderRadius: "6px",
+                            background:
+                              "linear-gradient(171.78deg, rgba(255,255,255,0.6) 13.3%, rgba(235,235,235,0.4) 29.62%, rgba(161,160,160,0.5) 78.73%, rgba(255,255,255,0.5) 92.12%)",
+                          }}
+                        >
+                          <input
+                            type="text"
+                            className="w-full bg-[#113239]/80 rounded-[4px] px-3 py-2.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:bg-[#113239]"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-1.5 flex-1">
+                        <label className="text-white/80 text-xs font-medium">
+                          Contact Number*
+                        </label>
+                        <div
+                          style={{
+                            padding: "2px",
+                            borderRadius: "6px",
+                            background:
+                              "linear-gradient(171.78deg, rgba(255,255,255,0.6) 13.3%, rgba(235,235,235,0.4) 29.62%, rgba(161,160,160,0.5) 78.73%, rgba(255,255,255,0.5) 92.12%)",
+                          }}
+                        >
+                          <input
+                            type="tel"
+                            className="w-full bg-[#113239]/80 rounded-[4px] px-3 py-2.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:bg-[#113239]"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Email Address */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-white/80 text-xs font-medium">
+                        Email Address
+                      </label>
+                      <div
+                        style={{
+                          padding: "2px",
+                          borderRadius: "6px",
+                          background:
+                            "linear-gradient(171.78deg, rgba(255,255,255,0.6) 13.3%, rgba(235,235,235,0.4) 29.62%, rgba(161,160,160,0.5) 78.73%, rgba(255,255,255,0.5) 92.12%)",
+                        }}
+                      >
+                        <input
+                          type="email"
+                          className="w-full bg-[#113239]/80 rounded-[4px] px-3 py-2.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:bg-[#113239]"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Message */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-white/80 text-xs font-medium">
+                        Message
+                      </label>
+                      <div
+                        style={{
+                          padding: "2px",
+                          borderRadius: "6px",
+                          background:
+                            "linear-gradient(171.78deg, rgba(255,255,255,0.6) 13.3%, rgba(235,235,235,0.4) 29.62%, rgba(161,160,160,0.5) 78.73%, rgba(255,255,255,0.5) 92.12%)",
+                        }}
+                      >
+                        <textarea
+                          placeholder="Write your message here..."
+                          rows={4}
+                          className="w-full bg-[#113239]/80 rounded-[4px] px-3 py-2 text-white text-sm placeholder:text-white/30 focus:outline-none focus:bg-[#113239] resize-none"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Send Button - gradient bordered */}
+                    <div className="flex justify-end mt-1">
+                      <div
+                        style={{
+                          padding: "2px",
+                          borderRadius: "6px",
+                          background:
+                            "linear-gradient(171.78deg, rgba(255,255,255,0.6) 13.3%, rgba(235,235,235,0.4) 29.62%, rgba(161,160,160,0.5) 78.73%, rgba(255,255,255,0.5) 92.12%)",
+                        }}
+                      >
+                        <button
+                          onClick={() => setIsModalOpen(false)}
+                          className="bg-[#113239]/90 hover:bg-[#1a4a52] text-white text-xs font-medium px-8 py-2.5 rounded-[4px] transition-colors"
+                        >
+                          Send
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
