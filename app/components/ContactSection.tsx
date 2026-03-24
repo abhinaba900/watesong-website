@@ -27,17 +27,17 @@ const SocialIconButton: React.FC<{ icon: string; index: number; href: string }> 
       animate={
         isAnimating
           ? {
-              scale: [1, 1.1, 0.95, 1.05, 1],
-              scaleX: [1, 1.15, 0.85, 1.05, 1],
-              scaleY: [1, 0.85, 1.15, 0.95, 1],
+              scale: [1.3, 1.45, 1.2, 1.35, 1.3],
+              scaleX: [1.3, 1.45, 1.1, 1.35, 1.3],
+              scaleY: [1.3, 1.45, 1.4, 1.25, 1.3],
             }
           : {
-              scale: 1,
-              scaleX: 1,
-              scaleY: 1,
+              scale: 1.3,
+              scaleX: 1.3,
+              scaleY: 1.3,
             }
       }
-      whileTap={{ scale: 0.9 }}
+      whileTap={{ scale: 1.1 }}
       onAnimationComplete={() => setIsAnimating(false)}
       transition={{
         duration: 0.5,
