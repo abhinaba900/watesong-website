@@ -133,10 +133,10 @@ export const FloorPlanSection: React.FC = () => {
       </h2>
 
       {/* Main Content Grid: REMOVED h-[75vh] so items-center works properly */}
-      <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[4vw] lg:gap-[3vw]">
+      <div className="flex flex-col lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
         {/* LEFT PANE: Tabs and Image */}
         <div
-          className="w-full lg:w-[45%] flex flex-col"
+          className="w-full lg:w-[45%] h-full flex flex-col"
           style={{
             background:
               "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
@@ -165,7 +165,7 @@ export const FloorPlanSection: React.FC = () => {
           </div>
 
           {/* Floor Plan Image */}
-          <div className="flex justify-center items-center w-full relative pb-[2vh]">
+          <div className="flex justify-center items-center w-full relative h-[40vh] md:h-[50vh] lg:h-[60vh] pb-[2vh] px-[2vw]">
             <Image
               key={activeTab}
               src={activeData.image}
@@ -173,7 +173,7 @@ export const FloorPlanSection: React.FC = () => {
               width={800}
               height={800}
               // Reduced drop-shadow-2xl to drop-shadow-xl to save GPU memory
-              className="object-contain w-full h-auto max-h-[50vh] lg:max-h-[60vh] drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
+              className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
             />
           </div>
         </div>

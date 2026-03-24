@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const SocialIconButton: React.FC<{ icon: string; index: number }> = ({
+const SocialIconButton: React.FC<{ icon: string; index: number; href: string }> = ({
   icon,
   index,
+  href,
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -16,8 +17,12 @@ const SocialIconButton: React.FC<{ icon: string; index: number }> = ({
   };
 
   return (
-    <motion.button
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       onMouseEnter={triggerAnimation}
+      onFocus={triggerAnimation}
       onClick={triggerAnimation}
       animate={
         isAnimating
@@ -50,7 +55,7 @@ const SocialIconButton: React.FC<{ icon: string; index: number }> = ({
         height={100}
         className="aspect-square object-contain w-[12vw] md:w-[8vw] lg:w-[4vw] h-auto"
       />
-    </motion.button>
+    </motion.a>
   );
 };
 
@@ -58,10 +63,22 @@ export const ContactSection: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState("7026112224");
 
   const socialIcons = [
-    "/assets/facebook-icon.webp",
-    "/assets/instagram-icon.webp",
-    "/assets/twtter-icon.webp",
-    "/assets/linkedin-icon.webp",
+    {
+      icon: "/assets/facebook-icon.webp",
+      href: "https://www.facebook.com/habitatventures",
+    },
+    {
+      icon: "/assets/twtter-icon.webp",
+      href: "#",
+    },
+    {
+      icon: "/assets/instagram-icon.webp",
+      href: "https://www.instagram.com/habitatventures",
+    },
+    {
+      icon: "/assets/linkedin-icon.webp",
+      href: "https://www.linkedin.com/company/habitatventures",
+    },
   ];
 
   const handleCallClick = () => {
@@ -104,8 +121,8 @@ export const ContactSection: React.FC = () => {
         <div className="w-full lg:w-[30%] flex flex-col items-center justify-center gap-[4vh]">
           {/* Social Icons */}
           <div className="flex items-center justify-center gap-[4vw] lg:gap-[1.5vw]">
-            {socialIcons.map((icon, index) => (
-              <SocialIconButton key={index} icon={icon} index={index} />
+            {socialIcons.map((social, index) => (
+              <SocialIconButton key={index} icon={social.icon} href={social.href} index={index} />
             ))}
           </div>
 

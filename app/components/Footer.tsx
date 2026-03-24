@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export const Footer: React.FC = () => {
   return (
@@ -26,16 +27,16 @@ export const Footer: React.FC = () => {
 
           {/* Links Section */}
           <div className="flex items-center gap-[2vw] md:gap-[1vw]">
-            <a href="#terms" className="hover:text-blue-300 transition-colors">
+            <Link href="/terms-and-conditions" className="hover:text-blue-300 transition-colors">
               Terms and Conditions
-            </a>
+            </Link>
             <span className="text-white/50">|</span>
-            <a
-              href="#privacy"
+            <Link
+              href="/privacy-policy"
               className="hover:text-blue-300 transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

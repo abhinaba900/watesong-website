@@ -31,8 +31,18 @@ const nextConfig: NextConfig = {
 
   // 3. Advanced Bundle Optimization
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion", "matter-js"],
+    optimizePackageImports: [
+      "lucide-react", 
+      "framer-motion", 
+      "matter-js",
+      "three",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "lenis"
+    ],
+    scrollRestoration: true,
   },
+  poweredByHeader: false,
 
   // 4. Client-Side (Browser) Caching Headers
   async headers() {

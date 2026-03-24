@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import SmoothScroll from "./components/SmoothScroll";
+import { Navbar } from "./components/Navbar";
 
 // 1. The Viewport Lock (CRITICAL FOR MOBILE SAFARI)
 export const viewport: Viewport = {
@@ -24,7 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased overflow-x-hidden" cz-shortcut-listen="true">
-        {children}
+        <Navbar />
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

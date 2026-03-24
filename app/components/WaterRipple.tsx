@@ -26,6 +26,7 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
   const rippleRef = useRef<any>(null);
   const frameRef = useRef<number | null>(null);
 
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -35,7 +36,7 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
 
     // Detect mobile and scale resolution for performance
     const isMobile = window.innerWidth < 768;
-    const resolution = userResolution || (isMobile ? 256 : 512);
+    const resolution = userResolution || (isMobile ? 128 : 256);
 
     let $el: any;
     let cleanupEvents: (() => void) | null = null;

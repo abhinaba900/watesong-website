@@ -42,18 +42,45 @@ const Index = () => {
       <FeatureSection />
 
       {/* Removed "overflow-hidden" here to stop layout thrashing on mobile */}
-      <WaterRipple
-        backgroundImage="/assets/bg-in-feature-section.webp"
-        className="relative w-full"
-      >
-        <div className="relative z-10 flex flex-col w-full">
+
+      <div className="relative z-10 flex flex-col w-full">
+        <Image
+          src="/assets/bg-in-feature-section.webp"
+          alt="bg-in-feature-section"
+          width={1920}
+          height={1080}
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        />
+        <WaterRipple backgroundImage="" className="relative w-full">
           <MasterPlanSection />
+        </WaterRipple>
+
+        <WaterRipple
+          backgroundImage=""
+          className="relative w-full"
+        >
           <FloorPlanSection />
+        </WaterRipple>
+        <WaterRipple
+          backgroundImage=""
+          className="relative w-full"
+        >
           <CompanySection />
+        </WaterRipple>
+        <WaterRipple
+          backgroundImage=""
+          className="relative w-full"
+        >
           <ContactSection />
+        </WaterRipple>
+
+        <WaterRipple
+          backgroundImage=""
+          className="relative w-full"
+        >
           <Footer />
-        </div>
-      </WaterRipple>
+        </WaterRipple>
+      </div>
     </main>
   );
 };

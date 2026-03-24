@@ -93,13 +93,13 @@ export default function FloatingWaterImages({
 
       // Detect mobile and scale resolution
       const isMobile = window.innerWidth < 768;
-      const resolution = isMobile ? 256 : 512;
+      const resolution = isMobile ? 128 : 256;
 
       // Initialize ripples using the image for refraction
       $el.ripples({
         resolution,
-        dropRadius: 20,
-        perturbance: 0.04,
+        dropRadius: 18,
+        perturbance: 0.03,
         interactive: false,
         imageUrl: backgroundImage, // The plugin uses this for the WebGL texture
       });
@@ -131,8 +131,8 @@ export default function FloatingWaterImages({
 
         bodies.forEach((body, i) => {
           Matter.Body.applyForce(body, body.position, {
-            x: -0.00004 * body.mass,
-            y: -0.00004 * body.mass,
+            x: -0.0001 * body.mass,
+            y: -0.0001 * body.mass,
           });
 
           if (body.position.x < -250 || body.position.y < -250) {
@@ -147,10 +147,10 @@ export default function FloatingWaterImages({
               `translate3d(${body.position.x}px, ${body.position.y}px, 0) translate3d(-50%, -50%, 0)`;
           }
 
-          // Ripples trigger from the physics bodies
-          if (frameCount % 15 === 0 && Math.abs(body.velocity.x) > 0.1) {
+          // Ripples trigger from the physics bodies (staggered by index 'i' to prevent lag spikes)
+          if ((frameCount + i * 7) % 90 === 0 && Math.abs(body.velocity.x) > 0.1) {
             if ($el && typeof $el.ripples === "function") {
-              $el.ripples("drop", body.position.x, body.position.y, 15, 0.03);
+              $el.ripples("drop", body.position.x, body.position.y, 10, 0.02);
             }
           }
         });
