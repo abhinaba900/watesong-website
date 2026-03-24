@@ -25,6 +25,7 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
   const [isMounted, setIsMounted] = useState(false);
   const rippleRef = useRef<any>(null);
   const frameRef = useRef<number | null>(null);
+  const keepAliveRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 
   useEffect(() => {
@@ -87,28 +88,59 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
             observer.observe(containerRef.current!);
           }
 
-          if (interactive) {
-            const handleClick = (e: MouseEvent) => {
-              if (containerRef.current && rippleRef.current && typeof rippleRef.current.ripples === "function") {
-                const rect = containerRef.current.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const radius = dropRadius * 1.5;
-                const strength = perturbance * 2;
-                
+          // Fix: periodic "keep-alive" drops prevent the ripple effect from
+          // freezing when no events are occurring (WebGL contexts can stall)
+          keepAliveRef.current = setInterval(() => {
+            if (rippleRef.current && typeof rippleRef.current.ripples === "function") {
+              if (containerRef.current) {
+                const w = containerRef.current.offsetWidth;
+                const h = containerRef.current.offsetHeight;
+                // Drop a tiny invisible ripple in a random spot just to keep the WebGL ticker alive
                 try {
-                  rippleRef.current.ripples("drop", x, y, radius, strength);
-                } catch (err) {}
+                  rippleRef.current.ripples("drop",
+                    Math.random() * w,
+                    Math.random() * h,
+                    3, // tiny radius - nearly invisible
+                    0.001 // nearly zero strength
+                  );
+                } catch (e) {}
               }
-            };
-
-            if (containerRef.current) {
-              containerRef.current.addEventListener("mousedown", handleClick, { passive: true });
-              cleanupEvents = () => {
-                containerRef.current?.removeEventListener("mousedown", handleClick);
-              };
             }
+          }, 2000);
+
+          // Fix: tab visibility changes kill the WebGL loop. Resume on tab focus.
+          const handleVisibilityChange = () => {
+            if (!document.hidden && rippleRef.current && typeof rippleRef.current.ripples === "function") {
+              try {
+                rippleRef.current.ripples("play");
+              } catch (e) {}
+            }
+          };
+          document.addEventListener("visibilitychange", handleVisibilityChange);
+
+          // handleClick must be declared before cleanupEvents references it
+          const handleClick = (e: MouseEvent) => {
+            if (containerRef.current && rippleRef.current && typeof rippleRef.current.ripples === "function") {
+              const rect = containerRef.current.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const radius = dropRadius * 1.5;
+              const strength = perturbance * 2;
+              try {
+                rippleRef.current.ripples("drop", x, y, radius, strength);
+              } catch (err) {}
+            }
+          };
+
+          cleanupEvents = () => {
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+            if (containerRef.current) {
+              containerRef.current.removeEventListener("mousedown", handleClick);
+            }
+          };
+
+          if (interactive && containerRef.current) {
+            containerRef.current.addEventListener("mousedown", handleClick, { passive: true });
           }
         }
       } catch (error) {
@@ -121,6 +153,7 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
     return () => {
       if (cleanupEvents) cleanupEvents();
       if (observer) observer.disconnect();
+      if (keepAliveRef.current) clearInterval(keepAliveRef.current);
       if (rippleRef.current && typeof rippleRef.current.ripples === "function") {
         try {
           rippleRef.current.ripples("destroy");
@@ -135,6 +168,8 @@ export const WaterRipple: React.FC<WaterRippleProps> = ({
       ref={containerRef}
       className={`relative w-full h-full overflow-hidden will-change-transform ${className}`}
       style={{
+        // Solid fallback color prevents white flash when WebGL canvas resets between frames
+        backgroundColor: "transparent",
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",

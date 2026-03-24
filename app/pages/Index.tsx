@@ -49,7 +49,7 @@ const Index = () => {
           alt="bg-in-feature-section"
           width={1920}
           height={1080}
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          className="absolute top-0 left-0 w-full h-full object-cover "
         />
         <WaterRipple backgroundImage="" className="relative w-full">
           <MasterPlanSection />

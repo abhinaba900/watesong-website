@@ -33,6 +33,7 @@ export default function FloatingWaterImages({
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const engineRef = useRef<Matter.Engine | null>(null);
   const requestRef = useRef<number | null>(null);
+  const keepAliveRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -160,6 +161,25 @@ export default function FloatingWaterImages({
 
       tick();
 
+      // Fix: keep-alive drops prevent WebGL freezing when physics bodies are idle
+      keepAliveRef.current = setInterval(() => {
+        if ($el && typeof $el.ripples === "function" && containerRef.current) {
+          const w = containerRef.current.offsetWidth;
+          const h = containerRef.current.offsetHeight;
+          try {
+            $el.ripples("drop", Math.random() * w, Math.random() * h, 3, 0.001);
+          } catch (e) {}
+        }
+      }, 2000);
+
+      // Fix: resume ripple when user returns to the tab
+      const handleVisibilityChange = () => {
+        if (!document.hidden && $el && typeof $el.ripples === "function") {
+          try { $el.ripples("play"); } catch (e) {}
+        }
+      };
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+
       if (typeof window !== "undefined" && "IntersectionObserver" in window) {
         observer = new IntersectionObserver(
           (entries) => {
@@ -176,6 +196,10 @@ export default function FloatingWaterImages({
         );
         observer.observe(containerRef.current!);
       }
+
+      return () => {
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+      };
     };
 
     initScene();
@@ -183,6 +207,7 @@ export default function FloatingWaterImages({
     return () => {
       if (observer) observer.disconnect();
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      if (keepAliveRef.current) clearInterval(keepAliveRef.current);
       if ($el && typeof $el.ripples === "function") $el.ripples("destroy");
       if (engineRef.current) Matter.Engine.clear(engineRef.current);
     };
@@ -195,6 +220,8 @@ export default function FloatingWaterImages({
       ref={containerRef}
       className="absolute inset-0 z-0 w-full h-full overflow-hidden"
       style={{
+        // Solid fallback color prevents white flash when WebGL canvas resets between frames
+        backgroundColor: "transparent",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundImage: `url(${backgroundImage})`,
