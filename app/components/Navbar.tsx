@@ -43,6 +43,10 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label, action }) => {
   const triggerAnimation = () => {
     setIsAnimating(false);
     setTimeout(() => setIsAnimating(true), 10);
+  };
+
+  const handleClick = () => {
+    triggerAnimation();
     // Delay the action slightly to let the button bounce animation play out visually
     if (action) setTimeout(action, 200);
   };
@@ -50,7 +54,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label, action }) => {
   return (
     <motion.button
       onMouseEnter={triggerAnimation}
-      onClick={triggerAnimation}
+      onClick={handleClick}
       animate={
         isAnimating
           ? {
