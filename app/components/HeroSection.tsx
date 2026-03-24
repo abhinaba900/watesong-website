@@ -18,15 +18,15 @@ export const HeroSection: React.FC = () => {
   return (
     <section className="relative w-full overflow-hidden font-sans h-[100dvh] lg:h-[60vh] xl:h-screen bg-[#113239]">
       <WaterRipple
-        backgroundImage="/assets/hero-bg-image.webp"
+        backgroundImage="/assets/bg-in-feature-section.webp"
         className="absolute inset-0 z-0 h-full w-full"
       >
         {/* 2. Black Overlay */}
         <div className="absolute inset-0 bg-black/10 z-0 pointer-events-none" />
 
         {/* 4. Content Wrapper */}
-        <div className="absolute inset-0 z-10 flex flex-col w-full h-full px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh] mx-auto">
-          
+        <div className="absolute inset-0 z-10 flex flex-row w-full h-full px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh] mx-auto">
+          {/* LEFT COLUMN: heading + card */}
           <div className="flex flex-col flex-grow justify-center mt-4 lg:mt-0 mb-4 lg:mb-[4vh] pt-[12vh] lg:pt-[10vh]">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -80,6 +80,23 @@ export const HeroSection: React.FC = () => {
                 />
               </div>
             </motion.article>
+          </div>
+
+          {/* RIGHT COLUMN: Lotus image */}
+          <div className="hidden lg:flex flex-col items-end justify-end w-[38%] shrink-0 pb-[4vh] pr-[2vw]">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              <Image
+                src="/assets/Lotus - webp.webp"
+                alt="Lotus"
+                width={420}
+                height={420}
+                className="object-contain w-[22vw] h-auto drop-shadow-2xl"
+              />
+            </motion.div>
           </div>
         </div>
       </WaterRipple>
