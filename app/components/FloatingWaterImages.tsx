@@ -1,293 +1,299 @@
 "use client";
 
-import { useEffect, useRef, useMemo, useState } from "react";
-import Matter from "matter-js";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 
-interface FloatingItemData {
-  id: string;
-  src: string;
-  title?: React.ReactNode;
-  subtitle?: string;
+interface FloatingWaterImagesProps {
+  backgroundImage?: string;
+  className?: string;
 }
 
-interface FloatingImageProps {
-  items: FloatingItemData[];
-  backgroundImage?: string; // Optional: Pass your BG image URL here
-}
-
-interface PoolItemData extends FloatingItemData {
-  uniqueId: string;
-  isTextItem: boolean;
-  bobDuration: number;
-  rotDuration: number;
+function nextWaypoint(padX = 10, padY = 10) {
+  return {
+    x: padX + Math.random() * (100 - padX * 2),
+    y: padY + Math.random() * (100 - padY * 2),
+  };
 }
 
 export default function FloatingWaterImages({
-  items = [],
-  backgroundImage = "/your-water-bg.jpg", // Ensure this path is correct
-}: FloatingImageProps) {
+  backgroundImage = "/assets/bg-in-feature-section.webp",
+  className = "",
+}: FloatingWaterImagesProps) {
   const [isMounted, setIsMounted] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const engineRef = useRef<Matter.Engine | null>(null);
-  const requestRef = useRef<number | null>(null);
-  const keepAliveRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const turtleRef = useRef<HTMLDivElement>(null);
+
+  const widthRef = useRef(0);
+  const heightRef = useRef(0);
+
+  const buffer1Ref = useRef<number[]>([]);
+  const buffer2Ref = useRef<number[]>([]);
+  const backgroundPixelsRef = useRef<Uint8ClampedArray | null>(null);
+  const outputImageDataRef = useRef<ImageData | null>(null);
+
+  const animationFrameRef = useRef<number>(0);
+  const isImageLoadedRef = useRef(false);
+
+  const controls = useAnimation();
+  const facingRef = useRef<"right" | "left">("right");
+  const posRef = useRef(nextWaypoint());
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const multipliedPool = useMemo(() => {
-    if (!items.length) return [];
-    
-    // Reduce pool size on mobile to save CPU/GPU
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const TARGET_POOL_SIZE = isMobile ? 6 : 12;
-    
-    const pool: PoolItemData[] = [];
-
-    const textItems = items.filter((item) => item.title || item.subtitle);
-    const decoItems = items.filter((item) => !item.title && !item.subtitle);
-
-    const createItem = (
-      item: any,
-      id: string,
-      isText: boolean,
-    ): PoolItemData => ({
-      ...item,
-      uniqueId: id,
-      isTextItem: isText,
-      bobDuration: 3 + Math.random() * 2,
-      rotDuration: 4 + Math.random() * 3,
-    });
-
-    textItems.forEach((item) =>
-      pool.push(createItem(item, `${item.id}-text`, true)),
-    );
-
-    if (decoItems.length > 0) {
-      const remaining = TARGET_POOL_SIZE - pool.length;
-      for (let i = 0; i < remaining; i++) {
-        const deco = decoItems[i % decoItems.length];
-        pool.push(createItem(deco, `${deco.id}-clone-${i}`, false));
-      }
-    }
-    return pool.sort(() => Math.random() - 0.5);
-  }, [items]);
-
+  // ─── Core Canvas CPU Water Algorithm ───────────────────────────────────────
   useEffect(() => {
-    if (!isMounted || multipliedPool.length === 0 || !containerRef.current)
-      return;
+    if (!isMounted || !canvasRef.current) return;
 
-    let $el: any;
-    let observer: IntersectionObserver | null = null;
-    let isVisible = true;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
 
-    const initScene = async () => {
-      const { default: $ } = await import("jquery");
-      (window as any).jQuery = $;
-      await import("jquery.ripples");
+    const img = new window.Image();
+    img.src = backgroundImage;
+    img.crossOrigin = "anonymous";
 
-      $el = $(containerRef.current!);
+    img.onload = () => {
+      const scale = 0.5;
+      const width = Math.floor(canvas.clientWidth * scale);
+      const height = Math.floor(canvas.clientHeight * scale);
 
-      // Detect mobile and scale resolution
-      const isMobile = window.innerWidth < 768;
-      const resolution = isMobile ? 128 : 256;
+      canvas.width = width;
+      canvas.height = height;
 
-      // Initialize ripples using the image for refraction
-      $el.ripples({
-        resolution,
-        dropRadius: 18,
-        perturbance: 0.03,
-        interactive: false,
-        imageUrl: backgroundImage, // The plugin uses this for the WebGL texture
-      });
+      widthRef.current = width;
+      heightRef.current = height;
 
-      const engine = Matter.Engine.create({ gravity: { x: 0, y: 0 } });
-      engineRef.current = engine;
+      const size = width * height;
+      buffer1Ref.current = new Array(size).fill(0);
+      buffer2Ref.current = new Array(size).fill(0);
 
-      const bodies = multipliedPool.map((item) => {
-        const radius = item.isTextItem ? 100 : 60;
-        return Matter.Bodies.circle(
-          window.innerWidth + Math.random() * 300,
-          window.innerHeight + Math.random() * 300,
-          radius,
-          { frictionAir: 0.1, restitution: 0.5, density: 0.001 },
-        );
-      });
+      ctx.drawImage(img, 0, 0, width, height);
+      const imageData = ctx.getImageData(0, 0, width, height);
+      backgroundPixelsRef.current = imageData.data.slice();
+      outputImageDataRef.current = imageData;
 
-      Matter.Composite.add(engine.world, bodies);
+      isImageLoadedRef.current = true;
+      renderLoop();
+    };
 
-      let frameCount = 0;
-      const tick = () => {
-        if (!isVisible) {
-          requestRef.current = requestAnimationFrame(tick);
-          return; // Skip updates when hidden to save CPU/GPU
+    const renderLoop = () => {
+      if (
+        !isImageLoadedRef.current ||
+        !ctx ||
+        !outputImageDataRef.current ||
+        !backgroundPixelsRef.current
+      )
+        return;
+
+      const width = widthRef.current;
+      const height = heightRef.current;
+      const buffer1 = buffer1Ref.current;
+      const buffer2 = buffer2Ref.current;
+      const bgPixels = backgroundPixelsRef.current;
+      const outData = outputImageDataRef.current;
+      const outputPixels = outData.data;
+
+      const temp = buffer1Ref.current;
+      buffer1Ref.current = buffer2Ref.current;
+      buffer2Ref.current = temp;
+
+      const damping = 0.92;
+
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          const i = x + y * width;
+
+          buffer2[i] =
+            (buffer1[i - 1] +
+              buffer1[i + 1] +
+              buffer1[i - width] +
+              buffer1[i + width]) /
+              2 -
+            buffer2[i];
+
+          buffer2[i] *= damping;
+
+          let dataOffset = buffer2[i] - buffer1[i];
+
+          let xOffset = x + Math.floor(dataOffset);
+          let yOffset = y + Math.floor(dataOffset);
+
+          if (xOffset < 0) xOffset = 0;
+          if (xOffset >= width) xOffset = width - 1;
+          if (yOffset < 0) yOffset = 0;
+          if (yOffset >= height) yOffset = height - 1;
+
+          const sourcePixel = (xOffset + yOffset * width) * 4;
+          const targetPixel = i * 4;
+
+          let light = dataOffset * 0.8;
+
+          if (light < -20) light = -20;
+          if (light > 40) light = 40;
+
+          outputPixels[targetPixel] = Math.min(
+            255,
+            Math.max(0, bgPixels[sourcePixel] + light),
+          );
+          outputPixels[targetPixel + 1] = Math.min(
+            255,
+            Math.max(0, bgPixels[sourcePixel + 1] + light),
+          );
+          outputPixels[targetPixel + 2] = Math.min(
+            255,
+            Math.max(0, bgPixels[sourcePixel + 2] + light),
+          );
+          outputPixels[targetPixel + 3] = 255;
         }
+      }
 
-        Matter.Engine.update(engine, 1000 / 60);
-        frameCount++;
+      ctx.putImageData(outData, 0, 0);
+      animationFrameRef.current = requestAnimationFrame(renderLoop);
+    };
 
-        bodies.forEach((body, i) => {
-          Matter.Body.applyForce(body, body.position, {
-            x: -0.0001 * body.mass,
-            y: -0.0001 * body.mass,
-          });
+    return () => cancelAnimationFrame(animationFrameRef.current);
+  }, [isMounted, backgroundImage]);
 
-          if (body.position.x < -250 || body.position.y < -250) {
-            Matter.Body.setPosition(body, {
-              x: window.innerWidth + 200,
-              y: window.innerHeight + 200,
-            });
-          }
+  const dropStone = useCallback(
+    (x: number, y: number, radius: number, strength: number) => {
+      if (!isImageLoadedRef.current || !canvasRef.current) return;
 
-          if (itemRefs.current[i]) {
-            itemRefs.current[i]!.style.transform =
-              `translate3d(${body.position.x}px, ${body.position.y}px, 0) translate3d(-50%, -50%, 0)`;
-          }
+      const rect = canvasRef.current.getBoundingClientRect();
+      const scaleX = widthRef.current / rect.width;
+      const scaleY = heightRef.current / rect.height;
 
-          // Ripples trigger from the physics bodies (staggered by index 'i' to prevent lag spikes)
-          if ((frameCount + i * 7) % 90 === 0 && Math.abs(body.velocity.x) > 0.1) {
-            if ($el && typeof $el.ripples === "function") {
-              $el.ripples("drop", body.position.x, body.position.y, 10, 0.02);
+      const scaledX = Math.floor((x - rect.left) * scaleX);
+      const scaledY = Math.floor((y - rect.top) * scaleY);
+      const width = widthRef.current;
+      const height = heightRef.current;
+      const buffer1 = buffer1Ref.current;
+
+      for (let j = scaledY - radius; j < scaledY + radius; j++) {
+        for (let i = scaledX - radius; i < scaledX + radius; i++) {
+          if (i >= 0 && i < width && j >= 0 && j < height) {
+            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
+              buffer1[i + j * width] = strength;
             }
           }
-        });
-
-        requestRef.current = requestAnimationFrame(tick);
-      };
-
-      tick();
-
-      // Fix: keep-alive drops prevent WebGL freezing when physics bodies are idle
-      keepAliveRef.current = setInterval(() => {
-        if ($el && typeof $el.ripples === "function" && containerRef.current) {
-          const w = containerRef.current.offsetWidth;
-          const h = containerRef.current.offsetHeight;
-          try {
-            $el.ripples("drop", Math.random() * w, Math.random() * h, 3, 0.001);
-          } catch (e) {}
         }
-      }, 2000);
-
-      // Fix: resume ripple when user returns to the tab
-      const handleVisibilityChange = () => {
-        if (!document.hidden && $el && typeof $el.ripples === "function") {
-          try { $el.ripples("play"); } catch (e) {}
-        }
-      };
-      document.addEventListener("visibilitychange", handleVisibilityChange);
-
-      if (typeof window !== "undefined" && "IntersectionObserver" in window) {
-        observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              isVisible = entry.isIntersecting;
-              if (isVisible) {
-                if ($el && typeof $el.ripples === "function") $el.ripples("play");
-              } else {
-                if ($el && typeof $el.ripples === "function") $el.ripples("pause");
-              }
-            });
-          },
-          { threshold: 0 }
-        );
-        observer.observe(containerRef.current!);
       }
+    },
+    [],
+  );
 
-      return () => {
-        document.removeEventListener("visibilitychange", handleVisibilityChange);
-      };
+  const handlePointerDown = (e: React.PointerEvent) => {
+    dropStone(e.clientX, e.clientY, 8, 20);
+  };
+
+  const roam = useCallback(async () => {
+    while (true) {
+      const from = posRef.current;
+      const to = nextWaypoint();
+      posRef.current = to;
+
+      const dx = to.x - from.x;
+      const newFacing: "right" | "left" = dx >= 0 ? "right" : "left";
+      const didFlip = newFacing !== facingRef.current;
+      facingRef.current = newFacing;
+
+      const dist = Math.hypot(to.x - from.x, to.y - from.y);
+      const duration = 7 + (dist / 100) * 15;
+
+      await controls.start({
+        left: `${to.x}%`,
+        top: `${to.y}%`,
+        scaleX: newFacing === "right" ? 1 : -1,
+        rotate: [0, didFlip ? -8 : 4, didFlip ? 8 : -4, 0],
+        transition: {
+          left: { duration, ease: [0.44, 0, 0.56, 1] },
+          top: { duration, ease: [0.44, 0, 0.56, 1] },
+          scaleX: { duration: 0.5 },
+          rotate: { duration, times: [0, 0.2, 0.8, 1], ease: "easeInOut" },
+        },
+      });
+    }
+  }, [controls]);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    controls.set({ left: `${posRef.current.x}%`, top: `${posRef.current.y}%` });
+    roam();
+  }, [isMounted, roam, controls]);
+
+  // ─── Turtle Distance-Based Wake Tracker ───
+  useEffect(() => {
+    if (!isMounted) return;
+    let rafId: number;
+    let lastX = 0;
+    let lastY = 0;
+
+    const trackWake = () => {
+      if (turtleRef.current) {
+        const tRect = turtleRef.current.getBoundingClientRect();
+        // Calculate current center of the turtle
+        const currentX = tRect.left + tRect.width / 2;
+        const currentY = tRect.top + tRect.height / 2;
+
+        // Initialize coordinates on the very first frame
+        if (lastX === 0 && lastY === 0) {
+          lastX = currentX;
+          lastY = currentY;
+        }
+
+        // Calculate how far the turtle moved since the last dropped stone
+        const distanceMoved = Math.hypot(currentX - lastX, currentY - lastY);
+
+        // Only drop a stone if the turtle moved at least 8 pixels
+        if (distanceMoved > 8) {
+          dropStone(currentX, currentY, 2, 70); // Drop the wake
+          // Save this spot so we can measure distance again
+          lastX = currentX;
+          lastY = currentY;
+        }
+      }
+      rafId = requestAnimationFrame(trackWake);
     };
 
-    initScene();
-
-    return () => {
-      if (observer) observer.disconnect();
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
-      if (keepAliveRef.current) clearInterval(keepAliveRef.current);
-      if ($el && typeof $el.ripples === "function") $el.ripples("destroy");
-      if (engineRef.current) Matter.Engine.clear(engineRef.current);
-    };
-  }, [isMounted, multipliedPool, backgroundImage]);
+    trackWake();
+    return () => cancelAnimationFrame(rafId);
+  }, [isMounted, dropStone]);
 
   if (!isMounted) return null;
 
   return (
     <div
-      ref={containerRef}
-      className="absolute inset-0 z-0 w-full h-full overflow-hidden"
-      style={{
-        // Solid fallback color prevents white flash when WebGL canvas resets between frames
-        backgroundColor: "transparent",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundImage: `url(${backgroundImage})`,
-      }}
+      className={`absolute inset-0 w-full h-full overflow-hidden ${className}`}
     >
-      <AnimatePresence>
-        {multipliedPool.map((item, index) => (
-          <div
-            key={item.uniqueId}
-            ref={(el) => {
-              itemRefs.current[index] = el;
-            }}
-            className="absolute top-0 left-0 flex flex-col items-center justify-center z-20 pointer-events-none will-change-transform"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: ["-4%", "4%"],
-                rotate: [-2, 2],
-              }}
-              transition={{
-                opacity: { duration: 1 },
-                y: {
-                  duration: item.bobDuration,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
-                },
-                rotate: {
-                  duration: item.rotDuration,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
-                },
-              }}
-              className="flex flex-col items-center"
-            >
-              <Image
-                src={item.src}
-                alt={item.id}
-                width={400}
-                height={400}
-                className={`object-contain drop-shadow-2xl ${
-                  item.isTextItem
-                    ? "w-[35vw] md:w-[20vw]"
-                    : "w-[15vw] md:w-[8vw]"
-                }`}
-                priority
-              />
-
-              {item.isTextItem && (
-                <div className="mt-4 text-center text-white select-none">
-                  <h3 className="text-lg md:text-xl font-bold uppercase tracking-tighter drop-shadow-md">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs md:text-sm opacity-70 font-light">
-                    {item.subtitle}
-                  </p>
-                </div>
-              )}
-            </motion.div>
-          </div>
-        ))}
-      </AnimatePresence>
+      <canvas
+        ref={canvasRef}
+        onPointerDown={handlePointerDown}
+        className="w-full h-full object-cover cursor-pointer pointer-events-auto"
+        style={{ touchAction: "none" }}
+      />
+      <motion.div
+        ref={turtleRef}
+        animate={controls}
+        className="absolute pointer-events-none z-10"
+        style={{
+          width: "80px",
+          translateX: "-50%",
+          translateY: "-50%",
+          filter: "drop-shadow(0 10px 8px rgba(0,0,0,0.2))",
+        }}
+      >
+        <Image
+          src="/assets/turtle.webp"
+          alt="Swimming turtle"
+          width={100}
+          height={100}
+          className="w-full h-auto object-contain"
+          priority
+        />
+      </motion.div>
     </div>
   );
 }

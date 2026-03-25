@@ -1,89 +1,195 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface RippleBackgroundProps {
   image: string;
 }
 
 export default function RippleBackground({ image }: RippleBackgroundProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const widthRef = useRef(0);
+  const heightRef = useRef(0);
+
+  const buffer1Ref = useRef<number[]>([]);
+  const buffer2Ref = useRef<number[]>([]);
+  const backgroundPixelsRef = useRef<Uint8ClampedArray | null>(null);
+  const outputImageDataRef = useRef<ImageData | null>(null);
+
+  const animationFrameRef = useRef<number>(0);
+  const isImageLoadedRef = useRef(false);
 
   useEffect(() => {
-    let $el: any;
-    let cleanupMouse: any;
-    let observer: IntersectionObserver | null = null;
+    setIsMounted(true);
+  }, []);
 
-    const initRipples = async () => {
-      const { default: $ } = await import("jquery");
-      (window as any).jQuery = $;
-      await import("jquery.ripples");
+  // ─── Core Canvas CPU Water Algorithm ───────────────────────────────────────
+  useEffect(() => {
+    if (!isMounted || !canvasRef.current) return;
 
-      if (!containerRef.current) return;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
 
-      $el = $(containerRef.current);
+    const img = new window.Image();
+    img.src = image;
+    img.crossOrigin = "anonymous";
 
-      $el.ripples({
-        resolution: 512,
-        dropRadius: 20,
-        perturbance: 0.04,
-        interactive: false,
-        imageUrl: image,
-      });
+    img.onload = () => {
+      // Scale down slightly for pure CPU performance
+      const scale = 0.5;
+      const width = Math.floor(canvas.clientWidth * scale);
+      const height = Math.floor(canvas.clientHeight * scale);
 
-      if (typeof window !== "undefined" && "IntersectionObserver" in window) {
-        observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                if ($el && typeof $el.ripples === "function") $el.ripples("play");
-              } else {
-                if ($el && typeof $el.ripples === "function") $el.ripples("pause");
-              }
-            });
-          },
-          { threshold: 0 }
-        );
-        observer.observe(containerRef.current!);
-      }
+      canvas.width = width;
+      canvas.height = height;
 
-      // Strong ripple on click
-      const handleClick = (e: MouseEvent) => {
-        if ($el && typeof $el.ripples === "function") {
-          const offset = $el.offset();
-          const x = e.pageX - offset.left;
-          const y = e.pageY - offset.top;
-          $el.ripples("drop", x, y, 30, 0.08);
+      widthRef.current = width;
+      heightRef.current = height;
+
+      const size = width * height;
+      buffer1Ref.current = new Array(size).fill(0);
+      buffer2Ref.current = new Array(size).fill(0);
+
+      // Draw original image and extract pure pixels
+      ctx.drawImage(img, 0, 0, width, height);
+      const imageData = ctx.getImageData(0, 0, width, height);
+      backgroundPixelsRef.current = imageData.data.slice();
+      outputImageDataRef.current = imageData;
+
+      isImageLoadedRef.current = true;
+      renderLoop();
+    };
+
+    const renderLoop = () => {
+      if (
+        !isImageLoadedRef.current ||
+        !ctx ||
+        !outputImageDataRef.current ||
+        !backgroundPixelsRef.current
+      )
+        return;
+
+      const width = widthRef.current;
+      const height = heightRef.current;
+      const buffer1 = buffer1Ref.current;
+      const buffer2 = buffer2Ref.current;
+      const bgPixels = backgroundPixelsRef.current;
+      const outData = outputImageDataRef.current;
+      const outputPixels = outData.data;
+
+      // Swap buffers
+      const temp = buffer1Ref.current;
+      buffer1Ref.current = buffer2Ref.current;
+      buffer2Ref.current = temp;
+
+      // Damping controls how quickly the wave settles (lower = faster)
+      const damping = 0.92;
+
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          const i = x + y * width;
+
+          // Liquid displacement math
+          buffer2[i] =
+            (buffer1[i - 1] +
+              buffer1[i + 1] +
+              buffer1[i - width] +
+              buffer1[i + width]) /
+              2 -
+            buffer2[i];
+
+          buffer2[i] *= damping;
+
+          let dataOffset = buffer2[i] - buffer1[i];
+
+          let xOffset = x + Math.floor(dataOffset);
+          let yOffset = y + Math.floor(dataOffset);
+
+          // Boundaries
+          if (xOffset < 0) xOffset = 0;
+          if (xOffset >= width) xOffset = width - 1;
+          if (yOffset < 0) yOffset = 0;
+          if (yOffset >= height) yOffset = height - 1;
+
+          const sourcePixel = (xOffset + yOffset * width) * 4;
+          const targetPixel = i * 4;
+
+          // Soften the light/shadows and clamp to prevent black sinkholes
+          let light = dataOffset * 0.8;
+          if (light < -20) light = -20;
+          if (light > 40) light = 40;
+
+          outputPixels[targetPixel] = Math.min(
+            255,
+            Math.max(0, bgPixels[sourcePixel] + light),
+          );
+          outputPixels[targetPixel + 1] = Math.min(
+            255,
+            Math.max(0, bgPixels[sourcePixel + 1] + light),
+          );
+          outputPixels[targetPixel + 2] = Math.min(
+            255,
+            Math.max(0, bgPixels[sourcePixel + 2] + light),
+          );
+          outputPixels[targetPixel + 3] = 255;
         }
-      };
-
-      containerRef.current!.addEventListener("mousedown", handleClick, { passive: true });
-
-      cleanupMouse = () => {
-        containerRef.current?.removeEventListener("mousedown", handleClick);
-      };
-    };
-
-    initRipples();
-
-    return () => {
-      if (cleanupMouse) cleanupMouse();
-      if (observer) observer.disconnect();
-      if ($el && typeof $el.ripples === "function") {
-        $el.ripples("destroy");
       }
+
+      ctx.putImageData(outData, 0, 0);
+      animationFrameRef.current = requestAnimationFrame(renderLoop);
     };
-  }, [image]);
+
+    return () => cancelAnimationFrame(animationFrameRef.current);
+  }, [isMounted, image]);
+
+  // ─── Interaction Handlers ──────────────────────────────────────────────────
+  const dropStone = useCallback(
+    (x: number, y: number, radius: number, strength: number) => {
+      if (!isImageLoadedRef.current || !canvasRef.current) return;
+
+      const rect = canvasRef.current.getBoundingClientRect();
+      const scaleX = widthRef.current / rect.width;
+      const scaleY = heightRef.current / rect.height;
+
+      const scaledX = Math.floor((x - rect.left) * scaleX);
+      const scaledY = Math.floor((y - rect.top) * scaleY);
+      const width = widthRef.current;
+      const height = heightRef.current;
+      const buffer1 = buffer1Ref.current;
+
+      for (let j = scaledY - radius; j < scaledY + radius; j++) {
+        for (let i = scaledX - radius; i < scaledX + radius; i++) {
+          if (i >= 0 && i < width && j >= 0 && j < height) {
+            // Draw a circle in the buffer
+            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
+              buffer1[i + j * width] = strength;
+            }
+          }
+        }
+      }
+    },
+    [],
+  );
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    // Drop a thick, clean ripple exactly where the user clicks
+    dropStone(e.clientX, e.clientY, 8, 20);
+  };
+
+  if (!isMounted) return null;
 
   return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 w-full h-full z-0 cursor-crosshair"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    />
+    <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-transparent">
+      <canvas
+        ref={canvasRef}
+        onPointerDown={handlePointerDown}
+        // Retained your cursor-crosshair class for the aesthetic
+        className="w-full h-full object-cover cursor-crosshair pointer-events-auto"
+        style={{ touchAction: "none" }}
+      />
+    </div>
   );
 }

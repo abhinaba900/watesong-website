@@ -1,13 +1,10 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
-// 1. Keep Above-the-Fold components as static imports so they load instantly
 import { HeroSection } from "@/components/HeroSection";
 import { FeatureSection } from "@/components/FeatureSection";
-import { WaterRipple } from "@/components/WaterRipple";
+// Import our new global overlay
 
-// 2. Dynamically import Below-the-Fold components.
-// This forces the browser to wait to download/render them until the user starts scrolling near them.
 const MasterPlanSection = dynamic(
   () =>
     import("@/components/MasterPlanSection").then(
@@ -35,59 +32,48 @@ const Footer = dynamic(
 
 const Index = () => {
   return (
-    // Changed to overflow-x-hidden.
-    // This prevents horizontal scrolling but stops Safari from clipping the vertical scroll!
-    <main className="">
-      <section id="hero"><HeroSection /></section>
-      <section id="about"><FeatureSection /></section>
+    <main className="overflow-x-hidden relative">
+      {/* 🛑 INVOCATION: Drops the screen-glass water effect over the whole page */}
 
-      {/* Removed "overflow-hidden" here to stop layout thrashing on mobile */}
+      <section id="hero">
+        <HeroSection />
+      </section>
 
+      <section id="about">
+        <FeatureSection />
+      </section>
+
+      {/* Put your Background Image back normally! */}
       <div className="relative z-10 flex flex-col w-full">
+
         <Image
           src="/assets/bg-in-feature-section.webp"
-          alt="bg-in-feature-section"
+          alt="Background"
           width={1920}
           height={1080}
-          className="absolute top-0 left-0 w-full h-full object-cover "
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
         />
-        <section id="highlights">
-          <WaterRipple backgroundImage="" className="relative w-full">
-            <MasterPlanSection />
-          </WaterRipple>
+
+        <section id="highlights" className="relative z-10">
+          
+          <MasterPlanSection />
         </section>
 
-        <section id="floor-plans">
-          <WaterRipple
-            backgroundImage=""
-            className="relative w-full"
-          >
-            <FloorPlanSection />
-          </WaterRipple>
-        </section>
-        <section id="gallery">
-          <WaterRipple
-            backgroundImage=""
-            className="relative w-full"
-          >
-            <CompanySection />
-          </WaterRipple>
-        </section>
-        <section id="location">
-          <WaterRipple
-            backgroundImage=""
-            className="relative w-full"
-          >
-            <ContactSection />
-          </WaterRipple>
+        <section id="floor-plans" className="relative z-10">
+          <FloorPlanSection />
         </section>
 
-        <WaterRipple
-          backgroundImage=""
-          className="relative w-full"
-        >
+        <section id="gallery" className="relative z-10">
+          <CompanySection />
+        </section>
+
+        <section id="location" className="relative z-10">
+          <ContactSection />
+        </section>
+
+        <div className="relative z-10">
           <Footer />
-        </WaterRipple>
+        </div>
       </div>
     </main>
   );

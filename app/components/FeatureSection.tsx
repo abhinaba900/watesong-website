@@ -2,23 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import FloatingWaterImages from "./FloatingWaterImages";
-
-// Decoration items for the water surface
-const floatingItems = [
-  {
-    id: "lotus-deco",
-    src: "/assets/lily.webp",
-  },
-  {
-    id: "turtle-deco",
-    src: "/assets/turtle.webp",
-  },
-  {
-    id: "flower-deco",
-    src: "/assets/flower.webp",
-  },
-];
 
 export const FeatureSection: React.FC = () => {
   return (
@@ -48,13 +33,16 @@ export const FeatureSection: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Full-Screen Features Section (Interactivity happens here) */}
-      <section className="relative w-full min-h-[100dvh] overflow-hidden bg-[#52797e]">
-        {/* A. Background Texture Overlay */}
-        <div className="absolute inset-0 z-0 opacity-40 mix-blend-overlay pointer-events-none">
+      {/* 2. Full-Screen Features Section */}
+      <section
+        id="features"
+        className="relative w-full min-h-[100dvh] overflow-hidden bg-[#4e7c82]"
+      >
+        {/* Background texture overlay */}
+        <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
           <Image
             src="/assets/bg-in-feature-section.webp"
-            alt="Interior design background"
+            alt="Background texture"
             fill
             quality={75}
             sizes="100vw"
@@ -62,80 +50,161 @@ export const FeatureSection: React.FC = () => {
           />
         </div>
 
-        {/* B. THE WATER CANVAS (The Interaction Layer) */}
-        {/* pointer-events-auto allows this layer to catch mouse move/clicks */}
-        <div className="absolute inset-0 z-10 overflow-hidden pointer-events-auto">
-          <FloatingWaterImages
-            items={floatingItems}
-            backgroundImage="/assets/bg-in-feature-section.webp"
-          />
+        {/* ─── STATIC DECORATIONS ─── */}
+
+        {/* Large lily pad – top-left corner */}
+        <div className="absolute top-[-4vh] left-[-4vw] z-[25] pointer-events-none w-[18vw] md:w-[14vw] lg:w-[10vw]">
+          <motion.div
+            animate={{ rotate: [-3, 3], y: ["-4%", "4%"] }}
+            transition={{
+              rotate: {
+                duration: 5,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+              y: {
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+            }}
+          >
+            <Image
+              src="/assets/lily.webp"
+              alt="Lily pad decoration"
+              width={300}
+              height={300}
+              className="w-full h-auto object-contain drop-shadow-xl"
+            />
+          </motion.div>
         </div>
 
-        {/* C. THE CONTENT LAYER (The UI Layer) */}
-        {/* pointer-events-none lets the mouse pass through to the water layer (z-10) */}
-        <div className="relative z-20 w-full min-h-[100dvh] mx-auto px-[5vw] py-[13vh] flex flex-col lg:flex-row pointer-events-none">
-          {/* LEFT COLUMN: Text Content */}
-          <div className="w-full lg:w-[45%] flex flex-col gap-[5vh] text-white drop-shadow-xl z-20">
-            {/* If you want the text to be selectable, add pointer-events-auto here */}
-            <div className="pointer-events-none">
-              <p className="font-normal text-[4vw] md:text-[2.5vw] lg:text-[1.35vw] leading-[1.4] tracking-[-0.03vw]">
-                Homes at Watersong are so private, it feels like a villa. No
-                doors face each other. No shared walls. Only generous private
-                balconies, open air, and a calm lake as your neighbour: never
-                cramped corridors, never nagging proximity.
-              </p>
+        {/* Small lily / lotus – center-left floating */}
+        <div className="absolute top-[32%] left-[34%] z-[25] pointer-events-none w-[8vw] md:w-[5vw] lg:w-[8vw]">
+          <motion.div
+            animate={{ rotate: [-5, 5], y: ["-6%", "6%"] }}
+            transition={{
+              rotate: {
+                duration: 6,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+              y: {
+                duration: 3.5,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+            }}
+          >
+            <Image
+              src="/assets/middle image.webp"
+              alt="Lotus decoration"
+              width={300}
+              height={300}
+              className="w-full h-auto object-contain drop-shadow-lg"
+            />
+          </motion.div>
+        </div>
+
+        {/* White flower – bottom-right corner */}
+        <div className="absolute top-5 right-[0vw] z-[25] pointer-events-none w-[14vw] md:w-[10vw] lg:w-[8vw]">
+          <motion.div
+            animate={{ rotate: [-4, 4], y: ["-5%", "5%"] }}
+            transition={{
+              rotate: {
+                duration: 7,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+              y: {
+                duration: 5,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+            }}
+          >
+            <Image
+              src="/assets/flower.webp"
+              alt="Flower decoration"
+              width={250}
+              height={250}
+              className="w-full h-auto object-contain drop-shadow-xl"
+            />
+          </motion.div>
+        </div>
+
+        {/* ─── TURTLE (random roaming + ripple effect) ─── */}
+        <div className="absolute inset-0 z-20 pointer-events-none">
+          <FloatingWaterImages />
+        </div>
+
+        {/* ─── MAIN CONTENT GRID ─── */}
+        <div className="relative z-30 w-full min-h-[100dvh] mx-auto px-[5vw] py-[12vh] flex flex-col lg:flex-row pointer-events-none">
+          {/* LEFT COLUMN – Text */}
+          <div className="w-full lg:w-[45%] flex flex-col gap-[5vh] text-white drop-shadow-xl">
+            <p className="font-normal text-[4vw] md:text-[2.5vw] lg:text-[1.35vw] leading-[1.4] tracking-[-0.03vw]">
+              Homes at Watersong are so private, it feels like a villa. No doors
+              face each other. No shared walls. Only generous private balconies,
+              open air, and a calm lake as your neighbour: never cramped
+              corridors, never nagging proximity.
+            </p>
 
               <div className="mt-[5vh] font-normal text-[3.5vw] md:text-[2.2vw] lg:text-[1.3vw] leading-[2.2]">
-                3 BHK homes from 2700 to 3300 sq ft.
-                <br /> Higher UDS share
-                <br /> 100% vaastu-compliant
-                <br /> Two homes per floor, two elevators per floor
-                <br /> Every home has a large lake lounge
-                <br /> Double-height car parking
-                <br /> 3 balconies per home
-                <br /> Anti-skid tiles on the balcony
-                <br /> Seamless common areas
-                <br /> Provision for island kitchen
-              </div>
+              3 BHK homes from 2700 to 3300 sq ft.
+              <br /> Higher UDS share
+              <br /> 100% vaastu-compliant
+              <br /> Two homes per floor, two elevators per floor
+              <br /> Every home has a large lake lounge
+              <br /> Double-height car parking
+              <br /> 3 balconies per home
+              <br /> Anti-skid tiles on the balcony
+              <br /> Seamless common areas
+              <br /> Provision for island kitchen
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Static Circular Images */}
-          <div className="w-full lg:w-[55%] relative  pointer-events-none flex flex-col gap-[8vh] mt-[10vh] lg:mt-0 lg:block z-20">
-            {/* Top Image Card */}
-            <div className="lg:absolute top-[-4vh] pointer-events-none right-[8vw] flex flex-col items-center w-[60vw] md:w-[45vw] lg:w-[28vw] mx-auto lg:mx-0 pointer-events-auto">
+          {/* RIGHT COLUMN – Circular Images */}
+          <div className="w-full lg:w-[55%] relative pointer-events-none flex flex-col gap-[6vh] mt-[10vh] lg:mt-0 lg:block">
+            {/* TOP-RIGHT: Larger circle image */}
+            <div className="lg:absolute top-[-6vh] right-[4vw] flex flex-col items-center w-[60vw] md:w-[42vw] lg:w-[26vw] mx-auto lg:mx-0">
               <div className="relative w-full aspect-square">
                 <Image
                   src="/assets/features-so-thoughtful-you-feel-spcial.webp"
                   alt="Family living"
                   fill
-                  sizes="(max-width: 1024px) 70vw, 35vw"
+                  sizes="(max-width: 1024px) 60vw, 28vw"
                   className="object-contain drop-shadow-2xl"
                 />
               </div>
-              <h3 className="text-white text-center text-[4vw] md:text-[2vw] lg:text-[1vw] leading-[1.4] tracking-widest mt-[2vh] drop-shadow-md font-medium uppercase">
+              <h3 className="text-white text-center text-[3.5vw] md:text-[1.8vw] lg:text-[0.95vw] leading-[1.5] tracking-widest mt-[1.5vh] drop-shadow-md font-medium uppercase">
                 Features so thoughtful
                 <br />
                 you feel special
               </h3>
             </div>
 
-            {/* Bottom Image Card */}
-            <div className="lg:absolute top-[28vh] left-[0vw] flex pointer-events-none flex-col items-center w-[50vw] md:w-[35vw] lg:w-[20vw] mx-auto lg:mx-0 pointer-events-auto">
-              <div className="relative w-full aspect-square pointer-events-none">
+            {/* BOTTOM-CENTER: Smaller circle image */}
+            <div className="lg:absolute top-[30vh] left-[2vw] flex flex-col items-center w-[48vw] md:w-[34vw] lg:w-[20vw] mx-auto lg:mx-0">
+              <div className="relative w-full aspect-square">
                 <Image
                   src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
                   alt="Couple on balcony"
                   fill
-                  sizes="(max-width: 1024px) 50vw, 20vw"
-                  className="object-contain drop-shadow-2xl pointer-events-none"
+                  sizes="(max-width: 1024px) 48vw, 22vw"
+                  className="object-contain drop-shadow-2xl"
                 />
               </div>
-              <h3 className="text-white text-center text-[4vw] md:text-[2vw] lg:text-[1vw] leading-[1.4] tracking-widest mt-[2vh] drop-shadow-md font-medium uppercase">
+              <h3 className="text-white text-center text-[3.5vw] md:text-[1.8vw] lg:text-[0.95vw] leading-[1.5] tracking-widest mt-[1.5vh] drop-shadow-md font-medium uppercase">
                 A lake like this deserves
                 <br />a lake lounge
               </h3>
-              <p className="text-white/90 text-center text-[3.5vw] md:text-[1.8vw] lg:text-[0.9vw] font-light mt-[0.5vh] drop-shadow-md">
+              <p className="text-white/90 text-center text-[3vw] md:text-[1.6vw] lg:text-[0.85vw] font-light mt-[0.5vh] drop-shadow-md">
                 Up to 200 sq ft lake lounge
               </p>
             </div>

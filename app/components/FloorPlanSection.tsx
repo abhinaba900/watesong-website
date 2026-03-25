@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 
 // --- Dynamic Data Structure ---
@@ -47,8 +47,16 @@ const floorPlanData = {
     image: "/assets/202.webp",
     roomsCol1: [
       { id: "01", name: "Lobby +", dims: "4206 X 3657 (13'8\" X 12'0\")" },
-      { id: "02", name: "Living / Dining +", dims: "5486 X 7894 (18'0\" X 25'9\")" },
-      { id: "03", name: "Kitchen / Utility", dims: "3688 X 5852 (12'10\" X 19'2\")" },
+      {
+        id: "02",
+        name: "Living / Dining +",
+        dims: "5486 X 7894 (18'0\" X 25'9\")",
+      },
+      {
+        id: "03",
+        name: "Kitchen / Utility",
+        dims: "3688 X 5852 (12'10\" X 19'2\")",
+      },
       { id: "04", name: "Study", dims: "2164 X 1828 (7'10\" X 6'0\")" },
       { id: "05", name: "Lake Lounge", dims: "2499 X 6065 (8'2\" X 19'9\")" },
       { id: "06", name: "M Bed Room", dims: "4876 X 3840 (16'6\" X 12'6\")" },
@@ -77,8 +85,16 @@ const floorPlanData = {
     image: "/assets/203.webp",
     roomsCol1: [
       { id: "01", name: "Lobby +", dims: "3688 X 5699 (12'10\" X 18'7\")" },
-      { id: "02", name: "Living / Dining +", dims: "5852 X 9723 (19'2\" X 31'9\")" },
-      { id: "03", name: "Kitchen / Utility", dims: "4023 X 3840 (13'2\" X 12'6\")" },
+      {
+        id: "02",
+        name: "Living / Dining +",
+        dims: "5852 X 9723 (19'2\" X 31'9\")",
+      },
+      {
+        id: "03",
+        name: "Kitchen / Utility",
+        dims: "4023 X 3840 (13'2\" X 12'6\")",
+      },
       { id: "04", name: "Study", dims: "2164 X 1828 (7'10\" X 6'0\")" },
       { id: "05", name: "Lake Lounge", dims: "3017 X 6065 (9'9\" X 19'9\")" },
       { id: "06", name: "M Bed Room", dims: "4876 X 3840 (16'6\" X 12'6\")" },
@@ -107,8 +123,16 @@ const floorPlanData = {
     image: "/assets/204.webp",
     roomsCol1: [
       { id: "01", name: "Lobby +", dims: "5212 X 3657 (17'1\" X 12'0\")" },
-      { id: "02", name: "Living / Dining +", dims: "10302 X 11551 (33'8\" X 37'9\")" },
-      { id: "03", name: "Kitchen / Utility", dims: "3505 X 3840 (11'5\" X 12'6\")" },
+      {
+        id: "02",
+        name: "Living / Dining +",
+        dims: "10302 X 11551 (33'8\" X 37'9\")",
+      },
+      {
+        id: "03",
+        name: "Kitchen / Utility",
+        dims: "3505 X 3840 (11'5\" X 12'6\")",
+      },
       { id: "04", name: "Study", dims: "2438 X 1828 (8'0\" X 6'0\")" },
       { id: "05", name: "Lake Lounge", dims: "2499 X 6065 (8'2\" X 19'9\")" },
       { id: "06", name: "M Bed Room", dims: "4876 X 3840 (16'0\" X 12'6\")" },
@@ -139,87 +163,231 @@ type TabType = keyof typeof floorPlanData;
 
 export const FloorPlanSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("TYPE - 1");
+  const [isMounted, setIsMounted] = useState(false);
+
+  // --- Ripple Refs ---
+  const containerRef = useRef<HTMLElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const widthRef = useRef(0);
+  const heightRef = useRef(0);
+  const buffer1Ref = useRef<number[]>([]);
+  const buffer2Ref = useRef<number[]>([]);
+  const outputImageDataRef = useRef<ImageData | null>(null);
+  const animationFrameRef = useRef<number>(0);
 
   const activeData = floorPlanData[activeTab];
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // ─── Embedded CPU Water Math (Transparent Mode) ────────────────────────────
+  useEffect(() => {
+    if (!isMounted || !canvasRef.current || !containerRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
+
+    // Scale down for CPU performance
+    const scale = 0.5;
+
+    const initCanvas = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const width = Math.floor(rect.width * scale);
+      const height = Math.floor(rect.height * scale);
+
+      canvas.width = width;
+      canvas.height = height;
+      widthRef.current = width;
+      heightRef.current = height;
+
+      const size = width * height;
+      buffer1Ref.current = new Array(size).fill(0);
+      buffer2Ref.current = new Array(size).fill(0);
+      outputImageDataRef.current = ctx.createImageData(width, height);
+    };
+
+    initCanvas();
+
+    const renderLoop = () => {
+      if (!ctx || !outputImageDataRef.current) return;
+
+      const width = widthRef.current;
+      const height = heightRef.current;
+      const buffer1 = buffer1Ref.current;
+      const buffer2 = buffer2Ref.current;
+      const outData = outputImageDataRef.current;
+      const outputPixels = outData.data;
+
+      const temp = buffer1Ref.current;
+      buffer1Ref.current = buffer2Ref.current;
+      buffer2Ref.current = temp;
+
+      const damping = 0.94;
+
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          const i = x + y * width;
+
+          buffer2[i] =
+            (buffer1[i - 1] +
+              buffer1[i + 1] +
+              buffer1[i - width] +
+              buffer1[i + width]) /
+              2 -
+            buffer2[i];
+
+          buffer2[i] *= damping;
+
+          let dataOffset = buffer2[i] - buffer1[i];
+          const targetPixel = i * 4;
+
+          let r = 0,
+            g = 0,
+            b = 0,
+            a = 0;
+
+          if (dataOffset > 0.5) {
+            // Wave Crest (Highlight)
+            r = 255;
+            g = 255;
+            b = 255;
+            a = Math.min(255, dataOffset * 15);
+          } else if (dataOffset < -0.5) {
+            // Wave Trough (Soft Shadow)
+            r = 10;
+            g = 25;
+            b = 40;
+            a = Math.min(255, -dataOffset * 3); // Kept the light shadow logic!
+          }
+
+          outputPixels[targetPixel] = r;
+          outputPixels[targetPixel + 1] = g;
+          outputPixels[targetPixel + 2] = b;
+          outputPixels[targetPixel + 3] = a;
+        }
+      }
+
+      ctx.putImageData(outData, 0, 0);
+      animationFrameRef.current = requestAnimationFrame(renderLoop);
+    };
+
+    renderLoop();
+
+    const resizeObserver = new ResizeObserver(() => initCanvas());
+    resizeObserver.observe(containerRef.current);
+
+    return () => {
+      cancelAnimationFrame(animationFrameRef.current);
+      resizeObserver.disconnect();
+    };
+  }, [isMounted]);
+
+  const dropStone = useCallback(
+    (x: number, y: number, radius: number, strength: number) => {
+      if (!canvasRef.current || !containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const scaleX = widthRef.current / rect.width;
+      const scaleY = heightRef.current / rect.height;
+
+      const scaledX = Math.floor((x - rect.left) * scaleX);
+      const scaledY = Math.floor((y - rect.top) * scaleY);
+
+      const width = widthRef.current;
+      const height = heightRef.current;
+      const buffer1 = buffer1Ref.current;
+
+      for (let j = scaledY - radius; j < scaledY + radius; j++) {
+        for (let i = scaledX - radius; i < scaledX + radius; i++) {
+          if (i >= 0 && i < width && j >= 0 && j < height) {
+            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
+              buffer1[i + j * width] = strength;
+            }
+          }
+        }
+      }
+    },
+    [],
+  );
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    dropStone(e.clientX, e.clientY, 8, 20);
+  };
+
   return (
-    <section className="relative pt-[10vh] pb-[10vh] w-full flex flex-col justify-center px-[5vw] ">
-      {/* Heading */}
-      <h2 className="relative text-white font-extrabold uppercase text-left mb-[3vh] lg:mb-[4vh] text-[8vw] leading-[1.2]  md:text-[4.5vw]  lg:text-[3.5vw] lg:leading-[1.6] lg:tracking-[1px]  xl:text-[2.8vw] xl:leading-[1.6]">
-        FLOOR PLANS
-      </h2>
+    <section
+      ref={containerRef}
+      onPointerDown={handlePointerDown}
+      className="relative pt-[10vh] pb-[10vh] w-full flex flex-col justify-center px-[5vw] overflow-hidden"
+    >
+      {/* ─── The Embedded Ripple Canvas ─── */}
+      {isMounted && (
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+        />
+      )}
 
-      {/* Main Content Grid: REMOVED h-[75vh] so items-center works properly */}
-      <div className="flex flex-col lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
-        {/* LEFT PANE: Tabs and Image */}
-        <div
-          className="w-full lg:w-[45%] h-full flex flex-col"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
-            border: "3.67px solid",
-            borderImageSource:
-              "linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(235, 235, 235, 0.4) 11.32%, rgba(161, 160, 160, 0.5) 83.6%, rgba(255, 255, 255, 0.5) 100%)",
-            borderImageSlice: 1,
-          }}
-        >
-          {/* Tabs Row */}
-          <div className="flex w-full border border-white/30 rounded-sm overflow-hidden mb-[3vh]">
-            {(Object.keys(floorPlanData) as TabType[]).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex-1 py-[1.5vh] text-[3.5vw] md:text-[2vw] lg:text-[1vw] font-medium transition-colors border-r border-white/30 last:border-none
-                  ${
-                    activeTab === tab
-                      ? "bg-transparent text-white"
-                      : "bg-white/30 text-[#0C637E] cursor-pointer bg-white/10 hover:bg-white/20"
-                  }`}
-              >
-                {tab}
-              </button>
-            ))}
+      {/* ─── Main Content (Layered over canvas but interactive) ─── */}
+      <div className="relative z-20 pointer-events-auto">
+        {/* Heading */}
+        <h2 className="relative text-white font-extrabold uppercase text-left mb-[3vh] lg:mb-[4vh] text-[8vw] leading-[1.2]  md:text-[4.5vw]  lg:text-[3.5vw] lg:leading-[1.6] lg:tracking-[1px]  xl:text-[2.8vw] xl:leading-[1.6]">
+          FLOOR PLANS
+        </h2>
+
+        {/* Main Content Grid */}
+        <div className="flex flex-col lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
+          {/* LEFT PANE: Tabs and Image */}
+          <div
+            className="w-full lg:w-[45%] h-full flex flex-col"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
+              border: "3.67px solid",
+              borderImageSource:
+                "linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(235, 235, 235, 0.4) 11.32%, rgba(161, 160, 160, 0.5) 83.6%, rgba(255, 255, 255, 0.5) 100%)",
+              borderImageSlice: 1,
+            }}
+          >
+            {/* Tabs Row */}
+            <div className="flex w-full border border-white/30 rounded-sm overflow-hidden mb-[3vh]">
+              {(Object.keys(floorPlanData) as TabType[]).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex-1 py-[1.5vh] text-[3.5vw] md:text-[2vw] lg:text-[1vw] font-medium transition-colors border-r border-white/30 last:border-none
+                    ${
+                      activeTab === tab
+                        ? "bg-transparent text-white"
+                        : "bg-white/30 text-[#0C637E] cursor-pointer bg-white/10 hover:bg-white/20"
+                    }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+
+            {/* Floor Plan Image */}
+            <div className="flex justify-center items-center w-full relative h-[40vh] md:h-[50vh] lg:h-[60vh] pb-[2vh] px-[2vw]">
+              <Image
+                key={activeTab}
+                src={activeData.image}
+                alt={`Floor plan ${activeTab}`}
+                width={800}
+                height={800}
+                className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
+              />
+            </div>
           </div>
 
-          {/* Floor Plan Image */}
-          <div className="flex justify-center items-center w-full relative h-[40vh] md:h-[50vh] lg:h-[60vh] pb-[2vh] px-[2vw]">
-            <Image
-              key={activeTab}
-              src={activeData.image}
-              alt={`Floor plan ${activeTab}`}
-              width={800}
-              height={800}
-              // Reduced drop-shadow-2xl to drop-shadow-xl to save GPU memory
-              className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
-            />
-          </div>
-        </div>
-
-        {/* RIGHT PANE: Lists and Area Table */}
-        <div className="w-full lg:w-[55%] flex flex-row gap-[3vw]">
-          {/* Column 1 (Rooms 1-10) */}
-          <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[2vh]">
-            {activeData.roomsCol1.map((room) => (
-              <div
-                key={room.id}
-                className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
-              >
-                <span className="font-semibold text-[3vw] md:text-[1.8vw] lg:text-[1.1vw]">
-                  {room.id}. {room.name}
-                </span>
-                <br />
-                <span className="text-[2.5vw] md:text-[1.5vw] lg:text-[0.9vw] text-white/80">
-                  {room.dims}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Column 2 (Rooms 11+ and Area Box) */}
-          <div className="w-full flex flex-col justify-between">
-            {/* Rooms List */}
-            <div className="flex flex-col gap-[1.5vh] lg:gap-[2vh]">
-              {activeData.roomsCol2.map((room) => (
+          {/* RIGHT PANE: Lists and Area Table */}
+          <div className="w-full lg:w-[55%] flex flex-row gap-[3vw]">
+            {/* Column 1 (Rooms 1-10) */}
+            <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[2vh]">
+              {activeData.roomsCol1.map((room) => (
                 <div
                   key={room.id}
                   className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
@@ -235,43 +403,67 @@ export const FloorPlanSection: React.FC = () => {
               ))}
             </div>
 
-            {/* Area Table (Bottom Right) */}
-            <div className="mt-[2vh] grid grid-cols-2 w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
-              {/* Table Rows */}
-              {[
-                { label: "SALEABLE AREA", value: activeData.areas.saleable },
-                { label: "RERA CARPET AREA", value: activeData.areas.rera },
-                { label: "EXCLUSIVE BALCONY", value: activeData.areas.balcony },
-                { label: "TOTAL AREA", value: activeData.areas.total },
-              ].map((row, idx) => (
-                <React.Fragment key={idx}>
-                  <div className="bg-white/40 flex items-center justify-center p-[1vh]">
-                    <span className="text-black font-semibold text-[2.5vw] md:text-[1.5vw] lg:text-[0.9vw] whitespace-nowrap">
-                      {row.label}
+            {/* Column 2 (Rooms 11+ and Area Box) */}
+            <div className="w-full flex flex-col justify-between">
+              {/* Rooms List */}
+              <div className="flex flex-col gap-[1.5vh] lg:gap-[2vh]">
+                {activeData.roomsCol2.map((room) => (
+                  <div
+                    key={room.id}
+                    className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
+                  >
+                    <span className="font-semibold text-[3vw] md:text-[1.8vw] lg:text-[1.1vw]">
+                      {room.id}. {room.name}
+                    </span>
+                    <br />
+                    <span className="text-[2.5vw] md:text-[1.5vw] lg:text-[0.9vw] text-white/80">
+                      {room.dims}
                     </span>
                   </div>
-                  <div className="bg-white/40 flex items-center justify-center p-[1vh]">
-                    <span className="text-black font-bold text-[2.5vw] md:text-[1.5vw] lg:text-[0.9vw] whitespace-nowrap">
-                      {row.value}
-                    </span>
-                  </div>
-                </React.Fragment>
-              ))}
+                ))}
+              </div>
+
+              {/* Area Table (Bottom Right) */}
+              <div className="mt-[2vh] grid grid-cols-2 w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+                {/* Table Rows */}
+                {[
+                  { label: "SALEABLE AREA", value: activeData.areas.saleable },
+                  { label: "RERA CARPET AREA", value: activeData.areas.rera },
+                  {
+                    label: "EXCLUSIVE BALCONY",
+                    value: activeData.areas.balcony,
+                  },
+                  { label: "TOTAL AREA", value: activeData.areas.total },
+                ].map((row, idx) => (
+                  <React.Fragment key={idx}>
+                    <div className="bg-white/40 flex items-center justify-center p-[1vh]">
+                      <span className="text-black font-semibold text-[2.5vw] md:text-[1.5vw] lg:text-[0.9vw] whitespace-nowrap">
+                        {row.label}
+                      </span>
+                    </div>
+                    <div className="bg-white/40 flex items-center justify-center p-[1vh]">
+                      <span className="text-black font-bold text-[2.5vw] md:text-[1.5vw] lg:text-[0.9vw] whitespace-nowrap">
+                        {row.value}
+                      </span>
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(5px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `,
-        }}
-      />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `,
+          }}
+        />
+      </div>
     </section>
   );
 };
