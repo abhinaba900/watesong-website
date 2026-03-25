@@ -9,6 +9,7 @@ import Link from "next/link";
 interface NavigationPillProps {
   label: string;
   action?: () => void;
+  isHighlight?: boolean;
 }
 
 const TopGlare: React.FC = () => (
@@ -37,7 +38,7 @@ const RightGlare: React.FC = () => (
   </svg>
 );
 
-const NavigationPill: React.FC<NavigationPillProps> = ({ label, action }) => {
+const NavigationPill: React.FC<NavigationPillProps> = ({ label, action, isHighlight = false }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const triggerAnimation = () => {
@@ -80,8 +81,8 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label, action }) => {
                  rounded-full select-none outline-none border-none
                  ${action ? "cursor-pointer" : "cursor-default drop-shadow-sm"}`}
       style={{
-        backgroundColor: action ? "rgba(201, 160, 80, 0.9)" : "rgba(177, 178, 176, 0.6)",
-        color: action ? "#113239" : "white", // Dark text on gold for the action button
+        backgroundColor: isHighlight ? "rgba(201, 160, 80, 0.9)" : "rgba(177, 178, 176, 0.6)",
+        color: isHighlight ? "#113239" : "white",
         boxShadow: `
           -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
           -16px 12px 30px -12px rgba(0,0,0,1),
@@ -92,7 +93,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label, action }) => {
     >
       <TopGlare />
       <RightGlare />
-      <span className={`relative z-10 opacity-90 ${action ? 'text-[#113239] font-bold' : 'text-white font-medium'} pointer-events-none drop-shadow-md`}>
+      <span className={`relative z-10 opacity-90 ${isHighlight ? 'text-[#113239] font-bold' : 'text-white font-medium'} pointer-events-none drop-shadow-md`}>
         {label}
       </span>
     </motion.button>
@@ -113,14 +114,22 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const navbarHeight = 80; // approximate fixed navbar height in px
+    const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
   const navigationItems = [
-    { label: "About us" },
-    { label: "Highlights" },
-    { label: "Gallery" },
-    { label: "Amenities" },
-    { label: "Floor Plans" },
-    { label: "Location" },
-    { label: "Enquire Now", action: () => setIsModalOpen(true) },
+    { label: "About us",    action: () => scrollToSection("about") },
+    { label: "Highlights",  action: () => scrollToSection("highlights") },
+    { label: "Gallery",     action: () => scrollToSection("gallery") },
+    { label: "Amenities",   action: () => scrollToSection("highlights") },
+    { label: "Floor Plans", action: () => scrollToSection("floor-plans") },
+    { label: "Location",    action: () => scrollToSection("location") },
+    { label: "Enquire Now", action: () => setIsModalOpen(true), isHighlight: true },
   ];
 
   return (
@@ -146,6 +155,7 @@ export const Navbar: React.FC = () => {
                   <NavigationPill
                     key={index}
                     label={item.label}
+                    isHighlight={item.isHighlight}
                     action={
                       item.action
                         ? () => {
@@ -187,6 +197,7 @@ export const Navbar: React.FC = () => {
               key={index}
               label={item.label}
               action={item.action}
+              isHighlight={item.isHighlight}
             />
           ))}
         </nav>

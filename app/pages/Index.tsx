@@ -38,8 +38,8 @@ const Index = () => {
     // Changed to overflow-x-hidden.
     // This prevents horizontal scrolling but stops Safari from clipping the vertical scroll!
     <main className="">
-      <HeroSection />
-      <FeatureSection />
+      <section id="hero"><HeroSection /></section>
+      <section id="about"><FeatureSection /></section>
 
       {/* Removed "overflow-hidden" here to stop layout thrashing on mobile */}
 
@@ -51,28 +51,36 @@ const Index = () => {
           height={1080}
           className="absolute top-0 left-0 w-full h-full object-cover "
         />
-        <WaterRipple backgroundImage="" className="relative w-full">
-          <MasterPlanSection />
-        </WaterRipple>
+        <section id="highlights">
+          <WaterRipple backgroundImage="" className="relative w-full">
+            <MasterPlanSection />
+          </WaterRipple>
+        </section>
 
-        <WaterRipple
-          backgroundImage=""
-          className="relative w-full"
-        >
-          <FloorPlanSection />
-        </WaterRipple>
-        <WaterRipple
-          backgroundImage=""
-          className="relative w-full"
-        >
-          <CompanySection />
-        </WaterRipple>
-        <WaterRipple
-          backgroundImage=""
-          className="relative w-full"
-        >
-          <ContactSection />
-        </WaterRipple>
+        <section id="floor-plans">
+          <WaterRipple
+            backgroundImage=""
+            className="relative w-full"
+          >
+            <FloorPlanSection />
+          </WaterRipple>
+        </section>
+        <section id="gallery">
+          <WaterRipple
+            backgroundImage=""
+            className="relative w-full"
+          >
+            <CompanySection />
+          </WaterRipple>
+        </section>
+        <section id="location">
+          <WaterRipple
+            backgroundImage=""
+            className="relative w-full"
+          >
+            <ContactSection />
+          </WaterRipple>
+        </section>
 
         <WaterRipple
           backgroundImage=""
