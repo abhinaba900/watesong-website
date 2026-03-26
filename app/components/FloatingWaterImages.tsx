@@ -271,8 +271,7 @@ export default function FloatingWaterImages({
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
-        className="w-full h-full object-cover cursor-pointer pointer-events-auto"
-        style={{ touchAction: "none" }}
+        className="w-full h-full object-cover pointer-events-auto"
       />
       <motion.div
         ref={turtleRef}
