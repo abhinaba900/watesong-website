@@ -35,7 +35,7 @@ export const FeatureSection: React.FC = () => {
 
       {/* 2. Full-Screen Features Section */}
       <section
-        id="features"
+        id="highlights"
         className="relative w-full min-h-[100dvh] overflow-hidden bg-[#4e7c82]"
       >
         {/* Background texture overlay */}
@@ -155,7 +155,7 @@ export const FeatureSection: React.FC = () => {
               corridors, never nagging proximity.
             </p>
 
-              <div className="mt-[5vh] font-normal text-[3.5vw] md:text-[2.2vw] lg:text-[1.3vw] leading-[2.2]">
+            <div className="mt-[5vh] font-normal text-[3.5vw] md:text-[2.2vw] lg:text-[1.3vw] leading-[2.2]">
               3 BHK homes from 2700 to 3300 sq ft.
               <br /> Higher UDS share
               <br /> 100% vaastu-compliant
@@ -213,14 +213,17 @@ export const FeatureSection: React.FC = () => {
       </section>
 
       {/* 3. Amenities Section Banner */}
-      <section className="relative bg-white w-full overflow-hidden flex">
+      <section
+        id="amenities"
+        className="relative bg-white w-full overflow-hidden flex"
+      >
         <Image
           src="/assets/Swimming-pool.webp"
           alt="Amenities showcase"
           width={1920}
-          height={588}
+          height={488}
           sizes="100vw"
-          className="w-full h-auto aspect-[3.26] object-cover object-center"
+          className="w-full h-[55vh] aspect-[3.26] object-cover object-center"
         />
       </section>
     </>

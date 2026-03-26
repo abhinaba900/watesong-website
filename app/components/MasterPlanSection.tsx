@@ -94,7 +94,7 @@ export const MasterPlanSection: React.FC = () => {
             r = 255;
             g = 255;
             b = 255;
-            a = Math.min(255, dataOffset * 3);
+            a = Math.min(255, dataOffset * 25);
           } else if (dataOffset < -0.5) {
             // 🛑 THE FIX: Decreased Shadow Intensity
             // Wave Trough (Shadow)
@@ -102,7 +102,7 @@ export const MasterPlanSection: React.FC = () => {
             g = 25;
             b = 40;
             // Reduced multiplier from 10 to 3 for a much softer shadow
-            a = Math.min(255, -dataOffset * 3);
+            a = Math.min(255, -dataOffset * 8);
           }
 
           outputPixels[targetPixel] = r;
@@ -158,8 +158,9 @@ export const MasterPlanSection: React.FC = () => {
   );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    // Drop a thick ripple (Radius: 8, Strength: 250)
-    dropStone(e.clientX, e.clientY, 8, 20);
+    // Drop a thick ripple (Radius: 8, Strength: 40)
+        dropStone(e.clientX, e.clientY, 8, 60);
+
   };
 
   return (

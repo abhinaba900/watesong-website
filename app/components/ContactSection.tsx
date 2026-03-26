@@ -172,13 +172,13 @@ export const ContactSection: React.FC = () => {
             r = 255;
             g = 255;
             b = 255;
-            a = Math.min(255, dataOffset * 15);
+            a = Math.min(255, dataOffset * 25);
           } else if (dataOffset < -0.5) {
             // Wave Trough (Soft Shadow)
             r = 10;
             g = 25;
             b = 40;
-            a = Math.min(255, -dataOffset * 3); // Soft shadow logic!
+            a = Math.min(255, -dataOffset * 8); // Soft shadow logic!
           }
 
           outputPixels[targetPixel] = r;
@@ -233,8 +233,9 @@ export const ContactSection: React.FC = () => {
   );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    // Finalized Lite Click Ripple: Radius 8, Strength 20
-    dropStone(e.clientX, e.clientY, 8, 20);
+    // Finalized Lite Click Ripple: Radius 8, Strength 40
+        dropStone(e.clientX, e.clientY, 8, 60);
+
   };
 
   return (

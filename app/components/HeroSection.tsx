@@ -94,13 +94,13 @@ export const HeroSection: React.FC = () => {
             r = 255;
             g = 255;
             b = 255;
-            a = Math.min(255, dataOffset * 15);
+            a = Math.min(255, dataOffset * 25);
           } else if (dataOffset < -0.5) {
             // Wave Trough (Soft Shadow)
             r = 10;
             g = 25;
             b = 40;
-            a = Math.min(255, -dataOffset * 3);
+            a = Math.min(255, -dataOffset * 8);
           }
 
           outputPixels[targetPixel] = r;
@@ -155,8 +155,8 @@ export const HeroSection: React.FC = () => {
   );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    // Finalized Lite Click Ripple: Radius 8, Strength 20
-    dropStone(e.clientX, e.clientY, 8, 20);
+    // Finalized Lite Click Ripple: Radius 8, Strength 40
+    dropStone(e.clientX, e.clientY, 8, 60);
   };
 
   if (!mounted)
@@ -171,7 +171,7 @@ export const HeroSection: React.FC = () => {
       {/* ─── The Embedded Ripple Canvas ─── */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full z-20 pointer-events-none"
+        className="absolute inset-0 w-full h-full z-4 pointer-events-none"
       />
 
       <Image
@@ -208,7 +208,12 @@ export const HeroSection: React.FC = () => {
             transition={{ delay: 0.4 }}
             className="bg-white/75 backdrop-blur-md shadow-2xl overflow-hidden flex flex-col lg:flex-row w-full lg:w-[50vw] rounded-2xl lg:rounded-[2.1vw] h-auto lg:h-[20vh] xl:h-[35vh] transition-all hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.3)]"
           >
-            <div className="w-full lg:w-[55%] p-6 md:p-10 lg:p-[3vw] flex flex-col justify-center">
+            <div
+              onClick={() => {
+                window.open("https://maps.app.goo.gl/uorALjYNRyMLUPga6");
+              }}
+              className="w-full lg:w-[55%] p-6 md:p-10 lg:p-[3vw] flex flex-col justify-center"
+            >
               <Image
                 src="/assets/card-inside-image-of-hero-section.webp"
                 alt="Brand"
@@ -243,7 +248,7 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* RIGHT COLUMN: Lotus image */}
-        <div className="hidden lg:flex flex-col items-end justify-end w-[38%] shrink-0 pb-[4vh] pr-[2vw]">
+        <div className="hidden lg:flex flex-col items-end justify-end w-[38%] pb-[4vh] pr-[2vw] relative z-4">
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -271,7 +276,7 @@ export const HeroSection: React.FC = () => {
                 alt="Lotus"
                 width={420}
                 height={420}
-                className="object-contain w-[22vw] h-auto drop-shadow-2xl"
+                className="object-contain w-[22vw] h-auto drop-shadow-2xl relative z-50"
               />
             </motion.div>
           </motion.div>

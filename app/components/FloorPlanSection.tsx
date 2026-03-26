@@ -254,13 +254,13 @@ export const FloorPlanSection: React.FC = () => {
             r = 255;
             g = 255;
             b = 255;
-            a = Math.min(255, dataOffset * 15);
+            a = Math.min(255, dataOffset * 25);
           } else if (dataOffset < -0.5) {
             // Wave Trough (Soft Shadow)
             r = 10;
             g = 25;
             b = 40;
-            a = Math.min(255, -dataOffset * 3); // Kept the light shadow logic!
+            a = Math.min(255, -dataOffset * 8); // Kept the light shadow logic!
           }
 
           outputPixels[targetPixel] = r;
@@ -314,7 +314,8 @@ export const FloorPlanSection: React.FC = () => {
   );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    dropStone(e.clientX, e.clientY, 8, 20);
+    dropStone(e.clientX, e.clientY, 8, 60);
+
   };
 
   return (
@@ -327,7 +328,7 @@ export const FloorPlanSection: React.FC = () => {
       {isMounted && (
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+          className="absolute inset-0 w-full h-full z-2 pointer-events-none"
         />
       )}
 
@@ -339,7 +340,7 @@ export const FloorPlanSection: React.FC = () => {
         </h2>
 
         {/* Main Content Grid */}
-        <div className="flex flex-col lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
+        <div className="flex flex-col relative z-3 lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
           {/* LEFT PANE: Tabs and Image */}
           <div
             className="w-full lg:w-[45%] h-full flex flex-col"

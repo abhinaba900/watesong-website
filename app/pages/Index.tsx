@@ -39,13 +39,12 @@ const Index = () => {
         <HeroSection />
       </section>
 
-      <section id="about">
+      <section >
         <FeatureSection />
       </section>
 
       {/* Put your Background Image back normally! */}
       <div className="relative z-10 flex flex-col w-full">
-
         <Image
           src="/assets/bg-in-feature-section.webp"
           alt="Background"
@@ -54,8 +53,7 @@ const Index = () => {
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         />
 
-        <section id="highlights" className="relative z-10">
-          
+        <section className="relative z-10">
           <MasterPlanSection />
         </section>
 
@@ -63,7 +61,7 @@ const Index = () => {
           <FloorPlanSection />
         </section>
 
-        <section id="gallery" className="relative z-10">
+        <section id="about" className="relative z-10">
           <CompanySection />
         </section>
 

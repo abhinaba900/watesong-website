@@ -91,12 +91,12 @@ export const Footer: React.FC = () => {
             r = 255;
             g = 255;
             b = 255;
-            a = Math.min(255, dataOffset * 15);
+            a = Math.min(255, dataOffset * 25);
           } else if (dataOffset < -0.5) {
             r = 10;
             g = 25;
             b = 40;
-            a = Math.min(255, -dataOffset * 3);
+            a = Math.min(255, -dataOffset * 8);
           }
 
           outputPixels[targetPixel] = r;
@@ -150,7 +150,8 @@ export const Footer: React.FC = () => {
   );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    dropStone(e.clientX, e.clientY, 8, 20);
+        dropStone(e.clientX, e.clientY, 8, 60);
+
   };
 
   return (

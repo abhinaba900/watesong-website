@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface NavigationPillProps {
   label: string;
@@ -104,6 +105,8 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,7 +120,8 @@ export const Navbar: React.FC = () => {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
-    const navbarHeight = 80; // approximate fixed navbar height in px
+    router.push("/");
+    const navbarHeight = 20; // approximate fixed navbar height in px
     const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
     window.scrollTo({ top, behavior: "smooth" });
   };
@@ -126,9 +130,8 @@ export const Navbar: React.FC = () => {
     { label: "About us",    action: () => scrollToSection("about") },
     { label: "Highlights",  action: () => scrollToSection("highlights") },
     { label: "Gallery",     action: () => scrollToSection("gallery") },
-    { label: "Amenities",   action: () => scrollToSection("highlights") },
+    { label: "Amenities",   action: () => scrollToSection("amenities") },
     { label: "Floor Plans", action: () => scrollToSection("floor-plans") },
-    { label: "Location",    action: () => scrollToSection("location") },
     { label: "Enquire Now", action: () => setIsModalOpen(true), isHighlight: true },
   ];
 
