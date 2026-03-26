@@ -17,7 +17,6 @@ interface SwimmerData {
   endX: number;
   endY: number;
   rotation: number;
-  scaleX: number;
   duration: number;
 }
 
@@ -63,21 +62,15 @@ function generateSwimmerPath(id: number): SwimmerData {
   const dx = endX - startX;
   const dy = endY - startY;
   const angleRad = Math.atan2(dy, dx);
-  const angleDeg = angleRad * (180 / Math.PI);
 
-  // If moving leftward, we flip the image horizontally (scaleX = -1)
-  // and adjust the rotation so it doesn't swim upside down.
-  let scaleX = 1;
-  let rotation = angleDeg;
-  if (Math.abs(angleDeg) > 90) {
-    scaleX = -1;
-    rotation = angleDeg > 0 ? angleDeg - 180 : angleDeg + 180;
-  }
+  // FIX: Because the provided turtle GIF naturally faces UPWARDS (12 o'clock),
+  // we need to add 90 degrees to the standard Math.atan2 result to align its head.
+  const rotation = angleRad * (180 / Math.PI) + 160;
 
-  // Very slow travel speed: Random duration between 80 and 160 seconds
-  const duration = 80 + Math.random() * 80;
+  // Very slow, calm travel speed: Random duration between 70 and 120 seconds
+  const duration = 70 + Math.random() * 50;
 
-  return { id, startX, startY, endX, endY, rotation, scaleX, duration };
+  return { id, startX, startY, endX, endY, rotation, duration };
 }
 
 // ─── Individual Clone Component ──────────────────────────────────────────────
@@ -133,7 +126,6 @@ function SwimmerClone({
         left: `${data.startX}%`,
         top: `${data.startY}%`,
         rotate: data.rotation,
-        scaleX: data.scaleX,
       }}
       animate={{
         left: `${data.endX}%`,
@@ -143,9 +135,9 @@ function SwimmerClone({
         duration: data.duration,
         ease: "linear", // Smooth, constant speed across the screen
       }}
-      onAnimationComplete={() => onRemove(data.id)} // Clean up memory when done
+      onAnimationComplete={() => onRemove(data.id)} // Clean up and trigger replacement
       style={{
-        width: "80px",
+        width: "180px",
         translateX: "-50%",
         translateY: "-50%",
         filter: "drop-shadow(0 10px 8px rgba(0,0,0,0.2))",
@@ -153,7 +145,7 @@ function SwimmerClone({
     >
       <Image
         src="/assets/Pause GIF image.gif"
-        alt="Swimming clone"
+        alt="Swimming turtle"
         width={100}
         height={100}
         className="w-full h-auto object-contain"
@@ -330,30 +322,24 @@ export default function FloatingWaterImages({
     dropStone(e.clientX, e.clientY, 8, 60);
   };
 
-  // ─── Spawner Logic ─────────────────────────────────────────────────────────
+  // ─── Strict "2 Clones Max" Spawner Logic ───────────────────────────────────
   useEffect(() => {
     if (!isMounted) return;
 
-    // Initially spawn a few right away
+    // Initially spawn exactly 2 turtles
     setSwimmers([
       generateSwimmerPath(spawnIdRef.current++),
       generateSwimmerPath(spawnIdRef.current++),
     ]);
-
-    // Spawn a new clone every 4 seconds
-    const interval = setInterval(() => {
-      setSwimmers((prev) => [
-        ...prev,
-        generateSwimmerPath(spawnIdRef.current++),
-      ]);
-    }, 4000);
-
-    return () => clearInterval(interval);
   }, [isMounted]);
 
-  // Remove clones from state once they reach their destination to save memory
+  // When a clone reaches the other side, remove it and spawn 1 replacement
   const removeSwimmer = useCallback((id: number) => {
-    setSwimmers((prev) => prev.filter((swimmer) => swimmer.id !== id));
+    setSwimmers((prev) => {
+      const filtered = prev.filter((swimmer) => swimmer.id !== id);
+      // Append exactly one new turtle to maintain the count
+      return [...filtered, generateSwimmerPath(spawnIdRef.current++)];
+    });
   }, []);
 
   if (!isMounted) return null;
@@ -367,15 +353,15 @@ export default function FloatingWaterImages({
         onPointerDown={handlePointerDown}
         className="w-full h-full object-cover pointer-events-auto"
       />
-      {/* Map through active swimmers and render them */}
-      {/* {swimmers.map((swimmer) => (
+      {/* Render active swimmers */}
+      {swimmers.map((swimmer) => (
         <SwimmerClone
           key={swimmer.id}
           data={swimmer}
           dropStone={dropStone}
           onRemove={removeSwimmer}
         />
-      ))} */}
+      ))}
     </div>
   );
 }
