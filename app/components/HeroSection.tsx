@@ -161,7 +161,7 @@ export const HeroSection: React.FC = () => {
 
       {/* Tint overlay */}
       <div
-        className="absolute inset-0 bg-black/15 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{ zIndex: 1 }}
       />
 
