@@ -28,10 +28,7 @@ export const FeatureSection: React.FC = () => {
         id="highlights"
         className="relative w-full"
       >
-        {/* Teal background texture */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-         
-        </div>
+
 
         {/* Roaming turtle (FloatingWaterImages handles its own positioning) */}
         <div className="absolute inset-0 z-20 pointer-events-none">
