@@ -180,7 +180,7 @@ export const ContactSection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="relative bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[10vh] "
+      className="relative no-scrollbar bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[10vh] overflow-x-hidden no-scrollbar"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (

@@ -36,7 +36,7 @@ const Index = () => {
       {/* 🛑 INVOCATION: Drops the screen-glass water effect over the whole page */}
 
       {/* Put your Background Image back normally! */}
-      <div className="relative z-10 flex flex-col w-full">
+      <div className="relative z-10 flex flex-col w-full overflow-x-hidden">
         <Image
           src="/assets/bg-in-feature-section.webp"
           alt="Background"
@@ -64,13 +64,12 @@ const Index = () => {
           <CompanySection />
         </section>
 
-        <section id="location" className="relative z-10">
+        <section id="location" className="relative z-10 overflow-x-hidden">
           <ContactSection />
+          <Footer />
         </section>
 
-        <div className="relative z-10">
-          <Footer />
-        </div>
+        <div className="relative z-10"></div>
       </div>
     </main>
   );
