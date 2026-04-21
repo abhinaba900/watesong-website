@@ -161,6 +161,16 @@ export const Footer: React.FC = () => {
       onPointerDown={handlePointerDown}
       className="relative bg-transparent w-full  px-[5vw] lg:px-[8vw] pb-[6vh] lg:pb-[8vh] pt-0"
     >
+      {/* Corner Stones Pile */}
+      <div className="absolute -right-0 -bottom-0 -translate-y-12 w-[40vw] lg:w-[20vw] z-0 opacity-100">
+        <Image
+          src="/assets/stone bg.webp"
+          alt="Decorative stones"
+          width={600}
+          height={600}
+          className="object-contain w-full h-auto rotate-[-180deg] translate-scale(-1) translate-y-[20%]"
+        />
+      </div>
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
         <canvas

@@ -265,16 +265,7 @@ export const ContactSection: React.FC = () => {
             />
           </div>
 
-          {/* Corner Stones Pile */}
-          <div className="absolute -right-[8vw] -bottom-[17.6vh] w-[40vw] lg:w-[20vw] z-0 opacity-80">
-            <Image
-              src="/assets/stone bg.webp"
-              alt="Decorative stones"
-              width={600}
-              height={600}
-              className="object-contain w-full h-auto rotate-[-180deg] translate-scale(-1) translate-y-[20%]"
-            />
-          </div>
+          
         </div>
       </div>
     </section>
