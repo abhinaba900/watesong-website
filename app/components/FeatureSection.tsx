@@ -266,7 +266,7 @@ export const FeatureSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-white mt-[3vh] tracking-widest uppercase text-center lg:text-left"
+              className="text-white text-center mx-auto mt-[3vh] tracking-widest uppercase text-center lg:text-left"
               style={{
                 fontStyle: "italic",
                 fontFamily: "'Georgia', serif",

@@ -180,7 +180,7 @@ export const ContactSection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="relative bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[10vh] overflow-hidden"
+      className="relative bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[10vh] "
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
@@ -204,7 +204,7 @@ export const ContactSection: React.FC = () => {
               className="object-contain w-[15vw] md:w-[10vw] lg:w-[6vw] brightness-0 invert"
             />
           </div>
-          
+
           {/* Watersong Logo Wrapper */}
           <div className="flex flex-col items-center lg:items-start">
             <Image
@@ -255,24 +255,24 @@ export const ContactSection: React.FC = () => {
         {/* RIGHT COLUMN: Building & Stones */}
         <div className="w-full lg:w-[50%] relative flex justify-center lg:justify-end pointer-events-auto">
           {/* Building Image */}
-          <div className="relative w-full lg:w-[100%] z-10">
-             <Image
+          <div className="relative w-full lg:w-[80%] z-10">
+            <Image
               src="/assets/lackfront-recidance.webp"
               alt="Lakefront Residence"
-              width={1000}
-              height={800}
+              width={900}
+              height={500}
               className="object-contain w-full h-auto drop-shadow-2xl"
             />
           </div>
 
           {/* Corner Stones Pile */}
-          <div className="absolute -right-[8vw] -bottom-[10vh] w-[40vw] lg:w-[20vw] z-0 opacity-80">
+          <div className="absolute -right-[8vw] -bottom-[17.6vh] w-[40vw] lg:w-[20vw] z-0 opacity-80">
             <Image
-              src="/assets/hero-border-image.webp"
+              src="/assets/stone bg.webp"
               alt="Decorative stones"
               width={600}
               height={600}
-              className="object-contain w-full h-auto rotate-[15deg] translate-x-[20%] translate-y-[20%]"
+              className="object-contain w-full h-auto rotate-[-180deg] translate-scale(-1) translate-y-[20%]"
             />
           </div>
         </div>

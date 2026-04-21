@@ -159,7 +159,7 @@ export const Footer: React.FC = () => {
     <footer
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="relative bg-transparent w-full overflow-hidden px-[5vw] lg:px-[8vw] pb-[6vh] lg:pb-[8vh] pt-0"
+      className="relative bg-transparent w-full  px-[5vw] lg:px-[8vw] pb-[6vh] lg:pb-[8vh] pt-0"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
