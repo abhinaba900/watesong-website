@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const Footer: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -158,7 +159,7 @@ export const Footer: React.FC = () => {
     <footer
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="relative bg-transparent w-full overflow-hidden px-[5vw] lg:px-[8vw] pb-[5vh] lg:pb-[8vh] pt-[2vh]"
+      className="relative bg-transparent w-full overflow-hidden px-[5vw] lg:px-[8vw] pb-[6vh] lg:pb-[8vh] pt-0"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
@@ -169,36 +170,39 @@ export const Footer: React.FC = () => {
       )}
 
       <div className="flex flex-col relative w-full items-center z-10 pointer-events-none">
-        {/* Decorative line */}
-        <img
-          src="/assets/line-for-footer.webp"
-          alt="Decorative line"
-          className="w-full object-contain opacity-70"
-        />
+        {/* Decorative Wave Line */}
+        <div className="w-full mb-[4vh] lg:mb-[5vh] mt-[-2vh] lg:mt-[-4vh]">
+          <Image
+            src="/assets/line-for-footer.webp"
+            alt="Decorative line"
+            width={1920}
+            height={100}
+            className="w-full h-auto object-contain opacity-40 brightness-0 invert"
+          />
+        </div>
 
         {/* Footer Links & Copyright */}
         <div
           className="relative flex flex-col md:flex-row w-full justify-between items-center 
-                        gap-[3vh] md:gap-[2vw] 
-                        mt-[3vh] lg:mt-[4vh] 
+                        gap-[4vh] md:gap-[2vw] 
                         text-white font-normal text-center 
-                        text-[3.5vw] md:text-[1.8vw] lg:text-[1.2vw] leading-[1.4] tracking-[-0.02vw] pointer-events-auto"
+                        text-[3.5vw] md:text-[1.5vw] lg:text-[0.9vw] tracking-[0.02em] pointer-events-auto"
         >
           {/* Copyright Section */}
-          <div>© 2026 All Right Reserved by PRIVAE</div>
+          <div className="opacity-60">© 2025 All Right Reserved by PRIVAE</div>
 
           {/* Links Section */}
-          <div className="flex items-center gap-[2vw] md:gap-[1vw]">
+          <div className="flex items-center gap-[6vw] md:gap-[3vw] lg:gap-[2vw]">
             <Link
               href="/terms-and-conditions"
-              className="hover:text-blue-300 transition-colors"
+              className="opacity-80 hover:opacity-100 transition-opacity whitespace-nowrap"
             >
-              Terms and Conditions
+              Terms and conditions
             </Link>
-            <span className="text-white/50">|</span>
+            <span className="opacity-30">|</span>
             <Link
               href="/privacy-policy"
-              className="hover:text-blue-300 transition-colors"
+              className="opacity-80 hover:opacity-100 transition-opacity whitespace-nowrap"
             >
               Privacy Policy
             </Link>

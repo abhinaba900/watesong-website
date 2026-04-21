@@ -181,11 +181,13 @@ export const CompanySection: React.FC = () => {
           className="text-white font-medium text-center uppercase pointer-events-auto
                        text-[5.5vw] leading-[1.4]
                        md:text-[3vw] 
-                       lg:text-[1.8vw] lg:tracking-wide"
+                       lg:text-[1.1vw] lg:tracking-[0.1em]"
         >
-          Privae: Seasoned experience. Fresh thinking.
+          PRIVAE: SEASONED EXPERIENCE. FRESH THINKING.
           <br />
-          19 years. 16 projects. 3 million sq. ft.
+          <span className="font-light opacity-80 mt-1 block">
+             20 YEARS &nbsp;|&nbsp; 18 PROJECTS &nbsp;|&nbsp; 4 MILLION SQ. FT.
+          </span>
         </h2>
 
         {/* Paragraph text */}
@@ -194,7 +196,7 @@ export const CompanySection: React.FC = () => {
                        mt-[3vh] lg:mt-[5vh]
                        text-[4vw] leading-[1.6]
                        md:text-[2vw] md:leading-[1.5]
-                       lg:text-[1.25vw] lg:leading-[1.5] lg:tracking-[-0.02vw]"
+                       lg:text-[1.1vw] lg:leading-[1.6] lg:tracking-[-0.01vw] opacity-90"
         >
           Privae draws from a legacy of building world-class living spaces. A
           deep understanding of market needs and individual aspirations,
@@ -206,61 +208,84 @@ export const CompanySection: React.FC = () => {
 
       {/* Images Wrapper */}
       <div
-        className="flex justify-between items-end w-full pl-[2vw] lg:pl-[4vw] 
-                      mt-[2vh] md:mt-[-5vh] lg:mt-[-12vh] pointer-events-none z-10 relative"
+        className="relative w-full h-[60vh] mt-[-10vh] pointer-events-none z-10"
       >
-        {/* Decorative Lotus Image (Left) */}
+        {/* Decorative Boat Image (Left) */}
         <motion.div
-          animate={{ rotate: [-2, 2], y: ["-3%", "3%"] }}
+          animate={{ rotate: [-1, 1.5], y: ["-2%", "2%"], x: ["-1%", "1%"] }}
           transition={{
-            rotate: {
-              duration: 7,
-              repeat: Infinity,
-              repeatType: "mirror",
-              ease: "easeInOut",
-            },
-            y: {
-              duration: 5,
-              repeat: Infinity,
-              repeatType: "mirror",
-              ease: "easeInOut",
-            },
+            duration: 10,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
           }}
-          className="relative w-[25vw] md:w-[20vw] lg:w-[14vw] translate-x-[2vw] md:translate-x-[4vw] lg:translate-x-[5vw] translate-y-[-2vh] md:translate-y-[-5vh] lg:translate-y-[-12vh]"
+          className="absolute left-[5vw] top-[5vh] w-[25vw] md:w-[20vw] lg:w-[15vw]"
         >
           <Image
-            src="/assets/with-flower-lily-image.webp"
-            alt="Lotus flower"
-            width={300}
-            height={300}
+            src="/assets/fishing boat.webp"
+            alt="Fishing boat"
+            width={600}
+            height={800}
+            className="object-contain w-full h-auto drop-shadow-2xl"
+          />
+        </motion.div>
+
+        {/* Decorative Wooden Deck (Right) */}
+        <motion.div
+           initial={{ x: "10%", y: "20%" }}
+           className="absolute right-0 top-0 w-[45vw] md:w-[35vw] lg:w-[30vw]"
+        >
+          <Image
+            src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
+            alt="Wooden deck"
+            width={800}
+            height={1200}
+            className="object-contain w-full h-auto drop-shadow-2xl"
+          />
+        </motion.div>
+
+        {/* Animated Fish 1 */}
+        <motion.div
+          animate={{ 
+            x: ["-20vw", "120vw"],
+            y: ["10vh", "30vh", "15vh"],
+            rotate: [20, -10, 10]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute left-0 w-[10vw] lg:w-[6vw] opacity-40 blur-[1px]"
+        >
+          <Image
+            src="/assets/fish-image-1.webp"
+            alt="Swimming fish"
+            width={200}
+            height={200}
             className="object-contain w-full h-auto"
           />
         </motion.div>
 
-        {/* Decorative Boat Image (Right) */}
+        {/* Animated Fish 2 */}
         <motion.div
-          animate={{ rotate: [-1, 1], y: ["-2%", "2%"] }}
-          transition={{
-            rotate: {
-              duration: 12,
-              repeat: Infinity,
-              repeatType: "mirror",
-              ease: "easeInOut",
-            },
-            y: {
-              duration: 8,
-              repeat: Infinity,
-              repeatType: "mirror",
-              ease: "easeInOut",
-            },
+          animate={{ 
+            x: ["110vw", "-20vw"],
+            y: ["50vh", "35vh", "45vh"],
+            rotate: [170, 190, 180]
           }}
-          className="relative w-[45vw] md:w-[35vw] lg:w-[40vw] translate-y-[-2vh] md:translate-y-[-5vh] lg:translate-y-[-8vh] translate-x-[2vw] md:translate-x-[4vw] lg:translate-x-[5vw]"
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute right-0 w-[12vw] lg:w-[7vw] opacity-30 blur-[2px]"
         >
           <Image
-            src="/assets/privae-section-boat.webp"
-            alt="Wooden boat"
-            width={800}
-            height={1000}
+            src="/assets/fish-image-2.webp"
+            alt="Swimming fish"
+            width={200}
+            height={200}
             className="object-contain w-full h-auto"
           />
         </motion.div>

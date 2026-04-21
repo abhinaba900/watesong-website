@@ -8,33 +8,33 @@ const floorPlanData = {
   "TYPE - 1": {
     image: "/assets/201.webp",
     roomsCol1: [
-      { id: "1", name: "Lobby +", dims: "4206 X 3992 (13'8\" X 13'1\")" },
+      { id: "1", name: "Lobby +", dims: " (13'8\" X 13'1\")" },
       {
         id: "2",
         name: "Living / Dining +",
-        dims: "6827 X 9144 (22'4\" X 30'0\")",
+        dims: " (22'4\" X 30'0\")",
       },
       {
         id: "3",
         name: "Kitchen / Utility",
-        dims: "3078 X 5181 (10'10\" X 17'0\")",
+        dims: " (10'10\" X 17'0\")",
       },
-      { id: "4", name: "Study", dims: "1828 X 2438 (6'0\" X 8'0\")" },
-      { id: "5", name: "Lake Lounge", dims: "5029 X 2468 (16'5\" X 8'10\")" },
-      { id: "6", name: "M Bed Room", dims: "4876 X 3840 (16'0\" X 12'6\")" },
-      { id: "7", name: "M Dress", dims: "1859 X 1859 (6'10\" X 6'10\")" },
-      { id: "8", name: "M Toilet", dims: "2468 X 1584 (8'10\" X 5'2\")" },
-      { id: "9", name: "M Balcony", dims: "2286 X 2407 (7'5\" X 7'9\")" },
-      { id: "10", name: "Bed Room 2", dims: "3779 X 3840 (12'4\" X 12'6\")" },
+      { id: "4", name: "Study", dims: "(6'0\" X 8'0\")" },
+      { id: "5", name: "Lake Lounge", dims: " (16'5\" X 8'10\")" },
+      { id: "6", name: "M Bed Room", dims: " (16'0\" X 12'6\")" },
+      { id: "7", name: "M Dress", dims: " (6'10\" X 6'10\")" },
+      { id: "8", name: "M Toilet", dims: " (8'10\" X 5'2\")" },
+      { id: "9", name: "M Balcony", dims: " (7'5\" X 7'9\")" },
+      { id: "10", name: "Bed Room 2", dims: " (12'4\" X 12'6\")" },
     ],
     roomsCol2: [
-      { id: "11", name: "Dress 2", dims: "1706 X 1798 (6'5\" X 5'9\")" },
-      { id: "12", name: "Toilet 2", dims: "1584 X 2438 (5'2\" X 8'0\")" },
-      { id: "13", name: "Powder Room", dims: "1798 X 1524 (5'9\" X 5'0\")" },
-      { id: "14", name: "Bed Room 3", dims: "4236 X 3840 (13'9\" X 12'6\")" },
-      { id: "15", name: "Dress 3", dims: "1706 X 2072 (5'6\" X 6'8\")" },
-      { id: "16", name: "Toilet 3", dims: "1584 X 2438 (5'2\" X 8'0\")" },
-      { id: "17", name: "Balcony", dims: "2712 X 701 (8'9\" X 2'3\")" },
+      { id: "11", name: "Dress 2", dims: " (6'5\" X 5'9\")" },
+      { id: "12", name: "Toilet 2", dims: " (5'2\" X 8'0\")" },
+      { id: "13", name: "Powder Room", dims: " (5'9\" X 5'0\")" },
+      { id: "14", name: "Bed Room 3", dims: " (13'9\" X 12'6\")" },
+      { id: "15", name: "Dress 3", dims: " (5'6\" X 6'8\")" },
+      { id: "16", name: "Toilet 3", dims: " (5'2\" X 8'0\")" },
+      { id: "17", name: "Balcony", dims: " (8'9\" X 2'3\")" },
     ],
     areas: {
       saleable: "2565 sq.ft.",
@@ -46,33 +46,33 @@ const floorPlanData = {
   "TYPE - 2": {
     image: "/assets/202.webp",
     roomsCol1: [
-      { id: "01", name: "Lobby +", dims: "4206 X 3657 (13'8\" X 12'0\")" },
+      { id: "01", name: "Lobby +", dims: " (13'8\" X 12'0\")" },
       {
         id: "02",
         name: "Living / Dining +",
-        dims: "5486 X 7894 (18'0\" X 25'9\")",
+        dims: " (18'0\" X 25'9\")",
       },
       {
         id: "03",
         name: "Kitchen / Utility",
-        dims: "3688 X 5852 (12'10\" X 19'2\")",
+        dims: " (12'10\" X 19'2\")",
       },
-      { id: "04", name: "Study", dims: "2164 X 1828 (7'10\" X 6'0\")" },
-      { id: "05", name: "Lake Lounge", dims: "2499 X 6065 (8'2\" X 19'9\")" },
-      { id: "06", name: "M Bed Room", dims: "4876 X 3840 (16'6\" X 12'6\")" },
-      { id: "07", name: "M Dress", dims: "1584 X 1859 (5'2\" X 6'10\")" },
-      { id: "08", name: "M Toilet", dims: "2438 X 1584 (8'0\" X 5'2\")" },
-      { id: "09", name: "M Balcony", dims: "2438 X 2316 (8'0\" X 7'6\")" },
-      { id: "10", name: "Bed Room 2", dims: "5463 X 3840 (17'6\" X 12'6\")" },
+      { id: "04", name: "Study", dims: " (7'10\" X 6'0\")" },
+      { id: "05", name: "Lake Lounge", dims: " (8'2\" X 19'9\")" },
+      { id: "06", name: "M Bed Room", dims: " (16'6\" X 12'6\")" },
+      { id: "07", name: "M Dress", dims: " (5'2\" X 6'10\")" },
+      { id: "08", name: "M Toilet", dims: " (8'0\" X 5'2\")" },
+      { id: "09", name: "M Balcony", dims: " (8'0\" X 7'6\")" },
+      { id: "10", name: "Bed Room 2", dims: " (17'6\" X 12'6\")" },
     ],
     roomsCol2: [
-      { id: "11", name: "Dress 2", dims: "948 X 1859 (3'11\" X 6'10\")" },
-      { id: "12", name: "Toilet 2", dims: "2438 X 1584 (8'0\" X 5'2\")" },
-      { id: "13", name: "Balcony", dims: "2438 X 2306 (8'0\" X 7'6\")" },
-      { id: "14", name: "Powder Room", dims: "1706 X 1828 (5'6\" X 6'0\")" },
-      { id: "15", name: "Bed Room 3", dims: "3840 X 3840 (12'6\" X 12'6\")" },
-      { id: "16", name: "Dress 3", dims: "1706 X 1341 (5'6\" X 4'4\")" },
-      { id: "17", name: "Toilet 3", dims: "1584 X 2438 (5'2\" X 8'0\")" },
+      { id: "11", name: "Dress 2", dims: " (3'11\" X 6'10\")" },
+      { id: "12", name: "Toilet 2", dims: " (8'0\" X 5'2\")" },
+      { id: "13", name: "Balcony", dims: " (8'0\" X 7'6\")" },
+      { id: "14", name: "Powder Room", dims: " (5'6\" X 6'0\")" },
+      { id: "15", name: "Bed Room 3", dims: " (12'6\" X 12'6\")" },
+      { id: "16", name: "Dress 3", dims: " (5'6\" X 4'4\")" },
+      { id: "17", name: "Toilet 3", dims: " (5'2\" X 8'0\")" },
     ],
     areas: {
       saleable: "2300 sq.ft.",
@@ -84,33 +84,33 @@ const floorPlanData = {
   "TYPE - 3": {
     image: "/assets/203.webp",
     roomsCol1: [
-      { id: "01", name: "Lobby +", dims: "3688 X 5699 (12'10\" X 18'7\")" },
+      { id: "01", name: "Lobby +", dims: " (12'10\" X 18'7\")" },
       {
         id: "02",
         name: "Living / Dining +",
-        dims: "5852 X 9723 (19'2\" X 31'9\")",
+        dims: " (19'2\" X 31'9\")",
       },
       {
         id: "03",
         name: "Kitchen / Utility",
-        dims: "4023 X 3840 (13'2\" X 12'6\")",
+        dims: " (13'2\" X 12'6\")",
       },
-      { id: "04", name: "Study", dims: "2164 X 1828 (7'10\" X 6'0\")" },
-      { id: "05", name: "Lake Lounge", dims: "3017 X 6065 (9'9\" X 19'9\")" },
-      { id: "06", name: "M Bed Room", dims: "4876 X 3840 (16'6\" X 12'6\")" },
-      { id: "07", name: "M Dress", dims: "1317 X 1859 (4'5\" X 6'10\")" },
-      { id: "08", name: "M Toilet", dims: "2438 X 1584 (8'0\" X 5'2\")" },
-      { id: "09", name: "M Balcony", dims: "2560 X 2316 (8'4\" X 7'6\")" },
-      { id: "10", name: "Bed Room 2", dims: "3840 X 3840 (12'6\" X 12'6\")" },
+      { id: "04", name: "Study", dims: " (7'10\" X 6'0\")" },
+      { id: "05", name: "Lake Lounge", dims: " (9'9\" X 19'9\")" },
+      { id: "06", name: "M Bed Room", dims: " (16'6\" X 12'6\")" },
+      { id: "07", name: "M Dress", dims: " (4'5\" X 6'10\")" },
+      { id: "08", name: "M Toilet", dims: " (8'0\" X 5'2\")" },
+      { id: "09", name: "M Balcony", dims: " (8'4\" X 7'6\")" },
+      { id: "10", name: "Bed Room 2", dims: " (12'6\" X 12'6\")" },
     ],
     roomsCol2: [
-      { id: "11", name: "Dress 2", dims: "1706 X 1341 (5'6\" X 4'4\")" },
-      { id: "12", name: "Toilet 2", dims: "1584 X 2438 (5'2\" X 8'0\")" },
-      { id: "13", name: "Powder Room", dims: "1706 X 1828 (5'6\" X 6'0\")" },
-      { id: "14", name: "Bed Room 3", dims: "4876 X 3840 (16'0\" X 12'6\")" },
-      { id: "15", name: "Dress 3", dims: "1706 X 1859 (5'6\" X 6'10\")" },
-      { id: "16", name: "Toilet 3", dims: "2438 X 1584 (8'0\" X 5'2\")" },
-      { id: "17", name: "Balcony", dims: "2438 X 2306 (8'0\" X 7'6\")" },
+      { id: "11", name: "Dress 2", dims: " (5'6\" X 4'4\")" },
+      { id: "12", name: "Toilet 2", dims: " (5'2\" X 8'0\")" },
+      { id: "13", name: "Powder Room", dims: " (5'6\" X 6'0\")" },
+      { id: "14", name: "Bed Room 3", dims: " (16'0\" X 12'6\")" },
+      { id: "15", name: "Dress 3", dims: " (5'6\" X 6'10\")" },
+      { id: "16", name: "Toilet 3", dims: " (8'0\" X 5'2\")" },
+      { id: "17", name: "Balcony", dims: " (8'0\" X 7'6\")" },
     ],
     areas: {
       saleable: "1850 sq.ft.",
@@ -122,33 +122,33 @@ const floorPlanData = {
   "TYPE - 4": {
     image: "/assets/204.webp",
     roomsCol1: [
-      { id: "01", name: "Lobby +", dims: "5212 X 3657 (17'1\" X 12'0\")" },
+      { id: "01", name: "Lobby +", dims: "(17'1\" X 12'0\")" },
       {
         id: "02",
         name: "Living / Dining +",
-        dims: "10302 X 11551 (33'8\" X 37'9\")",
+        dims: "(33'8\" X 37'9\")",
       },
       {
         id: "03",
         name: "Kitchen / Utility",
-        dims: "3505 X 3840 (11'5\" X 12'6\")",
+        dims: " (11'5\" X 12'6\")",
       },
-      { id: "04", name: "Study", dims: "2438 X 1828 (8'0\" X 6'0\")" },
-      { id: "05", name: "Lake Lounge", dims: "2499 X 6065 (8'2\" X 19'9\")" },
-      { id: "06", name: "M Bed Room", dims: "4876 X 3840 (16'0\" X 12'6\")" },
-      { id: "07", name: "M Dress", dims: "1767 X 2103 (5'8\" X 6'9\")" },
-      { id: "08", name: "M Toilet", dims: "1584 X 2438 (5'2\" X 8'0\")" },
-      { id: "09", name: "M Balcony", dims: "3657 X 1219 (12'0\" X 4'0\")" },
-      { id: "10", name: "Bed Room 2", dims: "3840 X 3840 (12'6\" X 12'6\")" },
+      { id: "04", name: "Study", dims: " (8'0\" X 6'0\")" },
+      { id: "05", name: "Lake Lounge", dims: " (8'2\" X 19'9\")" },
+      { id: "06", name: "M Bed Room", dims: " (16'0\" X 12'6\")" },
+      { id: "07", name: "M Dress", dims: " (5'8\" X 6'9\")" },
+      { id: "08", name: "M Toilet", dims: " (5'2\" X 8'0\")" },
+      { id: "09", name: "M Balcony", dims: " (12'0\" X 4'0\")" },
+      { id: "10", name: "Bed Room 2", dims: " (12'6\" X 12'6\")" },
     ],
     roomsCol2: [
-      { id: "11", name: "Dress 2", dims: "1706 X 1371 (5'6\" X 4'4\")" },
-      { id: "12", name: "Toilet 2", dims: "1584 X 2438 (5'2\" X 8'0\")" },
-      { id: "13", name: "Balcony", dims: "3657 X 1219 (12'0\" X 4'0\")" },
-      { id: "14", name: "Powder Room", dims: "1706 X 1828 (5'6\" X 6'0\")" },
-      { id: "15", name: "Bed Room 3", dims: "4876 X 3840 (16'0\" X 12'6\")" },
-      { id: "16", name: "Dress 3", dims: "1716 X 2103 (5'8\" X 6'9\")" },
-      { id: "17", name: "Toilet 3", dims: "1584 X 2438 (5'2\" X 8'0\")" },
+      { id: "11", name: "Dress 2", dims: " (5'6\" X 4'4\")" },
+      { id: "12", name: "Toilet 2", dims: " (5'2\" X 8'0\")" },
+      { id: "13", name: "Balcony", dims: " (12'0\" X 4'0\")" },
+      { id: "14", name: "Powder Room", dims: " (5'6\" X 6'0\")" },
+      { id: "15", name: "Bed Room 3", dims: " (16'0\" X 12'6\")" },
+      { id: "16", name: "Dress 3", dims: " (5'8\" X 6'9\")" },
+      { id: "17", name: "Toilet 3", dims: " (5'2\" X 8'0\")" },
     ],
     areas: {
       saleable: "1400 sq.ft.",
@@ -454,12 +454,96 @@ export const FloorPlanSection: React.FC = () => {
           </div>
         </div>
 
+        {/* ─── PHOTOS | VIDEOS Section ─── */}
+        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center">
+          {/* Title */}
+          <h2 className="relative text-white font-extrabold uppercase text-center mb-[6vh] text-[8vw] leading-[1.2] md:text-[4.5vw] lg:text-[3.5vw] lg:leading-[1.6] xl:text-[2.8vw]">
+            PHOTOS | VIDEOS
+          </h2>
+
+          {/* Stone Frame Container */}
+          <div className="relative w-full max-w-[90vw] lg:max-w-[70vw] aspect-[16/9] flex justify-center items-center">
+            {/* Stone Frame Image */}
+            <div className="absolute inset-0 pointer-events-none z-10 w-full h-full">
+              <Image
+                src="/assets/3 -2copy.webp"
+                alt="Stone Frame"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Floating Turtle (Top Left-ish) */}
+            <div className="absolute -left-[5%] top-[10%] w-[15vw] lg:w-[12vw] z-30 pointer-events-none drop-shadow-2xl animate-bounce-slow">
+              <Image
+                src="/assets/turtle.webp"
+                alt="Floating Turtle"
+                width={200}
+                height={200}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Floating Lily (Top Right) */}
+            <div className="absolute -right-[8%] -top-[15%] w-[20vw] lg:w-[15vw] z-30 pointer-events-none drop-shadow-2xl">
+              <Image
+                src="/assets/lily.webp"
+                alt="Floating Lily"
+                width={300}
+                height={300}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* ─── LOCATION MAP Section ─── */}
+        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center pb-[10vh]">
+          {/* Title Group */}
+          <div className="mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
+            <h2 className="text-white font-extrabold uppercase text-[8vw] leading-[1.2] md:text-[4.5vw] lg:text-[3.5vw] lg:leading-[1] xl:text-[2.8vw]">
+              LOCATION MAP
+            </h2>
+            <p className="text-white/60 text-[4vw] md:text-[2vw] lg:text-[1.2vw] font-medium">
+              (Not to scale)
+            </p>
+          </div>
+
+          {/* Map Image */}
+          <div className="relative w-full lg:max-w-[85vw] aspect-auto">
+            <Image
+              src="/assets/location-map.webp"
+              alt="Location Map"
+              width={1600}
+              height={1200}
+              className="w-full h-auto object-contain drop-shadow-2xl"
+            />
+
+            {/* Compass Icon (if it's not part of the map image) */}
+            <div className="absolute left-[2vw] bottom-[2vw] w-[8vw] lg:w-[5vw]">
+              {/* If there's a separate compass image asset, add it here.
+                Based on the design image, a compass is at the bottom left. */}
+              <div className="w-full h-full text-white/40 flex items-center justify-center font-bold text-[3vw] lg:text-[1.5vw]">
+                N
+              </div>
+            </div>
+          </div>
+        </div>
+
         <style
           dangerouslySetInnerHTML={{
             __html: `
           @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes bounceSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+          .animate-bounce-slow {
+            animation: bounceSlow 4s ease-in-out infinite;
           }
         `,
           }}

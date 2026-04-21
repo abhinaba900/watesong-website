@@ -4,10 +4,29 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+/**
+ * Real stone border image overlay.
+ * The image has a transparent/white centre — card content shows through it.
+ * Aspect ratio of the source asset: ~1456 × 816 (≈ 16:9).
+ */
+const StoneFrameImage: React.FC = () => (
+  <Image
+    src="/assets/hero-border-image.webp"
+    alt=""
+    aria-hidden="true"
+    fill
+    sizes="(max-width: 1024px) 95vw, 58vw"
+    className="object-fill pointer-events-none select-none"
+    style={{ zIndex: 10 }}
+    priority
+  />
+);
+
+// ─── Main Hero Section ─────────────────────────────────────────────────────────
 export const HeroSection: React.FC = () => {
   const [mounted, setMounted] = useState(false);
 
-  // --- Ripple Refs ---
+  // Ripple refs
   const containerRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const widthRef = useRef(0);
@@ -17,11 +36,9 @@ export const HeroSection: React.FC = () => {
   const outputImageDataRef = useRef<ImageData | null>(null);
   const animationFrameRef = useRef<number>(0);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => { setMounted(true); }, []);
 
-  // ─── Embedded CPU Water Math (Transparent Mode) ────────────────────────────
+  // ─── CPU Water Ripple ────────────────────────────────────────────────────────
   useEffect(() => {
     if (!mounted || !canvasRef.current || !containerRef.current) return;
 
@@ -29,7 +46,6 @@ export const HeroSection: React.FC = () => {
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    // Scale down for CPU performance
     const scale = 0.5;
 
     const initCanvas = () => {
@@ -37,12 +53,10 @@ export const HeroSection: React.FC = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const width = Math.floor(rect.width * scale);
       const height = Math.floor(rect.height * scale);
-
       canvas.width = width;
       canvas.height = height;
       widthRef.current = width;
       heightRef.current = height;
-
       const size = width * height;
       buffer1Ref.current = new Array(size).fill(0);
       buffer2Ref.current = new Array(size).fill(0);
@@ -53,99 +67,72 @@ export const HeroSection: React.FC = () => {
 
     const renderLoop = () => {
       if (!ctx || !outputImageDataRef.current) return;
+      const W = widthRef.current;
+      const H = heightRef.current;
+      const b1 = buffer1Ref.current;
+      const b2 = buffer2Ref.current;
+      const out = outputImageDataRef.current;
+      const px = out.data;
 
-      const width = widthRef.current;
-      const height = heightRef.current;
-      const buffer1 = buffer1Ref.current;
-      const buffer2 = buffer2Ref.current;
-      const outData = outputImageDataRef.current;
-      const outputPixels = outData.data;
-
-      const temp = buffer1Ref.current;
+      // Swap buffers
+      const tmp = buffer1Ref.current;
       buffer1Ref.current = buffer2Ref.current;
-      buffer2Ref.current = temp;
+      buffer2Ref.current = tmp;
 
-      const damping = 0.94;
+      const damp = 0.94;
+      for (let y = 1; y < H - 1; y++) {
+        for (let x = 1; x < W - 1; x++) {
+          const i = x + y * W;
+          b2[i] =
+            (b1[i - 1] + b1[i + 1] + b1[i - W] + b1[i + W]) / 2 - b2[i];
+          b2[i] *= damp;
 
-      for (let y = 1; y < height - 1; y++) {
-        for (let x = 1; x < width - 1; x++) {
-          const i = x + y * width;
+          const d = b2[i] - b1[i];
+          const p = i * 4;
 
-          buffer2[i] =
-            (buffer1[i - 1] +
-              buffer1[i + 1] +
-              buffer1[i - width] +
-              buffer1[i + width]) /
-              2 -
-            buffer2[i];
-
-          buffer2[i] *= damping;
-
-          let dataOffset = buffer2[i] - buffer1[i];
-          const targetPixel = i * 4;
-
-          let r = 0,
-            g = 0,
-            b = 0,
-            a = 0;
-
-          if (dataOffset > 0.5) {
-            // Wave Crest (Highlight)
-            r = 255;
-            g = 255;
-            b = 255;
-            a = Math.min(255, dataOffset * 25);
-          } else if (dataOffset < -0.5) {
-            // Wave Trough (Soft Shadow)
-            r = 10;
-            g = 25;
-            b = 40;
-            a = Math.min(255, -dataOffset * 8);
+          if (d > 0.5) {
+            px[p] = 255; px[p + 1] = 255; px[p + 2] = 255;
+            px[p + 3] = Math.min(255, d * 25);
+          } else if (d < -0.5) {
+            px[p] = 10; px[p + 1] = 25; px[p + 2] = 40;
+            px[p + 3] = Math.min(255, -d * 8);
+          } else {
+            px[p + 3] = 0;
           }
-
-          outputPixels[targetPixel] = r;
-          outputPixels[targetPixel + 1] = g;
-          outputPixels[targetPixel + 2] = b;
-          outputPixels[targetPixel + 3] = a;
         }
       }
 
-      ctx.putImageData(outData, 0, 0);
+      ctx.putImageData(out, 0, 0);
       animationFrameRef.current = requestAnimationFrame(renderLoop);
     };
 
     renderLoop();
 
-    const resizeObserver = new ResizeObserver(() => initCanvas());
-    resizeObserver.observe(containerRef.current);
+    const obs = new ResizeObserver(() => initCanvas());
+    obs.observe(containerRef.current);
 
     return () => {
       cancelAnimationFrame(animationFrameRef.current);
-      resizeObserver.disconnect();
+      obs.disconnect();
     };
   }, [mounted]);
 
   const dropStone = useCallback(
     (x: number, y: number, radius: number, strength: number) => {
       if (!canvasRef.current || !containerRef.current) return;
-
       const rect = containerRef.current.getBoundingClientRect();
-      const scaleX = widthRef.current / rect.width;
-      const scaleY = heightRef.current / rect.height;
-
-      // Calculate click position relative to the section
-      const scaledX = Math.floor((x - rect.left) * scaleX);
-      const scaledY = Math.floor((y - rect.top) * scaleY);
-
-      const width = widthRef.current;
-      const height = heightRef.current;
-      const buffer1 = buffer1Ref.current;
-
-      for (let j = scaledY - radius; j < scaledY + radius; j++) {
-        for (let i = scaledX - radius; i < scaledX + radius; i++) {
-          if (i >= 0 && i < width && j >= 0 && j < height) {
-            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
-              buffer1[i + j * width] = strength;
+      const sx = widthRef.current / rect.width;
+      const sy = heightRef.current / rect.height;
+      const cx = Math.floor((x - rect.left) * sx);
+      const cy = Math.floor((y - rect.top) * sy);
+      const W = widthRef.current;
+      const H = heightRef.current;
+      const b1 = buffer1Ref.current;
+      for (let j = cy - radius; j < cy + radius; j++) {
+        for (let i = cx - radius; i < cx + radius; i++) {
+          if (i >= 0 && i < W && j >= 0 && j < H) {
+            if ((i - cx) ** 2 + (j - cy) ** 2 <= radius ** 2) {
+              b1[i + j * W] = strength;
             }
           }
         }
@@ -154,108 +141,145 @@ export const HeroSection: React.FC = () => {
     [],
   );
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    // Finalized Lite Click Ripple: Radius 8, Strength 40
-    dropStone(e.clientX, e.clientY, 8, 60);
-  };
-
   if (!mounted)
     return <section className="w-full h-[100dvh] lg:h-screen bg-[#113239]" />;
 
   return (
     <section
       ref={containerRef}
-      onPointerDown={handlePointerDown}
-      className="relative w-full overflow-hidden font-sans h-[100dvh] lg:h-[60vh] xl:h-screen bg-[#113239]"
+      onPointerDown={(e) => dropStone(e.clientX, e.clientY, 8, 60)}
+      className="relative w-full overflow-hidden font-sans h-[100dvh] lg:h-screen"
     >
-      {/* ─── The Embedded Ripple Canvas ─── */}
+      {/* Ripple canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full z-4 pointer-events-none"
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ zIndex: 4 }}
       />
 
-      <Image
-        src="/assets/bg-in-feature-section.webp"
-        alt="Hero Section"
-        fill
-        className="object-cover absolute top-0 left-0 z-0 pointer-events-none"
+    
+
+      {/* Tint overlay */}
+      <div
+        className="absolute inset-0 bg-black/15 pointer-events-none"
+        style={{ zIndex: 1 }}
       />
 
-      {/* 2. Black Overlay */}
-      <div className="absolute inset-0 bg-black/10 z-0 pointer-events-none" />
-
-      {/* 4. Content Wrapper */}
-      <div className="absolute inset-0 z-10 flex flex-row w-full h-full px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh] mx-auto pointer-events-auto">
-        {/* LEFT COLUMN: heading + card */}
-        <div className="flex flex-col flex-grow justify-center mt-4 lg:mt-0 mb-4 lg:mb-[4vh] pt-[12vh] lg:pt-[10vh]">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-white leading-[1.1] tracking-tight mb-6 lg:mb-[6vh] text-[6.5vw] md:text-5xl lg:text-[2.9vw] drop-shadow-lg"
-          >
-            <span className="font-medium">ONE</span>{" "}
-            <span className="font-light">NEIGHBOUR</span> <br />
-            <span className="font-medium">ONE</span>{" "}
-            <span className="font-light">ELEVATOR ACCESS</span> <br />
-            <span className="font-medium">ONE</span>{" "}
-            <span className="font-light">LAKE LOUNGE</span>
-          </motion.h1>
-
-          <motion.article
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white/75 backdrop-blur-md shadow-2xl overflow-hidden flex flex-col lg:flex-row w-full lg:w-[50vw] rounded-2xl lg:rounded-[2.1vw] h-auto lg:h-[20vh] xl:h-[35vh] transition-all hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.3)]"
-          >
+      {/* ─── Main Layout ──────────────────────────────────────────────────────── */}
+      <div
+        className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center pointer-events-auto"
+        style={{
+          zIndex: 10,
+          padding: "0 4vw",
+          paddingTop: "var(--navbar-h, 5rem)",
+          gap: "2vw",
+        }}
+      >
+        {/* ── LEFT: Stone-Framed Branding Card ─────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
+          className="relative flex-shrink-0"
+          style={{
+            /*
+             * Width-driven sizing at 56vw, capped so the card's height
+             * never overflows the viewport (minus navbar ~80px).
+             */
+            width: "min(56vw, calc((100vh - 80px) * 1456 / 816))",
+            aspectRatio: "1456 / 816",
+          }}
+        >
+          {/* Transparent shell — stone image shadow/blur bleeds naturally */}
+          <div className="absolute inset-0">
+            {/*
+             * Inner content window — calibrated to the actual stone pixel boundary.
+             * Left border in the 1456px source is ~350px thick (24 %).
+             * Right border is ~270px (18.5%). Top ~185px (22.7%). Bottom ~165px (20.2%).
+             * Adding ~1 % safety on each side.
+             */}
             <div
-              onClick={() => {
-                window.open("https://maps.app.goo.gl/uorALjYNRyMLUPga6");
+              className="absolute flex flex-row overflow-hidden"
+              style={{
+                left: "25%",
+                right: "20%",
+                top: "23%",
+                bottom: "21%",
+                backdropFilter: "blur(4px)",
               }}
-              className="w-full lg:w-[55%] p-6 md:p-10 lg:p-[3vw] flex flex-col justify-center"
             >
-              <Image
-                src="/assets/card-inside-image-of-hero-section.webp"
-                alt="Brand"
-                width={100}
-                height={100}
-                className="w-16 md:w-28 lg:w-[7vw] mb-3 lg:mb-[2vh] h-auto object-contain"
-              />
-              <Image
-                src="/assets/watersong-logo-blue.webp"
-                alt="Watersong"
-                width={300}
-                height={100}
-                className="w-40 md:w-56 lg:w-[14.5vw] object-contain mb-2 h-auto"
-              />
-              <h2 className="text-[#0C637E] font-bold text-lg md:text-2xl lg:text-[1.25vw]">
-                Lakefront Residences
-              </h2>
-              <p className="text-[#0C637E] font-medium text-xs md:text-base lg:text-[0.73vw] mt-1">
-                1 KM from Nallurhalli Metro, Whitefield
-              </p>
-            </div>
-            <div className="w-full lg:w-[45%] relative h-50 md:h-72 lg:h-full">
-              <Image
-                src="/assets/lackfront-recidance.webp"
-                alt="Building"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-          </motion.article>
-        </div>
+              {/* Branding panel */}
+              <div
+                onClick={() =>
+                  window.open("https://maps.app.goo.gl/uorALjYNRyMLUPga6")
+                }
+                className="flex flex-col justify-center cursor-pointer"
+                style={{ width: "48%", padding: "5% 4% 5% 6%" }}
+              >
+                <Image
+                  src="/assets/navbar-right-logo.webp"
+                  alt="Privae"
+                  width={120}
+                  height={40}
+                  className="h-auto object-contain"
+                  style={{
+                    width: "clamp(24px, 34%, 68px)",
+                    marginBottom: "4%",
+                  }}
+                />
+                <Image
+                  src="/assets/watersong-logo-blue.webp"
+                  alt="Watersong"
+                  width={280}
+                  height={80}
+                  className="h-auto object-contain"
+                  style={{
+                    width: "clamp(70px, 84%, 195px)",
+                    marginBottom: "5%",
+                  }}
+                />
+                <p
+                  className="text-white font-bold leading-tight"
+                  style={{ fontSize: "clamp(0.55rem, 1.15vw, 1.05rem)" }}
+                >
+                  Lakefront Residences
+                </p>
+                <p
+                  className="text-white font-medium mt-1 leading-snug opacity-85"
+                  style={{ fontSize: "clamp(0.45rem, 0.75vw, 0.8rem)" }}
+                >
+                  1 KM from Nallurhalli Metro, Whitefield
+                </p>
+              </div>
 
-        {/* RIGHT COLUMN: Lotus image */}
-        <div className="hidden lg:flex flex-col items-end justify-end w-[38%] pb-[4vh] pr-[2vw] relative z-4">
+              {/* Building photo */}
+              <div className="relative flex-1"></div>
+            </div>
+          </div>
+
+          {/* ── Real stone-border image — overlays the card ── */}
+          <StoneFrameImage />
+        </motion.div>
+
+        {/* ── RIGHT: Lotus Flower + Specs ──────────────────────────────────── */}
+        <div
+          className="hidden lg:flex flex-col items-center flex-1 h-full"
+          style={{
+            paddingTop: "2vh",
+            paddingBottom: "4vh",
+            paddingRight: "2vw",
+            gap: 0,
+          }}
+        >
+          {/* Lotus — floats in upper portion */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-1 items-center justify-center"
+            initial={{ opacity: 0, y: -18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.9, ease: "easeOut" }}
           >
             <motion.div
-              animate={{ rotate: [-2, 2], y: ["-3%", "3%"] }}
+              animate={{ rotate: [-1.8, 1.8], y: ["-4%", "4%"] }}
               transition={{
                 rotate: {
                   duration: 7,
@@ -273,14 +297,88 @@ export const HeroSection: React.FC = () => {
             >
               <Image
                 src="/assets/Lotus - webp.webp"
-                alt="Lotus"
+                alt="Lotus flower"
                 width={420}
                 height={420}
-                className="object-contain w-[22vw] h-auto drop-shadow-2xl relative z-50"
+                className="h-auto object-contain drop-shadow-2xl"
+                style={{ width: "clamp(140px, 22vw, 340px)" }}
               />
             </motion.div>
           </motion.div>
+
+          {/* "Spacious Premium" specs */}
+          <motion.div
+            className="text-right"
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
+          >
+            <h2
+              className="font-black uppercase tracking-widest text-white leading-none"
+              style={{
+                fontSize: "clamp(1.1rem, 2.2vw, 2.6rem)",
+                fontStyle: "italic",
+                letterSpacing: "0.08em",
+              }}
+            >
+              Spacious Premium
+            </h2>
+            <p
+              className="text-white/75 font-light mt-3 leading-relaxed"
+              style={{ fontSize: "clamp(0.7rem, 0.95vw, 1rem)" }}
+            >
+              3 BHK+ Homes from
+              <br />
+              2565 to 3495 sq. ft.
+            </p>
+          </motion.div>
         </div>
+
+        {/* ── MOBILE: simple card (no stone frame) ─────────────────────────── */}
+        <motion.article
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="lg:hidden bg-white/78 backdrop-blur-md shadow-2xl overflow-hidden flex flex-row w-full rounded-2xl"
+          style={{ height: "clamp(120px, 46vw, 240px)" }}
+        >
+          <div
+            onClick={() =>
+              window.open("https://maps.app.goo.gl/uorALjYNRyMLUPga6")
+            }
+            className="flex flex-col justify-center p-5 w-[55%] cursor-pointer"
+          >
+            <Image
+              src="/assets/card-inside-image-of-hero-section.webp"
+              alt="Privae"
+              width={100}
+              height={34}
+              className="w-14 mb-2 h-auto object-contain"
+            />
+            <Image
+              src="/assets/watersong-logo-blue.webp"
+              alt="Watersong"
+              width={220}
+              height={70}
+              className="w-36 object-contain mb-2 h-auto"
+            />
+            <p className="text-[#0C637E] font-bold text-sm leading-tight">
+              Lakefront Residences
+            </p>
+            <p className="text-[#0C637E] font-medium text-[0.65rem] mt-0.5 opacity-85">
+              1 KM from Nallurhalli Metro, Whitefield
+            </p>
+          </div>
+          <div className="relative flex-1">
+            <Image
+              src="/assets/lackfront-recidance.webp"
+              alt="Building"
+              fill
+              sizes="50vw"
+              className="object-cover"
+            />
+          </div>
+        </motion.article>
       </div>
     </section>
   );

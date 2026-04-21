@@ -179,65 +179,7 @@ export const MasterPlanSection: React.FC = () => {
 
       {/* ─── Original Content ─── */}
       <div className="flex flex-col relative w-full items-center pl-0 lg:px-[5vw] pt-[22px] z-20 pointer-events-none">
-        <div className="relative w-full px-[5vw] md:px-0 mr-0 md:mr-[2.5vw] lg:mr-[2.9vw]">
-          <div className="flex flex-col md:flex-row items-center md:items-stretch gap-[8vw] md:gap-[2vw] lg:gap-[1.4vw]">
-            {/* Left Side: Heading */}
-            <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-end">
-              <h2
-                className="text-white font-extrabold uppercase relative self-stretch
-                   text-center md:text-right 
-                   mt-[0vh] md:mt-0 
-                   text-[6.5vw] leading-[1.6] 
-                   md:text-[3.5vw] 
-                   lg:text-[3vw] lg:leading-[1.6] lg:tracking-[1px] 
-                   xl:text-[2.8vw] xl:leading-[1.6]"
-              >
-                FUN ACTIVITIES TO <br /> KEEP AWAY CHOLESTEROL <br /> AND SUGAR
-              </h2>
-            </div>
-
-            {/* Right Side: List & Image */}
-            <div className="w-full md:w-1/2 mt-[0vh] md:mt-0 lg:ml-[1.4vw] flex flex-col justify-center">
-              <div className="relative grow">
-                <div className="flex flex-col md:flex-row items-center gap-[6vw] md:gap-0 lg:gap-[1.4vw]">
-                  {/* List Items */}
-                  <div className="w-full md:w-[45%] lg:w-[44%] z-10 flex flex-col items-center md:items-start pointer-events-auto">
-                    <div
-                      className="text-white font-normal relative self-stretch
-                         text-center md:text-left 
-                         mt-[2vh] md:mt-0 
-                         mr-0 md:mr-[-12vw] lg:mr-[-17.5vw] 
-                         text-[4vw] md:text-[2.5vw] lg:text-[1.4vw] leading-[1.4]"
-                    >
-                      Versatile multipurpose court
-                      <br />
-                      Refreshing swimming pool
-                      <br />
-                      Well-equipped gymnasium
-                      <br />
-                      Safe, thoughtfully designed kids' play area
-                      <br />
-                      Spacious party hall for gatherings
-                      <br />
-                      Serene walking track
-                    </div>
-                  </div>
-
-                  {/* Image 1: Fun Activities Fish */}
-                  <div className="w-full sm:w-[80%] md:w-[55%] lg:w-[56%] relative z-0 mx-auto md:ml-auto lg:ml-[1.4vw] flex justify-center pointer-events-auto">
-                    <Image
-                      src="/assets/fish-image-1.webp"
-                      alt="Amenities"
-                      width={600}
-                      height={484}
-                      className="aspect-[1.24] object-contain w-full h-auto grow drop-shadow-xl"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         {/* Master Plan Wrapper */}
         <div className="relative w-full mt-[5vh] lg:mt-[10vh] px-[5vw] lg:px-[0vw] flex flex-col justify-center pointer-events-auto">
@@ -289,16 +231,7 @@ export const MasterPlanSection: React.FC = () => {
                 </ul>
               </div>
 
-              {/* Middle Column: Fish Image 2 */}
-              <div className="hidden md:block absolute top-[50%] -translate-y-1/2 left-[40%] lg:left-[25%] z-20 pointer-events-none">
-                <Image
-                  src="/assets/fish-image-2.webp"
-                  alt="Decorative fish"
-                  width={300}
-                  height={300}
-                  className="object-contain w-[15vw] lg:w-[12vw] h-auto drop-shadow-2xl opacity-90"
-                />
-              </div>
+              
 
               {/* Right Column: Master Plan Image */}
               <div className="w-full md:w-[50%] lg:w-[60%] relative z-0 flex justify-end">

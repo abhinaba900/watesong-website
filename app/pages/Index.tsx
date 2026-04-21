@@ -35,14 +35,6 @@ const Index = () => {
     <main className="overflow-x-hidden relative">
       {/* 🛑 INVOCATION: Drops the screen-glass water effect over the whole page */}
 
-      <section id="hero">
-        <HeroSection />
-      </section>
-
-      <section >
-        <FeatureSection />
-      </section>
-
       {/* Put your Background Image back normally! */}
       <div className="relative z-10 flex flex-col w-full">
         <Image
@@ -53,6 +45,13 @@ const Index = () => {
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         />
 
+        <section id="hero">
+          <HeroSection />
+        </section>
+
+        <section>
+          <FeatureSection />
+        </section>
         <section className="relative z-10">
           <MasterPlanSection />
         </section>

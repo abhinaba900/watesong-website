@@ -9,57 +9,29 @@ const SocialIconButton: React.FC<{
   index: number;
   href: string;
 }> = ({ icon, index, href }) => {
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const triggerAnimation = () => {
-    setIsAnimating(false);
-    setTimeout(() => setIsAnimating(true), 10);
-  };
-
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      onMouseEnter={triggerAnimation}
-      onFocus={triggerAnimation}
-      onClick={triggerAnimation}
-      animate={
-        isAnimating
-          ? {
-              scale: [1.3, 1.45, 1.2, 1.35, 1.3],
-              scaleX: [1.3, 1.45, 1.1, 1.35, 1.3],
-              scaleY: [1.3, 1.45, 1.4, 1.25, 1.3],
-            }
-          : {
-              scale: 1.3,
-              scaleX: 1.3,
-              scaleY: 1.3,
-            }
-      }
-      whileTap={{ scale: 1.1 }}
-      onAnimationComplete={() => setIsAnimating(false)}
-      transition={{
-        duration: 0.5,
-        ease: "easeInOut",
-        times: [0, 0.2, 0.5, 0.8, 1],
-      }}
-      className="relative cursor-pointer select-none outline-none border-none pointer-events-auto"
+      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
+      whileTap={{ scale: 0.95 }}
+      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full bg-white/10 border border-white/20 transition-colors pointer-events-auto overflow-hidden"
       aria-label={`Social media link ${index + 1}`}
     >
       <Image
         src={icon}
         alt={`Social icon ${index + 1}`}
-        width={100}
-        height={100}
-        className="aspect-square object-contain w-[12vw] md:w-[8vw] lg:w-[4vw] h-auto"
+        width={40}
+        height={40}
+        className="w-[50%] h-auto object-contain brightness-0 invert opacity-90"
       />
     </motion.a>
   );
 };
 
 export const ContactSection: React.FC = () => {
-  const [phoneNumber, setPhoneNumber] = useState("7026112224");
+  const [phoneNumber, setPhoneNumber] = useState("70261 12224");
   const [isMounted, setIsMounted] = useState(false);
 
   // --- Ripple Refs ---
@@ -74,25 +46,25 @@ export const ContactSection: React.FC = () => {
 
   const socialIcons = [
     {
-      icon: "/assets/facebook-icon.webp",
-      href: "https://www.facebook.com/habitatventures",
-    },
-    {
-      icon: "/assets/twtter-icon.webp",
-      href: "#",
-    },
-    {
       icon: "/assets/instagram-icon.webp",
       href: "https://www.instagram.com/habitatventures",
+    },
+    {
+      icon: "/assets/facebook-icon.webp",
+      href: "https://www.facebook.com/habitatventures",
     },
     {
       icon: "/assets/linkedin-icon.webp",
       href: "https://www.linkedin.com/company/habitatventures",
     },
+    {
+      icon: "/assets/twtter-icon.webp",
+      href: "#",
+    },
   ];
 
   const handleCallClick = () => {
-    window.location.href = `tel:${phoneNumber}`;
+    window.location.href = `tel:${phoneNumber.replace(/\s/g, "")}`;
   };
 
   useEffect(() => {
@@ -107,7 +79,6 @@ export const ContactSection: React.FC = () => {
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    // Scale down for CPU performance
     const scale = 0.5;
 
     const initCanvas = () => {
@@ -148,39 +119,16 @@ export const ContactSection: React.FC = () => {
       for (let y = 1; y < height - 1; y++) {
         for (let x = 1; x < width - 1; x++) {
           const i = x + y * width;
-
-          buffer2[i] =
-            (buffer1[i - 1] +
-              buffer1[i + 1] +
-              buffer1[i - width] +
-              buffer1[i + width]) /
-              2 -
-            buffer2[i];
-
+          buffer2[i] = (buffer1[i - 1] + buffer1[i + 1] + buffer1[i - width] + buffer1[i + width]) / 2 - buffer2[i];
           buffer2[i] *= damping;
-
           let dataOffset = buffer2[i] - buffer1[i];
           const targetPixel = i * 4;
-
-          let r = 0,
-            g = 0,
-            b = 0,
-            a = 0;
-
+          let r = 0, g = 0, b = 0, a = 0;
           if (dataOffset > 0.5) {
-            // Wave Crest (Highlight)
-            r = 255;
-            g = 255;
-            b = 255;
-            a = Math.min(255, dataOffset * 25);
+            r = 255; g = 255; b = 255; a = Math.min(255, dataOffset * 25);
           } else if (dataOffset < -0.5) {
-            // Wave Trough (Soft Shadow)
-            r = 10;
-            g = 25;
-            b = 40;
-            a = Math.min(255, -dataOffset * 8); // Soft shadow logic!
+            r = 10; g = 25; b = 40; a = Math.min(255, -dataOffset * 8);
           }
-
           outputPixels[targetPixel] = r;
           outputPixels[targetPixel + 1] = g;
           outputPixels[targetPixel + 2] = b;
@@ -203,47 +151,36 @@ export const ContactSection: React.FC = () => {
     };
   }, [isMounted]);
 
-  const dropStone = useCallback(
-    (x: number, y: number, radius: number, strength: number) => {
-      if (!canvasRef.current || !containerRef.current) return;
-
-      const rect = containerRef.current.getBoundingClientRect();
-      const scaleX = widthRef.current / rect.width;
-      const scaleY = heightRef.current / rect.height;
-
-      // Calculate click position relative to the section
-      const scaledX = Math.floor((x - rect.left) * scaleX);
-      const scaledY = Math.floor((y - rect.top) * scaleY);
-
-      const width = widthRef.current;
-      const height = heightRef.current;
-      const buffer1 = buffer1Ref.current;
-
-      for (let j = scaledY - radius; j < scaledY + radius; j++) {
-        for (let i = scaledX - radius; i < scaledX + radius; i++) {
-          if (i >= 0 && i < width && j >= 0 && j < height) {
-            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
-              buffer1[i + j * width] = strength;
-            }
+  const dropStone = useCallback((x: number, y: number, radius: number, strength: number) => {
+    if (!canvasRef.current || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const scaleX = widthRef.current / rect.width;
+    const scaleY = heightRef.current / rect.height;
+    const scaledX = Math.floor((x - rect.left) * scaleX);
+    const scaledY = Math.floor((y - rect.top) * scaleY);
+    const width = widthRef.current;
+    const height = heightRef.current;
+    const buffer1 = buffer1Ref.current;
+    for (let j = scaledY - radius; j < scaledY + radius; j++) {
+      for (let i = scaledX - radius; i < scaledX + radius; i++) {
+        if (i >= 0 && i < width && j >= 0 && j < height) {
+          if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
+            buffer1[i + j * width] = strength;
           }
         }
       }
-    },
-    [],
-  );
+    }
+  }, []);
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    // Finalized Lite Click Ripple: Radius 8, Strength 40
-        dropStone(e.clientX, e.clientY, 8, 60);
-
+    dropStone(e.clientX, e.clientY, 8, 60);
   };
 
   return (
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      // Added overflow-hidden to keep the canvas clean
-      className="relative bg-transparent w-full px-[5vw] lg:px-[8vw] py-[4vh] lg:pt-[6vh] lg:pb-[2vh] overflow-hidden"
+      className="relative bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[10vh] overflow-hidden"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
@@ -253,74 +190,91 @@ export const ContactSection: React.FC = () => {
         />
       )}
 
-      {/* Main Grid: Stacks on mobile, 3 columns on desktop */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full gap-[8vw] lg:gap-[2vw] pointer-events-none">
-        {/* LEFT COLUMN: Logos & Address Info */}
-        <div className="w-full lg:w-[35%] flex flex-col items-center lg:items-start text-center lg:text-left text-white font-semibold leading-[1.4] pointer-events-auto">
-          {/* Privae Logo */}
-          <Image
-            src="/assets/navbar-right-logo.webp"
-            alt="Privae logo"
-            width={300}
-            height={100}
-            className="object-contain w-[40vw] md:w-[25vw] lg:w-[12vw] mb-[2vh] h-auto"
-          />
-          {/* Watersong Logo */}
-          <Image
-            src="/assets/watersong-logo-blue.webp"
-            alt="Watersong logo"
-            width={400}
-            height={150}
-            className="object-contain w-[70vw] md:w-[45vw] lg:w-[22vw] h-auto"
-          />
-          {/* Location Text */}
-          <h3 className="text-[6vw] md:text-[4vw] lg:text-[1.8vw] tracking-[-0.04vw]">
-            Lakefront Residences
-          </h3>
-          <p className="text-[4vw] md:text-[2.5vw] lg:text-[1vw] tracking-[-0.02vw] font-normal opacity-90">
-            1 KM from Nallurhalli Metro, Whitefield
-          </p>
-        </div>
-
-        {/* MIDDLE COLUMN: Socials & Phone Number */}
-        <div className="w-full lg:w-[30%] flex flex-col items-center justify-center gap-[4vh]">
-          {/* Social Icons */}
-          <div className="flex items-center justify-center gap-[4vw] lg:gap-[1.5vw]">
-            {socialIcons.map((social, index) => (
-              <SocialIconButton
-                key={index}
-                icon={social.icon}
-                href={social.href}
-                index={index}
-              />
-            ))}
+      {/* Main Grid: Stacks on mobile, 2 columns as per reference */}
+      <div className="relative z-10 flex flex-col lg:flex-row items-end justify-between w-full gap-[8vw] lg:gap-[4vw] pointer-events-none">
+        {/* LEFT/CENTER COLUMN: Branding & Contact */}
+        <div className="w-full lg:w-[50%] flex flex-col items-center lg:items-start text-center lg:text-left text-white pointer-events-auto">
+          {/* PRÍVAE Logo */}
+          <div className="mb-[2vh]">
+            <Image
+              src="/assets/navbar-right-logo.webp"
+              alt="PRÍVAE"
+              width={120}
+              height={40}
+              className="object-contain w-[15vw] md:w-[10vw] lg:w-[6vw] brightness-0 invert"
+            />
+          </div>
+          
+          {/* Watersong Logo Wrapper */}
+          <div className="flex flex-col items-center lg:items-start">
+            <Image
+              src="/assets/watersong-logo-blue.webp"
+              alt="Watersong"
+              width={600}
+              height={200}
+              className="object-contain w-[75vw] md:w-[50vw] lg:w-[28vw] mb-[-1vh]"
+            />
+            <h3 className="text-[6vw] md:text-[4vw] lg:text-[1.8vw] font-medium tracking-tight mb-[0.5vh]">
+              Lakefront Residences
+            </h3>
+            <p className="text-[4vw] md:text-[2.2vw] lg:text-[1vw] font-light opacity-80 mb-[4vh]">
+              1 KM from Nallurhalli Metro, Whitefield
+            </p>
           </div>
 
-          {/* Phone Number */}
-          <button
-            onClick={handleCallClick}
-            className="text-[7vw] md:text-[5vw] flex items-center gap-2 lg:text-[2vw] text-white font-semibold hover:scale-[1.03] transition-all duration-300 tracking-wide pointer-events-auto"
-          >
-            <Image
-              src="/assets/call-icon-svg.svg"
-              alt="Call icon"
-              width={100}
-              height={100}
-              className="object-contain w-[4vw] md:w-[3vw] lg:w-[1.5vw] h-auto "
-            />
-            {phoneNumber}
-          </button>
+          <div className="flex flex-col items-center lg:items-start gap-[4vh]">
+            {/* Social Icons */}
+            <div className="flex items-center gap-[4vw] lg:gap-[1.5vw]">
+              {socialIcons.map((social, index) => (
+                <SocialIconButton
+                  key={index}
+                  icon={social.icon}
+                  href={social.href}
+                  index={index}
+                />
+              ))}
+            </div>
+
+            {/* Phone Number */}
+            <button
+              onClick={handleCallClick}
+              className="text-[7vw] md:text-[5vw] lg:text-[2.2vw] text-white font-medium flex items-center gap-3 hover:opacity-80 transition-opacity tracking-wide"
+            >
+              <Image
+                src="/assets/call-icon-svg.svg"
+                alt="Call"
+                width={30}
+                height={30}
+                className="w-[5vw] md:w-[3vw] lg:w-[1.4vw] brightness-0 invert"
+              />
+              {phoneNumber}
+            </button>
+          </div>
         </div>
 
-        {/* RIGHT COLUMN: Illustration / Map */}
-        <div className="w-full lg:w-[35%] flex justify-center lg:justify-end pointer-events-auto">
-          <Image
-            src="/assets/lackfront-recidance.webp"
-            alt="Contact illustration"
-            width={800}
-            height={640} // Maintains the 1.25 aspect ratio
-            className="object-contain w-[80vw] md:w-[60vw] lg:w-[100%] aspect-[1.25] h-auto"
-          />
+        {/* RIGHT COLUMN: Building & Stones */}
+        <div className="w-full lg:w-[50%] relative flex justify-center lg:justify-end pointer-events-auto">
+          {/* Building Image */}
+          <div className="relative w-full lg:w-[100%] z-10">
+             <Image
+              src="/assets/lackfront-recidance.webp"
+              alt="Lakefront Residence"
+              width={1000}
+              height={800}
+              className="object-contain w-full h-auto drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Corner Stones Pile */}
+          <div className="absolute -right-[8vw] -bottom-[10vh] w-[40vw] lg:w-[20vw] z-0 opacity-80">
+            <Image
+              src="/assets/hero-border-image.webp"
+              alt="Decorative stones"
+              width={600}
+              height={600}
+              className="object-contain w-full h-auto rotate-[15deg] translate-x-[20%] translate-y-[20%]"
+            />
+          </div>
         </div>
       </div>
     </section>
