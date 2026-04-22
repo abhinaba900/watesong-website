@@ -16,7 +16,7 @@ const SocialIconButton: React.FC<{
       rel="noopener noreferrer"
       whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
       whileTap={{ scale: 0.95 }}
-      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full bg-white/10 border border-white/20 transition-colors pointer-events-auto overflow-hidden"
+      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-colors pointer-events-auto overflow-hidden"
       aria-label={`Social media link ${index + 1}`}
     >
       <Image

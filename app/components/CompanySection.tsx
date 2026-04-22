@@ -231,7 +231,7 @@ export const CompanySection: React.FC = () => {
             alt="Fishing boat"
             width={600}
             height={800}
-            className="object-contain w-full scale-x-[-1] h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+            className="object-contain w-full scale-x-[-1] rotate-[-30deg] translate-x-[30%] h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
           />
         </motion.div>
 
@@ -247,20 +247,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Animated Fish Group - Center Bottom */}
-        <div className="absolute bottom-[10vh] left-[40%] flex gap-[8vw] lg:gap-[6vw] opacity-20 lg:opacity-30">
-          <motion.div
-            animate={{ x: [-15, 15], y: [-10, 10], rotate: [-10, 10] }}
-            transition={{ duration: 6, repeat: Infinity, repeatType: "mirror" }}
-            className="w-[15vw] lg:w-[5vw]"
-          >
-            <Image
-              src="/assets/fish-image-1.webp"
-              alt=""
-              width={100}
-              height={100}
-              className="w-full h-auto"
-            />
-          </motion.div>
+        <div className="absolute bottom-[10vh] left-[30%] flex gap-[8vw] lg:gap-[6vw] opacity-20 lg:opacity-30">
           <motion.div
             animate={{ x: [15, -15], y: [10, -10], rotate: [10, -10] }}
             transition={{
@@ -269,7 +256,7 @@ export const CompanySection: React.FC = () => {
               repeatType: "mirror",
               delay: 1,
             }}
-            className="w-[12vw] lg:w-[4vw] mt-12"
+            className="w-[15vw] lg:w-[12vw] mt-12"
           >
             <Image
               src="/assets/fish-image-2.webp"
