@@ -7,10 +7,23 @@ import FloatingWaterImages from "./FloatingWaterImages";
 
 // Shared floating animation settings
 const floatAnim = {
-  animate: { rotate: [-3, 3] as [number, number], y: ["-4%", "4%"] as [string, string] },
+  animate: {
+    rotate: [-3, 3] as [number, number],
+    y: ["-4%", "4%"] as [string, string],
+  },
   transition: {
-    rotate: { duration: 6, repeat: Infinity, repeatType: "mirror" as const, ease: "easeInOut" },
-    y: { duration: 4.5, repeat: Infinity, repeatType: "mirror" as const, ease: "easeInOut" },
+    rotate: {
+      duration: 6,
+      repeat: Infinity,
+      repeatType: "mirror" as const,
+      ease: "easeInOut",
+    },
+    y: {
+      duration: 4.5,
+      repeat: Infinity,
+      repeatType: "mirror" as const,
+      ease: "easeInOut",
+    },
   },
 } as const;
 
@@ -24,12 +37,7 @@ export const FeatureSection: React.FC = () => {
        *   Block 2 →  heading + copy LEFT    |  big circle image RIGHT
        * ───────────────────────────────────────────────────────────────────────
        */}
-      <section
-        id="highlights"
-        className="relative w-full"
-      >
-
-
+      <section id="highlights" className="relative w-full">
         {/* Roaming turtle (FloatingWaterImages handles its own positioning) */}
         <div className="absolute inset-0 z-20 pointer-events-none">
           {/* <FloatingWaterImages /> */}
@@ -37,7 +45,6 @@ export const FeatureSection: React.FC = () => {
 
         {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
         <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] gap-10 lg:gap-0">
-
           {/* LEFT: Large circular image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -108,23 +115,22 @@ export const FeatureSection: React.FC = () => {
               className="text-white/78 font-light leading-[1.75]"
               style={{ fontSize: "clamp(0.85rem, 1.15vw, 1.1rem)" }}
             >
-              Homes at Watersong are so private, it feels like a villa.
-              No doors face each other. No shared walls.
-              Only expansive balconies, open air & a serene lake view.
+              Homes at Watersong are so private, it feels like a villa. No doors
+              face each other. No shared walls. Only expansive balconies, open
+              air & a serene lake view.
             </motion.p>
           </motion.div>
         </div>
 
         {/* ── BLOCK 2 ─ Lake Lounge ───────────────────────────────────────── */}
         <div className="relative z-10 w-full min-h-screen  flex flex-col lg:flex-row items-center px-[4vw] py-[10vh] pb-[14vh] gap-10 lg:gap-0">
-
           {/* LEFT: Lotus decoration + heading + copy  (renders after the circle on mobile) */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1 "
+            className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1 ml-auto"
           >
             {/* Lotus decoration */}
             <div className="mb-[5vh]">
@@ -179,8 +185,8 @@ export const FeatureSection: React.FC = () => {
               style={{ fontSize: "clamp(0.78rem, 1.05vw, 1rem)" }}
             >
               Forget boring balconies. Step out into a rare 200 sq. ft. lake
-              lounge: your private front row to rippling water, open skies,
-              and evening breeze. It is a place to linger, breathe, and truly
+              lounge: your private front row to rippling water, open skies, and
+              evening breeze. It is a place to linger, breathe, and truly
               unwind.
             </motion.p>
           </motion.div>
@@ -191,7 +197,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-            className="w-full lg:w-[55%] flex justify-center items-center order-1 lg:order-2"
+            className="w-full lg:w-[45%] ml-auto flex justify-center items-center order-1 lg:order-2"
           >
             <div
               className="relative aspect-square"
@@ -210,27 +216,26 @@ export const FeatureSection: React.FC = () => {
 
         {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
         <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] gap-10 lg:gap-0">
-
           {/* LEFT: Stone-framed lifestyle image + caption */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="w-full lg:w-[68%] flex flex-col items-center lg:items-start"
+            className="w-full lg:w-[80%] flex flex-col items-center lg:items-start"
           >
             {/* Stone frame container — same ratios as HeroSection */}
             <div
               className="relative w-full mx-auto"
               style={{
-                maxWidth: "clamp(280px, 70vw, 1050px)",
+                maxWidth: "clamp(380px, 95vw, 1600px)",
                 aspectRatio: "1456 / 816",
               }}
             >
               {/* Lifestyle photo fills the stone frame window */}
               <div
                 className="absolute overflow-hidden"
-                style={{ left: "25%", right: "20%", top: "23%", bottom: "21%" }}
+                style={{ left: "21%", right: "16%", top: "19%", bottom: "17%" }}
               >
                 <Image
                   src="/assets/just-40-residences.webp"
@@ -259,7 +264,7 @@ export const FeatureSection: React.FC = () => {
               alt="Features so thoughtful, you feel special"
               width={600}
               height={100}
-              className="w-[75dvw] md:w-[55dvw] lg:w-[32dvw] h-auto object-contain mx-auto  mt-[3.5vh]"
+              className="w-[75dvw] md:w-[55dvw] lg:w-[38dvw] h-auto object-contain mx-auto mt-[3.5vh]"
             />
           </motion.div>
 
@@ -275,8 +280,17 @@ export const FeatureSection: React.FC = () => {
             <div className="absolute -top-[15vh] right-[2vw] w-full h-[30vh] pointer-events-none">
               {/* Top-Right Fish */}
               <motion.div
-                animate={{ x: ["-4%", "4%"], y: ["-3%", "3%"], rotate: [-2, 2] }}
-                transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+                animate={{
+                  x: ["-4%", "4%"],
+                  y: ["-3%", "3%"],
+                  rotate: [-2, 2],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  ease: "easeInOut",
+                }}
                 className="absolute -top-[20vh] right-[7vw]"
               >
                 <Image
@@ -289,8 +303,6 @@ export const FeatureSection: React.FC = () => {
                   style={{ width: "clamp(120px, 20vw, 360px)", opacity: 0.9 }}
                 />
               </motion.div>
-
-             
             </div>
 
             {/* Feature bullet list */}
@@ -318,14 +330,13 @@ export const FeatureSection: React.FC = () => {
 
         {/* ── BLOCK 4 ─ Healthy & Active Lifestyle ────────────────────────── */}
         <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[10vh] pb-[14vh] gap-10 lg:gap-0">
-
           {/* LEFT: Lotus + Heading + Amenity list */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1"
+            className="w-full lg:w-[45%] text-white lg:pl-[4vw] ml-auto order-2 lg:order-1"
           >
             {/* Lotus decoration */}
             <div className="mb-[4vh]">
@@ -379,7 +390,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-            className="w-full lg:w-[55%] flex justify-center items-center order-1 lg:order-2"
+            className="w-full lg:w-[45%] flex justify-center items-center order-1 lg:order-2"
           >
             {/* Circular pool image with lily-like border treatment */}
             <div
@@ -406,7 +417,6 @@ export const FeatureSection: React.FC = () => {
       </section>
 
       {/* ── Amenities Banner ──────────────────────────────────────────────── */}
-      
     </>
   );
 };

@@ -189,7 +189,7 @@ export const HeroSection: React.FC = () => {
              * Width-driven sizing at 56vw, capped so the card's height
              * never overflows the viewport (minus navbar ~80px).
              */
-            width: "min(56vw, calc((100vh - 80px) * 1456 / 816))",
+            width: "min(72vw, calc((100vh - 80px) * 1456 / 816))",
             aspectRatio: "1456 / 816",
           }}
         >
@@ -311,7 +311,7 @@ export const HeroSection: React.FC = () => {
 
           {/* "Spacious Premium" specs */}
           <motion.div
-            className="text-right"
+            className="text-right mb-20"
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
