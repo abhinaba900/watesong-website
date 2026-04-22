@@ -36,7 +36,7 @@ export const FeatureSection: React.FC = () => {
         </div>
 
         {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
-        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[14vh] gap-10 lg:gap-0">
+        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] gap-10 lg:gap-0">
 
           {/* LEFT: Large circular image */}
           <motion.div
@@ -83,22 +83,22 @@ export const FeatureSection: React.FC = () => {
               </motion.div>
             </div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="font-extrabold uppercase leading-[1.08] mb-[3.5vh]"
-              style={{
-                fontSize: "clamp(1.7rem, 3.4vw, 4rem)",
-                fontStyle: "italic",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              Just 40 residences.
-              <br />
-              Just two homes per floor.
-            </motion.h2>
+            <div className="flex flex-col gap-[2vh] mb-[3.5vh]">
+              <Image
+                src="/assets/Just 40 residences..webp"
+                alt="Just 40 residences."
+                width={500}
+                height={100}
+                className="w-[70dvw] md:w-[45dvw] lg:w-[30dvw] -ml-[1.5vw] h-auto object-contain"
+              />
+              <Image
+                src="/assets/Just two homes per floor..webp"
+                alt="Just two homes per floor."
+                width={500}
+                height={100}
+                className="w-[70dvw] md:w-[45dvw] lg:w-[30dvw] -ml-[1.5vw] h-auto object-contain"
+              />
+            </div>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -116,7 +116,7 @@ export const FeatureSection: React.FC = () => {
         </div>
 
         {/* ── BLOCK 2 ─ Lake Lounge ───────────────────────────────────────── */}
-        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[10vh] pb-[14vh] gap-10 lg:gap-0">
+        <div className="relative z-10 w-full min-h-screen  flex flex-col lg:flex-row items-center px-[4vw] py-[10vh] pb-[14vh] gap-10 lg:gap-0">
 
           {/* LEFT: Lotus decoration + heading + copy  (renders after the circle on mobile) */}
           <motion.div
@@ -124,7 +124,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1"
+            className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1 border"
           >
             {/* Lotus decoration */}
             <div className="mb-[5vh]">
@@ -151,20 +151,13 @@ export const FeatureSection: React.FC = () => {
               A lake like this deserves
             </motion.p>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="font-extrabold uppercase leading-[1.05] mb-[2vh]"
-              style={{
-                fontSize: "clamp(1.7rem, 3.4vw, 4rem)",
-                fontStyle: "italic",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              A Lake Lounge
-            </motion.h2>
+            <Image
+              src="/assets/A Lake Lounge.webp"
+              alt="A Lake Lounge"
+              width={500}
+              height={100}
+              className="w-[50dvw] md:w-[35dvw] -ml-[1.5vw] lg:w-[22dvw] h-auto object-contain mb-[2vh]"
+            />
 
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -216,7 +209,7 @@ export const FeatureSection: React.FC = () => {
         </div>
 
         {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
-        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[10vh] gap-10 lg:gap-0">
+        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] gap-10 lg:gap-0">
 
           {/* LEFT: Stone-framed lifestyle image + caption */}
           <motion.div
@@ -224,13 +217,13 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="w-full lg:w-[55%] flex flex-col items-center lg:items-start"
+            className="w-full lg:w-[68%] flex flex-col items-center lg:items-start"
           >
             {/* Stone frame container — same ratios as HeroSection */}
             <div
-              className="relative w-full"
+              className="relative w-full mx-auto"
               style={{
-                maxWidth: "clamp(280px, 50vw, 680px)",
+                maxWidth: "clamp(280px, 70vw, 1050px)",
                 aspectRatio: "1456 / 816",
               }}
             >
@@ -261,21 +254,13 @@ export const FeatureSection: React.FC = () => {
             </div>
 
             {/* Caption below the stone frame */}
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-white text-center mx-auto mt-[3vh] tracking-widest uppercase text-center lg:text-left"
-              style={{
-                fontStyle: "italic",
-                fontFamily: "'Georgia', serif",
-                fontSize: "clamp(0.75rem, 1.1vw, 1.2rem)",
-                letterSpacing: "0.12em",
-              }}
-            >
-              Features so thoughtful, you feel special
-            </motion.p>
+            <Image
+              src="/assets/Features so thoughtful, you feel special.webp"
+              alt="Features so thoughtful, you feel special"
+              width={600}
+              height={100}
+              className="w-[75dvw] md:w-[55dvw] lg:w-[32dvw] h-auto object-contain mx-auto  mt-[3.5vh]"
+            />
           </motion.div>
 
           {/* RIGHT: Fish decorations + Feature bullet list */}
@@ -284,38 +269,28 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-            className="relative w-full lg:w-[45%] text-white lg:pl-[3vw]"
+            className="relative w-full lg:w-[32%] text-white lg:pl-[3vw] lg:self-end lg:pb-[10vh]"
           >
-            {/* Fish decorations */}
-            <div className="absolute -top-[12vh] right-[2vw] pointer-events-none flex flex-col items-end gap-[3vh]">
+            {/* Fish decorations - matching the reference image's scattered layout */}
+            <div className="absolute -top-[15vh] right-[2vw] w-full h-[30vh] pointer-events-none">
+              {/* Top-Right Fish */}
               <motion.div
-                animate={{ x: ["-5%", "5%"], y: ["-3%", "3%"] }}
-                transition={{ duration: 4, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+                animate={{ x: ["-4%", "4%"], y: ["-3%", "3%"], rotate: [-2, 2] }}
+                transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+                className="absolute -top-[20vh] right-[7vw]"
               >
                 <Image
                   src="/assets/fish-image-1.webp"
                   alt=""
                   aria-hidden="true"
-                  width={160}
-                  height={90}
+                  width={360}
+                  height={290}
                   className="h-auto"
-                  style={{ width: "clamp(70px, 10vw, 160px)", opacity: 0.85 }}
+                  style={{ width: "clamp(120px, 20vw, 360px)", opacity: 0.9 }}
                 />
               </motion.div>
-              <motion.div
-                animate={{ x: ["4%", "-4%"], y: ["3%", "-3%"] }}
-                transition={{ duration: 5.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: 0.8 }}
-              >
-                <Image
-                  src="/assets/fish-image-2.webp"
-                  alt=""
-                  aria-hidden="true"
-                  width={130}
-                  height={75}
-                  className="h-auto"
-                  style={{ width: "clamp(55px, 8vw, 130px)", opacity: 0.75 }}
-                />
-              </motion.div>
+
+             
             </div>
 
             {/* Feature bullet list */}
@@ -366,20 +341,13 @@ export const FeatureSection: React.FC = () => {
               </motion.div>
             </div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="font-extrabold uppercase leading-[1.1] mb-[4vh]"
-              style={{
-                fontSize: "clamp(1.5rem, 2.8vw, 3.4rem)",
-                fontStyle: "italic",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              Healthy &amp; Active Lifestyle
-            </motion.h2>
+            <Image
+              src="/assets/Healthy & Active Lifestyle.webp"
+              alt="Healthy & Active Lifestyle"
+              width={500}
+              height={100}
+              className="w-[55dvw] md:w-[40dvw] lg:w-[27dvw] -ml-[0.5vw] h-auto object-contain mb-[4vh]"
+            />
 
             <motion.ul
               initial={{ opacity: 0, y: 18 }}

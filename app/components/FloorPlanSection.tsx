@@ -335,9 +335,13 @@ export const FloorPlanSection: React.FC = () => {
       {/* ─── Main Content (Layered over canvas but interactive) ─── */}
       <div className="relative z-20 pointer-events-auto">
         {/* Heading */}
-        <h2 className="relative text-white font-extrabold uppercase text-left mb-[3vh] lg:mb-[4vh] text-[8vw] leading-[1.2]  md:text-[4.5vw]  lg:text-[3.5vw] lg:leading-[1.6] lg:tracking-[1px]  xl:text-[2.8vw] xl:leading-[1.6]">
-          FLOOR PLANS
-        </h2>
+        <Image
+          src="/assets/FLOOR PLANS.webp"
+          alt="FLOOR PLANS"
+          width={500}
+          height={100}
+          className="w-[50dvw] md:w-[30dvw] lg:w-[20dvw] -ml-[1.5vw] h-auto object-contain mb-[3vh] lg:mb-[4vh]"
+        />
 
         {/* Main Content Grid */}
         <div className="flex flex-col relative z-3 lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
@@ -379,7 +383,7 @@ export const FloorPlanSection: React.FC = () => {
                 alt={`Floor plan ${activeTab}`}
                 width={800}
                 height={800}
-                className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
+                className="object-contain w-full h-full  drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
               />
             </div>
           </div>
@@ -457,9 +461,13 @@ export const FloorPlanSection: React.FC = () => {
         {/* ─── PHOTOS | VIDEOS Section ─── */}
         <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center">
           {/* Title */}
-          <h2 className="relative text-white font-extrabold uppercase text-center mb-[6vh] text-[8vw] leading-[1.2] md:text-[4.5vw] lg:text-[3.5vw] lg:leading-[1.6] xl:text-[2.8vw]">
-            PHOTOS | VIDEOS
-          </h2>
+          <Image
+            src="/assets/PHOTOS or VIDEOS.webp"
+            alt="PHOTOS | VIDEOS"
+            width={500}
+            height={100}
+            className="w-[50dvw] md:w-[30dvw] lg:w-[22dvw] h-auto object-contain mb-[3vh] lg:mb-[4vh]]"
+          />
 
           {/* Stone Frame Container */}
           <div className="relative w-full max-w-[90vw] lg:max-w-[70vw] aspect-[16/9] flex justify-center items-center">
@@ -502,9 +510,13 @@ export const FloorPlanSection: React.FC = () => {
         <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center pb-[10vh]">
           {/* Title Group */}
           <div className="mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
-            <h2 className="text-white font-extrabold uppercase text-[8vw] leading-[1.2] md:text-[4.5vw] lg:text-[3.5vw] lg:leading-[1] xl:text-[2.8vw]">
-              LOCATION MAP
-            </h2>
+            <Image
+              src="/assets/LOCATION MAP.webp"
+              alt="LOCATION MAP"
+              width={500}
+              height={100}
+              className="w-[50dvw] md:w-[35dvw] lg:w-[22dvw] -ml-[1.5vw] h-auto object-contain mb-[2vh]"
+            />
             <p className="text-white/60 text-[4vw] md:text-[2vw] lg:text-[1.2vw] font-medium">
               (Not to scale)
             </p>

@@ -22,9 +22,8 @@ const SocialIconButton: React.FC<{
       <Image
         src={icon}
         alt={`Social icon ${index + 1}`}
-        width={40}
-        height={40}
-        className="w-[50%] h-auto object-contain brightness-0 invert opacity-90"
+        fill
+        className="object-cover brightness-0 invert opacity-90 scale-[1.6]"
       />
     </motion.a>
   );

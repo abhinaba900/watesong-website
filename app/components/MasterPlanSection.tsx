@@ -179,21 +179,16 @@ export const MasterPlanSection: React.FC = () => {
 
       {/* ─── Original Content ─── */}
       <div className="flex flex-col relative w-full items-center pl-0 lg:px-[5vw] pt-[22px] z-20 pointer-events-none">
-        
-
         {/* Master Plan Wrapper */}
         <div className="relative w-full mt-[5vh] lg:mt-[10vh] px-[5vw] lg:px-[0vw] flex flex-col justify-center pointer-events-auto">
           {/* Heading */}
-          <h2
-            className="relative text-white font-extrabold uppercase text-left
-               mb-[3vh] lg:mb-[4vh]
-               text-[8vw] leading-[1.2] 
-               md:text-[4.5vw] 
-               lg:text-[3.5vw] lg:leading-[1.6] lg:tracking-[1px] 
-               xl:text-[2.8vw] xl:leading-[1.6]"
-          >
-            MASTER PLAN
-          </h2>
+          <Image
+            src="/assets/MASTER PLAN.webp"
+            alt="MASTER PLAN"
+            width={500}
+            height={100}
+            className="w-[50dvw] md:w-[30dvw] lg:w-[20dvw] -ml-[1vw] h-auto object-contain mb-[3vh] lg:mb-[4vh]"
+          />
 
           {/* Main Content Wrapper */}
           <div className="relative w-full max-w-full">
@@ -230,8 +225,6 @@ export const MasterPlanSection: React.FC = () => {
                   </li>
                 </ul>
               </div>
-
-              
 
               {/* Right Column: Master Plan Image */}
               <div className="w-full md:w-[50%] lg:w-[60%] relative z-0 flex justify-end">

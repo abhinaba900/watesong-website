@@ -163,8 +163,7 @@ export const CompanySection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      // Added overflow-hidden to keep the canvas bounds clean
-      className="relative w-full flex flex-col items-center justify-center pt-[10vh] pb-[5vh] lg:pb-0 overflow-hidden"
+      className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[12vh] pb-[15vh] lg:pb-[10vh] "
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
@@ -174,121 +173,113 @@ export const CompanySection: React.FC = () => {
         />
       )}
 
-      {/* Center Content Wrapper */}
-      <div className="relative z-10 flex flex-col items-center w-full md:w-[80%] lg:w-[60%] mx-auto px-[5vw] lg:px-0 pointer-events-none">
-        {/* Heading */}
-        <h2
-          className="text-white font-medium text-center uppercase pointer-events-auto
-                       text-[5.5vw] leading-[1.4]
-                       md:text-[3vw] 
-                       lg:text-[1.1vw] lg:tracking-[0.1em]"
+      {/* Left-Aligned Text Content */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[6vw] lg:px-[8vw] pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-start text-left max-w-[95dvw] lg:max-w-[50dvw]"
         >
-          PRIVAE: SEASONED EXPERIENCE. FRESH THINKING.
-          <br />
-          <span className="font-light opacity-80 mt-1 block">
-             20 YEARS &nbsp;|&nbsp; 18 PROJECTS &nbsp;|&nbsp; 4 MILLION SQ. FT.
-          </span>
-        </h2>
+          {/* Main Title */}
+          <h2 className="text-white font-bold uppercase tracking-wider text-[5.5vw] md:text-[2.2vw] lg:text-[1.35vw] mb-3 pointer-events-auto leading-tight">
+            PRIVAE: SEASONED EXPERIENCE. FRESH THINKING.
+          </h2>
 
-        {/* Paragraph text */}
-        <p
-          className="text-white font-light text-center pointer-events-auto
-                       mt-[3vh] lg:mt-[5vh]
-                       text-[4vw] leading-[1.6]
-                       md:text-[2vw] md:leading-[1.5]
-                       lg:text-[1.1vw] lg:leading-[1.6] lg:tracking-[-0.01vw] opacity-90"
-        >
-          Privae draws from a legacy of building world-class living spaces. A
-          deep understanding of market needs and individual aspirations,
-          combined with strong technical expertise, guides every decision. The
-          brand is shaped by industry professionals with over 60 years of
-          combined experience, often surpassing established benchmarks.
-        </p>
+          {/* Stats Bar */}
+          <div className="text-white font-normal uppercase tracking-widest text-[4vw] md:text-[2vw] lg:text-[1.65vw] mb-[3vh] lg:mb-[4vh] flex flex-wrap items-center gap-x-4 gap-y-2 pointer-events-auto">
+            <span className="font-bold whitespace-nowrap">20 YEARS</span>
+            <span className="text-[#FF3B30] font-light hidden xs:inline">
+              |
+            </span>
+            <span className="font-bold whitespace-nowrap">18 PROJECTS</span>
+            <span className="text-[#FF3B30] font-light hidden xs:inline">
+              |
+            </span>
+            <span className="font-bold whitespace-nowrap">
+              4 MILLION SQ. FT.
+            </span>
+          </div>
+
+          {/* Descriptive Text */}
+          <p className="text-white/80 font-light text-[4.2vw] leading-[1.7] md:text-[1.8vw] lg:text-[0.95vw] lg:leading-[1.8] pointer-events-auto z-20">
+            Privae draws from a legacy of building world-class living spaces. A
+            deep understanding of market needs and individual aspirations,
+            combined with strong technical expertise, guides every decision. The
+            brand is shaped by industry professionals with over 60 years of
+            combined experience, often surpassing established benchmarks.
+          </p>
+        </motion.div>
       </div>
 
-      {/* Images Wrapper */}
-      <div
-        className="relative w-full h-[60vh] mt-[-10vh] pointer-events-none z-10"
-      >
-        {/* Decorative Boat Image (Left) */}
+      {/* Visual Elements Container */}
+      <div className="absolute inset-0 pointer-events-none ">
+        {/* Floating Boat - Bottom Leftish */}
         <motion.div
-          animate={{ rotate: [-1, 1.5], y: ["-2%", "2%"], x: ["-1%", "1%"] }}
+          animate={{ rotate: [-0.5, 1], y: ["-1%", "1%"] }}
           transition={{
-            duration: 10,
+            duration: 8,
             repeat: Infinity,
             repeatType: "mirror",
             ease: "easeInOut",
           }}
-          className="absolute left-[5vw] top-[5vh] w-[25vw] md:w-[20vw] lg:w-[15vw]"
+          className="absolute left-[-2vw] lg:left-[5vw] bottom-[-2vh] lg:bottom-[5vh] w-[50vw] md:w-[30vw] lg:w-[18vw] z-5 opacity-80 lg:opacity-100"
         >
           <Image
             src="/assets/fishing boat.webp"
             alt="Fishing boat"
             width={600}
             height={800}
-            className="object-contain w-full h-auto drop-shadow-2xl"
+            className="object-contain w-full scale-x-[-1] h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
           />
         </motion.div>
 
-        {/* Decorative Wooden Deck (Right) */}
-        <motion.div
-           initial={{ x: "10%", y: "20%" }}
-           className="absolute right-0 top-0 w-[45vw] md:w-[35vw] lg:w-[30vw]"
-        >
+        {/* Wooden Pier - Middle Right */}
+        <motion.div className="absolute right-0 bottom-[-5vh] lg:top-[30%] w-[55vw] md:w-[35vw] lg:w-[24dvw] z-5 translate-x-[20%] lg:translate-x-[15%] opacity-70 lg:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
-            alt="Wooden deck"
+            alt="Wooden pier"
             width={800}
-            height={1200}
-            className="object-contain w-full h-auto drop-shadow-2xl"
+            height={200}
+            className="object-contain transform  rotate-[90deg] skew-y-2 w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
           />
         </motion.div>
 
-        {/* Animated Fish 1 */}
-        <motion.div
-          animate={{ 
-            x: ["-20vw", "120vw"],
-            y: ["10vh", "30vh", "15vh"],
-            rotate: [20, -10, 10]
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute left-0 w-[10vw] lg:w-[6vw] opacity-40 blur-[1px]"
-        >
-          <Image
-            src="/assets/fish-image-1.webp"
-            alt="Swimming fish"
-            width={200}
-            height={200}
-            className="object-contain w-full h-auto"
-          />
-        </motion.div>
-
-        {/* Animated Fish 2 */}
-        <motion.div
-          animate={{ 
-            x: ["110vw", "-20vw"],
-            y: ["50vh", "35vh", "45vh"],
-            rotate: [170, 190, 180]
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute right-0 w-[12vw] lg:w-[7vw] opacity-30 blur-[2px]"
-        >
-          <Image
-            src="/assets/fish-image-2.webp"
-            alt="Swimming fish"
-            width={200}
-            height={200}
-            className="object-contain w-full h-auto"
-          />
-        </motion.div>
+        {/* Animated Fish Group - Center Bottom */}
+        <div className="absolute bottom-[10vh] left-[40%] flex gap-[8vw] lg:gap-[6vw] opacity-20 lg:opacity-30">
+          <motion.div
+            animate={{ x: [-15, 15], y: [-10, 10], rotate: [-10, 10] }}
+            transition={{ duration: 6, repeat: Infinity, repeatType: "mirror" }}
+            className="w-[15vw] lg:w-[5vw]"
+          >
+            <Image
+              src="/assets/fish-image-1.webp"
+              alt=""
+              width={100}
+              height={100}
+              className="w-full h-auto"
+            />
+          </motion.div>
+          <motion.div
+            animate={{ x: [15, -15], y: [10, -10], rotate: [10, -10] }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              repeatType: "mirror",
+              delay: 1,
+            }}
+            className="w-[12vw] lg:w-[4vw] mt-12"
+          >
+            <Image
+              src="/assets/fish-image-2.webp"
+              alt=""
+              width={100}
+              height={100}
+              className="w-full h-auto"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -36,7 +36,9 @@ export const HeroSection: React.FC = () => {
   const outputImageDataRef = useRef<ImageData | null>(null);
   const animationFrameRef = useRef<number>(0);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // ─── CPU Water Ripple ────────────────────────────────────────────────────────
   useEffect(() => {
@@ -83,18 +85,21 @@ export const HeroSection: React.FC = () => {
       for (let y = 1; y < H - 1; y++) {
         for (let x = 1; x < W - 1; x++) {
           const i = x + y * W;
-          b2[i] =
-            (b1[i - 1] + b1[i + 1] + b1[i - W] + b1[i + W]) / 2 - b2[i];
+          b2[i] = (b1[i - 1] + b1[i + 1] + b1[i - W] + b1[i + W]) / 2 - b2[i];
           b2[i] *= damp;
 
           const d = b2[i] - b1[i];
           const p = i * 4;
 
           if (d > 0.5) {
-            px[p] = 255; px[p + 1] = 255; px[p + 2] = 255;
+            px[p] = 255;
+            px[p + 1] = 255;
+            px[p + 2] = 255;
             px[p + 3] = Math.min(255, d * 25);
           } else if (d < -0.5) {
-            px[p] = 10; px[p + 1] = 25; px[p + 2] = 40;
+            px[p] = 10;
+            px[p + 1] = 25;
+            px[p + 2] = 40;
             px[p + 3] = Math.min(255, -d * 8);
           } else {
             px[p + 3] = 0;
@@ -156,8 +161,6 @@ export const HeroSection: React.FC = () => {
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{ zIndex: 4 }}
       />
-
-    
 
       {/* Tint overlay */}
       <div
@@ -313,19 +316,18 @@ export const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
           >
-            <h2
-              className="font-black uppercase tracking-widest text-white leading-none"
-              style={{
-                fontSize: "clamp(1.1rem, 2.2vw, 2.6rem)",
-                fontStyle: "italic",
-                letterSpacing: "0.08em",
-              }}
-            >
-              Spacious Premium
-            </h2>
+            <Image
+              src="/assets/Spacious Premium.webp"
+              alt="Spacious Premium"
+              width={400}
+              height={100}
+              className="w-[45dvw] lg:w-[22dvw] h-auto object-contain ml-auto"
+            />
             <p
-              className="text-white/75 font-light mt-3 leading-relaxed"
-              style={{ fontSize: "clamp(0.7rem, 0.95vw, 1rem)" }}
+              className="text-white/75 font-light mt-3 
+              mx-auto text-center
+              leading-1.2"
+              style={{ fontSize: "clamp(0.7rem, 1.4vw, 1.5rem)" }}
             >
               3 BHK+ Homes from
               <br />
