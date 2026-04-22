@@ -124,7 +124,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1 border"
+            className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1 "
           >
             {/* Lotus decoration */}
             <div className="mb-[5vh]">
