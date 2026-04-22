@@ -181,25 +181,24 @@ export const MasterPlanSection: React.FC = () => {
       <div className="flex flex-col relative w-full items-center pl-0 lg:px-[5vw] pt-[22px] z-20 pointer-events-none">
         {/* Master Plan Wrapper */}
         <div className="relative w-full mt-[5vh] lg:mt-[10vh] px-[5vw] lg:px-[0vw] flex flex-col justify-center pointer-events-auto">
-          {/* Heading */}
-          <Image
-            src="/assets/MASTER PLAN.webp"
-            alt="MASTER PLAN"
-            width={500}
-            height={100}
-            className="w-[50dvw] md:w-[30dvw] lg:w-[20dvw] -ml-[1vw] h-auto object-contain mb-[3vh] lg:mb-[4vh]"
-          />
-
           {/* Main Content Wrapper */}
           <div className="relative w-full max-w-full">
             <div className="flex flex-col md:flex-row items-center justify-between gap-[6vw] md:gap-[2vw]">
               {/* Left Column: Text List */}
               <div className="w-full md:w-[45%] lg:w-[35%] z-10">
+                {/* Heading */}
+                <Image
+                  src="/assets/MASTER PLAN.webp"
+                  alt="MASTER PLAN"
+                  width={500}
+                  height={100}
+                  className="w-[50dvw] md:w-[30dvw] lg:w-[20dvw] -ml-[1vw] h-auto object-contain "
+                />
                 <ul
                   className="text-white font-normal relative self-stretch 
                        text-left 
                        mt-[2vh] md:mt-0 
-                       text-[4.5vw] md:text-[2vw] lg:text-[1.31vw] leading-[1.4] 
+                       text-[4.5vw] md:text-[2vw] lg:text-[1.31vw] leading-[1.2] 
                        space-y-[1vh] lg:space-y-[1.2vh]"
                 >
                   <li>1. Entry & Exit</li>
@@ -227,13 +226,13 @@ export const MasterPlanSection: React.FC = () => {
               </div>
 
               {/* Right Column: Master Plan Image */}
-              <div className="w-full md:w-[50%] lg:w-[60%] relative z-0 flex justify-end">
+              <div className="w-full md:w-[70%] lg:w-[80%] relative z-0 flex justify-end">
                 <Image
                   src="/assets/maserplan-for-master-plan.webp"
                   alt="Master plan layout"
-                  width={1200}
-                  height={900}
-                  sizes="(max-width: 768px) 100vw, 60vw"
+                  width={1600}
+                  height={1000}
+                  sizes="(max-width: 768px) 100vw, 80vw"
                   className="object-cover w-full h-full rounded-lg"
                 />
               </div>

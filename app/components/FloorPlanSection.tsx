@@ -523,7 +523,7 @@ export const FloorPlanSection: React.FC = () => {
           </div>
 
           {/* Map Image */}
-          <div className="relative w-full lg:max-w-[85vw] aspect-auto">
+          <div className="relative w-full lg:max-w-[70vw] aspect-auto">
             <Image
               src="/assets/location-map.webp"
               alt="Location Map"

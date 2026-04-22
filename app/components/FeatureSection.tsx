@@ -44,7 +44,7 @@ export const FeatureSection: React.FC = () => {
         </div>
 
         {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
-        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] gap-10 lg:gap-0">
+        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-end px-[4vw] py-[5vh] gap-10 lg:gap-0">
           {/* LEFT: Large circular image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -55,17 +55,31 @@ export const FeatureSection: React.FC = () => {
           >
             <div
               className="relative aspect-square"
-              style={{ width: "clamp(260px, 44vw, 620px)" }}
+              style={{ width: "clamp(260px, 64vw, 820px)" }}
             >
               <Image
                 src="/assets/features-so-thoughtful-you-feel-spcial.webp"
                 alt="Family enjoying life at Watersong"
                 fill
-                sizes="(max-width: 768px) 85vw, (max-width: 1024px) 55vw, 44vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 75vw, 70vw"
                 className="object-contain drop-shadow-2xl"
               />
             </div>
           </motion.div>
+          {/* Floating turtle — top-right corner */}
+          <div className="absolute top-[25vh] right-[10%] pointer-events-none">
+            <motion.div {...floatAnim}>
+              <Image
+                src="/assets/turtle.webp"
+                alt=""
+                aria-hidden="true"
+                width={160}
+                height={110}
+                className="h-auto rotate-[270deg] opacity-50"
+                style={{ width: "clamp(60px, 9vw, 140px)" }}
+              />
+            </motion.div>
+          </div>
 
           {/* RIGHT: Turtle decoration + heading + copy */}
           <motion.div
@@ -73,23 +87,8 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-            className="relative w-full lg:w-[45%] text-white lg:pr-[4vw]"
+            className="relative w-full lg:w-[45%] text-white lg:pr-[4vw] mb-[20vh]"
           >
-            {/* Floating turtle — top-right corner */}
-            <div className="absolute -top-[6vh] right-0 pointer-events-none">
-              <motion.div {...floatAnim}>
-                <Image
-                  src="/assets/turtle.webp"
-                  alt=""
-                  aria-hidden="true"
-                  width={160}
-                  height={110}
-                  className="h-auto"
-                  style={{ width: "clamp(60px, 9vw, 140px)" }}
-                />
-              </motion.div>
-            </div>
-
             <div className="flex flex-col gap-[2vh] mb-[3.5vh]">
               <Image
                 src="/assets/Just 40 residences..webp"
@@ -136,7 +135,7 @@ export const FeatureSection: React.FC = () => {
             <div className="mb-[5vh]">
               <motion.div {...floatAnim}>
                 <Image
-                  src="/assets/with-flower-lily-image.webp"
+                  src="/assets/middle image.webp"
                   alt="Lotus"
                   width={240}
                   height={210}
@@ -200,15 +199,16 @@ export const FeatureSection: React.FC = () => {
             className="w-full lg:w-[45%] ml-auto flex justify-center items-center order-1 lg:order-2"
           >
             <div
-              className="relative aspect-square"
-              style={{ width: "clamp(260px, 44vw, 620px)" }}
+              className="relative aspect-square mx-auto"
+              style={{ width: "clamp(320px, 70vw, 1300px)" }}
             >
               <Image
                 src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
                 alt="Couple enjoying the lake lounge at Watersong"
                 fill
-                sizes="(max-width: 768px) 85vw, (max-width: 1024px) 55vw, 44vw"
-                className="object-contain drop-shadow-2xl"
+                sizes="(max-width: 768px) 90vw, (max-width: 1024px) 70vw, 70vw"
+                className="object-cover drop-shadow-2xl"
+                priority
               />
             </div>
           </motion.div>
@@ -228,7 +228,7 @@ export const FeatureSection: React.FC = () => {
             <div
               className="relative w-full mx-auto"
               style={{
-                maxWidth: "clamp(380px, 95vw, 1600px)",
+                maxWidth: "clamp(420px, 110vw, 2000px)",
                 aspectRatio: "1456 / 816",
               }}
             >
@@ -241,18 +241,18 @@ export const FeatureSection: React.FC = () => {
                   src="/assets/just-40-residences.webp"
                   alt="Family life at Watersong"
                   fill
-                  sizes="(max-width: 768px) 85vw, 50vw"
+                  sizes="(max-width: 768px) 95vw, 70vw"
                   className="object-cover"
                 />
               </div>
 
-              {/* Stone border image — same asset as hero */}
+              {/* Stone border image */}
               <Image
                 src="/assets/hero-border-image.webp"
                 alt=""
                 aria-hidden="true"
                 fill
-                sizes="(max-width: 768px) 85vw, 50vw"
+                sizes="(max-width: 768px) 95vw, 70vw"
                 className="object-fill pointer-events-none select-none"
                 style={{ zIndex: 10 }}
               />
@@ -365,7 +365,7 @@ export const FeatureSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-white/78 font-light leading-[2.5] list-none"
+              className="text-white/78 font-light leading-[2] list-none"
               style={{ fontSize: "clamp(0.8rem, 1.05vw, 1rem)" }}
             >
               {[
