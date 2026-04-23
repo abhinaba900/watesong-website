@@ -44,7 +44,7 @@ export const FeatureSection: React.FC = () => {
         </div>
 
         {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
-        <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-end px-[4vw] py-[5vh] gap-10 lg:gap-0">
+        <div className="relative z-10 w-full min-h-fit xl:min-h-screen flex flex-col col-reverse lg:flex-row items-end px-[4vw] py-0 lg:py-[5vh] gap-10 lg:gap-0">
           {/* LEFT: Large circular image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -55,7 +55,7 @@ export const FeatureSection: React.FC = () => {
           >
             <div
               className="relative aspect-square"
-              style={{ width: "clamp(260px, 64vw, 820px)" }}
+              style={{ width: "clamp(360px, 64vw, 820px)" }}
             >
               <Image
                 src="/assets/features-so-thoughtful-you-feel-spcial.webp"
@@ -87,7 +87,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-            className="relative w-full lg:w-[45%] text-white lg:pr-[4vw] mb-[20vh]"
+            className="relative w-full lg:w-[45%] text-white lg:pr-[4vw] xl:mb-[10vh] mb-[0vh]"
           >
             <div className="flex flex-col gap-[2vh] mb-[3.5vh]">
               <Image
@@ -122,7 +122,7 @@ export const FeatureSection: React.FC = () => {
         </div>
 
         {/* ── BLOCK 2 ─ Lake Lounge ───────────────────────────────────────── */}
-        <div className="relative z-10 w-full min-h-screen  flex flex-col lg:flex-row items-center px-[4vw] py-[10vh] pb-[14vh] gap-10 lg:gap-0">
+        <div className="relative z-10 w-full min-h-screen  flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] pb-[5vh] gap-10 lg:gap-0">
           {/* LEFT: Lotus decoration + heading + copy  (renders after the circle on mobile) */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
