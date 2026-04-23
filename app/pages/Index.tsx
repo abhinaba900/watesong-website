@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { HeroSection } from "@/components/HeroSection";
 import { FeatureSection } from "@/components/FeatureSection";
+import FloatingWaterImages from "@/components/FloatingWaterImages";
 // Import our new global overlay
 
 const MasterPlanSection = dynamic(
@@ -37,12 +38,10 @@ const Index = () => {
 
       {/* Put your Background Image back normally! */}
       <div className="relative z-10 flex flex-col w-full overflow-x-hidden">
-        <Image
-          src="/assets/bg-in-feature-section.webp"
-          alt="Background"
-          width={1920}
-          height={1080}
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        <FloatingWaterImages
+          isFixed
+          backgroundImage="/assets/bg-in-feature-section.webp"
+          className="z-0"
         />
 
         <section id="hero">

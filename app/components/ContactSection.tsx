@@ -190,7 +190,15 @@ export const ContactSection: React.FC = () => {
       )}
 
       {/* Main Grid: Stacks on mobile, 2 columns as per reference */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-end justify-between w-full gap-[8vw] lg:gap-[4vw] pointer-events-none">
+      <div
+        className="relative z-10 w-full min-h-screen 
+flex flex-col lg:flex-row 
+items-center 
+px-[4vw] 
+py-[1rem] lg:py-[10vh] 
+pb-[1rem] lg:pb-[14vh] 
+gap-10 lg:gap-0"
+      >
         {/* LEFT/CENTER COLUMN: Branding & Contact */}
         <div className="w-full lg:w-[50%] flex flex-col items-center lg:items-start text-center lg:text-left text-white pointer-events-auto">
           {/* PRÍVAE Logo */}
@@ -263,8 +271,6 @@ export const ContactSection: React.FC = () => {
               className="object-contain w-full h-auto drop-shadow-2xl"
             />
           </div>
-
-          
         </div>
       </div>
     </section>

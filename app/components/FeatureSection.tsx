@@ -197,140 +197,232 @@ export const FeatureSection: React.FC = () => {
       )}
 
       {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
-      <div className="relative z-10 w-full min-h-fit xl:min-h-screen flex flex-col col-reverse lg:flex-row items-end px-[4vw] py-0 lg:py-[5vh] gap-10 lg:gap-0">
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[55%] flex justify-center items-center"
-        >
-          <div
-            className="relative aspect-square"
-            style={{ width: "clamp(360px, 64vw, 820px)" }}
-          >
-            <Image
-              src="/assets/features-so-thoughtful-you-feel-spcial.webp"
-              alt="Family enjoying life at Watersong"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 75vw, 70vw"
-              className="object-contain drop-shadow-2xl"
-            />
-          </div>
-        </motion.div>
-
-        <div className="absolute top-[25vh] right-[10%] pointer-events-none">
-          <motion.div {...floatAnim}>
-            <Image
-              src="/assets/turtle.webp"
-              alt=""
-              aria-hidden="true"
-              width={160}
-              height={110}
-              className="h-auto rotate-[270deg] opacity-50"
-              style={{ width: "clamp(60px, 9vw, 140px)" }}
-            />
-          </motion.div>
-        </div>
-
+      <div
+        className="
+  relative z-10 w-full 
+  flex flex-col lg:flex-row 
+  items-center lg:items-end 
+  px-[6vw] lg:px-[4vw] 
+  py-[6vh] lg:py-[5vh] 
+  gap-8 lg:gap-0
+"
+      >
+        {/* TEXT FIRST (Mobile) */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] text-white lg:pr-[4vw] xl:mb-[10vh] mb-[0vh]"
+          className="
+      relative w-full lg:w-[45%] 
+      text-white 
+      text-center lg:text-left
+      order-1 lg:order-2
+    "
         >
-          <div className="flex flex-col gap-[2vh] mb-[3.5vh]">
+          <div className="flex flex-col items-center lg:items-start gap-3 mb-4">
             <Image
               src="/assets/Just 40 residences..webp"
               alt="Just 40 residences."
               width={500}
               height={100}
-              className="w-[70dvw] md:w-[45dvw] lg:w-[30dvw] -ml-[1.5vw] h-auto object-contain"
+              className="
+          w-[80vw] max-w-[320px] 
+          md:w-[60vw] 
+          lg:w-[30dvw] 
+          h-auto object-contain
+        "
             />
             <Image
               src="/assets/Just two homes per floor..webp"
               alt="Just two homes per floor."
               width={500}
               height={100}
-              className="w-[70dvw] md:w-[45dvw] lg:w-[30dvw] -ml-[1.5vw] h-auto object-contain"
+              className="
+          w-[80vw] max-w-[320px] 
+          md:w-[60vw] 
+          lg:w-[30dvw] 
+          h-auto object-contain
+        "
             />
           </div>
+
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="text-white/78 font-light leading-[1.75]"
-            style={{ fontSize: "clamp(0.85rem, 1.15vw, 1.1rem)" }}
+            className="
+        text-white/80 font-light 
+        leading-[1.7] 
+        text-sm md:text-base
+        max-w-[90%] mx-auto lg:mx-0
+      "
           >
             Homes at Watersong are so private, it feels like a villa. No doors
             face each other. No shared walls. Only expansive balconies, open air
             & a serene lake view.
           </motion.p>
         </motion.div>
+
+        {/* IMAGE SECOND (Mobile Bottom) */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="
+      w-full lg:w-[55%] 
+      flex justify-center items-center
+      order-2 lg:order-1
+    "
+        >
+          <div
+            className="relative aspect-square"
+            style={{ width: "clamp(260px, 75vw, 820px)" }}
+          >
+            <Image
+              src="/assets/features-so-thoughtful-you-feel-spcial.webp"
+              alt="Family enjoying life at Watersong"
+              fill
+              className="object-contain drop-shadow-2xl"
+            />
+          </div>
+        </motion.div>
+
+        {/* TURTLE (LIGHT FLOAT, MOBILE SAFE) */}
+        <div
+          className="
+    absolute 
+    top-[8vh] right-[6vw] 
+    lg:top-[25vh] lg:right-[10%] 
+    pointer-events-none
+  "
+        >
+          <motion.div {...floatAnim}>
+            <Image
+              src="/assets/turtle.webp"
+              alt=""
+              aria-hidden="true"
+              width={120}
+              height={80}
+              className="
+          h-auto opacity-40 
+          rotate-[270deg]
+        "
+              style={{ width: "clamp(50px, 12vw, 140px)" }}
+            />
+          </motion.div>
+        </div>
       </div>
 
       {/* ── BLOCK 2 ─ Lake Lounge ───────────────────────────────────────── */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] pb-[5vh] gap-10 lg:gap-0">
+      <div
+        className="
+  relative z-10 w-full min-h-screen 
+  flex flex-col lg:flex-row 
+  items-center 
+  px-[6vw] lg:px-[4vw] 
+  py-[6vh] lg:py-[5vh] 
+  gap-8 lg:gap-0
+  justify-end
+"
+      >
+        {/* TEXT SECTION */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[45%] text-white lg:pl-[4vw] order-2 lg:order-1 ml-auto"
+          className="
+      w-full lg:w-[45%] 
+      text-white 
+      text-center lg:text-left
+      order-1 lg:order-1
+      
+    "
         >
-          <div className="mb-[5vh]">
+          {/* FLOATING LOTUS (TOP CENTER IN MOBILE) */}
+          <div className="mb-4 flex justify-center lg:justify-start">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/middle image.webp"
                 alt="Lotus"
                 width={240}
                 height={210}
-                className="h-auto object-contain drop-shadow-xl"
-                style={{ width: "clamp(150px, 25vw, 320px)" }}
+                className="h-auto object-contain opacity-90"
+                style={{ width: "clamp(90px, 20vw, 220px)" }}
               />
             </motion.div>
           </div>
+
+          {/* HEADING */}
           <motion.p
-            className="text-white/65 uppercase tracking-[0.2em] mb-[1.5vh] font-medium"
-            style={{ fontSize: "clamp(0.6rem, 0.8vw, 0.85rem)" }}
+            className="
+        text-white/70 uppercase tracking-[0.2em] 
+        mb-2 font-medium
+      "
+            style={{ fontSize: "clamp(0.65rem, 0.9vw, 0.85rem)" }}
           >
             A lake like this deserves
           </motion.p>
+
           <Image
             src="/assets/A Lake Lounge.webp"
             alt="A Lake Lounge"
             width={500}
             height={100}
-            className="w-[50dvw] md:w-[35dvw] -ml-[1.5vw] lg:w-[22dvw] h-auto object-contain mb-[2vh]"
+            className="
+        w-[75vw] max-w-[300px] 
+        md:w-[50vw] 
+        lg:w-[22dvw] 
+        h-auto object-contain 
+        mx-auto lg:mx-0
+        mb-2
+      "
           />
+
           <motion.p
-            className="text-white/75 uppercase tracking-widest mb-[4vh] font-medium"
-            style={{ fontSize: "clamp(0.65rem, 0.88vw, 0.95rem)" }}
+            className="
+        text-white/80 uppercase tracking-widest 
+        mb-4 font-medium
+      "
+            style={{ fontSize: "clamp(0.7rem, 0.95vw, 0.95rem)" }}
           >
             Up to 200 sq. ft. Lake Lounge.
           </motion.p>
+
+          {/* PARAGRAPH */}
           <motion.p
-            className="text-white/68 font-light leading-[1.8]"
-            style={{ fontSize: "clamp(0.78rem, 1.05vw, 1rem)" }}
+            className="
+        text-white/70 font-light 
+        leading-[1.7] 
+        text-sm md:text-base
+        max-w-[92%] mx-auto lg:mx-0
+      "
           >
             Forget boring balconies. Step out into a rare 200 sq. ft. lake
             lounge: your private front row to rippling water, open skies, and
-            evening breeze.
+            evening breeze. It is a place to linger, breathe, and truly unwind.
           </motion.p>
         </motion.div>
 
+        {/* IMAGE SECTION (BOTTOM IN MOBILE) */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="w-full lg:w-[45%] ml-auto flex justify-center items-center order-1 lg:order-2"
+          className="
+      w-full lg:w-[45%] 
+      flex justify-center items-center
+      order-2 lg:order-2
+      mt-4 lg:mt-0
+    "
         >
           <div
-            className="relative aspect-square mx-auto"
-            style={{ width: "clamp(320px, 70vw, 1300px)" }}
+            className="relative aspect-square"
+            style={{ width: "clamp(260px, 75vw, 1300px)" }}
           >
             <Image
               src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
@@ -343,84 +435,44 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[5vh] gap-10 lg:gap-0">
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[80%] flex flex-col items-center lg:items-start"
-        >
-          <div
-            className="relative w-full mx-auto"
-            style={{
-              maxWidth: "clamp(420px, 110vw, 2000px)",
-              aspectRatio: "1456 / 816",
-            }}
-          >
-            <div
-              className="absolute overflow-hidden"
-              style={{ left: "21%", right: "16%", top: "19%", bottom: "17%" }}
-            >
-              <Image
-                src="/assets/just-40-residences.webp"
-                alt="Family"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <Image
-              src="/assets/hero-border-image.webp"
-              alt=""
-              fill
-              className="object-fill pointer-events-none select-none z-10"
-            />
-          </div>
-          <Image
-            src="/assets/Features so thoughtful, you feel special.webp"
-            alt="Caption"
-            width={600}
-            height={100}
-            className="w-[75dvw] md:w-[55dvw] lg:w-[38dvw] h-auto object-contain mx-auto mt-[3.5vh]"
-          />
-        </motion.div>
-
+      <div
+        className="
+  relative z-10 w-full min-h-screen 
+  flex flex-col lg:flex-row 
+  items-center 
+  px-[6vw] lg:px-[4vw] 
+  py-[6vh] lg:py-[5vh] 
+  gap-8 lg:gap-0
+"
+      >
+        {/* TEXT SECTION (TOP IN MOBILE) */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[32%] text-white lg:pl-[3vw] lg:self-end lg:pb-[10vh]"
+          className="
+      relative w-full lg:w-[32%] 
+      text-white 
+      text-center lg:text-left
+      order-1 lg:order-2
+    "
         >
-          <div className="absolute -top-[15vh] right-[2vw] w-full h-[30vh] pointer-events-none">
-            <motion.div
-              animate={{ x: ["-4%", "4%"], y: ["-3%", "3%"], rotate: [-2, 2] }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut",
-              }}
-              className="absolute -top-[20vh] right-[7vw]"
-            >
-              <Image
-                src="/assets/fish-image-1.webp"
-                alt=""
-                width={360}
-                height={290}
-                className="h-auto"
-                style={{ width: "clamp(120px, 20vw, 360px)", opacity: 0.9 }}
-              />
-            </motion.div>
-          </div>
+          {/* HEADING */}
+
+          {/* LIST */}
           <ul
-            className="text-white/82 font-light leading-[2.6] list-none"
-            style={{ fontSize: "clamp(0.82rem, 1.1vw, 1.05rem)" }}
+            className="
+        text-white/85 font-light 
+        leading-[2] 
+        text-sm md:text-base
+        max-w-[90%] mx-auto lg:mx-0
+      "
           >
             {[
               "Double-height car parking",
               "3 balconies per home",
-              "Anti-skid tiles",
+              "Anti-skid tiles on the balcony",
               "Seamless common areas",
               "Provision for island kitchen",
               "No common walls",
@@ -428,70 +480,200 @@ export const FeatureSection: React.FC = () => {
               <li key={item}>{item}</li>
             ))}
           </ul>
+
+          {/* FLOATING FISH (SUBTLE FOR MOBILE) */}
+          <div
+            className="
+      absolute 
+      left-[5vw] top-[10vh] 
+      lg:top-[-15vh] lg:right-[2vw]
+      pointer-events-none
+    "
+          >
+            <motion.div
+              animate={{ x: ["-3%", "3%"], y: ["-2%", "2%"] }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                repeatType: "mirror",
+              }}
+            >
+              <Image
+                src="/assets/fish-image-1.webp"
+                alt=""
+                width={200}
+                height={160}
+                className="opacity-40"
+                style={{ width: "clamp(60px, 18vw, 200px)" }}
+              />
+            </motion.div>
+          </div>
         </motion.div>
+
+        {/* IMAGE SECTION (BOTTOM IN MOBILE) */}
+        <div className="w-full lg:w-[100%] mx-auto ">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="
+      w-full lg:w-[80%] 
+      flex flex-col items-center 
+      order-2 lg:order-1
+      mt-4 lg:mt-0
+    "
+          >
+            <div
+              className="relative w-full mx-auto"
+              style={{
+                maxWidth: "clamp(320px, 95vw, 2000px)",
+                aspectRatio: "1456 / 816",
+              }}
+            >
+              <div
+                className="absolute overflow-hidden"
+                style={{ left: "21%", right: "16%", top: "19%", bottom: "17%" }}
+              >
+                <Image
+                  src="/assets/just-40-residences.webp"
+                  alt="Family"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <Image
+                src="/assets/hero-border-image.webp"
+                alt=""
+                fill
+                className="object-fill pointer-events-none select-none z-10"
+              />
+            </div>
+          </motion.div>
+          <Image
+            src="/assets/Features so thoughtful, you feel special.webp"
+            alt="Caption"
+            width={600}
+            height={100}
+            className="
+        w-[85vw] max-w-[340px] 
+        md:w-[65vw] 
+        lg:w-[38dvw] 
+        h-auto object-contain 
+        
+        mx-auto lg:mx-0 lg:ml-[15vw]
+        mb-4
+        border 
+      "
+          />
+        </div>
       </div>
 
       {/* ── BLOCK 4 ─ Healthy & Active Lifestyle ────────────────────────── */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col lg:flex-row items-center px-[4vw] py-[10vh] pb-[14vh] gap-10 lg:gap-0">
+      <div
+        className="
+  relative z-10 w-full min-h-screen 
+  flex flex-col lg:flex-row 
+  items-center 
+  justify-center 
+  px-[6vw] lg:px-[4vw] 
+  py-[6vh] lg:py-[10vh] 
+  gap-8 lg:gap-0
+"
+      >
+        {/* TEXT SECTION */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[45%] text-white lg:pl-[4vw] ml-auto order-2 lg:order-1"
+          className="
+      w-full lg:w-[45%] 
+      text-white 
+      text-center lg:text-left
+      order-1 lg:order-1
+    "
         >
-          <div className="mb-[4vh]">
+          {/* LILY (TOP DECORATION) */}
+          <div className="flex justify-center lg:justify-start mb-3">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/with-flower-lily-image.webp"
                 alt="Lotus"
                 width={200}
                 height={180}
-                className="h-auto object-contain drop-shadow-xl"
-                style={{ width: "clamp(80px, 14vw, 190px)" }}
+                className="h-auto object-contain opacity-90"
+                style={{ width: "clamp(70px, 18vw, 160px)" }}
               />
             </motion.div>
           </div>
+
+          {/* HEADING */}
           <Image
             src="/assets/Healthy & Active Lifestyle.webp"
             alt="Healthy Lifestyle"
             width={500}
             height={100}
-            className="w-[55dvw] md:w-[40dvw] lg:w-[27dvw] -ml-[0.5vw] h-auto object-contain mb-[4vh]"
+            className="
+        w-[75vw] max-w-[300px] 
+        md:w-[55vw] 
+        lg:w-[27dvw] 
+        h-auto object-contain 
+        mx-auto lg:mx-0
+        mb-4
+      "
           />
+
+          {/* LIST */}
           <ul
-            className="text-white/78 font-light leading-[2] list-none"
-            style={{ fontSize: "clamp(0.8rem, 1.05vw, 1rem)" }}
+            className="
+        text-white/85 font-light 
+        leading-[2.1] 
+        text-sm md:text-base
+        max-w-[90%] mx-auto lg:mx-0
+      "
           >
             {[
-              "Jogging Path",
-              "Children's play area",
+              "Jogging / Walking Path",
+              "Children’s play area",
               "Multipurpose court",
               "Private Terrace",
               "Gym",
               "Swimming Pool",
+              "Multi-purpose Hall",
+              "Indoor Games Room",
+              "Open Yoga / Aerobics Area",
             ].map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </motion.div>
 
+        {/* IMAGE SECTION */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="w-full lg:w-[45%] flex justify-center items-center order-1 lg:order-2"
+          className="
+      w-full lg:w-[45%] 
+      flex flex-col items-center 
+      order-2 lg:order-2
+      mt-4 lg:mt-0
+      gap-6
+    "
         >
+          {/* CIRCLE POOL */}
           <div
             className="relative overflow-hidden"
             style={{
-              width: "clamp(260px, 42vw, 580px)",
+              width: "clamp(220px, 65vw, 580px)",
               aspectRatio: "1",
               borderRadius: "50%",
-              border: "10px solid #2d6b3a",
+              border: "8px solid #2d6b3a",
               boxShadow:
-                "0 0 0 4px rgba(45,107,58,0.35), inset 0 -30px 60px rgba(0,0,0,0.35), 0 30px 80px rgba(0,0,0,0.4)",
+                "0 0 0 3px rgba(45,107,58,0.35), inset 0 -20px 40px rgba(0,0,0,0.35)",
             }}
           >
             <Image
@@ -499,6 +681,22 @@ export const FeatureSection: React.FC = () => {
               alt="Pool"
               fill
               className="object-cover"
+            />
+          </div>
+
+          {/* BOTTOM SITE PLAN (STONE FRAME) */}
+          <div
+            className="relative w-full block lg:hidden"
+            style={{
+              maxWidth: "clamp(260px, 80vw, 500px)",
+              aspectRatio: "3 / 4",
+            }}
+          >
+            <Image
+              src="/assets/masterplan watersong copy.webp" // ⬅️ replace with your actual image
+              alt="Site Plan"
+              fill
+              className="object-contain rotate-90 lg:rotate-0 "
             />
           </div>
         </motion.div>

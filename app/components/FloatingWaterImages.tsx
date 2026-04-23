@@ -159,7 +159,8 @@ function SwimmerClone({
 export default function FloatingWaterImages({
   backgroundImage = "/assets/bg-in-feature-section.webp",
   className = "",
-}: FloatingWaterImagesProps) {
+  isFixed = false,
+}: FloatingWaterImagesProps & { isFixed?: boolean }) {
   const [isMounted, setIsMounted] = useState(false);
   const [swimmers, setSwimmers] = useState<SwimmerData[]>([]);
   const spawnIdRef = useRef(0);
@@ -326,8 +327,9 @@ export default function FloatingWaterImages({
   useEffect(() => {
     if (!isMounted) return;
 
-    // Initially spawn exactly 2 turtles
+    // Initially spawn exactly 3 turtles
     setSwimmers([
+      generateSwimmerPath(spawnIdRef.current++),
       generateSwimmerPath(spawnIdRef.current++),
       generateSwimmerPath(spawnIdRef.current++),
     ]);
@@ -346,7 +348,7 @@ export default function FloatingWaterImages({
 
   return (
     <div
-      className={`absolute inset-0 w-full h-full overflow-hidden ${className}`}
+      className={`${isFixed ? "fixed" : "absolute"} inset-0 w-full h-full overflow-hidden ${className}`}
     >
       <canvas
         ref={canvasRef}
