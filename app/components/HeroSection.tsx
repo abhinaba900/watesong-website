@@ -154,6 +154,8 @@ export const HeroSection: React.FC = () => {
       ref={containerRef}
       onPointerDown={(e) => dropStone(e.clientX, e.clientY, 8, 60)}
       className="relative w-full overflow-hidden font-sans h-[100dvh] lg:h-screen"
+      style={{
+      }}
     >
       {/* Ripple canvas */}
       <canvas
@@ -162,225 +164,85 @@ export const HeroSection: React.FC = () => {
         style={{ zIndex: 4 }}
       />
 
-      {/* Tint overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 1 }}
-      />
-
       {/* ─── Main Layout ──────────────────────────────────────────────────────── */}
       <div
-        className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center pointer-events-auto"
+        className="absolute inset-0 flex flex-col lg:flex-row items-center justify-between pointer-events-auto"
         style={{
           zIndex: 10,
-          padding: "0 4vw",
+          padding: "0 8vw",
           paddingTop: "var(--navbar-h, 5rem)",
-          gap: "2vw",
+          gap: "4vw",
         }}
       >
-        {/* ── LEFT: Stone-Framed Branding Card ─────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
-          className="relative flex-shrink-0"
-          style={{
-            /*
-             * Width-driven sizing at 56vw, capped so the card's height
-             * never overflows the viewport (minus navbar ~80px).
-             */
-            width: "min(72vw, calc((100vh - 80px) * 1456 / 816))",
-            aspectRatio: "1456 / 816",
-          }}
-        >
-          {/* Transparent shell — stone image shadow/blur bleeds naturally */}
-          <div className="absolute inset-0">
-            {/*
-             * Inner content window — calibrated to the actual stone pixel boundary.
-             * Left border in the 1456px source is ~350px thick (24 %).
-             * Right border is ~270px (18.5%). Top ~185px (22.7%). Bottom ~165px (20.2%).
-             * Adding ~1 % safety on each side.
-             */}
-            <div
-              className="absolute flex flex-row overflow-hidden"
-              style={{
-                left: "25%",
-                right: "20%",
-                top: "23%",
-                bottom: "21%",
-                backdropFilter: "blur(4px)",
-              }}
-            >
-              {/* Branding panel */}
-              <div
-                onClick={() =>
-                  window.open("https://maps.app.goo.gl/uorALjYNRyMLUPga6")
-                }
-                className="flex flex-col justify-center cursor-pointer"
-                style={{ width: "48%", padding: "5% 4% 5% 6%" }}
-              >
-                <Image
-                  src="/assets/navbar-right-logo.webp"
-                  alt="Privae"
-                  width={120}
-                  height={40}
-                  className="h-auto object-contain"
-                  style={{
-                    width: "clamp(24px, 34%, 68px)",
-                    marginBottom: "4%",
-                  }}
-                />
-                <Image
-                  src="/assets/watersong-logo-blue.webp"
-                  alt="Watersong"
-                  width={280}
-                  height={80}
-                  className="h-auto object-contain"
-                  style={{
-                    width: "clamp(70px, 84%, 195px)",
-                    marginBottom: "5%",
-                  }}
-                />
-                <p
-                  className="text-white font-bold leading-tight"
-                  style={{ fontSize: "clamp(0.55rem, 1.15vw, 1.05rem)" }}
-                >
-                  Lakefront Residences
-                </p>
-                <p
-                  className="text-white font-medium mt-1 leading-snug opacity-85"
-                  style={{ fontSize: "clamp(0.45rem, 0.75vw, 0.8rem)" }}
-                >
-                  1 KM from Nallurhalli Metro, Whitefield
-                </p>
-              </div>
-
-              {/* Building photo */}
-              <div className="relative flex-1"></div>
-            </div>
-          </div>
-
-          {/* ── Real stone-border image — overlays the card ── */}
-          <StoneFrameImage />
-        </motion.div>
-
-        {/* ── RIGHT: Lotus Flower + Specs ──────────────────────────────────── */}
-        <div
-          className="hidden lg:flex flex-col items-center flex-1 h-full"
-          style={{
-            paddingTop: "2vh",
-            paddingBottom: "4vh",
-            paddingRight: "2vw",
-            gap: 0,
-          }}
-        >
-          {/* Lotus — floats in upper portion */}
+        {/* ── LEFT: Content Group ─────────────────────────────── */}
+        <div className="flex flex-col items-start lg:w-1/2 gap-10 mt-[-5vh]">
+          {/* Text Group */}
           <motion.div
-            className="flex flex-1 items-center justify-center"
-            initial={{ opacity: 0, y: -18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.9, ease: "easeOut" }}
-          >
-            <motion.div
-              animate={{ rotate: [-1.8, 1.8], y: ["-4%", "4%"] }}
-              transition={{
-                rotate: {
-                  duration: 7,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
-                },
-                y: {
-                  duration: 5,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
-                },
-              }}
-            >
-              <Image
-                src="/assets/Lotus - webp.webp"
-                alt="Lotus flower"
-                width={420}
-                height={420}
-                className="h-auto object-contain drop-shadow-2xl"
-                style={{ width: "clamp(140px, 22vw, 340px)" }}
-              />
-            </motion.div>
-          </motion.div>
-
-          {/* "Spacious Premium" specs */}
-          <motion.div
-            className="text-right mb-20"
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col items-center ml-10"
           >
             <Image
               src="/assets/Spacious Premium.webp"
               alt="Spacious Premium"
               width={400}
               height={100}
-              className="w-[45dvw] lg:w-[22dvw] h-auto object-contain ml-auto"
+              className="w-[60dvw] lg:w-[20dvw] h-auto object-contain"
             />
             <p
-              className="text-white/75 font-light mt-3 
-              mx-auto text-center
-              leading-1.2"
-              style={{ fontSize: "clamp(0.7rem, 1.4vw, 1.5rem)" }}
+              className="text-white/90 font-light mt-2 text-center leading-tight tracking-wide"
+              style={{ fontSize: "clamp(0.8rem, 1.1vw, 1.4rem)" }}
             >
               3 BHK+ Homes from
               <br />
               2565 to 3495 sq. ft.
             </p>
           </motion.div>
+
+          {/* Grey Card Placeholder */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+            className="w-full aspect-[2/1] lg:w-[48vw] lg:max-w-[700px] bg-[#8a9b9e]/50 backdrop-blur-sm rounded-[40px] lg:rounded-[60px]"
+          />
         </div>
 
-        {/* ── MOBILE: simple card (no stone frame) ─────────────────────────── */}
-        <motion.article
-          initial={{ opacity: 0, scale: 0.97 }}
+        {/* ── RIGHT: Lotus Flower ──────────────────────────────────── */}
+        <motion.div
+          className="flex flex-1 items-center justify-end"
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 }}
-          className="lg:hidden bg-white/78 backdrop-blur-md shadow-2xl overflow-hidden flex flex-row w-full rounded-2xl"
-          style={{ height: "clamp(120px, 46vw, 240px)" }}
+          transition={{ delay: 0.5, duration: 0.9, ease: "easeOut" }}
         >
-          <div
-            onClick={() =>
-              window.open("https://maps.app.goo.gl/uorALjYNRyMLUPga6")
-            }
-            className="flex flex-col justify-center p-5 w-[55%] cursor-pointer"
+          <motion.div
+            animate={{ rotate: [-1.8, 1.8], y: ["-3%", "3%"] }}
+            transition={{
+              rotate: {
+                duration: 8,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+              y: {
+                duration: 6,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              },
+            }}
           >
             <Image
-              src="/assets/card-inside-image-of-hero-section.webp"
-              alt="Privae"
-              width={100}
-              height={34}
-              className="w-14 mb-2 h-auto object-contain"
+              src="/assets/Lotus - webp.webp"
+              alt="Lotus flower"
+              width={600}
+              height={600}
+              className="h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+              style={{ width: "clamp(200px, 32vw, 550px)" }}
             />
-            <Image
-              src="/assets/watersong-logo-blue.webp"
-              alt="Watersong"
-              width={220}
-              height={70}
-              className="w-36 object-contain mb-2 h-auto"
-            />
-            <p className="text-[#0C637E] font-bold text-sm leading-tight">
-              Lakefront Residences
-            </p>
-            <p className="text-[#0C637E] font-medium text-[0.65rem] mt-0.5 opacity-85">
-              1 KM from Nallurhalli Metro, Whitefield
-            </p>
-          </div>
-          <div className="relative flex-1">
-            <Image
-              src="/assets/lackfront-recidance.webp"
-              alt="Building"
-              fill
-              sizes="50vw"
-              className="object-cover"
-            />
-          </div>
-        </motion.article>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

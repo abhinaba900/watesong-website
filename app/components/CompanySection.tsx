@@ -174,7 +174,7 @@ export const CompanySection: React.FC = () => {
       )}
 
       {/* Left-Aligned Text Content */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[6vw] lg:px-[8vw] pointer-events-none">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[6vw]  lg:px-[8vw] pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
