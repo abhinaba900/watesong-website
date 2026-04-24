@@ -78,7 +78,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label, action, isHighli
         times: [0, 0.2, 0.5, 0.8, 1],
       }}
       className={`relative font-medium flex items-center justify-center whitespace-nowrap overflow-hidden
-                 w-full lg:w-[8vw] h-12 lg:h-[2.5vh] xl:h-[4.5vh] text-[1rem] lg:text-[0.73vw]
+                 w-full lg:w-auto px-6 lg:px-[2.5vw] lg:min-w-[8vw] h-12 lg:h-[2.5vh] xl:h-[4.5vh] text-[1rem] lg:text-[0.73vw]
                  rounded-full select-none outline-none border-none
                  ${action ? "cursor-pointer" : "cursor-default drop-shadow-sm"}`}
       style={{
@@ -126,13 +126,21 @@ export const Navbar: React.FC = () => {
     window.scrollTo({ top, behavior: "smooth" });
   };
 
-  const navigationItems = [
-    { label: "About us",    action: () => scrollToSection("about") },
-    { label: "Highlights",  action: () => scrollToSection("highlights") },
-    { label: "Gallery",     action: () => scrollToSection("gallery") },
+  type NavigationItem = {
+    label: string;
+    action?: () => void;
+    isHighlight?: boolean;
+  };
+
+  const navigationItems: NavigationItem[] = [
+    { label: "Home",        action: () => scrollToSection("home") },
     { label: "Amenities",   action: () => scrollToSection("amenities") },
+    { label: "Masterplan",  action: () => scrollToSection("masterplan") },
     { label: "Floor Plans", action: () => scrollToSection("floor-plans") },
-    { label: "Enquire Now", action: () => setIsModalOpen(true), isHighlight: true },
+    { label: "Location",    action: () => scrollToSection("location") },
+    { label: "About Us",    action: () => scrollToSection("about") },
+    { label: "Contact Us",  action: () => scrollToSection("contact") },
+    { label: "360 View",    action: () => scrollToSection("360-view") },
   ];
 
   return (
@@ -194,7 +202,7 @@ export const Navbar: React.FC = () => {
             />
           </Link>
         </div>
-        <nav className="hidden lg:flex flex-wrap gap-x-[2.5vw] gap-y-[1vh] order-2 lg:order-1">
+        <nav className="hidden lg:flex flex-wrap gap-x-[1.2vw] gap-y-[1vh] order-2 lg:order-1 justify-center">
           {navigationItems.map((item, index) => (
             <NavigationPill
               key={index}

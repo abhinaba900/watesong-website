@@ -141,36 +141,35 @@ export const HeroSection: React.FC = () => {
         className="absolute inset-0 w-full h-full pointer-events-none"
       />
 
-      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[80px] lg:pt-0 gap-8 lg:gap-0 h-full">
+      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[10vh] lg:pt-0 gap-8 lg:gap-0 h-full">
         {/* LEFT */}
         <div className="flex flex-col items-center lg:items-start w-full lg:w-[45vw] h-full justify-center relative">
-          
           {/* Top Logo Cluster */}
           <div className="flex flex-col items-center lg:items-start mb-6 lg:mb-[6vh] mt-4 lg:mt-0 z-10">
             {/* PRIVAE Logo */}
             <div className="mb-1 lg:mb-2 ml-0 lg:ml-2">
-              <Image 
-                src="/assets/navbar-right-logo.webp" 
-                alt="Privae" 
-                width={100} 
-                height={30} 
-                className="object-contain w-[80px] lg:w-[100px]" 
+              <Image
+                src="/assets/navbar-right-logo.webp"
+                alt="Privae"
+                width={120}
+                height={40}
+                className="object-contain w-[25vw] lg:w-[9vw]"
               />
             </div>
-            
+
             {/* Watersong Logo */}
-            <Image 
-              src="/assets/watersong-logo-blue.webp" 
-              alt="Watersong" 
-              width={400} 
-              height={120} 
-              className="w-[65vw] max-w-[280px] lg:w-[28vw] lg:max-w-[350px] object-contain mb-1 lg:mb-2" 
+            <Image
+              src="/assets/watersong-logo-blue.webp"
+              alt="Watersong"
+              width={500}
+              height={150}
+              className="w-[75vw] lg:w-[32vw] object-contain mb-1 lg:mb-3"
             />
-            
-            <h2 className="text-white font-semibold text-[14px] lg:text-[18px] tracking-wide mb-1 lg:ml-4 text-center lg:text-left drop-shadow-md">
+
+            <h2 className="text-white font-semibold text-[4vw] lg:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md">
               Lakefront Residences
             </h2>
-            <p className="text-white font-semibold text-[10px] lg:text-[12px] lg:ml-4 text-center lg:text-left drop-shadow-md opacity-90">
+            <p className="text-white font-semibold text-[3vw] lg:text-[1.1vw] lg:ml-[1vw] text-center lg:text-left drop-shadow-md opacity-90">
               1 KM from Nallurhalli Metro, Whitefield
             </p>
           </div>
@@ -180,12 +179,12 @@ export const HeroSection: React.FC = () => {
             <Image
               src="/assets/Spacious Premium.webp"
               alt="Spacious Premium"
-              width={300}
-              height={80}
-              className="w-[50vw] max-w-[240px] lg:w-[18vw] lg:min-w-[240px] lg:max-w-[280px] object-contain mb-1 lg:mb-2 drop-shadow-lg"
+              width={350}
+              height={90}
+              className="w-[60vw] lg:w-[22vw] object-contain mb-2 lg:mb-4 drop-shadow-lg"
             />
 
-            <p className="text-white/90 text-[12px] lg:text-[15px] text-center lg:text-left font-light leading-relaxed drop-shadow-md">
+            <p className="text-white/90 text-[3.5vw] lg:text-[1.25vw] text-center lg:text-left font-light leading-relaxed drop-shadow-md">
               3 BHK+ Homes from
               <br />
               2565 to 3495 sq. ft.
@@ -193,26 +192,27 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Floating Lotus Bottom Left - Moved to absolute bottom left of screen */}
-        <div className="absolute bottom-[2%] left-[4vw] lg:left-[6vw] z-20 pointer-events-none w-[60px] lg:w-[100px] translate-y-[10%]">
-          <Image 
-            src="/assets/with-flower-lily-image.webp" 
-            alt="Lotus Flower" 
-            width={120} 
-            height={120} 
-            className="w-full h-auto object-contain drop-shadow-2xl opacity-90" 
+        {/* Floating Lotus Bottom Left - Overflows the section */}
+        <div className="absolute bottom-[0vh] lg:bottom-[-10vh] left-[4vw] lg:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw]">
+          <Image
+            src="/assets/with-flower-lily-image.webp"
+            alt="Lotus Flower"
+            width={120}
+            height={120}
+            className="w-full h-auto object-contain drop-shadow-2xl opacity-90"
           />
         </div>
 
         {/* RIGHT */}
-        <div className="flex justify-center items-center w-full lg:w-[50vw] h-full relative z-10">
-          <Image
-            src="/assets/elevation.webp"
-            alt="Elevation"
-            width={800}
-            height={800}
-            className="w-[85vw] max-w-[500px] lg:w-[45vw] lg:max-w-[700px] object-contain drop-shadow-2xl"
-          />
+        <div className="flex justify-center items-center w-full lg:w-[50vw] h-full relative z-10 translate-y-[2vh] lg:translate-y-[4vh]">
+          <div className="relative aspect-square w-full lg:w-[55vw] lg:scale-110">
+            <Image
+              src="/assets/elevation.webp"
+              alt="Elevation"
+              fill
+              className="object-contain drop-shadow-2xl"
+            />
+          </div>
         </div>
       </div>
     </section>
