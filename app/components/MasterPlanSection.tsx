@@ -232,7 +232,7 @@ export const MasterPlanSection: React.FC = () => {
           {/* Framed Map Image */}
           <div className="relative w-full max-w-[1100px] aspect-[4/3] lg:aspect-[16/10] rounded-[16px] lg:rounded-[24px] overflow-hidden border-[2px] lg:border-[3px] border-white/20 shadow-2xl">
             <Image
-              src="/assets/Masterplan normal.webp"
+              src="/assets/Masterplan new.webp"
               alt="Masterplan Map"
               fill
               className="object-cover scale-[1.05] lg:scale-[1.1]"
