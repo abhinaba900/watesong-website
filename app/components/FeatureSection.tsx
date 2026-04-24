@@ -204,9 +204,9 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[55%] flex justify-center items-center order-2 lg:order-1 relative z-10"
+          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10"
         >
-          <div className="relative aspect-square w-full max-w-[850px] lg:scale-110">
+          <div className="relative aspect-square w-full lg:w-[55vw] lg:scale-110">
             <Image
               src="/assets/features-so-thoughtful-you-feel-spcial.webp"
               alt="Family enjoying life at Watersong"
@@ -222,7 +222,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10"
+          className="relative w-full lg:w-[45%] mb-0 lg:mt-[20vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10"
         >
           <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-4 mb-6">
             <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
@@ -307,9 +307,9 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="w-full lg:w-[55%] flex justify-center items-center order-2 relative z-10"
+          className="w-full lg:w-[50vw] flex justify-center items-center order-2 relative z-10"
         >
-          <div className="relative aspect-square w-full max-w-[850px] lg:scale-110">
+          <div className="relative aspect-square w-full lg:w-[55vw] lg:scale-110">
             <Image
               src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
               alt="Lake lounge"
@@ -327,9 +327,9 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[50%] flex justify-center items-center order-2 lg:order-1 relative z-10"
+          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10"
         >
-          <div className="relative aspect-square w-[85vw] lg:w-[80%] max-w-[550px] flex justify-center items-center">
+          <div className="relative aspect-square w-full scale-[0.77] lg:w-[55vw] lg:scale-[0.85]">
             <Image
               src="/assets/swimming.webp"
               alt="Swimming Pool"

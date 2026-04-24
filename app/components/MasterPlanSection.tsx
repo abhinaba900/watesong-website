@@ -161,8 +161,7 @@ export const MasterPlanSection: React.FC = () => {
 
   const handlePointerDown = (e: React.PointerEvent) => {
     // Drop a thick ripple (Radius: 8, Strength: 40)
-        dropStone(e.clientX, e.clientY, 8, 60);
-
+    dropStone(e.clientX, e.clientY, 8, 60);
   };
 
   return (
@@ -180,9 +179,7 @@ export const MasterPlanSection: React.FC = () => {
       )}
 
       {/* ── BLOCK 5 ─ Master Plan ───────────────────────────────────────── */}
-      <div
-        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[4vh] lg:py-[2vh] gap-8 lg:gap-[4vw]"
-      >
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[4vh] lg:py-[2vh] gap-8 lg:gap-[4vw]">
         {/* TEXT LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
