@@ -192,13 +192,9 @@ export const MasterPlanSection: React.FC = () => {
           className="relative w-full lg:w-[35%] text-white text-center lg:text-left order-1 lg:order-1 flex flex-col justify-center z-10 lg:pl-[4vw] pb-[2vh]"
         >
           {/* HEADING */}
-          <Image
-            src="/assets/MASTER PLAN.webp"
-            alt="Master Plan"
-            width={400}
-            height={80}
-            className="w-[60vw] max-w-[280px] lg:max-w-[340px] lg:w-[25vw] h-auto object-contain mx-auto lg:mx-0 mb-8 drop-shadow-md pointer-events-auto"
-          />
+          <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] mb-[4vh] tracking-widest drop-shadow-lg uppercase text-center lg:text-left pointer-events-auto leading-none">
+            Master Plan
+          </h2>
 
           {/* LIST */}
           <div className="text-white/90 font-light leading-[1.8] text-[13px] lg:text-[14px] max-w-[95%] mx-auto lg:mx-0 text-left pointer-events-auto">

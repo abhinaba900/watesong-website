@@ -176,13 +176,9 @@ export const HeroSection: React.FC = () => {
 
           {/* Spacious Premium Cluster */}
           <div className="flex flex-col items-center lg:items-start z-10 lg:ml-4">
-            <Image
-              src="/assets/Spacious Premium.webp"
-              alt="Spacious Premium"
-              width={350}
-              height={90}
-              className="w-[60vw] lg:w-[22vw] object-contain mb-2 lg:mb-4 drop-shadow-lg"
-            />
+            <h2 className="font-overwave text-white text-[6vw] lg:text-[2.5vw] uppercase tracking-wider mb-2 lg:mb-4 drop-shadow-lg text-center lg:text-left leading-none">
+              Spacious Premium
+            </h2>
 
             <p className="text-white/90 text-[3.5vw] lg:text-[1.25vw] text-center lg:text-left font-light leading-relaxed drop-shadow-md">
               3 BHK+ Homes from

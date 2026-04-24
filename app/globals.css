@@ -32,6 +32,19 @@
   --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
+@font-face {
+  font-family: 'Overwave';
+  src: url('/assets/overwave-font/Overwave-DOpAW.ttf') format('truetype'),
+       url('/assets/overwave-font/Overwave-AL6AL.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-overwave: 'Overwave', sans-serif;
+}
+
 body {
   font-family: "Montserrat", sans-serif !important;
 }

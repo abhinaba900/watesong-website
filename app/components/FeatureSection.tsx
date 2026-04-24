@@ -225,20 +225,12 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[45%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10"
         >
           <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-4 mb-6">
-            <Image
-              src="/assets/Just 40 residences..webp"
-              alt="Just 40 residences."
-              width={500}
-              height={100}
-              className="w-[80vw] max-w-[320px] lg:max-w-[450px] lg:w-[32vw] h-auto object-contain drop-shadow-lg"
-            />
-            <Image
-              src="/assets/Just two homes per floor..webp"
-              alt="Just two homes per floor."
-              width={500}
-              height={100}
-              className="w-[80vw] max-w-[320px] lg:max-w-[450px] lg:w-[32vw] h-auto object-contain drop-shadow-lg"
-            />
+            <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
+              Just forty Residences.
+            </h2>
+            <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
+              Just two homes per floor.
+            </h2>
           </div>
 
           <motion.p
@@ -293,13 +285,9 @@ export const FeatureSection: React.FC = () => {
             A lake like this deserves
           </motion.p>
 
-          <Image
-            src="/assets/A Lake Lounge.webp"
-            alt="A Lake Lounge"
-            width={400}
-            height={80}
-            className="w-[70vw] max-w-[280px] lg:max-w-[360px] lg:w-[26vw] h-auto object-contain mx-auto lg:mx-0 mb-4"
-          />
+          <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] tracking-wider mb-4 drop-shadow-lg uppercase mx-auto lg:mx-0 leading-none">
+            A Lake Lounge
+          </h2>
 
           <motion.p className="text-white/80 uppercase tracking-wide lg:tracking-widest mb-6 font-light text-[12px] lg:text-[14px]">
             UP TO 200 SQ. FT. LAKE LOUNGE.
@@ -373,13 +361,9 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* HEADING */}
-          <Image
-            src="/assets/Healthy & Active Lifestyle.webp"
-            alt="Healthy Lifestyle"
-            width={500}
-            height={100}
-            className="w-[80vw] max-w-[320px] lg:max-w-[450px] lg:w-[32vw] h-auto object-contain mx-auto lg:mx-0 mb-6 drop-shadow-lg"
-          />
+          <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] tracking-wider mb-6 drop-shadow-lg uppercase mx-auto lg:mx-0 leading-tight">
+            Healthy and Active Lifestyle
+          </h2>
 
           {/* LIST */}
           <ul className="text-white/90 font-light leading-[1.8] text-[14px] lg:text-[16px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1">
@@ -434,13 +418,9 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* Caption Image */}
-          <Image
-            src="/assets/Features so thoughtful, you feel special.webp"
-            alt="Features so thoughtful, you feel special"
-            width={600}
-            height={100}
-            className="w-[85vw] max-w-[340px] lg:max-w-[500px] lg:w-[40vw] h-auto object-contain mx-auto lg:mx-0 drop-shadow-md lg:ml-[2vw]"
-          />
+          <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] tracking-wider drop-shadow-md uppercase mx-auto lg:mx-0 lg:ml-[2vw] text-center lg:text-left leading-tight mt-4">
+            Features so thoughtful, you feel special
+          </h2>
         </motion.div>
 
         {/* TEXT RIGHT */}

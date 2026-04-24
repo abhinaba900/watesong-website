@@ -335,13 +335,9 @@ export const FloorPlanSection: React.FC = () => {
       {/* ─── Main Content (Layered over canvas but interactive) ─── */}
       <div className="relative z-20 pointer-events-auto">
         {/* Heading */}
-        <Image
-          src="/assets/FLOOR PLANS.webp"
-          alt="FLOOR PLANS"
-          width={500}
-          height={100}
-          className="w-[50dvw] md:w-[30dvw] lg:w-[20dvw] -ml-[1.5vw] h-auto object-contain mb-[3vh] lg:mb-[4vh]"
-        />
+        <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] text-center lg:text-left mb-[3vh] lg:mb-[4vh] tracking-widest drop-shadow-lg uppercase">
+          Floor Plans
+        </h2>
 
         {/* Main Content Grid */}
         <div className="flex flex-col relative z-3 lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
@@ -461,13 +457,9 @@ export const FloorPlanSection: React.FC = () => {
         {/* ─── PHOTOS | VIDEOS Section ─── */}
         <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center ">
           {/* Title */}
-          <Image
-            src="/assets/PHOTOS or VIDEOS.webp"
-            alt="PHOTOS | VIDEOS"
-            width={500}
-            height={100}
-            className="w-[50dvw] md:w-[30dvw] lg:w-[18dvw] h-auto object-contain mb-[6vh] lg:mb-[8vh]"
-          />
+          <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] text-center mb-[6vh] lg:mb-[8vh] tracking-widest drop-shadow-lg uppercase">
+            Photos | Videos
+          </h2>
 
           {/* Glass Frame Container */}
           <div className="relative w-full max-w-[90vw] lg:max-w-[55vw] aspect-[16/9] lg:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl">
@@ -488,13 +480,9 @@ export const FloorPlanSection: React.FC = () => {
         <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center pb-[10vh]">
           {/* Title Group */}
           <div className="mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
-            <Image
-              src="/assets/LOCATION MAP.webp"
-              alt="LOCATION MAP"
-              width={500}
-              height={100}
-              className="w-[50dvw] md:w-[35dvw] lg:w-[22dvw] -ml-[1.5vw] h-auto object-contain mb-[2vh]"
-            />
+            <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] mb-[2vh] tracking-widest drop-shadow-lg uppercase">
+              Location Map
+            </h2>
             <p className="text-white/60 text-[4vw] md:text-[2vw] lg:text-[1.2vw] font-medium">
               (Not to scale)
             </p>
