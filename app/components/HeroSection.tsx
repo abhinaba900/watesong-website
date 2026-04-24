@@ -141,7 +141,7 @@ export const HeroSection: React.FC = () => {
         className="absolute inset-0 w-full h-full pointer-events-none"
       />
 
-      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[10vh] lg:pt-0 gap-8 lg:gap-0 h-full">
+      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[10vh] lg:pt-0 gap-0 lg:gap-0 h-full">
         {/* LEFT */}
         <div className="flex flex-col items-center lg:items-start w-full lg:w-[45vw] h-full justify-center relative">
           {/* Top Logo Cluster */}
