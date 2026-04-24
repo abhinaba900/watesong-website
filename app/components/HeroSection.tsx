@@ -134,43 +134,84 @@ export const HeroSection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={(e) => dropStone(e.clientX, e.clientY)}
-      className="relative w-full overflow-hidden h-screen"
+      className="relative w-full  h-screen"
     >
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
       />
 
-      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[60px] lg:pt-0 gap-4 lg:gap-0">
+      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[80px] lg:pt-0 gap-8 lg:gap-0 h-full">
         {/* LEFT */}
-        <div className="flex flex-col items-center lg:items-start w-full lg:w-[50vw]">
-          <div className="flex flex-col items-center lg:ml-[3vw] mb-4 lg:mb-[8vh]">
+        <div className="flex flex-col items-center lg:items-start w-full lg:w-[45vw] h-full justify-center relative">
+          
+          {/* Top Logo Cluster */}
+          <div className="flex flex-col items-center lg:items-start mb-6 lg:mb-[6vh] mt-4 lg:mt-0 z-10">
+            {/* PRIVAE Logo */}
+            <div className="mb-1 lg:mb-2 ml-0 lg:ml-2">
+              <Image 
+                src="/assets/navbar-right-logo.webp" 
+                alt="Privae" 
+                width={100} 
+                height={30} 
+                className="object-contain w-[80px] lg:w-[100px]" 
+              />
+            </div>
+            
+            {/* Watersong Logo */}
+            <Image 
+              src="/assets/watersong-logo-blue.webp" 
+              alt="Watersong" 
+              width={400} 
+              height={120} 
+              className="w-[65vw] max-w-[280px] lg:w-[28vw] lg:max-w-[350px] object-contain mb-1 lg:mb-2" 
+            />
+            
+            <h2 className="text-white font-semibold text-[14px] lg:text-[18px] tracking-wide mb-1 lg:ml-4 text-center lg:text-left drop-shadow-md">
+              Lakefront Residences
+            </h2>
+            <p className="text-white font-semibold text-[10px] lg:text-[12px] lg:ml-4 text-center lg:text-left drop-shadow-md opacity-90">
+              1 KM from Nallurhalli Metro, Whitefield
+            </p>
+          </div>
+
+          {/* Spacious Premium Cluster */}
+          <div className="flex flex-col items-center lg:items-start z-10 lg:ml-4">
             <Image
               src="/assets/Spacious Premium.webp"
               alt="Spacious Premium"
-              width={400}
-              height={100}
-              className="w-[70vw] max-w-[260px] lg:w-[20vw] lg:min-w-[250px] lg:max-w-none object-contain"
+              width={300}
+              height={80}
+              className="w-[50vw] max-w-[240px] lg:w-[18vw] lg:min-w-[240px] lg:max-w-[280px] object-contain mb-1 lg:mb-2 drop-shadow-lg"
             />
 
-            <p className="text-white/90 text-sm lg:text-[1.2vw] lg:min-text-[16px] mt-1 lg:mt-[2vh] text-center font-light leading-snug">
+            <p className="text-white/90 text-[12px] lg:text-[15px] text-center lg:text-left font-light leading-relaxed drop-shadow-md">
               3 BHK+ Homes from
               <br />
               2565 to 3495 sq. ft.
             </p>
           </div>
+        </div>
 
-          <div className="w-full sm:w-[80vw] lg:w-[45vw] h-[130px] sm:h-[150px] lg:h-[35vh] bg-[#8a9b9e]/50 rounded-[24px] lg:rounded-[30px]" />
+        {/* Floating Lotus Bottom Left - Moved to absolute bottom left of screen */}
+        <div className="absolute bottom-[2%] left-[4vw] lg:left-[6vw] z-20 pointer-events-none w-[60px] lg:w-[100px] translate-y-[10%]">
+          <Image 
+            src="/assets/with-flower-lily-image.webp" 
+            alt="Lotus Flower" 
+            width={120} 
+            height={120} 
+            className="w-full h-auto object-contain drop-shadow-2xl opacity-90" 
+          />
         </div>
 
         {/* RIGHT */}
-        <div className="flex justify-center items-center w-full lg:w-[40vw]">
+        <div className="flex justify-center items-center w-full lg:w-[50vw] h-full relative z-10">
           <Image
-            src="/assets/Lotus - webp.webp"
-            alt="Lotus"
+            src="/assets/elevation.webp"
+            alt="Elevation"
             width={800}
             height={800}
-            className="w-[45vw] max-w-[220px] lg:w-[28vw] lg:max-w-none object-contain drop-shadow-2xl"
+            className="w-[85vw] max-w-[500px] lg:w-[45vw] lg:max-w-[700px] object-contain drop-shadow-2xl"
           />
         </div>
       </div>

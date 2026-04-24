@@ -179,7 +179,7 @@ export const ContactSection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="relative no-scrollbar bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[10vh] overflow-x-hidden no-scrollbar"
+      className="relative no-scrollbar bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[5vh] overflow-x-hidden no-scrollbar"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
@@ -191,13 +191,13 @@ export const ContactSection: React.FC = () => {
 
       {/* Main Grid: Stacks on mobile, 2 columns as per reference */}
       <div
-        className="relative z-10 w-full min-h-screen 
+        className="relative z-10 w-full 
 flex flex-col lg:flex-row 
 items-center 
 px-[4vw] 
-py-[1rem] lg:py-[10vh] 
-pb-[1rem] lg:pb-[14vh] 
-gap-10 lg:gap-0"
+py-[1rem] 
+pb-[1rem] 
+gap-10 lg:gap-0 mt-[10vh]"
       >
         {/* LEFT/CENTER COLUMN: Branding & Contact */}
         <div className="w-full lg:w-[50%] flex flex-col items-center lg:items-start text-center lg:text-left text-white pointer-events-auto">

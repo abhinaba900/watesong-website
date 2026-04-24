@@ -3,6 +3,8 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+
 export const MasterPlanSection: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
@@ -167,78 +169,83 @@ export const MasterPlanSection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="bg-transparent w-full max-md:max-w-full relative "
+      className="bg-transparent w-full max-md:max-w-full relative py-[10vh] lg:py-[15vh]"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+          className="absolute inset-0 w-full h-full z-0 pointer-events-none"
         />
       )}
 
-      {/* ─── Original Content ─── */}
-      <div className="flex flex-col relative w-full items-center pl-0 lg:px-[5vw] pt-[22px] z-20 pointer-events-none">
-        {/* Master Plan Wrapper */}
-        <div className="relative w-full mt-[5vh] lg:mt-[10vh] px-[5vw] lg:px-[0vw] flex flex-col justify-center pointer-events-auto">
-          {/* Main Content Wrapper */}
-          <div className="relative w-full max-w-full">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-[6vw] md:gap-[2vw]">
-              {/* Left Column: Text List */}
-              <div className="w-full md:w-[45%] lg:w-[35%] z-10">
-                {/* Heading */}
-                <Image
-                  src="/assets/MASTER PLAN.webp"
-                  alt="MASTER PLAN"
-                  width={500}
-                  height={100}
-                  className="w-[50dvw] md:w-[30dvw] lg:w-[20dvw] -ml-[1vw] h-auto object-contain "
-                />
-                <ul
-                  className="text-white font-normal relative self-stretch 
-                       text-left 
-                       mt-[2vh] md:mt-0 
-                       text-[4.5vw] md:text-[2vw] lg:text-[1.31vw] leading-[1.2] 
-                       space-y-[1vh] lg:space-y-[1.2vh]"
-                >
-                  <li>1. Entry & Exit</li>
-                  <li>2. Security Kiosk</li>
-                  <li>3. Driveway</li>
-                  <li>4. Jogging / Walking Trail</li>
-                  <li>5. Children's play area</li>
-                  <li>6. Multipurpose court</li>
-                  <li>7. Seating Area</li>
-                  <li>8. Private terrace area</li>
-                  <li>9. Visitor's Car parking</li>
-                  <li>10. Designated bike parking</li>
-                  <li>11. Service Yard</li>
-                  <li>
-                    12. Clubhouse
-                    <ul className="pl-[5vw] md:pl-[3vw] lg:pl-[2vw] mt-[0.5vh] lg:mt-[0.8vh] space-y-[0.5vh] lg:space-y-[0.8vh]">
-                      <li>a) Gym</li>
-                      <li>b) Swimming pool with open shower & toilet</li>
-                      <li>c) Multi-purpose hall with toilets</li>
-                      <li>d) Indoor Games Room</li>
-                      <li>e) Open yoga / Aerobics Area</li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
+      {/* ── BLOCK 5 ─ Master Plan ───────────────────────────────────────── */}
+      <div
+        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[4vh] lg:py-[2vh] gap-8 lg:gap-[4vw]"
+      >
+        {/* TEXT LEFT */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="relative w-full lg:w-[35%] text-white text-center lg:text-left order-1 lg:order-1 flex flex-col justify-center z-10 lg:pl-[4vw] pb-[2vh]"
+        >
+          {/* HEADING */}
+          <Image
+            src="/assets/MASTER PLAN.webp"
+            alt="Master Plan"
+            width={400}
+            height={80}
+            className="w-[60vw] max-w-[280px] lg:max-w-[340px] lg:w-[25vw] h-auto object-contain mx-auto lg:mx-0 mb-8 drop-shadow-md pointer-events-auto"
+          />
 
-              {/* Right Column: Master Plan Image */}
-              <div className="w-full md:w-[70%] lg:w-[80%] relative z-0 flex justify-end">
-                <Image
-                  src="/assets/maserplan-for-master-plan.webp"
-                  alt="Master plan layout"
-                  width={1600}
-                  height={1000}
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                  className="object-cover w-full h-full rounded-lg"
-                />
-              </div>
-            </div>
+          {/* LIST */}
+          <div className="text-white/90 font-light leading-[1.8] text-[13px] lg:text-[14px] max-w-[95%] mx-auto lg:mx-0 text-left pointer-events-auto">
+            <ol className="list-decimal pl-5 space-y-[2px]">
+              <li>Entry &amp; Exit</li>
+              <li>Security Kiosk</li>
+              <li>Driveway</li>
+              <li>Jogging / Walking Trail</li>
+              <li>Children's play area</li>
+              <li>Multipurpose court</li>
+              <li>Seating Area</li>
+              <li>Private Terrace</li>
+              <li>Visitor's Car Parking</li>
+              <li>Bike Parking</li>
+              <li>Service Yard</li>
+              <li>
+                Clubhouse
+                <ol className="list-[lower-alpha] pl-6 mt-1 space-y-[2px] text-white/80">
+                  <li>Gym</li>
+                  <li>Swimming Pool</li>
+                  <li>Multi-purpose Hall</li>
+                  <li>Indoor Games Room</li>
+                  <li>Open Yoga / Aerobics Area</li>
+                </ol>
+              </li>
+            </ol>
           </div>
-        </div>
+        </motion.div>
+
+        {/* IMAGE RIGHT */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+          className="w-full lg:w-[65%] flex justify-center items-center order-2 lg:order-2 relative z-10 pointer-events-auto"
+        >
+          {/* Framed Map Image */}
+          <div className="relative w-full max-w-[1100px] aspect-[4/3] lg:aspect-[16/10] rounded-[16px] lg:rounded-[24px] overflow-hidden border-[2px] lg:border-[3px] border-white/20 shadow-2xl">
+            <Image
+              src="/assets/Masterplan normal.webp"
+              alt="Masterplan Map"
+              fill
+              className="object-cover scale-[1.05] lg:scale-[1.1]"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

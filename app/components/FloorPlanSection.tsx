@@ -459,47 +459,25 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── PHOTOS | VIDEOS Section ─── */}
-        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center">
+        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center ">
           {/* Title */}
           <Image
             src="/assets/PHOTOS or VIDEOS.webp"
             alt="PHOTOS | VIDEOS"
             width={500}
             height={100}
-            className="w-[50dvw] md:w-[30dvw] lg:w-[22dvw] h-auto object-contain mb-[3vh] lg:mb-[4vh]]"
+            className="w-[50dvw] md:w-[30dvw] lg:w-[18dvw] h-auto object-contain mb-[6vh] lg:mb-[8vh]"
           />
 
-          {/* Stone Frame Container */}
-          <div className="relative w-full max-w-[90vw] lg:max-w-[70vw] aspect-[16/9] flex justify-center items-center">
-            {/* Stone Frame Image */}
-            <div className="absolute inset-0 pointer-events-none z-10 w-full h-full">
+          {/* Glass Frame Container */}
+          <div className="relative w-full max-w-[90vw] lg:max-w-[55vw] aspect-[16/9] lg:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl">
+            {/* Floating Top Right Image */}
+            <div className="absolute -right-[8%] -top-[20%] lg:-right-[4vw] lg:-top-[7vw] w-[20vw] lg:w-[10vw] z-30 pointer-events-none drop-shadow-2xl">
               <Image
-                src="/assets/3 -2copy.webp"
-                alt="Stone Frame"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-
-            {/* Floating Turtle (Top Left-ish) */}
-            <div className="absolute -left-[5%] top-[10%] w-[15vw] lg:w-[12vw] z-30 pointer-events-none drop-shadow-2xl animate-bounce-slow">
-              <Image
-                src="/assets/turtle.webp"
-                alt="Floating Turtle"
+                src="/assets/middle image.webp"
+                alt="Floating Decor"
                 width={200}
                 height={200}
-                className="w-full h-auto object-contain"
-              />
-            </div>
-
-            {/* Floating Lily (Top Right) */}
-            <div className="absolute -right-[8%] -top-[15%] w-[20vw] lg:w-[15vw] z-30 pointer-events-none drop-shadow-2xl">
-              <Image
-                src="/assets/lily.webp"
-                alt="Floating Lily"
-                width={300}
-                height={300}
                 className="w-full h-auto object-contain"
               />
             </div>
