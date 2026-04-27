@@ -42,24 +42,15 @@ const SocialIconButton: React.FC<{
         ease: "easeInOut",
         times: [0, 0.2, 0.5, 0.8, 1],
       }}
-      whileHover={{ backgroundColor: "rgba(255,255,255,0.2)" }}
       whileTap={{ scale: 0.9 }}
-      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-colors pointer-events-auto overflow-hidden"
+      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-colors pointer-events-auto overflow-hidden hover:bg-white/10"
       aria-label={`Social media link ${index + 1}`}
-      style={{
-        boxShadow: `
-          -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
-          -16px 12px 30px -12px rgba(0,0,0,1),
-          0px 4px 4px 0px rgba(0,0,0,0.25),
-          0px 4px 4px 0px rgba(0,0,0,0.4) inset
-        `,
-      }}
     >
       <Image
         src={icon}
         alt={`Social icon ${index + 1}`}
         fill
-        className="object-cover brightness-0 invert opacity-90 scale-[1.6]"
+        className="object-contain opacity-90"
       />
     </motion.a>
   );

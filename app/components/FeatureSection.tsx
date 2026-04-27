@@ -294,10 +294,10 @@ export const FeatureSection: React.FC = () => {
           </motion.p>
 
           {/* PARAGRAPH */}
-          <motion.p className="text-white/80 font-medium  leading-relaxed text-[14px] lg:text-[15px] max-w-[90%] lg:max-w-[85%] mx-auto lg:mx-0 drop-shadow-md">
-            Forget boring balconies. Step out into a rare 200 sq. ft. lake
-            lounge: your private front row to rippling water, open skies, and
-            evening breeze. It is a place to linger, breathe, and truly unwind.
+          <motion.p className="text-white/80 font-medium  leading-relaxed text-[14px] lg:text-[15px] max-w-[90%] lg:max-w-[95%] mx-auto lg:mx-0 drop-shadow-md">
+            Forget boring balconies. Step out into a rare 200 sq. ft. <br /> lake
+            lounge: your private front row to rippling water, <br /> open skies, and
+            evening breeze. It is a place to linger, <br /> breathe, and truly unwind.
           </motion.p>
         </motion.div>
 
@@ -320,7 +320,10 @@ export const FeatureSection: React.FC = () => {
         </motion.div>
       </div>
       {/* ── BLOCK 3 ─ Healthy & Active Lifestyle ────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw]">
+      <div
+        id="amenities"
+        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw]"
+      >
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -382,8 +385,6 @@ export const FeatureSection: React.FC = () => {
             ))}
           </ul>
         </motion.div>
-
-       
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}

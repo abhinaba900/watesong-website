@@ -235,7 +235,7 @@ export const CompanySection: React.FC = () => {
             alt="Wooden pier"
             width={800}
             height={200}
-            className="object-contain transform  rotate-[90deg] skew-y-2 w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+            className="object-contain transform  rotate-[270deg] skew-y-2 w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
           />
         </motion.div>
 

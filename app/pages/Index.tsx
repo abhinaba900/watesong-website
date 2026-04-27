@@ -49,7 +49,7 @@ const Index = () => {
           <HeroSection />
         </section>
 
-        <section id="amenities">
+        <section >
           <FeatureSection />
         </section>
         
