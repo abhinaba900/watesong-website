@@ -67,10 +67,10 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[45%] mb-0 lg:mt-[20vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
         >
           <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-4 mb-6">
-            <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
+            <h2 className="font-overwave text-white text-[6.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
               Just forty Residences.
             </h2>
-            <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
+            <h2 className="font-overwave text-white text-[6.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
               Just two homes per floor.
             </h2>
           </div>
@@ -80,7 +80,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="text-white/90 font-medium leading-relaxed text-[14px] lg:text-[18px] max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
+            className="text-white/90 font-medium leading-relaxed text-[20px] lg:text-[18px] max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
           >
             Homes at Watersong are so private, it feels like a villa. <br /> No
             doors face each other. No shared walls. <br /> Only expansive
@@ -123,20 +123,20 @@ export const FeatureSection: React.FC = () => {
             </motion.div>
           </div>
 
-          <motion.p className="text-white/90 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] mb-2 font-light text-[13px] lg:text-[15px]">
+          <motion.p className="text-white/90 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] mb-2 font-light text-[18px] lg:text-[15px]">
             A lake like this deserves
           </motion.p>
 
-          <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] tracking-wider mb-4 drop-shadow-lg uppercase mx-auto lg:mx-0 leading-none">
+          <h2 className="font-overwave text-white text-[6.5vw] lg:text-[1.8vw] tracking-wider mb-4 drop-shadow-lg uppercase mx-auto lg:mx-0 leading-none">
             A Lake Lounge
           </h2>
 
-          <motion.p className="text-white/80 font-medium  uppercase tracking-wide lg:tracking-widest mb-6 font-light text-[12px] lg:text-[14px]">
+          <motion.p className="text-white/80 font-medium  uppercase tracking-wide lg:tracking-widest mb-6 font-light text-[18px] lg:text-[14px]">
             UP TO 200 SQ. FT. LAKE LOUNGE.
           </motion.p>
 
           {/* PARAGRAPH */}
-          <motion.p className="text-white/80 font-medium  leading-relaxed text-[14px] lg:text-[15px] max-w-[90%] lg:max-w-[95%] mx-auto lg:mx-0 drop-shadow-md">
+          <motion.p className="text-white/80 font-medium  leading-relaxed text-[20px] lg:text-[15px] max-w-[90%] lg:max-w-[95%] mx-auto lg:mx-0 drop-shadow-md">
             Forget boring balconies. Step out into a rare 200 sq. ft. <br /> lake
             lounge: your private front row to rippling water, <br /> open skies, and
             evening breeze. It is a place to linger, <br /> breathe, and truly unwind.
@@ -206,12 +206,12 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* HEADING */}
-          <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] tracking-wider mb-6 drop-shadow-lg uppercase mx-auto lg:mx-0 leading-tight">
+          <h2 className="font-overwave text-white text-[5.5vw] lg:text-[1.8vw] tracking-wider mb-6 drop-shadow-lg uppercase mx-auto lg:mx-0 leading-tight">
             Healthy and Active Lifestyle
           </h2>
 
           {/* LIST */}
-          <ul className="text-white/90 font-medium leading-[1.8] text-[14px] lg:text-[16px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1">
+          <ul className="text-white/90 font-medium leading-[1.8] text-[20px] lg:text-[16px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1">
             {[
               "Jogging / Walking Path",
               "Children’s play area",
@@ -285,7 +285,7 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* LIST */}
-          <ul className="text-white/85 font-medium leading-[2] text-[14px] lg:text-[15px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1 relative z-10 mt-[25vh] lg:mt-auto">
+          <ul className="text-white/85 font-medium leading-[2] text-[20px] lg:text-[15px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1 relative z-10 mt-[25vh] lg:mt-auto">
             {[
               "Double-height car parking",
               "3 balconies per home",

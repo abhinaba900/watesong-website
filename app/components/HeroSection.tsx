@@ -41,21 +41,21 @@ export const HeroSection: React.FC = () => {
               className="w-[65vw] lg:w-[28vw] object-contain mb-1 -lg:mb-16"
             />
 
-            <h2 className="text-white font-semibold text-[4vw] lg:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md">
+            <h2 className="text-white font-semibold text-[6vw] lg:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md">
               Lakefront Residences
             </h2>
-            <p className="text-white font-semibold text-[3vw] lg:text-[1.1vw] lg:ml-[1vw] text-center lg:text-left drop-shadow-md opacity-90">
+            <p className="text-white font-semibold text-[4vw] lg:text-[1.1vw] lg:ml-[1vw] text-center lg:text-left drop-shadow-md opacity-90">
               1 KM from Nallurhalli Metro, Whitefield
             </p>
           </div>
 
           {/* Spacious Premium Cluster */}
           <div className="flex flex-col items-center lg:items-start z-10 lg:ml-4  mx-auto lg:mx-0">
-            <h2 className="font-overwave text-white text-[6vw] lg:text-[2.5vw] uppercase tracking-wider mb-2 lg:mb-4 drop-shadow-lg text-center lg:text-left leading-none">
+            <h2 className="font-overwave text-white text-[10vw] lg:text-[2.5vw] uppercase tracking-wider mb-2 lg:mb-4 drop-shadow-lg text-center lg:text-left leading-none">
               Spacious Premium
             </h2>
 
-            <p className="text-white/90 text-[3.5vw] lg:text-[1.25vw] text-center lg:text-left font-light leading-relaxed drop-shadow-md">
+            <p className="text-white/90 text-[5.5vw] lg:text-[1.25vw] text-center lg:text-left font-light leading-relaxed drop-shadow-md">
               3 BHK+ Homes from
               <br />
               2565 to 3495 sq. ft.
