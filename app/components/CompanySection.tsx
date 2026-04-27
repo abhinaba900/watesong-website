@@ -199,7 +199,7 @@ export const CompanySection: React.FC = () => {
           </div>
 
           {/* Descriptive Text */}
-          <p className="text-white/80 font-light text-[4.2vw] leading-[1.7] md:text-[1.8vw] lg:text-[0.95vw] lg:leading-[1.8] pointer-events-auto z-20">
+          <p className="text-white/80 font-medium text-[4.2vw] leading-[1.7] md:text-[1.8vw] lg:text-[0.95vw] lg:leading-[1.8] pointer-events-auto z-20">
             Privae draws from a legacy of building world-class living spaces. A
             deep understanding of market needs and individual aspirations,
             combined with strong technical expertise, guides every decision. The

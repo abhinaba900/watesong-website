@@ -199,20 +199,20 @@ export const Footer: React.FC = () => {
                         text-[3.5vw] md:text-[1.5vw] lg:text-[0.9vw] tracking-[0.02em] pointer-events-auto"
         >
           {/* Copyright Section */}
-          <div className="opacity-60">© 2025 All Right Reserved by PRIVAE</div>
+          <div className="opacity-60 font-medium">© 2026 All Right Reserved by PRIVAE</div>
 
           {/* Links Section */}
           <div className="flex items-center gap-[6vw] md:gap-[3vw] lg:gap-[2vw]">
             <Link
               href="/terms-and-conditions"
-              className="opacity-80 hover:opacity-100 transition-opacity whitespace-nowrap"
+              className="opacity-80 font-medium hover:opacity-100 transition-opacity whitespace-nowrap"
             >
               Terms and conditions
             </Link>
             <span className="opacity-30">|</span>
             <Link
               href="/privacy-policy"
-              className="opacity-80 hover:opacity-100 transition-opacity whitespace-nowrap"
+              className="opacity-80 font-medium hover:opacity-100 transition-opacity whitespace-nowrap"
             >
               Privacy Policy
             </Link>

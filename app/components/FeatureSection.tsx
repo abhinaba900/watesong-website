@@ -188,7 +188,6 @@ export const FeatureSection: React.FC = () => {
       onPointerMove={handlePointerMove}
       className="relative w-full pt-[0vh] lg:pt-[12vh]"
     >
-      
       {/* ── Ripple Canvas Background ── */}
       {isMounted && (
         <canvas
@@ -239,11 +238,11 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="text-white/90 font-light leading-relaxed text-[14px] lg:text-[18px] max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
+            className="text-white/90 font-medium leading-relaxed text-[14px] lg:text-[18px] max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
           >
-            Homes at Watersong are so private, it feels like a villa. <br /> No doors
-            face each other. No shared walls. <br /> Only expansive balconies, open air
-            & a serene lake view.
+            Homes at Watersong are so private, it feels like a villa. <br /> No
+            doors face each other. No shared walls. <br /> Only expansive
+            balconies, open air & a serene lake view.
           </motion.p>
         </motion.div>
 
@@ -282,7 +281,7 @@ export const FeatureSection: React.FC = () => {
             </motion.div>
           </div>
 
-          <motion.p className="text-white/90 uppercase tracking-[0.1em] lg:tracking-[0.15em] mb-2 font-light text-[13px] lg:text-[15px]">
+          <motion.p className="text-white/90 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] mb-2 font-light text-[13px] lg:text-[15px]">
             A lake like this deserves
           </motion.p>
 
@@ -290,12 +289,12 @@ export const FeatureSection: React.FC = () => {
             A Lake Lounge
           </h2>
 
-          <motion.p className="text-white/80 uppercase tracking-wide lg:tracking-widest mb-6 font-light text-[12px] lg:text-[14px]">
+          <motion.p className="text-white/80 font-medium  uppercase tracking-wide lg:tracking-widest mb-6 font-light text-[12px] lg:text-[14px]">
             UP TO 200 SQ. FT. LAKE LOUNGE.
           </motion.p>
 
           {/* PARAGRAPH */}
-          <motion.p className="text-white/80 font-light leading-relaxed text-[14px] lg:text-[15px] max-w-[90%] lg:max-w-[85%] mx-auto lg:mx-0 drop-shadow-md">
+          <motion.p className="text-white/80 font-medium  leading-relaxed text-[14px] lg:text-[15px] max-w-[90%] lg:max-w-[85%] mx-auto lg:mx-0 drop-shadow-md">
             Forget boring balconies. Step out into a rare 200 sq. ft. lake
             lounge: your private front row to rippling water, open skies, and
             evening breeze. It is a place to linger, breathe, and truly unwind.
@@ -367,7 +366,7 @@ export const FeatureSection: React.FC = () => {
           </h2>
 
           {/* LIST */}
-          <ul className="text-white/90 font-light leading-[1.8] text-[14px] lg:text-[16px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1">
+          <ul className="text-white/90 font-medium leading-[1.8] text-[14px] lg:text-[16px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1">
             {[
               "Jogging / Walking Path",
               "Children’s play area",
@@ -454,7 +453,7 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* LIST */}
-          <ul className="text-white/85 font-light leading-[2] text-[14px] lg:text-[15px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1 relative z-10 mt-[25vh] lg:mt-auto">
+          <ul className="text-white/85 font-medium leading-[2] text-[14px] lg:text-[15px] max-w-[90%] mx-auto lg:mx-0 text-left list-none space-y-1 relative z-10 mt-[25vh] lg:mt-auto">
             {[
               "Double-height car parking",
               "3 balconies per home",

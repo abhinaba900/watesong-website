@@ -270,7 +270,7 @@ gap-10 lg:gap-0 mt-[10vh]"
             <h3 className="text-[6vw] md:text-[4vw] lg:text-[1.8vw] font-medium tracking-tight mb-[0.5vh]">
               Lakefront Residences
             </h3>
-            <p className="text-[4vw] md:text-[2.2vw] lg:text-[1vw] font-light opacity-80 mb-[4vh]">
+            <p className="text-[4vw] md:text-[2.2vw] lg:text-[1vw] font-medium opacity-80 mb-[4vh]">
               1 KM from Nallurhalli Metro, Whitefield
             </p>
           </div>

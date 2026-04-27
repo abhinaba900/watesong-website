@@ -194,7 +194,7 @@ export const MasterPlanSection: React.FC = () => {
           </h2>
 
           {/* LIST */}
-          <div className="text-white/90 font-light leading-[1.8] text-[13px] lg:text-[14px] max-w-[95%] mx-auto lg:mx-0 text-left pointer-events-auto">
+          <div className="text-white/90 font-medium leading-[1.8] text-[13px] lg:text-[14px] max-w-[95%] mx-auto lg:mx-0 text-left pointer-events-auto">
             <ol className="list-decimal pl-5 space-y-[2px]">
               <li>Entry &amp; Exit</li>
               <li>Security Kiosk</li>
