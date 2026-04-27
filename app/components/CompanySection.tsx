@@ -193,10 +193,6 @@ export const CompanySection: React.FC = () => {
             <span className="text-[#FF3B30] font-light hidden xs:inline">
               |
             </span>
-            <span className="font-bold whitespace-nowrap">18 PROJECTS</span>
-            <span className="text-[#FF3B30] font-light hidden xs:inline">
-              |
-            </span>
             <span className="font-bold whitespace-nowrap">
               4 MILLION SQ. FT.
             </span>

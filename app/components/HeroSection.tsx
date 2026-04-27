@@ -136,6 +136,7 @@ export const HeroSection: React.FC = () => {
       onPointerDown={(e) => dropStone(e.clientX, e.clientY)}
       className="relative w-full  h-screen"
     >
+      
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -201,7 +202,7 @@ export const HeroSection: React.FC = () => {
 
         {/* RIGHT */}
         <div className="flex justify-center items-center w-full lg:w-[50vw] h-full relative z-10 translate-y-[2vh] lg:translate-y-[4vh]">
-          <div className="relative aspect-square w-full lg:w-[55vw] lg:scale-110">
+          <div className="relative aspect-square w-full lg:w-[55vw] ">
             <Image
               src="/assets/elevation.webp"
               alt="Elevation"

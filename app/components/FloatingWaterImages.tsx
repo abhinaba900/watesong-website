@@ -30,7 +30,6 @@ function generateSwimmerPath(id: number): SwimmerData {
     endX = 0,
     endY = 0;
 
-  // Start off-screen (-15% or 115%) and move across to the opposite side
   switch (edge) {
     case "top":
       startX = Math.random() * 100;
@@ -58,16 +57,11 @@ function generateSwimmerPath(id: number): SwimmerData {
       break;
   }
 
-  // Calculate angle so the image faces the direction of travel
   const dx = endX - startX;
   const dy = endY - startY;
   const angleRad = Math.atan2(dy, dx);
-
-  // FIX: Because the provided turtle GIF naturally faces UPWARDS (12 o'clock),
-  // we need to add 90 degrees to the standard Math.atan2 result to align its head.
   const rotation = angleRad * (180 / Math.PI) + 160;
 
-  // Very slow, calm travel speed: Random duration between 70 and 120 seconds
   const duration = 70 + Math.random() * 50;
 
   return { id, startX, startY, endX, endY, rotation, duration };
@@ -80,47 +74,50 @@ function SwimmerClone({
   onRemove,
 }: {
   data: SwimmerData;
-  dropStone: (x: number, y: number, radius: number, strength: number) => void;
+  dropStone: (
+    x: number,
+    y: number,
+    radius: number,
+    strength: number,
+    isPercent?: boolean,
+  ) => void;
   onRemove: (id: number) => void;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  // Turtle Distance-Based Wake Tracker for THIS specific clone
   useEffect(() => {
     let rafId: number;
-    let lastX = 0;
-    let lastY = 0;
+    const startTime = performance.now();
+    const durationMs = data.duration * 1000;
 
-    const trackWake = () => {
-      if (ref.current) {
-        const tRect = ref.current.getBoundingClientRect();
-        const currentX = tRect.left + tRect.width / 2;
-        const currentY = tRect.top + tRect.height / 2;
+    let lastX = data.startX;
+    let lastY = data.startY;
 
-        if (lastX === 0 && lastY === 0) {
-          lastX = currentX;
-          lastY = currentY;
-        }
+    const trackWake = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / durationMs, 1);
 
-        const distanceMoved = Math.hypot(currentX - lastX, currentY - lastY);
+      const currentX = data.startX + (data.endX - data.startX) * progress;
+      const currentY = data.startY + (data.endY - data.startY) * progress;
 
-        // Only drop a stone if the turtle moved at least 8 pixels
-        if (distanceMoved > 8) {
-          dropStone(currentX, currentY, 2, 120);
-          lastX = currentX;
-          lastY = currentY;
-        }
+      const distanceMoved = Math.hypot(currentX - lastX, currentY - lastY);
+
+      // Increased gap between drops to reduce lag, and significantly lowered strength (40)
+      if (distanceMoved > 1.0) {
+        dropStone(currentX, currentY, 3, 40, true);
+        lastX = currentX;
+        lastY = currentY;
       }
-      rafId = requestAnimationFrame(trackWake);
+
+      if (progress < 1) {
+        rafId = requestAnimationFrame(trackWake);
+      }
     };
 
-    trackWake();
+    rafId = requestAnimationFrame(trackWake);
     return () => cancelAnimationFrame(rafId);
-  }, [dropStone]);
+  }, [data, dropStone]);
 
   return (
     <motion.div
-      ref={ref}
       className="absolute pointer-events-none z-10"
       initial={{
         left: `${data.startX}%`,
@@ -133,14 +130,15 @@ function SwimmerClone({
       }}
       transition={{
         duration: data.duration,
-        ease: "linear", // Smooth, constant speed across the screen
+        ease: "linear",
       }}
-      onAnimationComplete={() => onRemove(data.id)} // Clean up and trigger replacement
+      onAnimationComplete={() => onRemove(data.id)}
       style={{
-        width: "180px",
+        width: "150px", // Slightly smaller turtle footprint
         translateX: "-50%",
         translateY: "-50%",
         filter: "drop-shadow(0 10px 8px rgba(0,0,0,0.2))",
+        opacity: 0.8, // Slightly transparent to blend better with background
       }}
     >
       <Image
@@ -168,6 +166,7 @@ export default function FloatingWaterImages({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const widthRef = useRef(0);
   const heightRef = useRef(0);
+  const scaleRef = useRef(1); // Track scale to fix "busted" ripple sizes
 
   const buffer1Ref = useRef<number[]>([]);
   const buffer2Ref = useRef<number[]>([]);
@@ -194,9 +193,21 @@ export default function FloatingWaterImages({
     img.crossOrigin = "anonymous";
 
     img.onload = () => {
-      const scale = 0.5; // Downscale for better CPU performance
-      const width = Math.floor(canvas.clientWidth * scale);
-      const height = Math.floor(canvas.clientHeight * scale);
+      let clientWidth = canvas.clientWidth;
+      let clientHeight = canvas.clientHeight;
+
+      // Keep pixels capped to prevent whole-page scroll lag
+      const MAX_PIXELS = 250000;
+      const currentPixels = clientWidth * clientHeight;
+      let scale = 0.5;
+
+      if (currentPixels * scale * scale > MAX_PIXELS) {
+        scale = Math.sqrt(MAX_PIXELS / currentPixels);
+      }
+      scaleRef.current = scale;
+
+      const width = Math.floor(clientWidth * scale);
+      const height = Math.floor(clientHeight * scale);
 
       canvas.width = width;
       canvas.height = height;
@@ -237,7 +248,7 @@ export default function FloatingWaterImages({
       buffer1Ref.current = buffer2Ref.current;
       buffer2Ref.current = temp;
 
-      const damping = 0.92;
+      const damping = 0.94; // slightly smoother fade out
 
       for (let y = 1; y < height - 1; y++) {
         for (let x = 1; x < width - 1; x++) {
@@ -264,7 +275,9 @@ export default function FloatingWaterImages({
 
           const sourcePixel = (xOffset + yOffset * width) * 4;
           const targetPixel = i * 4;
-          let light = dataOffset * 1.5;
+
+          // Softened the lighting calculation to reduce "busted" visual artifacts
+          let light = dataOffset * 1.0;
 
           if (light < -30) light = -30;
           if (light > 60) light = 60;
@@ -293,18 +306,33 @@ export default function FloatingWaterImages({
   }, [isMounted, backgroundImage]);
 
   const dropStone = useCallback(
-    (x: number, y: number, radius: number, strength: number) => {
+    (
+      x: number,
+      y: number,
+      baseRadius: number,
+      strength: number,
+      isPercent = false,
+    ) => {
       if (!isImageLoadedRef.current || !canvasRef.current) return;
 
-      const rect = canvasRef.current.getBoundingClientRect();
-      const scaleX = widthRef.current / rect.width;
-      const scaleY = heightRef.current / rect.height;
-
-      const scaledX = Math.floor((x - rect.left) * scaleX);
-      const scaledY = Math.floor((y - rect.top) * scaleY);
       const width = widthRef.current;
       const height = heightRef.current;
       const buffer1 = buffer1Ref.current;
+      const scale = scaleRef.current;
+
+      // Adjust radius so drops don't look massive when the canvas is heavily downscaled
+      const radius = Math.max(1, Math.floor(baseRadius * scale));
+
+      let scaledX, scaledY;
+
+      if (isPercent) {
+        scaledX = Math.floor((x / 100) * width);
+        scaledY = Math.floor((y / 100) * height);
+      } else {
+        // Direct multiplication ensures scroll height doesn't break the position
+        scaledX = Math.floor(x * scale);
+        scaledY = Math.floor(y * scale);
+      }
 
       for (let j = scaledY - radius; j < scaledY + radius; j++) {
         for (let i = scaledX - radius; i < scaledX + radius; i++) {
@@ -320,26 +348,23 @@ export default function FloatingWaterImages({
   );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    dropStone(e.clientX, e.clientY, 8, 60);
+    // nativeEvent.offset reliably gets the X/Y relative to the canvas itself, ignoring page scroll
+    dropStone(e.nativeEvent.offsetX, e.nativeEvent.offsetY, 12, 80, false);
   };
 
-  // ─── Strict "2 Clones Max" Spawner Logic ───────────────────────────────────
   useEffect(() => {
     if (!isMounted) return;
 
-    // Initially spawn exactly 3 turtles
+    // Spawn exactly 2 turtles initially
     setSwimmers([
-      generateSwimmerPath(spawnIdRef.current++),
       generateSwimmerPath(spawnIdRef.current++),
       generateSwimmerPath(spawnIdRef.current++),
     ]);
   }, [isMounted]);
 
-  // When a clone reaches the other side, remove it and spawn 1 replacement
   const removeSwimmer = useCallback((id: number) => {
     setSwimmers((prev) => {
       const filtered = prev.filter((swimmer) => swimmer.id !== id);
-      // Append exactly one new turtle to maintain the count
       return [...filtered, generateSwimmerPath(spawnIdRef.current++)];
     });
   }, []);
@@ -355,7 +380,6 @@ export default function FloatingWaterImages({
         onPointerDown={handlePointerDown}
         className="w-full h-full object-cover pointer-events-auto"
       />
-      {/* Render active swimmers */}
       {swimmers.map((swimmer) => (
         <SwimmerClone
           key={swimmer.id}

@@ -39,7 +39,7 @@ const Index = () => {
       {/* Put your Background Image back normally! */}
       <div className="relative z-10 flex flex-col w-full overflow-x-hidden">
         <FloatingWaterImages
-          isFixed
+          isFixed={false}
           backgroundImage="/assets/bg-in-feature-section.webp"
           className="z-0"
         />

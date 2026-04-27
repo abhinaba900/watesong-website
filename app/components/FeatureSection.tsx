@@ -188,6 +188,7 @@ export const FeatureSection: React.FC = () => {
       onPointerMove={handlePointerMove}
       className="relative w-full pt-[0vh] lg:pt-[12vh]"
     >
+      
       {/* ── Ripple Canvas Background ── */}
       {isMounted && (
         <canvas
@@ -206,7 +207,7 @@ export const FeatureSection: React.FC = () => {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10"
         >
-          <div className="relative aspect-square w-full lg:w-[55vw] lg:scale-110">
+          <div className="relative aspect-square w-full lg:w-[55vw]">
             <Image
               src="/assets/features-so-thoughtful-you-feel-spcial.webp"
               alt="Family enjoying life at Watersong"
@@ -240,8 +241,8 @@ export const FeatureSection: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="text-white/90 font-light leading-relaxed text-[14px] lg:text-[18px] max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
           >
-            Homes at Watersong are so private, it feels like a villa. No doors
-            face each other. No shared walls. Only expansive balconies, open air
+            Homes at Watersong are so private, it feels like a villa. <br /> No doors
+            face each other. No shared walls. <br /> Only expansive balconies, open air
             & a serene lake view.
           </motion.p>
         </motion.div>
@@ -309,7 +310,7 @@ export const FeatureSection: React.FC = () => {
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
           className="w-full lg:w-[50vw] flex justify-center items-center order-2 relative z-10"
         >
-          <div className="relative aspect-square w-full lg:w-[55vw] lg:scale-110">
+          <div className="relative aspect-square w-full lg:w-[55vw]">
             <Image
               src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
               alt="Lake lounge"
@@ -329,7 +330,7 @@ export const FeatureSection: React.FC = () => {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10"
         >
-          <div className="relative aspect-square w-full scale-[0.77] lg:w-[55vw] lg:scale-[0.85]">
+          <div className="relative aspect-square w-full scale-[0.77] lg:w-[55vw] ">
             <Image
               src="/assets/swimming.webp"
               alt="Swimming Pool"
@@ -398,7 +399,7 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-end px-[6vw] lg:px-[4vw] py-[4vh] lg:py-[2vh] pt-0 lg:pt-[20vh] gap-8 lg:gap-[4vw]">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-end px-[6vw] lg:px-[8vw] py-[4vh] lg:py-[2vh] pt-0 lg:pt-[20vh] gap-8 lg:gap-[4vw]">
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -432,7 +433,7 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[40%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-end lg:h-[70vh] z-10 lg:pl-[4vw] pb-[5vh] lg:pb-[12vh]"
         >
           {/* FLOATING FISH */}
-          <div className="absolute top-[5vh] lg:top-[15vh] right-[10vw] lg:left-[5vw] pointer-events-none z-0">
+          <div className="absolute top-[5vh] lg:top-[5vh] right-[10vw] lg:left-[1vw] pointer-events-none z-0">
             <motion.div
               animate={{ x: ["-3%", "3%"], y: ["-2%", "2%"] }}
               transition={{
