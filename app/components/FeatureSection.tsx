@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -29,182 +29,24 @@ const floatAnim = {
 export const FeatureSection: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
 
-  // --- Ripple Refs ---
-  const containerRef = useRef<HTMLElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const widthRef = useRef(0);
-  const heightRef = useRef(0);
-  const buffer1Ref = useRef<number[]>([]);
-  const buffer2Ref = useRef<number[]>([]);
-  const outputImageDataRef = useRef<ImageData | null>(null);
-  const animationFrameRef = useRef<number>(0);
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // ─── Ripple Math Logic ──────────────────────────────────────────────────
-  useEffect(() => {
-    if (!isMounted || !canvasRef.current || !containerRef.current) return;
-
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (!ctx) return;
-
-    const scale = 0.5; // Lower resolution for better CPU performance
-
-    const initCanvas = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const width = Math.floor(rect.width * scale);
-      const height = Math.floor(rect.height * scale);
-
-      canvas.width = width;
-      canvas.height = height;
-      widthRef.current = width;
-      heightRef.current = height;
-
-      const size = width * height;
-      buffer1Ref.current = new Array(size).fill(0);
-      buffer2Ref.current = new Array(size).fill(0);
-      outputImageDataRef.current = ctx.createImageData(width, height);
-    };
-
-    initCanvas();
-
-    const renderLoop = () => {
-      if (!ctx || !outputImageDataRef.current) return;
-
-      const width = widthRef.current;
-      const height = heightRef.current;
-      const buffer1 = buffer1Ref.current;
-      const buffer2 = buffer2Ref.current;
-      const outData = outputImageDataRef.current;
-      const outputPixels = outData.data;
-
-      // Swap buffers
-      const temp = buffer1Ref.current;
-      buffer1Ref.current = buffer2Ref.current;
-      buffer2Ref.current = temp;
-
-      const damping = 0.94;
-
-      for (let y = 1; y < height - 1; y++) {
-        for (let x = 1; x < width - 1; x++) {
-          const i = x + y * width;
-          // Water wave algorithm
-          buffer2[i] =
-            (buffer1[i - 1] +
-              buffer1[i + 1] +
-              buffer1[i - width] +
-              buffer1[i + width]) /
-              2 -
-            buffer2[i];
-          buffer2[i] *= damping;
-
-          let dataOffset = buffer2[i] - buffer1[i];
-          const targetPixel = i * 4;
-
-          let r = 0,
-            g = 0,
-            b = 0,
-            a = 0;
-          if (dataOffset > 0.5) {
-            // Light highlight (crest)
-            r = 255;
-            g = 255;
-            b = 255;
-            a = Math.min(255, dataOffset * 25);
-          } else if (dataOffset < -0.5) {
-            // Dark shadow (trough)
-            r = 10;
-            g = 25;
-            b = 40;
-            a = Math.min(255, -dataOffset * 8);
-          }
-
-          outputPixels[targetPixel] = r;
-          outputPixels[targetPixel + 1] = g;
-          outputPixels[targetPixel + 2] = b;
-          outputPixels[targetPixel + 3] = a;
-        }
-      }
-
-      ctx.putImageData(outData, 0, 0);
-      animationFrameRef.current = requestAnimationFrame(renderLoop);
-    };
-
-    renderLoop();
-
-    const resizeObserver = new ResizeObserver(() => initCanvas());
-    resizeObserver.observe(containerRef.current);
-
-    return () => {
-      cancelAnimationFrame(animationFrameRef.current);
-      resizeObserver.disconnect();
-    };
-  }, [isMounted]);
-
-  const dropStone = useCallback(
-    (x: number, y: number, radius: number, strength: number) => {
-      if (!canvasRef.current || !containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const scaleX = widthRef.current / rect.width;
-      const scaleY = heightRef.current / rect.height;
-      const scaledX = Math.floor((x - rect.left) * scaleX);
-      const scaledY = Math.floor((y - rect.top) * scaleY);
-
-      const width = widthRef.current;
-      const height = heightRef.current;
-      const buffer1 = buffer1Ref.current;
-
-      for (let j = scaledY - radius; j < scaledY + radius; j++) {
-        for (let i = scaledX - radius; i < scaledX + radius; i++) {
-          if (i >= 0 && i < width && j >= 0 && j < height) {
-            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
-              buffer1[i + j * width] = strength;
-            }
-          }
-        }
-      }
-    },
-    [],
-  );
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    dropStone(e.clientX, e.clientY, 8, 60);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    // Optional: Creates ripples on hover/move
-    if (e.buttons === 1) dropStone(e.clientX, e.clientY, 5, 30);
-  };
-
   return (
     <section
       id="highlights"
-      ref={containerRef}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
       className="relative w-full pt-[0vh] lg:pt-[12vh]"
     >
-      {/* ── Ripple Canvas Background ── */}
-      {isMounted && (
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-60"
-        />
-      )}
-
       {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw]">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none">
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10"
+          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10 pointer-events-auto"
         >
           <div className="relative aspect-square w-full lg:w-[55vw]">
             <Image
@@ -222,7 +64,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] mb-0 lg:mt-[20vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10"
+          className="relative w-full lg:w-[45%] mb-0 lg:mt-[20vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
         >
           <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-4 mb-6">
             <h2 className="font-overwave text-white text-[4.5vw] lg:text-[1.8vw] leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
@@ -259,14 +101,14 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 2 ─ Lake Lounge ───────────────────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw]">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative w-full lg:w-[45%] text-white text-center lg:text-left order-1 flex flex-col justify-center lg:pl-[6vw] z-10"
+          className="relative w-full lg:w-[45%] text-white text-center lg:text-left order-1 flex flex-col justify-center lg:pl-[6vw] z-10 pointer-events-auto"
         >
           {/* FLOATING LOTUS */}
           <div className="mb-6 lg:mb-8 flex justify-center lg:justify-start lg:ml-[2vw]">
@@ -307,7 +149,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="w-full lg:w-[50vw] flex justify-center items-center order-2 relative z-10"
+          className="w-full lg:w-[50vw] flex justify-center items-center order-2 relative z-10 pointer-events-auto"
         >
           <div className="relative aspect-square w-full lg:w-[55vw]">
             <Image
@@ -322,7 +164,7 @@ export const FeatureSection: React.FC = () => {
       {/* ── BLOCK 3 ─ Healthy & Active Lifestyle ────────────────────────── */}
       <div
         id="amenities"
-        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw]"
+        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none"
       >
         {/* IMAGE LEFT */}
         <motion.div
@@ -330,7 +172,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10"
+          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10 pointer-events-auto"
         >
           <div className="relative aspect-square w-full scale-[0.77] lg:w-[55vw] ">
             <Image
@@ -348,7 +190,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 lg:pl-[4vw]"
+          className="relative w-full lg:w-[45%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 lg:pl-[4vw] pointer-events-auto"
         >
           {/* LILY (TOP DECORATION) */}
           <div className="flex justify-center lg:justify-start mb-6 lg:mb-8 lg:-ml-[2vw]">
@@ -388,14 +230,14 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-end px-[6vw] lg:px-[8vw] py-[4vh] lg:py-[2vh] pt-0 lg:pt-[20vh] gap-8 lg:gap-[4vw]">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-end px-[6vw] lg:px-[8vw] py-[4vh] lg:py-[2vh] pt-0 lg:pt-[20vh] gap-8 lg:gap-[4vw] pointer-events-none">
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[60%] flex flex-col items-center lg:items-start order-2 lg:order-1 relative z-10 lg:pb-[5vh]"
+          className="w-full lg:w-[60%] flex flex-col items-center lg:items-start order-2 lg:order-1 relative z-10 lg:pb-[5vh] pointer-events-auto"
         >
           {/* Framed Image */}
           <div className="relative w-full max-w-[900px] aspect-[4/3] lg:aspect-[16/10] rounded-[16px] lg:rounded-[24px] overflow-hidden border-[2px] lg:border-[4px] border-white/20 shadow-2xl mb-4 lg:mb-6">
@@ -419,7 +261,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[40%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-end lg:h-[70vh] z-10 lg:pl-[4vw] pb-[5vh] lg:pb-[12vh]"
+          className="relative w-full lg:w-[40%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-end lg:h-[70vh] z-10 lg:pl-[4vw] pb-[5vh] lg:pb-[12vh] pointer-events-auto"
         >
           {/* FLOATING FISH */}
           <div className="absolute top-[5vh] lg:top-[5vh] right-[10vw] lg:left-[1vw] pointer-events-none z-0">

@@ -7,6 +7,7 @@ import Image from "next/image";
 interface FloatingWaterImagesProps {
   backgroundImage?: string;
   className?: string;
+  isFixed?: boolean;
 }
 
 // ─── Types for our Clone System ──────────────────────────────────────────────
@@ -62,7 +63,7 @@ function generateSwimmerPath(id: number): SwimmerData {
   const angleRad = Math.atan2(dy, dx);
   const rotation = angleRad * (180 / Math.PI) + 160;
 
-  const duration = 70 + Math.random() * 50;
+  const duration = 120 + Math.random() * 80;
 
   return { id, startX, startY, endX, endY, rotation, duration };
 }
@@ -74,13 +75,7 @@ function SwimmerClone({
   onRemove,
 }: {
   data: SwimmerData;
-  dropStone: (
-    x: number,
-    y: number,
-    radius: number,
-    strength: number,
-    isPercent?: boolean,
-  ) => void;
+  dropStone: (x: number, y: number, radius: number, strength: number, isPercent?: boolean) => void;
   onRemove: (id: number) => void;
 }) {
   useEffect(() => {
@@ -100,9 +95,9 @@ function SwimmerClone({
 
       const distanceMoved = Math.hypot(currentX - lastX, currentY - lastY);
 
-      // Increased distance to 1.5 for less jitter, lowered strength to 20 for very calm wakes
-      if (distanceMoved > 1.5) {
-        dropStone(currentX, currentY, 2, 20, true);
+      if (distanceMoved > 0.8) {
+        // Drops stones more frequently with subtle, smooth wake
+        dropStone(currentX, currentY, 4, 30, true);
         lastX = currentX;
         lastY = currentY;
       }
@@ -146,7 +141,7 @@ function SwimmerClone({
         alt="Swimming turtle"
         width={100}
         height={100}
-        className="w-full h-auto object-contain"
+        className="w-full h-auto object-contain -rotate-[25deg]"
         priority
       />
     </motion.div>
@@ -158,11 +153,12 @@ export default function FloatingWaterImages({
   backgroundImage = "/assets/bg-in-feature-section.webp",
   className = "",
   isFixed = false,
-}: FloatingWaterImagesProps & { isFixed?: boolean }) {
+}: FloatingWaterImagesProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [swimmers, setSwimmers] = useState<SwimmerData[]>([]);
   const spawnIdRef = useRef(0);
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const widthRef = useRef(0);
   const heightRef = useRef(0);
@@ -247,7 +243,6 @@ export default function FloatingWaterImages({
       buffer1Ref.current = buffer2Ref.current;
       buffer2Ref.current = temp;
 
-      // Increased to 0.96 for a smoother, glassier ripple that travels gently
       const damping = 0.96;
 
       for (let y = 1; y < height - 1; y++) {
@@ -276,24 +271,22 @@ export default function FloatingWaterImages({
           const sourcePixel = (xOffset + yOffset * width) * 4;
           const targetPixel = i * 4;
 
-          // Significantly reduced multiplier (0.5) to remove harsh high-contrast edges
           let light = dataOffset * 0.5;
 
-          // Clamped the max/min light so ripples stay subtle
           if (light < -15) light = -15;
           if (light > 30) light = 30;
 
           outputPixels[targetPixel] = Math.min(
             255,
-            Math.max(0, bgPixels[sourcePixel] + light),
+            Math.max(0, bgPixels[sourcePixel] + light)
           );
           outputPixels[targetPixel + 1] = Math.min(
             255,
-            Math.max(0, bgPixels[sourcePixel + 1] + light),
+            Math.max(0, bgPixels[sourcePixel + 1] + light)
           );
           outputPixels[targetPixel + 2] = Math.min(
             255,
-            Math.max(0, bgPixels[sourcePixel + 2] + light),
+            Math.max(0, bgPixels[sourcePixel + 2] + light)
           );
           outputPixels[targetPixel + 3] = 255;
         }
@@ -307,13 +300,7 @@ export default function FloatingWaterImages({
   }, [isMounted, backgroundImage]);
 
   const dropStone = useCallback(
-    (
-      x: number,
-      y: number,
-      baseRadius: number,
-      strength: number,
-      isPercent = false,
-    ) => {
+    (x: number, y: number, baseRadius: number, strength: number, isPercent = false) => {
       if (!isImageLoadedRef.current || !canvasRef.current) return;
 
       const width = widthRef.current;
@@ -343,13 +330,28 @@ export default function FloatingWaterImages({
         }
       }
     },
-    [],
+    []
   );
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    // Reduced click strength to 45 and radius to 8 for a more refined splash
-    dropStone(e.nativeEvent.offsetX, e.nativeEvent.offsetY, 8, 45, false);
-  };
+  // Setup global listeners so clicking/moving anywhere on the page triggers a ripple on the background
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const handleGlobalClick = (e: MouseEvent) => {
+       if (!containerRef.current) return;
+       const rect = containerRef.current.getBoundingClientRect();
+       const x = e.clientX - rect.left;
+       const y = e.clientY - rect.top;
+       // Nice splash on click
+       dropStone(x, y, 8, 45, false);
+    };
+
+    window.addEventListener("click", handleGlobalClick);
+
+    return () => {
+      window.removeEventListener("click", handleGlobalClick);
+    };
+  }, [isMounted, dropStone]);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -371,11 +373,15 @@ export default function FloatingWaterImages({
 
   return (
     <div
+      ref={containerRef}
       className={`${isFixed ? "fixed" : "absolute"} inset-0 w-full h-full overflow-hidden ${className}`}
     >
+      {/* 
+        The CPU canvas acts as the visual background. 
+        It safely handles extreme heights without WebGL texture crashes!
+      */}
       <canvas
         ref={canvasRef}
-        onPointerDown={handlePointerDown}
         className="w-full h-full object-cover pointer-events-auto"
       />
       {swimmers.map((swimmer) => (
@@ -389,3 +395,4 @@ export default function FloatingWaterImages({
     </div>
   );
 }
+
