@@ -322,7 +322,7 @@ export const FloorPlanSection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="relative pt-[10vh] pb-[10vh] w-full flex flex-col justify-center px-[5vw] overflow-hidden"
+      className="relative pt-[10vh]  w-full flex flex-col justify-center px-[5vw] overflow-hidden"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
@@ -477,7 +477,7 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── LOCATION MAP Section ─── */}
-        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center pb-[10vh]">
+        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center">
           {/* Title Group */}
           <div className="mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
             <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] mb-[2vh] tracking-widest drop-shadow-lg uppercase">
@@ -489,7 +489,7 @@ export const FloorPlanSection: React.FC = () => {
           </div>
 
           {/* Map Image */}
-          <div className="relative w-full lg:max-w-[70vw] aspect-auto">
+          <div className="relative w-full lg:max-w-[70vw] lg:mt-[-10vw] aspect-auto">
             <Image
               src="/assets/location-map.webp"
               alt="Location Map"
@@ -497,15 +497,6 @@ export const FloorPlanSection: React.FC = () => {
               height={1200}
               className="w-full h-auto object-contain drop-shadow-2xl"
             />
-
-            {/* Compass Icon (if it's not part of the map image) */}
-            <div className="absolute left-[2vw] bottom-[2vw] w-[8vw] lg:w-[5vw]">
-              {/* If there's a separate compass image asset, add it here.
-                Based on the design image, a compass is at the bottom left. */}
-              <div className="w-full h-full text-white/40 flex items-center justify-center font-bold text-[3vw] lg:text-[1.5vw]">
-                N
-              </div>
-            </div>
           </div>
         </div>
 

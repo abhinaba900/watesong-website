@@ -9,13 +9,41 @@ const SocialIconButton: React.FC<{
   index: number;
   href: string;
 }> = ({ icon, index, href }) => {
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const triggerAnimation = () => {
+    setIsAnimating(false);
+    // Tiny delay ensures the animation restarts if hovered multiple times quickly
+    setTimeout(() => setIsAnimating(true), 10);
+  };
+
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
-      whileTap={{ scale: 0.95 }}
+      onMouseEnter={triggerAnimation}
+      animate={
+        isAnimating
+          ? {
+              scale: [1, 1.1, 0.95, 1.05, 1],
+              scaleX: [1, 1.15, 0.85, 1.05, 1],
+              scaleY: [1, 0.85, 1.15, 0.95, 1],
+            }
+          : {
+              scale: 1,
+              scaleX: 1,
+              scaleY: 1,
+            }
+      }
+      onAnimationComplete={() => setIsAnimating(false)}
+      transition={{
+        duration: 0.5,
+        ease: "easeInOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+      }}
+      whileHover={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+      whileTap={{ scale: 0.9 }}
       className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-colors pointer-events-auto overflow-hidden"
       aria-label={`Social media link ${index + 1}`}
     >
@@ -118,15 +146,30 @@ export const ContactSection: React.FC = () => {
       for (let y = 1; y < height - 1; y++) {
         for (let x = 1; x < width - 1; x++) {
           const i = x + y * width;
-          buffer2[i] = (buffer1[i - 1] + buffer1[i + 1] + buffer1[i - width] + buffer1[i + width]) / 2 - buffer2[i];
+          buffer2[i] =
+            (buffer1[i - 1] +
+              buffer1[i + 1] +
+              buffer1[i - width] +
+              buffer1[i + width]) /
+              2 -
+            buffer2[i];
           buffer2[i] *= damping;
           let dataOffset = buffer2[i] - buffer1[i];
           const targetPixel = i * 4;
-          let r = 0, g = 0, b = 0, a = 0;
+          let r = 0,
+            g = 0,
+            b = 0,
+            a = 0;
           if (dataOffset > 0.5) {
-            r = 255; g = 255; b = 255; a = Math.min(255, dataOffset * 25);
+            r = 255;
+            g = 255;
+            b = 255;
+            a = Math.min(255, dataOffset * 25);
           } else if (dataOffset < -0.5) {
-            r = 10; g = 25; b = 40; a = Math.min(255, -dataOffset * 8);
+            r = 10;
+            g = 25;
+            b = 40;
+            a = Math.min(255, -dataOffset * 8);
           }
           outputPixels[targetPixel] = r;
           outputPixels[targetPixel + 1] = g;
@@ -150,26 +193,29 @@ export const ContactSection: React.FC = () => {
     };
   }, [isMounted]);
 
-  const dropStone = useCallback((x: number, y: number, radius: number, strength: number) => {
-    if (!canvasRef.current || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const scaleX = widthRef.current / rect.width;
-    const scaleY = heightRef.current / rect.height;
-    const scaledX = Math.floor((x - rect.left) * scaleX);
-    const scaledY = Math.floor((y - rect.top) * scaleY);
-    const width = widthRef.current;
-    const height = heightRef.current;
-    const buffer1 = buffer1Ref.current;
-    for (let j = scaledY - radius; j < scaledY + radius; j++) {
-      for (let i = scaledX - radius; i < scaledX + radius; i++) {
-        if (i >= 0 && i < width && j >= 0 && j < height) {
-          if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
-            buffer1[i + j * width] = strength;
+  const dropStone = useCallback(
+    (x: number, y: number, radius: number, strength: number) => {
+      if (!canvasRef.current || !containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const scaleX = widthRef.current / rect.width;
+      const scaleY = heightRef.current / rect.height;
+      const scaledX = Math.floor((x - rect.left) * scaleX);
+      const scaledY = Math.floor((y - rect.top) * scaleY);
+      const width = widthRef.current;
+      const height = heightRef.current;
+      const buffer1 = buffer1Ref.current;
+      for (let j = scaledY - radius; j < scaledY + radius; j++) {
+        for (let i = scaledX - radius; i < scaledX + radius; i++) {
+          if (i >= 0 && i < width && j >= 0 && j < height) {
+            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
+              buffer1[i + j * width] = strength;
+            }
           }
         }
       }
-    }
-  }, []);
+    },
+    [],
+  );
 
   const handlePointerDown = (e: React.PointerEvent) => {
     dropStone(e.clientX, e.clientY, 8, 60);
