@@ -100,9 +100,9 @@ function SwimmerClone({
 
       const distanceMoved = Math.hypot(currentX - lastX, currentY - lastY);
 
-      // Increased gap between drops to reduce lag, and significantly lowered strength (40)
-      if (distanceMoved > 1.0) {
-        dropStone(currentX, currentY, 3, 40, true);
+      // Increased distance to 1.5 for less jitter, lowered strength to 20 for very calm wakes
+      if (distanceMoved > 1.5) {
+        dropStone(currentX, currentY, 2, 20, true);
         lastX = currentX;
         lastY = currentY;
       }
@@ -134,11 +134,11 @@ function SwimmerClone({
       }}
       onAnimationComplete={() => onRemove(data.id)}
       style={{
-        width: "150px", // Slightly smaller turtle footprint
+        width: "150px",
         translateX: "-50%",
         translateY: "-50%",
         filter: "drop-shadow(0 10px 8px rgba(0,0,0,0.2))",
-        opacity: 0.8, // Slightly transparent to blend better with background
+        opacity: 0.8,
       }}
     >
       <Image
@@ -166,7 +166,7 @@ export default function FloatingWaterImages({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const widthRef = useRef(0);
   const heightRef = useRef(0);
-  const scaleRef = useRef(1); // Track scale to fix "busted" ripple sizes
+  const scaleRef = useRef(1);
 
   const buffer1Ref = useRef<number[]>([]);
   const buffer2Ref = useRef<number[]>([]);
@@ -196,7 +196,6 @@ export default function FloatingWaterImages({
       let clientWidth = canvas.clientWidth;
       let clientHeight = canvas.clientHeight;
 
-      // Keep pixels capped to prevent whole-page scroll lag
       const MAX_PIXELS = 250000;
       const currentPixels = clientWidth * clientHeight;
       let scale = 0.5;
@@ -248,7 +247,8 @@ export default function FloatingWaterImages({
       buffer1Ref.current = buffer2Ref.current;
       buffer2Ref.current = temp;
 
-      const damping = 0.94; // slightly smoother fade out
+      // Increased to 0.96 for a smoother, glassier ripple that travels gently
+      const damping = 0.96;
 
       for (let y = 1; y < height - 1; y++) {
         for (let x = 1; x < width - 1; x++) {
@@ -276,11 +276,12 @@ export default function FloatingWaterImages({
           const sourcePixel = (xOffset + yOffset * width) * 4;
           const targetPixel = i * 4;
 
-          // Softened the lighting calculation to reduce "busted" visual artifacts
-          let light = dataOffset * 1.0;
+          // Significantly reduced multiplier (0.5) to remove harsh high-contrast edges
+          let light = dataOffset * 0.5;
 
-          if (light < -30) light = -30;
-          if (light > 60) light = 60;
+          // Clamped the max/min light so ripples stay subtle
+          if (light < -15) light = -15;
+          if (light > 30) light = 30;
 
           outputPixels[targetPixel] = Math.min(
             255,
@@ -320,7 +321,6 @@ export default function FloatingWaterImages({
       const buffer1 = buffer1Ref.current;
       const scale = scaleRef.current;
 
-      // Adjust radius so drops don't look massive when the canvas is heavily downscaled
       const radius = Math.max(1, Math.floor(baseRadius * scale));
 
       let scaledX, scaledY;
@@ -329,7 +329,6 @@ export default function FloatingWaterImages({
         scaledX = Math.floor((x / 100) * width);
         scaledY = Math.floor((y / 100) * height);
       } else {
-        // Direct multiplication ensures scroll height doesn't break the position
         scaledX = Math.floor(x * scale);
         scaledY = Math.floor(y * scale);
       }
@@ -348,14 +347,13 @@ export default function FloatingWaterImages({
   );
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    // nativeEvent.offset reliably gets the X/Y relative to the canvas itself, ignoring page scroll
-    dropStone(e.nativeEvent.offsetX, e.nativeEvent.offsetY, 12, 80, false);
+    // Reduced click strength to 45 and radius to 8 for a more refined splash
+    dropStone(e.nativeEvent.offsetX, e.nativeEvent.offsetY, 8, 45, false);
   };
 
   useEffect(() => {
     if (!isMounted) return;
 
-    // Spawn exactly 2 turtles initially
     setSwimmers([
       generateSwimmerPath(spawnIdRef.current++),
       generateSwimmerPath(spawnIdRef.current++),
