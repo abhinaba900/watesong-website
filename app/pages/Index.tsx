@@ -31,6 +31,7 @@ const Footer = dynamic(
   { ssr: true },
 );
 
+
 const Index = () => {
   return (
     <main className="overflow-x-hidden relative">
@@ -48,10 +49,11 @@ const Index = () => {
           <HeroSection />
         </section>
 
-        <section>
+        <section id="amenities">
           <FeatureSection />
         </section>
-        <section className="relative z-10">
+        
+        <section id="masterplan" className="relative z-10">
           <MasterPlanSection />
         </section>
 
@@ -63,7 +65,8 @@ const Index = () => {
           <CompanySection />
         </section>
 
-        <section id="location" className="relative z-10 overflow-x-hidden">
+
+        <section id="contact" className="relative z-10 overflow-x-hidden">
           <ContactSection />
           <Footer />
         </section>

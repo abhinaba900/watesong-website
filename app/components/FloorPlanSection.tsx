@@ -477,7 +477,10 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── LOCATION MAP Section ─── */}
-        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center">
+        <div
+          className="relative z-20 mt-[15vh] w-full flex flex-col items-center"
+          id="location"
+        >
           {/* Title Group */}
           <div className="mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
             <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] mb-[2vh] tracking-widest drop-shadow-lg uppercase">

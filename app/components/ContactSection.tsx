@@ -46,6 +46,14 @@ const SocialIconButton: React.FC<{
       whileTap={{ scale: 0.9 }}
       className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-colors pointer-events-auto overflow-hidden"
       aria-label={`Social media link ${index + 1}`}
+      style={{
+        boxShadow: `
+          -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
+          -16px 12px 30px -12px rgba(0,0,0,1),
+          0px 4px 4px 0px rgba(0,0,0,0.25),
+          0px 4px 4px 0px rgba(0,0,0,0.4) inset
+        `,
+      }}
     >
       <Image
         src={icon}
@@ -225,7 +233,7 @@ export const ContactSection: React.FC = () => {
     <section
       ref={containerRef}
       onPointerDown={handlePointerDown}
-      className="relative no-scrollbar bg-transparent w-full px-[5vw] lg:px-[8vw] py-[8vh] lg:py-[5vh] overflow-x-hidden no-scrollbar"
+      className="relative no-scrollbar bg-transparent w-full px-[5vw] lg:px-[5vw] py-[8vh] lg:py-[5vh] overflow-x-hidden no-scrollbar"
     >
       {/* ─── The Embedded Ripple Canvas ─── */}
       {isMounted && (
@@ -235,18 +243,10 @@ export const ContactSection: React.FC = () => {
         />
       )}
 
-      {/* Main Grid: Stacks on mobile, 2 columns as per reference */}
-      <div
-        className="relative z-10 w-full 
-flex flex-col lg:flex-row 
-items-center 
-px-[4vw] 
-py-[1rem] 
-pb-[1rem] 
-gap-10 lg:gap-0 mt-[10vh]"
-      >
-        {/* LEFT/CENTER COLUMN: Branding & Contact */}
-        <div className="w-full lg:w-[50%] flex flex-col items-center lg:items-start text-center lg:text-left text-white pointer-events-auto">
+      {/* Main Grid: Stacks on mobile, 3 columns as per reference */}
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between px-[4vw] py-[1rem] gap-10 lg:gap-4 mt-[10vh]">
+        {/* COLUMN 1: Branding */}
+        <div className="w-full lg:w-[35%] flex flex-col items-center lg:items-start text-center lg:text-left text-white pointer-events-auto">
           {/* PRÍVAE Logo */}
           <div className="mb-[2vh]">
             <Image
@@ -270,47 +270,48 @@ gap-10 lg:gap-0 mt-[10vh]"
             <h3 className="text-[6vw] md:text-[4vw] lg:text-[1.8vw] font-medium tracking-tight mb-[0.5vh]">
               Lakefront Residences
             </h3>
-            <p className="text-[4vw] md:text-[2.2vw] lg:text-[1vw] font-medium opacity-80 mb-[4vh]">
+            <p className="text-[4vw] md:text-[2.2vw] lg:text-[1vw] font-medium opacity-80 lg:mb-0">
               1 KM from Nallurhalli Metro, Whitefield
             </p>
           </div>
-
-          <div className="flex flex-col items-center lg:items-start gap-[4vh]">
-            {/* Social Icons */}
-            <div className="flex items-center gap-[4vw] lg:gap-[1.5vw]">
-              {socialIcons.map((social, index) => (
-                <SocialIconButton
-                  key={index}
-                  icon={social.icon}
-                  href={social.href}
-                  index={index}
-                />
-              ))}
-            </div>
-
-            {/* Phone Number */}
-            <button
-              onClick={handleCallClick}
-              className="text-[7vw] md:text-[5vw] lg:text-[2.2vw] text-white font-medium flex items-center gap-3 hover:opacity-80 transition-opacity tracking-wide"
-            >
-              <Image
-                src="/assets/call-icon-svg.svg"
-                alt="Call"
-                width={30}
-                height={30}
-                className="w-[5vw] md:w-[3vw] lg:w-[1.4vw] brightness-0 invert"
-              />
-              {phoneNumber}
-            </button>
-          </div>
         </div>
 
-        {/* RIGHT COLUMN: Building & Stones */}
-        <div className="w-full lg:w-[50%] relative flex justify-center lg:justify-end pointer-events-auto">
-          {/* Building Image */}
-          <div className="relative w-full lg:w-[80%] z-10">
+        {/* COLUMN 2: Socials & Phone */}
+        <div className="w-full lg:w-[30%] flex flex-col items-center gap-[4vh] pointer-events-auto">
+          {/* Social Icons */}
+          <div className="flex items-center gap-[4vw] lg:gap-[1.5vw]">
+            {socialIcons.map((social, index) => (
+              <SocialIconButton
+                key={index}
+                icon={social.icon}
+                href={social.href}
+                index={index}
+              />
+            ))}
+          </div>
+
+          {/* Phone Number */}
+          <button
+            onClick={handleCallClick}
+            className="text-[7vw] md:text-[5vw] lg:text-[2.2vw] text-white font-medium flex items-center gap-3 hover:opacity-80 transition-opacity tracking-wide"
+          >
             <Image
-              src="/assets/lackfront-recidance.webp"
+              src="/assets/call-icon-svg.svg"
+              alt="Call"
+              width={30}
+              height={30}
+              className="w-[5vw] md:w-[3vw] lg:w-[1.4vw] brightness-0 invert"
+            />
+            {phoneNumber}
+          </button>
+        </div>
+
+        {/* COLUMN 3: Building Image */}
+        <div className="w-full lg:w-[35%] relative flex justify-center lg:justify-end pointer-events-auto">
+          {/* Building Image */}
+          <div className="relative w-full lg:w-[90%] z-10">
+            <Image
+              src="/assets/footer right side image.webp"
               alt="Lakefront Residence"
               width={900}
               height={500}

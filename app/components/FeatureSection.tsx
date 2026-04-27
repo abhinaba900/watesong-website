@@ -383,18 +383,7 @@ export const FeatureSection: React.FC = () => {
           </ul>
         </motion.div>
 
-        {/* Floating Turtle Bottom Right */}
-        <div className="absolute bottom-[-5%] right-[5%] lg:-bottom-[10%] lg:right-[15%] pointer-events-none z-20 w-[80px] lg:w-[150px]">
-          <motion.div {...floatAnim}>
-            <Image
-              src="/assets/turtle.webp"
-              alt="Turtle"
-              width={200}
-              height={200}
-              className="w-full h-auto object-contain drop-shadow-2xl opacity-70 rotate-[340deg]"
-            />
-          </motion.div>
-        </div>
+       
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}

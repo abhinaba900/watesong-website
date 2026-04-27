@@ -133,14 +133,14 @@ export const Navbar: React.FC = () => {
   };
 
   const navigationItems: NavigationItem[] = [
-    { label: "Home",        action: () => scrollToSection("home") },
+    { label: "Home",        action: () => scrollToSection("hero") },
     { label: "Amenities",   action: () => scrollToSection("amenities") },
     { label: "Masterplan",  action: () => scrollToSection("masterplan") },
     { label: "Floor Plans", action: () => scrollToSection("floor-plans") },
     { label: "Location",    action: () => scrollToSection("location") },
     { label: "About Us",    action: () => scrollToSection("about") },
     { label: "Contact Us",  action: () => scrollToSection("contact") },
-    { label: "360 View",    action: () => scrollToSection("360-view") },
+    { label: "360° View",   action: () => scrollToSection("hero") },
   ];
 
   return (

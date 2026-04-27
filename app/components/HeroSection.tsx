@@ -154,7 +154,7 @@ export const HeroSection: React.FC = () => {
                 alt="Privae"
                 width={120}
                 height={40}
-                className="object-contain w-[25vw] lg:w-[9vw]"
+                className="object-contain w-[20vw] lg:w-[7vw]"
               />
             </div>
 
@@ -164,7 +164,7 @@ export const HeroSection: React.FC = () => {
               alt="Watersong"
               width={500}
               height={150}
-              className="w-[75vw] lg:w-[32vw] object-contain mb-1 lg:mb-3"
+              className="w-[65vw] lg:w-[28vw] object-contain mb-1 -lg:mb-16"
             />
 
             <h2 className="text-white font-semibold text-[4vw] lg:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md">

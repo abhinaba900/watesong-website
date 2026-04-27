@@ -155,8 +155,7 @@ export const CompanySection: React.FC = () => {
 
   const handlePointerDown = (e: React.PointerEvent) => {
     // Finalized Lite Click Ripple: Radius 8, Strength 40
-        dropStone(e.clientX, e.clientY, 8, 60);
-
+    dropStone(e.clientX, e.clientY, 8, 60);
   };
 
   return (
@@ -190,9 +189,7 @@ export const CompanySection: React.FC = () => {
           {/* Stats Bar */}
           <div className="text-white font-normal uppercase tracking-widest text-[4vw] md:text-[2vw] lg:text-[1.65vw] mb-[3vh] lg:mb-[4vh] flex flex-wrap items-center gap-x-4 gap-y-2 pointer-events-auto">
             <span className="font-bold whitespace-nowrap">20 YEARS</span>
-            <span className="text-[#FF3B30] font-light hidden xs:inline">
-              |
-            </span>
+            <span className="text-[#FF3B30] font-light">|</span>
             <span className="font-bold whitespace-nowrap">
               4 MILLION SQ. FT.
             </span>
@@ -220,7 +217,7 @@ export const CompanySection: React.FC = () => {
             repeatType: "mirror",
             ease: "easeInOut",
           }}
-          className="absolute left-[-2vw] lg:left-[5vw] bottom-[-2vh] lg:bottom-[5vh] w-[50vw] md:w-[30vw] lg:w-[18vw] z-5 opacity-80 lg:opacity-100"
+          className="absolute left-[-2vw] lg:left-[5vw] bottom-[-15vh] lg:bottom-[-10vh] w-[65vw] md:w-[45vw] lg:w-[25vw] z-5 opacity-80 lg:opacity-100"
         >
           <Image
             src="/assets/fishing boat.webp"
@@ -232,7 +229,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Wooden Pier - Middle Right */}
-        <motion.div className="absolute right-0 bottom-[-5vh] lg:top-[30%] w-[55vw] md:w-[35vw] lg:w-[24dvw] z-5 translate-x-[20%] lg:translate-x-[15%] opacity-70 lg:opacity-100">
+        <motion.div className="absolute right-0 bottom-[-15vh] lg:top-[45%] w-[40vw] md:w-[25vw] lg:w-[16dvw] z-5 translate-x-[20%] lg:translate-x-[15%] opacity-70 lg:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
             alt="Wooden pier"
@@ -243,7 +240,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Animated Fish Group - Center Bottom */}
-        <div className="absolute bottom-[10vh] left-[30%] flex gap-[8vw] lg:gap-[6vw] opacity-20 lg:opacity-30">
+        <div className="absolute bottom-[10vh] left-[50%] -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-20 lg:opacity-30">
           <motion.div
             animate={{ x: [15, -15], y: [10, -10], rotate: [10, -10] }}
             transition={{
