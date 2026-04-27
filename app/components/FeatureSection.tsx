@@ -36,7 +36,7 @@ export const FeatureSection: React.FC = () => {
   return (
     <section
       id="highlights"
-      className="relative w-full pt-[0vh] lg:pt-[12vh]"
+      className="relative w-full pt-[10vh] lg:pt-[12vh]"
     >
       {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none">
@@ -89,7 +89,7 @@ export const FeatureSection: React.FC = () => {
         </motion.div>
 
         {/* Top Right Floating Lotus */}
-        <div className="absolute top-0 right-0 lg:-top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[280px]">
+        <div className="absolute -top-[24%] right-0 lg:-top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[280px]">
           <Image
             src="/assets/Lotus - webp.webp"
             alt="Lotus"
@@ -101,7 +101,7 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 2 ─ Lake Lounge ───────────────────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[0vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -164,7 +164,7 @@ export const FeatureSection: React.FC = () => {
       {/* ── BLOCK 3 ─ Healthy & Active Lifestyle ────────────────────────── */}
       <div
         id="amenities"
-        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none"
+        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[0vh] lg:py-[2vh] gap-0 lg:gap-[4vw] pointer-events-none"
       >
         {/* IMAGE LEFT */}
         <motion.div
@@ -264,7 +264,7 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[40%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-end lg:h-[70vh] z-10 lg:pl-[4vw] pb-[5vh] lg:pb-[12vh] pointer-events-auto"
         >
           {/* FLOATING FISH */}
-          <div className="absolute top-[5vh] lg:top-[5vh] right-[10vw] lg:left-[1vw] pointer-events-none z-0">
+          <div className="absolute -top-[5vh] lg:top-[5vh] right-[10vw] lg:left-[1vw] pointer-events-none z-0">
             <motion.div
               animate={{ x: ["-3%", "3%"], y: ["-2%", "2%"] }}
               transition={{
@@ -272,7 +272,7 @@ export const FeatureSection: React.FC = () => {
                 repeat: Infinity,
                 repeatType: "mirror",
               }}
-              className="w-[160px] lg:w-[260px]"
+              className="w-[260px] lg:w-[260px]"
             >
               <Image
                 src="/assets/fish-image-1.webp"

@@ -58,7 +58,7 @@ export const CompanySection: React.FC = () => {
             repeatType: "mirror",
             ease: "easeInOut",
           }}
-          className="absolute left-[-2vw] lg:left-[5vw] bottom-[-15vh] lg:bottom-[-10vh] w-[65vw] md:w-[45vw] lg:w-[25vw] z-5 opacity-80 lg:opacity-100"
+          className="absolute left-[-22vw] lg:left-[5vw] bottom-[-15vh] lg:bottom-[-10vh] w-[65vw] md:w-[45vw] lg:w-[25vw] z-5 opacity-80 lg:opacity-100"
         >
           <Image
             src="/assets/fishing boat.webp"

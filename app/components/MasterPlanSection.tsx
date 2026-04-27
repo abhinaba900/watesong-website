@@ -13,7 +13,7 @@ export const MasterPlanSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-transparent w-full max-md:max-w-full relative py-[10vh] lg:py-[15vh]">
+    <section className="bg-transparent w-full max-md:max-w-full relative py-[0vh] lg:py-[15vh]">
       {/* ── BLOCK 5 ─ Master Plan ───────────────────────────────────────── */}
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[4vh] lg:py-[2vh] gap-8 lg:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}
@@ -71,7 +71,7 @@ export const MasterPlanSection: React.FC = () => {
               src="/assets/Masterplan new.webp"
               alt="Masterplan Map"
               fill
-              className="object-cover scale-[1.05] lg:scale-[1.1]"
+              className="object-cover"
             />
           </div>
         </motion.div>

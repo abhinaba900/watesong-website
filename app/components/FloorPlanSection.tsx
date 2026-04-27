@@ -173,7 +173,7 @@ export const FloorPlanSection: React.FC = () => {
 
   return (
     <section
-      className="relative pt-[10vh]  w-full flex flex-col justify-center px-[5vw] overflow-hidden"
+      className="relative pt-[0vh] lg:pt-[10vh]  w-full flex flex-col justify-center px-[5vw] overflow-hidden"
     >
       {/* ─── Main Content (Layered over background) ─── */}
       <div className="relative z-20 pointer-events-auto">
@@ -298,7 +298,7 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── PHOTOS | VIDEOS Section ─── */}
-        <div className="relative z-20 mt-[15vh] w-full flex flex-col items-center ">
+        <div className="relative z-20 mt-[5vh] lg:mt-[15vh] w-full flex flex-col items-center ">
           {/* Title */}
           <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] text-center mb-[6vh] lg:mb-[8vh] tracking-widest drop-shadow-lg uppercase">
             Photos | Videos
@@ -321,7 +321,7 @@ export const FloorPlanSection: React.FC = () => {
 
         {/* ─── LOCATION MAP Section ─── */}
         <div
-          className="relative z-20 mt-[15vh] w-full flex flex-col items-center"
+          className="relative z-20 mt-[5vh] lg:mt-[15vh] w-full flex flex-col items-center"
           id="location"
         >
           {/* Title Group */}
