@@ -306,7 +306,7 @@ export const ContactSection: React.FC = () => {
               alt="Lakefront Residence"
               width={900}
               height={500}
-              className="object-contain w-full h-auto drop-shadow-2xl"
+              className="object-contain w-full h-auto drop-shadow-2xl scale-[1.2]"
             />
           </div>
         </div>

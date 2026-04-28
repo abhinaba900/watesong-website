@@ -12,7 +12,7 @@ export const CompanySection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[12vh] pb-[15vh] lg:pb-[10vh]">
+    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] pb-[15vh] lg:pb-[10vh]">
       {/* Left-Aligned Text Content */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[6vw] lg:px-[8vw] pointer-events-none">
         <motion.div
@@ -70,7 +70,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Wooden Pier - Middle Right */}
-        <motion.div className="absolute right-0 bottom-[-15vh] lg:top-[45%] w-[40vw] md:w-[25vw] lg:w-[16dvw] z-5 translate-x-[20%] lg:translate-x-[15%] opacity-70 lg:opacity-100">
+        <motion.div className="absolute right-0 bottom-[70vh] lg:top-[45%] w-[40vw] md:w-[25vw] lg:w-[16dvw] z-5 translate-x-[20%] lg:translate-x-[15%] opacity-70 lg:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
             alt="Wooden pier"
@@ -81,7 +81,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Animated Fish Group - Center Bottom */}
-        <div className="absolute bottom-[10vh] left-[50%] -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-20 lg:opacity-30">
+        <div className="absolute bottom-[0vh] left-[50%] -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-20 lg:opacity-30">
           <motion.div
             animate={{ x: [15, -15], y: [10, -10], rotate: [10, -10] }}
             transition={{
@@ -90,7 +90,7 @@ export const CompanySection: React.FC = () => {
               repeatType: "mirror",
               delay: 1,
             }}
-            className="w-[15vw] lg:w-[12vw] mt-12"
+            className="w-[50vw] lg:w-[12vw] mt-12"
           >
             <Image
               src="/assets/fish-image-2.webp"

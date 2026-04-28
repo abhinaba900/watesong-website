@@ -13,14 +13,14 @@ export const HeroSection: React.FC = () => {
   if (!mounted) return <section className="w-full h-screen bg-transparent" />;
 
   return (
-    <section className="relative w-full h-screen bg-transparent">
+    <section className="relative w-full h-[800px] lg:h-screen bg-transparent">
       <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[10vh] lg:pt-0 gap-0 lg:gap-0 h-full pointer-events-none">
         
         {/* Make children pointer-events-auto so they can be interacted with, but the background passes clicks to the global ripple */}
         {/* LEFT */}
-        <div className="flex flex-col items-start lg:items-start w-full lg:w-[45vw] h-full justify-center relative pointer-events-auto">
+        <div className="flex flex-col items-center lg:items-start w-full lg:w-[45vw] h-full justify-center relative pointer-events-auto">
           {/* Top Logo Cluster */}
-          <div className="flex flex-col items-start lg:items-start mb-6 lg:mb-[6vh] mt-4 lg:mt-0 z-10">
+          <div className="flex flex-col items-center lg:items-start mb-6 lg:mb-[6vh] mt-4 lg:mt-0 z-10">
             {/* PRIVAE Logo */}
             <div className="mb-1 lg:mb-2 ml-0 lg:ml-2">
               <Image
@@ -28,7 +28,7 @@ export const HeroSection: React.FC = () => {
                 alt="Privae"
                 width={120}
                 height={40}
-                className="object-contain w-[20vw] lg:w-[7vw] hidden lg:block"
+                className="object-contain w-[20vw] lg:w-[7vw] "
               />
             </div>
 
@@ -64,13 +64,13 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* Floating Lotus Bottom Left - Overflows the section */}
-        <div className="absolute  top-[50vh] lg:top-auto lg:bottom-[-10vh] left-[4vw] lg:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw]">
+        <div className="absolute  top-[48vh] lg:top-auto lg:bottom-[-10vh] left-[4vw] lg:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw]">
           <Image
             src="/assets/with-flower-lily-image.webp"
             alt="Lotus Flower"
             width={120}
             height={120}
-            className="w-full h-auto object-contain drop-shadow-2xl opacity-90"
+            className="w-full h-auto scale-[1.2] lg:scale-auto  object-contain drop-shadow-2xl opacity-90"
           />
         </div>
 
@@ -81,7 +81,7 @@ export const HeroSection: React.FC = () => {
               src="/assets/elevation.webp"
               alt="Elevation"
               fill
-              className="object-contain drop-shadow-2xl"
+              className="object-contain scale-[1.2] lg:scale-auto drop-shadow-2xl"
             />
           </div>
         </div>

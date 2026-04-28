@@ -190,7 +190,7 @@ export const Navbar: React.FC = () => {
             : "bg-transparent px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh]"
         }`}
       >
-        <div className="shrink-0 order-1 lg:order-2">
+        <div className="shrink-0 order-1 lg:order-2 ">
           <Link href="/">
             <Image
               src="/assets/navbar-right-logo.webp"
@@ -198,7 +198,7 @@ export const Navbar: React.FC = () => {
               width={200}
               height={100}
               priority
-              className="w-24 md:w-36 lg:w-[8.5vw] h-auto object-contain cursor-pointer"
+              className="w-24 md:w-36 lg:w-[8.5vw] h-auto object-contain cursor-pointer hidden lg:block"
             />
           </Link>
         </div>

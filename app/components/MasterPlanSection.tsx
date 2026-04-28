@@ -15,7 +15,7 @@ export const MasterPlanSection: React.FC = () => {
   return (
     <section className="bg-transparent w-full max-md:max-w-full relative py-[0vh] lg:py-[15vh]">
       {/* ── BLOCK 5 ─ Master Plan ───────────────────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[4vh] lg:py-[2vh] gap-8 lg:gap-[4vw] pointer-events-none">
+      <div className="relative z-10 w-full flex flex-col-reverse lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[4vh] lg:py-[2vh] gap-8 lg:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -25,12 +25,12 @@ export const MasterPlanSection: React.FC = () => {
           className="relative w-full lg:w-[35%] text-white text-center lg:text-left order-1 lg:order-1 flex flex-col justify-center z-10 lg:pl-[4vw] pb-[2vh] pointer-events-auto"
         >
           {/* HEADING */}
-          <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] mb-[4vh] tracking-widest drop-shadow-lg uppercase text-center lg:text-left leading-none">
+          <h2 className="font-overwave text-white text-[7vw] lg:text-[2.2vw] mb-[4vh] tracking-widest drop-shadow-lg uppercase text-left lg:text-left leading-none">
             Master Plan
           </h2>
 
           {/* LIST */}
-          <div className="text-white/90 font-medium leading-[1.8] text-[13px] lg:text-[14px] max-w-[95%] mx-auto lg:mx-0 text-left">
+          <div className="text-white/90 font-medium leading-[1.8] text-[13px] lg:text-[14px] max-w-[95%] mx-0 lg:mx-0 text-left">
             <ol className="list-decimal pl-5 space-y-[2px]">
               <li>Entry &amp; Exit</li>
               <li>Security Kiosk</li>
