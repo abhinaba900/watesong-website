@@ -188,9 +188,13 @@ export default function FloatingWaterImages({
     img.src = backgroundImage;
     img.crossOrigin = "anonymous";
 
-    img.onload = () => {
-      let clientWidth = canvas.clientWidth;
-      let clientHeight = canvas.clientHeight;
+    const updateDimensions = () => {
+      if (!containerRef.current || !canvasRef.current || !img.complete) return;
+
+      const clientWidth = containerRef.current.clientWidth;
+      const clientHeight = containerRef.current.clientHeight;
+
+      if (clientWidth === 0 || clientHeight === 0) return;
 
       const MAX_PIXELS = 250000;
       const currentPixels = clientWidth * clientHeight;
@@ -204,6 +208,8 @@ export default function FloatingWaterImages({
       const width = Math.floor(clientWidth * scale);
       const height = Math.floor(clientHeight * scale);
 
+      if (width === widthRef.current && height === heightRef.current) return;
+
       canvas.width = width;
       canvas.height = height;
       widthRef.current = width;
@@ -213,14 +219,27 @@ export default function FloatingWaterImages({
       buffer1Ref.current = new Array(size).fill(0);
       buffer2Ref.current = new Array(size).fill(0);
 
+      // Draw background and get pixels
       ctx.drawImage(img, 0, 0, width, height);
       const imageData = ctx.getImageData(0, 0, width, height);
       backgroundPixelsRef.current = imageData.data.slice();
       outputImageDataRef.current = imageData;
 
       isImageLoadedRef.current = true;
+    };
+
+    img.onload = () => {
+      updateDimensions();
       renderLoop();
     };
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateDimensions();
+    });
+
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
 
     const renderLoop = () => {
       if (
@@ -228,8 +247,10 @@ export default function FloatingWaterImages({
         !ctx ||
         !outputImageDataRef.current ||
         !backgroundPixelsRef.current
-      )
+      ) {
+        animationFrameRef.current = requestAnimationFrame(renderLoop);
         return;
+      }
 
       const width = widthRef.current;
       const height = heightRef.current;
@@ -239,9 +260,13 @@ export default function FloatingWaterImages({
       const outData = outputImageDataRef.current;
       const outputPixels = outData.data;
 
+      // Swap buffers
       const temp = buffer1Ref.current;
       buffer1Ref.current = buffer2Ref.current;
       buffer2Ref.current = temp;
+
+      const currentBuffer1 = buffer1Ref.current;
+      const currentBuffer2 = buffer2Ref.current;
 
       const damping = 0.96;
 
@@ -249,17 +274,17 @@ export default function FloatingWaterImages({
         for (let x = 1; x < width - 1; x++) {
           const i = x + y * width;
 
-          buffer2[i] =
-            (buffer1[i - 1] +
-              buffer1[i + 1] +
-              buffer1[i - width] +
-              buffer1[i + width]) /
+          currentBuffer2[i] =
+            (currentBuffer1[i - 1] +
+              currentBuffer1[i + 1] +
+              currentBuffer1[i - width] +
+              currentBuffer1[i + width]) /
               2 -
-            buffer2[i];
+            currentBuffer2[i];
 
-          buffer2[i] *= damping;
+          currentBuffer2[i] *= damping;
 
-          let dataOffset = buffer2[i] - buffer1[i];
+          let dataOffset = currentBuffer2[i] - currentBuffer1[i];
           let xOffset = x + Math.floor(dataOffset);
           let yOffset = y + Math.floor(dataOffset);
 
@@ -272,22 +297,12 @@ export default function FloatingWaterImages({
           const targetPixel = i * 4;
 
           let light = dataOffset * 0.5;
-
           if (light < -15) light = -15;
           if (light > 30) light = 30;
 
-          outputPixels[targetPixel] = Math.min(
-            255,
-            Math.max(0, bgPixels[sourcePixel] + light)
-          );
-          outputPixels[targetPixel + 1] = Math.min(
-            255,
-            Math.max(0, bgPixels[sourcePixel + 1] + light)
-          );
-          outputPixels[targetPixel + 2] = Math.min(
-            255,
-            Math.max(0, bgPixels[sourcePixel + 2] + light)
-          );
+          outputPixels[targetPixel] = Math.min(255, Math.max(0, bgPixels[sourcePixel] + light));
+          outputPixels[targetPixel + 1] = Math.min(255, Math.max(0, bgPixels[sourcePixel + 1] + light));
+          outputPixels[targetPixel + 2] = Math.min(255, Math.max(0, bgPixels[sourcePixel + 2] + light));
           outputPixels[targetPixel + 3] = 255;
         }
       }
@@ -296,7 +311,10 @@ export default function FloatingWaterImages({
       animationFrameRef.current = requestAnimationFrame(renderLoop);
     };
 
-    return () => cancelAnimationFrame(animationFrameRef.current);
+    return () => {
+      cancelAnimationFrame(animationFrameRef.current);
+      resizeObserver.disconnect();
+    };
   }, [isMounted, backgroundImage]);
 
   const dropStone = useCallback(
@@ -338,15 +356,15 @@ export default function FloatingWaterImages({
     if (!isMounted) return;
 
     const handleGlobalClick = (e: MouseEvent) => {
-       if (!containerRef.current) return;
-       const rect = containerRef.current.getBoundingClientRect();
-       const x = e.clientX - rect.left;
-       const y = e.clientY - rect.top;
-       // Nice splash on click
-       dropStone(x, y, 8, 45, false);
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      // Nice splash on click
+      dropStone(x, y, 8, 45, false);
     };
 
-    window.addEventListener("click", handleGlobalClick);
+    window.addEventListener("click", handleGlobalClick, { passive: true });
 
     return () => {
       window.removeEventListener("click", handleGlobalClick);
