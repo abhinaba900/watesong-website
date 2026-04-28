@@ -12,7 +12,7 @@ export const CompanySection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] pb-[15vh] lg:pb-[10vh]">
+    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[10vh] pb-[15vh] lg:pb-[10vh]">
       {/* Left-Aligned Text Content */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[6vw] lg:px-[8vw] pointer-events-none">
         <motion.div
