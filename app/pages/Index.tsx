@@ -34,11 +34,11 @@ const Footer = dynamic(
 
 const Index = () => {
   return (
-    <main className="overflow-x-hidden relative">
+    <main className="relative">
       {/* 🛑 INVOCATION: Drops the screen-glass water effect over the whole page */}
 
       {/* Put your Background Image back normally! */}
-      <div className="relative z-10 flex flex-col w-full overflow-x-hidden">
+      <div className="relative z-10 flex flex-col w-full ">
         <FloatingWaterImages
           isFixed={false}
           backgroundImage="/assets/bg-in-feature-section.webp"
@@ -66,7 +66,7 @@ const Index = () => {
         </section>
 
 
-        <section id="contact" className="relative z-10 overflow-x-hidden">
+        <section id="contact" className="relative z-10 ">
           <ContactSection />
           <Footer />
         </section>

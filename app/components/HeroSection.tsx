@@ -20,7 +20,7 @@ export const HeroSection: React.FC = () => {
         {/* LEFT */}
         <div className="flex flex-col items-center lg:items-start w-full lg:w-[45vw] h-full justify-center relative pointer-events-auto">
           {/* Top Logo Cluster */}
-          <div className="flex flex-col items-center lg:items-start mb-6 lg:mb-[6vh] mt-4 lg:mt-0 z-10">
+          <div className="flex flex-col items-center lg:items-start mb-6 lg:mb-[10vh] mt-4 lg:mt-0 z-10">
             {/* PRIVAE Logo */}
             <div className="mb-1 lg:mb-2 ml-0 lg:ml-2">
               <Image
@@ -41,7 +41,7 @@ export const HeroSection: React.FC = () => {
               className="w-[226px] lg:w-[28vw] object-contain mb-1 -lg:mb-16"
             />
 
-            <h2 className="text-white font-semibold text-[20px] lg:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md">
+            <h2 className="text-white font-semibold text-[20px] lg:text-[1.5vw] lg:mt-[-3rem] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md">
               Lakefront Residences
             </h2>
             <p className="text-white font-medium text-[14px] lg:text-[1.1vw] lg:ml-[1vw] text-center lg:text-left drop-shadow-md opacity-90">

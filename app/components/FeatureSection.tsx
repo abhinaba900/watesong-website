@@ -61,7 +61,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] mb-0 lg:mt-[20vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
+          className="relative w-full lg:w-[45%] mb-0 lg:mt-[50vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
         >
           <div className="flex flex-col items-start lg:items-start gap-0 lg:gap-4 mb-6">
             <h2 className="font-overwave text-white text-[2rem] lg:text-[1.8vw] leading-[120%] lg:leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
@@ -77,7 +77,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="text-white/90 text-left lg:text-left font-medium leading-[140%] lg:leading-relaxed text-[1rem] lg:text-[18px] lg:max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
+            className="text-white/90 text-left lg:text-left font-medium leading-[140%] lg:leading-relaxed text-[1rem] lg:text-[17px] lg:max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
           >
             Homes at Watersong are so private, it feels like a villa.{" "}
             <br className="hidden lg:block" /> No doors face each other. No
@@ -87,7 +87,7 @@ export const FeatureSection: React.FC = () => {
         </motion.div>
 
         {/* Top Right Floating Lotus */}
-        <div className="absolute -top-[20%] right-0 lg:-top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[280px]">
+        <div className="absolute -top-[20%] right-0 lg:top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[280px]">
           <Image
             src="/assets/Lotus - webp.webp"
             alt="Lotus"
@@ -193,7 +193,7 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[45%] text-white text-left lg:text-left order-1 lg:order-2 flex flex-col justify-start z-10 lg:pl-[4vw] pointer-events-auto"
         >
           {/* LILY (TOP DECORATION) */}
-          <div className="flex justify-start lg:justify-start -ml-0 mb-6 lg:mb-8 lg:-ml-[2vw]">
+          <div className="flex justify-start lg:justify-start -ml-0 mb-6 lg:mb-[20vh] lg:-ml-[2vw]">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/with-flower-lily-image.webp"
