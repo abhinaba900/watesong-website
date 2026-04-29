@@ -25,12 +25,15 @@ export const MasterPlanSection: React.FC = () => {
           className="relative w-full lg:w-[35%] text-white text-center lg:text-left order-1 lg:order-1 flex flex-col justify-center z-10 lg:pl-[4vw] pb-[2vh] pointer-events-auto"
         >
           {/* HEADING */}
-          <h2 className="font-overwave text-white mt-6 text-[2rem] lg:text-[2.2vw] mb-[1rem] ml-[1.5rem] lg:ml-0 lg:mb-[4vh] tracking-widest drop-shadow-lg uppercase text-left lg:text-left leading-none">
+          <h2
+            style={{ letterSpacing: "-0.3px" }}
+            className="font-overwave lg:mb-8 text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+          >
             Master Plan
           </h2>
 
           {/* LIST */}
-          <div className="text-white/90 font-medium leading-[1.8] text-[1rem] lg:text-[14px] max-w-[95%] ml-[1.5rem] lg:ml-0 mx-0 lg:mx-0 text-left">
+          <div className="text-white/90 font-medium leading-[1.8] text-[1rem] lg:text-[1rem] max-w-[95%] ml-[1.5rem] lg:ml-0 mx-0 lg:mx-0 text-left">
             <ol className="list-decimal pl-5 space-y-[2px]">
               <li>Entry &amp; Exit</li>
               <li>Security Kiosk</li>
@@ -66,7 +69,7 @@ export const MasterPlanSection: React.FC = () => {
           className="w-full lg:w-[65%] flex justify-center items-center order-2 lg:order-2 relative z-10 pointer-events-auto"
         >
           {/* Framed Map Image */}
-          <div className="relative w-full max-w-[1100px] aspect-[8/7] lg:aspect-[16/10] rounded-[16px] lg:rounded-[24px] overflow-hidden border-[8px] lg:border-[3px] border-white/20 shadow-2xl rotate-90 lg:rotate-0">
+          <div className="relative w-full max-w-[1100px] aspect-[8/7] lg:aspect-[16/12] rounded-[16px] lg:rounded-[24px] overflow-hidden border-[8px] lg:border-[3px] border-white/20 shadow-2xl rotate-90 lg:rotate-0">
             <Image
               src="/assets/Masterplan new.webp"
               alt="Masterplan Map"

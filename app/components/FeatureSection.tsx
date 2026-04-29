@@ -45,7 +45,7 @@ export const FeatureSection: React.FC = () => {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10 pointer-events-auto"
         >
-          <div className="relative aspect-square w-full lg:w-[55vw]">
+          <div className="relative aspect-square w-full lg:w-[45vw]">
             <Image
               src="/assets/features-so-thoughtful-you-feel-spcial.webp"
               alt="Family enjoying life at Watersong"
@@ -61,13 +61,19 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] mb-0 lg:mt-[50vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
+          className="relative w-full lg:w-[45%] -ml-[3vw] mb-0 lg:mt-[50vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
         >
-          <div className="flex flex-col items-start lg:items-start gap-0 lg:gap-2 mb-6">
-            <h2 className="font-overwave text-white text-[2rem] lg:text-[1.8vw] leading-[120%] lg:leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
+          <div className="flex flex-col items-start lg:items-start gap-0 lg:gap-2 mb-6 lg:mb-0">
+            <h2
+              style={{ letterSpacing: "-0.3px" }}
+              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+            >
               Just forty Residences.
             </h2>
-            <h2 className="font-overwave text-white text-[2rem] text-left lg:text-[1.8vw] leading-[120%] lg:leading-tight tracking-wide drop-shadow-lg uppercase  lg:text-left">
+            <h2
+              style={{ letterSpacing: "-0.3px" }}
+              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-4 drop-shadow-lg text-center lg:text-left leading-none"
+            >
               Just two homes <br className="block lg:hidden" /> per floor.
             </h2>
           </div>
@@ -77,7 +83,7 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="text-white/90 text-left lg:text-left font-medium leading-[140%] lg:leading-relaxed text-[1rem] lg:text-[17px] lg:max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
+            className="text-white/90 text-left lg:text-left font-medium leading-[140%] lg:leading-relaxed text-[1rem] lg:text-[1rem] lg:max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
           >
             Homes at Watersong are so private, it feels like a villa.{" "}
             <br className="hidden lg:block" /> No doors face each other. No
@@ -87,7 +93,7 @@ export const FeatureSection: React.FC = () => {
         </motion.div>
 
         {/* Top Right Floating Lotus */}
-        <div className="absolute -top-[20%] right-0 lg:top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[280px]">
+        <div className="absolute -top-[20%] right-0 lg:top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[220px]">
           <Image
             src="/assets/Lotus - webp.webp"
             alt="Lotus"
@@ -116,25 +122,28 @@ export const FeatureSection: React.FC = () => {
                 alt="Lotus"
                 width={300}
                 height={300}
-                className="h-auto object-contain opacity-90 s transform -translate-x-[20%] lg:translate-x-0 translate-y-0 lg:translate-y-0 rotate-180 lg:rotate-0  w-[220px] lg:w-[260px]"
+                className="h-auto object-contain opacity-90 s transform -translate-x-[20%] lg:translate-x-0 translate-y-0 lg:-translate-y-10 rotate-180 lg:rotate-0  w-[220px] lg:w-[230px]"
               />
             </motion.div>
           </div>
 
-          <motion.p className="text-white/90 text-left lg:text-left max-w-[90%] lg:max-w-[100%] mx-auto ml-[16%] lg:mx-0 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] mb-2 font-light text-[1rem] lg:text-[15px]">
+          <motion.p className="text-white/90 text-left lg:text-left max-w-[90%] lg:max-w-[100%] mx-auto ml-[16%] lg:mx-0 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] mb-2 font-light text-[1rem] lg:text-[14px]">
             A lake like this deserves
           </motion.p>
 
-          <h2 className="font-overwave text-white text-left max-w-[90%] lg:max-w-[100%] ml-[16%] lg:mx-0 lg:text-left text-[2rem] lg:text-[1.8vw] tracking-wider mb-4 lg:mb-3 drop-shadow-lg uppercase mx-0 lg:mx-0 leading-none">
+          <h2
+            style={{ letterSpacing: "-0.3px" }}
+            className="font-overwave text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+          >
             A Lake Lounge
           </h2>
 
-          <motion.p className="text-white/80 font-medium max-w-[90%] lg:max-w-[100%] ml-[10%] lg:mx-0 lg:text-left uppercase tracking-wide lg:tracking-widest mb-6 font-light text-[1rem] lg:text-[14px]">
+          <motion.p className="text-white/90 text-left lg:text-left max-w-[90%] lg:max-w-[100%] mx-auto ml-[16%] lg:mx-0 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] lg:mt-2 mb-8 font-light text-[1rem] lg:text-[14px]">
             UP TO 200 SQ. FT. LAKE LOUNGE.
           </motion.p>
 
           {/* PARAGRAPH */}
-          <motion.p className="text-white/80 font-medium text-left lg:text-left ml-[16%] lg:mx-0 leading-relaxed text-[1rem] lg:text-[15px] lg:max-w-[90%] lg:max-w-[95%] mx-auto lg:mx-0 drop-shadow-md">
+          <motion.p className="text-white/80 font-medium text-left lg:text-left ml-[16%] lg:mx-0 leading-relaxed text-[1rem] lg:text-[1rem] lg:max-w-[90%] lg:max-w-[95%] mx-auto lg:mx-0 drop-shadow-md">
             Forget boring balconies. Step out into a rare 200 sq. ft.{" "}
             <br className="hidden lg:block" /> lake lounge: your private front
             row to rippling water, <br className="hidden lg:block" /> open
@@ -151,7 +160,7 @@ export const FeatureSection: React.FC = () => {
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
           className="w-full lg:w-[50vw] flex justify-center items-center order-2 relative z-10 pointer-events-auto"
         >
-          <div className="relative aspect-square w-full lg:w-[55vw]">
+          <div className="relative aspect-square w-full lg:w-[45vw]">
             <Image
               src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
               alt="Lake lounge"
@@ -174,7 +183,7 @@ export const FeatureSection: React.FC = () => {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10 pointer-events-auto"
         >
-          <div className="relative aspect-square w-full scale-[0.77] lg:w-[55vw] ">
+          <div className="relative aspect-square w-full scale-[0.77] lg:w-[44vw] ">
             <Image
               src="/assets/swimming.webp"
               alt="Swimming Pool"
@@ -200,18 +209,21 @@ export const FeatureSection: React.FC = () => {
                 alt="Lotus"
                 width={160}
                 height={160}
-                className="h-auto object-contain opacity-90 w-[150px] lg:w-[140px]"
+                className="h-auto object-contain opacity-90 w-[150px] lg:w-[120px]"
               />
             </motion.div>
           </div>
 
           {/* HEADING */}
-          <h2 className="font-overwave text-white text-left lg:text-left text-[2rem] lg:text-[1.8vw] tracking-wider mb-6 drop-shadow-lg uppercase ml-8 lg:mx-0 leading-tight">
-            Healthy and Active Lifestyle
+          <h2
+            style={{ letterSpacing: "-0.3px" }}
+            className="font-overwave text-white text-[2rem] lg:-mt-15 lg:mb-8 lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+          >
+            Healthy and <br className="hidden lg:block" /> Active Lifestyle
           </h2>
 
           {/* LIST */}
-          <ul className="text-white/90 font-medium leading-[1.8] text-[1rem] text-left lg:text-[16px] lg:max-w-[90%] ml-8 lg:mx-0 text-left list-none space-y-1">
+          <ul className="text-white/90 font-medium leading-[1.8] text-[1rem] text-left lg:text-[16px] lg:max-w-[90%] ml-8 lg:mx-0 text-left list-none space-y-0">
             {[
               "Jogging / Walking Path",
               "Children’s play area",
@@ -237,7 +249,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[60%] flex flex-col items-center lg:items-start order-2 lg:order-1 relative z-10 lg:pb-[5vh] pointer-events-auto"
+          className="w-full lg:w-[90%] flex flex-col items-center lg:items-start order-2 lg:order-1 relative z-10 lg:pb-[5vh] pointer-events-auto"
         >
           {/* Framed Image */}
           <div className="relative w-full max-w-[900px] aspect-[4/3] lg:aspect-[16/10] rounded-[16px] lg:rounded-[24px] overflow-hidden border-[8px] lg:border-[4px] border-white/20 shadow-2xl mb-4 lg:mb-6">
@@ -250,7 +262,10 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* Caption Image */}
-          <h2 className="font-overwave text-white text-left lg:text-left text-[1.8rem] lg:text-[1.8vw] tracking-wider drop-shadow-md uppercase ml-4 lg:mx-0 lg:ml-[5vw] text-center lg:text-left leading-tight mt-4">
+          <h2
+            style={{ letterSpacing: "-0.3px" }}
+            className="font-overwave text-white text-[2rem] lg:text-[2.8vw] lg:ml-[2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+          >
             Features so thoughtful, you feel special
           </h2>
         </motion.div>
@@ -264,7 +279,7 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[40%] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col  flex-col-reverse justify-end lg:h-[70vh] z-10 pl-4 lg:pl-[4vw] pb-[0h] lg:pb-[12vh] pointer-events-auto"
         >
           {/* FLOATING FISH */}
-          <div className="absolute top-[10vh] lg:top-[5vh] -right-[10vw] lg:left-[1vw] pointer-events-none z-0">
+          <div className="absolute top-[10vh] lg:top-[-18vh] -right-[10vw] lg:left-[1vw] pointer-events-none z-0">
             <motion.div
               animate={{ x: ["-3%", "3%"], y: ["-2%", "2%"] }}
               transition={{
@@ -272,20 +287,20 @@ export const FeatureSection: React.FC = () => {
                 repeat: Infinity,
                 repeatType: "mirror",
               }}
-              className="w-[240px] h-0 lg:w-[260px] "
+              className="w-[240px] h-0 lg:w-[280px] "
             >
               <Image
                 src="/assets/fish-image-1.webp"
                 alt="Fish group"
                 width={260}
                 height={180}
-                className="w-full h-auto opacity-80 drop-shadow-lg"
+                className="w-full h-auto opacity-80 drop-shadow-lg scale-x-[-1]"
               />
             </motion.div>
           </div>
 
           {/* LIST */}
-          <ul className="text-white/85 font-medium leading-[1.3] lg:leading-[2] text-[16px] lg:text-[15px] max-w-[90%] mx-0 lg:mx-0 text-left list-none space-y-1 relative z-10 mt-[0vh] lg:mt-auto">
+          <ul className="text-white/85 font-medium leading-[1.3] lg:leading-[2] text-[16px] lg:text-[1rem] max-w-[90%] mx-0 lg:mx-0 text-left list-none space-y-1 relative z-10 mt-[0vh] lg:mt-auto">
             {[
               "Double-height car parking",
               "3 balconies per home",

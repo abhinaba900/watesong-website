@@ -45,18 +45,20 @@ const SocialIconButton: React.FC<{
       className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-colors pointer-events-auto overflow-hidden hover:bg-white/10"
       aria-label={`Social media link ${index + 1}`}
     >
-      <Image
-        src={icon}
-        alt={`Social icon ${index + 1}`}
-        fill
-        className="object-contain opacity-90 blend-multiply"
-      />
+      <div className="relative w-full h-full mix-blend-screen">
+        <Image
+          src={icon}
+          alt={`Social icon ${index + 1}`}
+          fill
+          className="object-contain opacity-90"
+        />
+      </div>
     </motion.a>
   );
 };
 
 export const ContactSection: React.FC = () => {
-  const [phoneNumber] = useState("70261 12224");
+  const [phoneNumber] = useState("7026112224");
 
   const socialIcons = [
     {
@@ -103,9 +105,9 @@ export const ContactSection: React.FC = () => {
               alt="Watersong"
               width={600}
               height={200}
-              className="object-contain w-[350px] md:w-[50vw] lg:w-[28vw] mb-[-1vh]"
+              className="object-contain w-[350px] md:w-[50vw] lg:w-[24vw] mb-[-1vh]"
             />
-            <h3 className="text-[20px] md:text-[4vw] lg:text-[1.8vw] ml-[-4rem] lg:ml-0 mt-[-1.5rem] lg:mt-0 font-medium tracking-tight mb-[0.5vh]">
+            <h3 className="text-[20px] md:text-[4vw] lg:text-[1.6vw] ml-[-4rem] lg:ml-0 mt-[-1.5rem] lg:mt-[-1rem] font-medium tracking-tight mb-[0.5vh]">
               Lakefront Residences
             </h3>
             <p className="text-[14px] md:text-[2.2vw] lg:text-[1vw] font-medium opacity-80">
@@ -114,9 +116,8 @@ export const ContactSection: React.FC = () => {
           </div>
         </div>
 
-        {/* COLUMN 2 */}
         <div className="w-full lg:w-[30%] flex flex-col items-center gap-[4vh] pointer-events-auto">
-          <div className="flex items-center gap-[4vw] lg:gap-[1.5vw]">
+          <div className="flex items-center gap-[4vw] lg:gap-[1.5vw] isolate">
             {socialIcons.map((social, index) => (
               <SocialIconButton
                 key={index}
@@ -129,7 +130,7 @@ export const ContactSection: React.FC = () => {
 
           <button
             onClick={handleCallClick}
-            className="text-[7vw] md:text-[5vw] lg:text-[2.2vw] text-white font-medium flex items-center gap-3 hover:opacity-80 transition-opacity tracking-wide"
+            className="text-[7vw] md:text-[5vw] lg:text-[1.8vw] text-white font-medium flex items-center gap-3 hover:opacity-80 transition-opacity tracking-wide"
           >
             <Image
               src="/assets/call-icon-svg.svg"
@@ -143,14 +144,14 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* COLUMN 3 */}
-        <div className="w-full lg:w-[35%] relative flex justify-center lg:justify-end pointer-events-auto">
-          <div className="relative lg:mb-10 w-full lg:w-[90%] z-10">
+        <div className="w-full lg:w-[35%]  relative flex justify-center lg:justify-end pointer-events-auto">
+          <div className="relative lg:mb-10 w-full lg:w-[90%] lg:mt-[-3rem] z-10">
             <Image
               src="/assets/footer right side image.webp"
               alt="Lakefront Residence"
               width={900}
               height={500}
-              className="object-contain w-full h-auto drop-shadow-2xl scale-[1.2]"
+              className="object-contain w-full h-auto drop-shadow-2xl scale-[1.1]"
             />
           </div>
         </div>
