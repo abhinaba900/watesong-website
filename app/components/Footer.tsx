@@ -26,25 +26,25 @@ export const Footer: React.FC = () => {
 
       <div className="flex flex-col relative w-full items-center z-10 pointer-events-none">
         {/* Decorative Wave Line */}
-        <div className="w-full mb-[4vh] lg:mb-[5vh] mt-[-2vh] lg:mt-[-4vh]">
+        <div className="w-full mb-[4vh] lg:mb-[5vh] mt-[-1vh] lg:mt-[-4vh]">
           <Image
             src="/assets/line-for-footer.webp"
             alt="Decorative line"
             width={1920}
             height={100}
-            className="w-full h-auto object-contain opacity-40 brightness-0 invert"
+            className="w-full h-auto object-contain opacity-100 lg:opacity-50 brightness-0 invert"
           />
         </div>
 
         {/* Footer Links & Copyright */}
         <div
           className="relative flex flex-col md:flex-row w-full justify-between items-center 
-                        gap-[4vh] md:gap-[2vw] 
+                        gap-[0.5rem] md:gap-[2vw] 
                         text-white font-normal text-center 
-                        text-[3.5vw] md:text-[1.5vw] lg:text-[0.9vw] tracking-[0.02em] pointer-events-auto"
+                        text-[1rem] md:text-[1.5vw] lg:text-[0.9vw] tracking-[0.02em] pointer-events-auto"
         >
           {/* Copyright Section */}
-          <div className="opacity-60 font-medium">© 2026 All Right Reserved by PRIVAE</div>
+          <div className="opacity-60 font-medium ">© 2026 All Right Reserved by PRIVAE</div>
 
           {/* Links Section */}
           <div className="flex items-center gap-[6vw] md:gap-[3vw] lg:gap-[2vw]">

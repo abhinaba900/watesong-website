@@ -237,7 +237,7 @@ export const ContactSection: React.FC = () => {
       {/* Main Grid: Stacks on mobile, 3 columns as per reference */}
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between px-[4vw] py-[1rem] gap-10 lg:gap-4 mt-[10vh]">
         {/* COLUMN 1: Branding */}
-        <div className="w-full lg:w-[35%] flex flex-col items-center lg:items-start text-center lg:text-left text-white pointer-events-auto">
+        <div className="w-full lg:w-[35%] flex flex-col items-start lg:items-start text-center lg:text-left text-white pointer-events-auto">
           {/* PRÍVAE Logo */}
           <div className="mb-[2vh]">
             <Image
@@ -245,7 +245,7 @@ export const ContactSection: React.FC = () => {
               alt="PRÍVAE"
               width={120}
               height={40}
-              className="object-contain w-[15vw] md:w-[10vw] lg:w-[6vw] brightness-0 invert"
+              className="object-contain w-[171px] md:w-[10vw] lg:w-[6vw] ml-[1rem] lg:ml-0    "
             />
           </div>
 
@@ -256,12 +256,12 @@ export const ContactSection: React.FC = () => {
               alt="Watersong"
               width={600}
               height={200}
-              className="object-contain w-[75vw] md:w-[50vw] lg:w-[28vw] mb-[-1vh]"
+              className="object-contain w-[350px] md:w-[50vw] lg:w-[28vw] mb-[-1vh]"
             />
-            <h3 className="text-[6vw] md:text-[4vw] lg:text-[1.8vw] font-medium tracking-tight mb-[0.5vh]">
+            <h3 className="text-[20px] md:text-[4vw] lg:text-[1.8vw] ml-[-4rem]  lg:ml-0 mt-[-1.5rem] lg:mt-0  font-medium tracking-tight mb-[0.5vh]">
               Lakefront Residences
             </h3>
-            <p className="text-[4vw] md:text-[2.2vw] lg:text-[1vw] font-medium opacity-80 lg:mb-0">
+            <p className="text-[14px] md:text-[2.2vw] lg:text-[1vw] font-medium opacity-80 lg:mb-0">
               1 KM from Nallurhalli Metro, Whitefield
             </p>
           </div>

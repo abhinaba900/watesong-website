@@ -17,7 +17,7 @@ const TopGlare: React.FC = () => (
   <svg
     viewBox="0 0 41 11"
     fill="none"
-    className="absolute w-[2vw] h-[0.7vh] xl:w-[2vw] xl:h-[1.2vh] top-[0.3vh] right-[1.4vw] pointer-events-none opacity-40 hidden lg:block"
+    className="absolute w-[25vw] h-[1.2vh] lg:w-[2vw] lg:h-[0.7vh] xl:w-[2vw] xl:h-[1.2vh] top-[0.4vh] right-[2vw] lg:top-[0.3vh] lg:right-[1.4vw] pointer-events-none opacity-40"
   >
     <path
       d="M37.9952 8.97509C37.0777 9.36997 29.2478 4.94799 14.5277 4.35839C12.0929 4.26087 2 4.08677 2 2.78427C2 1.48177 19.7522 2.19473 31.127 2.19473C32.717 2.19473 33.7371 2.19456 35.1985 2.78425C37.7638 3.81937 40.5336 7.88268 37.9952 8.97509Z"
@@ -30,7 +30,7 @@ const RightGlare: React.FC = () => (
   <svg
     viewBox="0 0 14 12"
     fill="none"
-    className="absolute w-[0.9vw] h-[1vh] xl:w-[0.9vw] xl:h-[2vh] top-[0.4vh] right-[0.5vw] pointer-events-none opacity-50 hidden lg:block"
+    className="absolute w-[10vw] h-[1.5vh] lg:w-[0.9vw] lg:h-[1vh] xl:w-[0.9vw] xl:h-[2vh] top-[0.6vh] right-[2vw] lg:right-[0.5vw] pointer-events-none opacity-50"
   >
     <path
       d="M12 9.72418C12 11.0893 5.76311 6.94347 4.42424 6.94347C3.08537 6.94347 2 5.83684 2 4.47174C2 3.10663 3.08537 2 4.42424 2C5.76311 2 12 8.35907 12 9.72418Z"
@@ -154,14 +154,25 @@ export const Navbar: React.FC = () => {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="fixed inset-0 z-[110] bg-[#113239]/95 backdrop-blur-xl lg:hidden"
           >
-            <div className="flex flex-col h-full p-8">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="self-end text-white mb-10"
-              >
-                <X size={32} />
-              </button>
-              <div className="flex flex-col gap-4">
+            <div className="flex flex-col h-full p-8 relative overflow-hidden">
+              <div className="flex justify-between items-center mb-10 relative z-10">
+                <Link href="/" onClick={() => setIsOpen(false)}>
+                  <Image
+                    src="/assets/navbar-right-logo.webp"
+                    alt="Logo"
+                    width={150}
+                    height={75}
+                    className="w-24 md:w-32 h-auto object-contain"
+                  />
+                </Link>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-white"
+                >
+                  <X size={32} />
+                </button>
+              </div>
+              <div className="flex flex-col gap-4 relative z-10">
                 {navigationItems.map((item, index) => (
                   <NavigationPill
                     key={index}
@@ -178,6 +189,16 @@ export const Navbar: React.FC = () => {
                   />
                 ))}
               </div>
+              
+              {/* Stone Background Image at Bottom */}
+              <div className="absolute bottom-0 -right-10 w-[280px] h-[280px] pointer-events-none z-0">
+                <Image
+                  src="/assets/stone bg.webp"
+                  alt="Stone decoration"
+                  fill
+                  className="object-contain object-bottom rotate-90 object-right"
+                />
+              </div>
             </div>
           </motion.div>
         )}
@@ -190,7 +211,7 @@ export const Navbar: React.FC = () => {
             : "bg-transparent px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh]"
         }`}
       >
-        <div className="shrink-0 order-1 lg:order-2 ">
+        <div className="shrink-0 order-1 lg:order-2 relative z-0 ">
           <Link href="/">
             <Image
               src="/assets/navbar-right-logo.webp"
@@ -198,7 +219,9 @@ export const Navbar: React.FC = () => {
               width={200}
               height={100}
               priority
-              className="w-24 md:w-36 lg:w-[8.5vw] h-auto object-contain cursor-pointer hidden lg:block"
+              className={`w-24 md:w-36 lg:w-[8.5vw] h-auto object-contain cursor-pointer ${
+                scrolled || isOpen ? "block" : "hidden"
+              } lg:block`}
             />
           </Link>
         </div>

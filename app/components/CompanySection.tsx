@@ -23,21 +23,21 @@ export const CompanySection: React.FC = () => {
           className="flex flex-col items-start text-left max-w-[95dvw] lg:max-w-[50dvw]"
         >
           {/* Main Title */}
-          <h2 className="text-white font-bold uppercase tracking-wider text-[5.5vw] md:text-[2.2vw] lg:text-[1.35vw] mb-3 pointer-events-auto leading-tight">
-            PRIVAE: SEASONED EXPERIENCE. FRESH THINKING.
+          <h2 className="text-white font-normal lg:font-bold uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.35vw]  lg:leading-[1.5] mb-6 pointer-events-auto lg:leading-tight">
+            PRIVAE: <br className="lg:hidden" /> SEASONED EXPERIENCE. <br  className="lg:hidden"/> FRESH THINKING.
           </h2>
 
           {/* Stats Bar */}
-          <div className="text-white font-normal uppercase tracking-widest text-[4vw] md:text-[2vw] lg:text-[1.65vw] mb-[3vh] lg:mb-[4vh] flex flex-wrap items-center gap-x-4 gap-y-2 pointer-events-auto">
-            <span className="font-bold whitespace-nowrap">20 YEARS</span>
-            <span className="text-[#FF3B30] font-light">|</span>
-            <span className="font-bold whitespace-nowrap">
+          <div className="text-white font-normal uppercase tracking-widest text-[1.6rem] md:text-[2vw] lg:text-[1.65vw] mb-6 lg:mb-[4vh] flex flex-wrap items-center gap-x-4 lg:gap-y-2 pointer-events-auto">
+            <span className="lg:font-bold font-normal whitespace-nowrap">20 YEARS</span>
+            <span className="text-[#FF3B30] font-light hidden lg:block">|</span>
+            <span className="lg:font-bold font-normal whitespace-nowrap">
               4 MILLION SQ. FT.
             </span>
           </div>
 
           {/* Descriptive Text */}
-          <p className="text-white/80 font-medium text-[4.2vw] leading-[1.7] md:text-[1.8vw] lg:text-[0.95vw] lg:leading-[1.8] pointer-events-auto z-20">
+          <p className="text-white/80 font-medium text-[1rem] leading-[1.7] md:text-[1.8vw] lg:text-[0.95vw] lg:leading-[1.8] pointer-events-auto z-20">
             Privae draws from a legacy of building world-class living spaces. A
             deep understanding of market needs and individual aspirations,
             combined with strong technical expertise, guides every decision. The
