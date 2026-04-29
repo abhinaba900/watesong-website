@@ -326,10 +326,10 @@ export const FloorPlanSection: React.FC = () => {
         >
           {/* Title Group */}
           <div className="mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
-            <h2 className="font-overwave text-white text-[2rem] lg:text-[2.2vw] lg:mb-[2vh] mb-[4px] tracking-widest drop-shadow-lg uppercase">
+            <h2 className="font-overwave text-white text-[2rem] lg:text-[2.2vw] lg:opacity-60 mb-[4px] lg:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase">
               Location Map
             </h2>
-            <p className="text-white/60 text-[1rem] md:text-[2vw] lg:text-[1.2vw] font-medium">
+            <p className="text-white/60 text-[1rem] md:text-[2vw] lg:text-[1vw] font-medium">
               (Not to scale)
             </p>
           </div>

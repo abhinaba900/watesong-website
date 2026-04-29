@@ -23,15 +23,15 @@ export const CompanySection: React.FC = () => {
           className="flex flex-col items-start text-left max-w-[95dvw] lg:max-w-[50dvw]"
         >
           {/* Main Title */}
-          <h2 className="text-white font-normal lg:font-bold uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.35vw]  lg:leading-[1.5] mb-6 pointer-events-auto lg:leading-tight">
+          <h2 className="text-white font-normal lg:font-normal uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.65vw]  lg:leading-[1.5] mb-6 lg:mb-0 pointer-events-auto lg:leading-tight">
             PRIVAE: <br className="lg:hidden" /> SEASONED EXPERIENCE. <br  className="lg:hidden"/> FRESH THINKING.
           </h2>
 
           {/* Stats Bar */}
           <div className="text-white font-normal uppercase tracking-widest text-[1.6rem] md:text-[2vw] lg:text-[1.65vw] mb-6 lg:mb-[4vh] flex flex-wrap items-center gap-x-4 lg:gap-y-2 pointer-events-auto">
-            <span className="lg:font-bold font-normal whitespace-nowrap">20 YEARS</span>
+            <span className=" font-normal whitespace-nowrap">20 YEARS</span>
             <span className="text-[#FF3B30] font-light hidden lg:block">|</span>
-            <span className="lg:font-bold font-normal whitespace-nowrap">
+            <span className="font-normal whitespace-nowrap">
               4 MILLION SQ. FT.
             </span>
           </div>
