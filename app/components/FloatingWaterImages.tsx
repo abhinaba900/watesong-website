@@ -63,7 +63,7 @@ function generateSwimmerPath(id: number): SwimmerData {
   const angleRad = Math.atan2(dy, dx);
   const rotation = angleRad * (180 / Math.PI) + 160;
 
-  const duration = 120 + Math.random() * 80;
+  const duration = 250 + Math.random() * 250;
 
   return { id, startX, startY, endX, endY, rotation, duration };
 }
