@@ -33,16 +33,17 @@
 }
 
 @font-face {
-  font-family: 'Overwave';
-  src: url('/assets/overwave-font/Overwave-DOpAW.ttf') format('truetype'),
-       url('/assets/overwave-font/Overwave-AL6AL.otf') format('opentype');
+  font-family: "Overwave";
+  src:
+    url("/assets/overwave-font/Overwave-DOpAW.ttf") format("truetype"),
+    url("/assets/overwave-font/Overwave-AL6AL.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @theme {
-  --font-overwave: 'Overwave', sans-serif;
+  --font-overwave: "Overwave", sans-serif;
 }
 
 body {
@@ -79,4 +80,99 @@ body::-webkit-scrollbar {
 /* Optional: smooth floating feel */
 .group:hover {
   animation-play-state: paused !important;
+}
+
+@media (min-width: 1800px) and (max-width: 2200px) {
+  .floating-lotus-buttom-left {
+    left: 6vw !important;
+    width: 12vw !important;
+    bottom: -4vh !important;
+  }
+
+  .top-right-floating-lotus {
+    width: 400px !important;
+  }
+
+  .text-right-in-just-forty-recidence-section {
+    margin-top: 34vh !important;
+  }
+
+  .chikkad-madi-gandu {
+    font-size: 24px !important;
+  }
+  .gap-to-heading-and-subheading-in-just-forty-recidence-section {
+    margin-bottom: 2rem !important;
+  }
+
+  .forget-boring-balconies-in-lake-lounge-section{
+    margin-top: 1rem !important;
+  }
+
+  .floating-lotus-in-lake-lounge-section {
+    width: 440px !important;
+    transform: translateX(-6vw) translateY(4vh) !important;
+  }
+
+  .block-2-lake-longe-section{
+    margin-bottom:4rem !important;
+  }
+
+  .top-decoration-lily-gand{
+    width: 210px !important;
+  }
+
+  .lily-top-decoration-main-container{
+    margin-top: -80px;
+  }
+
+  .container-ko-left-mai-karo-vi{
+    padding-left: 0.1rem !important;
+  }
+
+  .healty-and-active-lifestyle-container{
+    margin-top: -2rem;
+  }
+
+  .machi-ka-choda-niche-lao{
+    top: -5rem !important;
+  }
+
+  .machi-ko-bada-karo{
+    width: 400px !important;
+  }
+
+  .framed-map-image-aspect-rasio{
+    aspect-ratio: 16/13 !important;
+  }
+
+  .floor-plans-heading-in-other-screen{
+    margin-left: 2rem !important;
+    margin-bottom: 4rem !important;
+  }
+
+  .master-plan-with-proper-spacing-update{
+    margin-bottom: 3.5rem !important;
+  }
+
+  .badawala-need-hai{
+    scale: 2.2!important;
+  }
+
+  .floating-top-image-need-to-go-left{
+    right: -8% !important;
+    top: -14vw !important;
+  }
+
+  .fish-group-area-need-to-go{
+    bottom: -2vh !important;
+  }
+
+  .fishing-boat-section-image-gand{
+    bottom: -26vh !important;
+  }
+
+  .gand-mardo-space-ka{
+    margin-bottom: 14vh !important;
+  }
+ 
 }

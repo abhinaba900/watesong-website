@@ -12,9 +12,9 @@ export const CompanySection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[10vh] lg:mt-[10vh] pb-[15vh] lg:pb-[10vh] lg:mb-[40vh]">
+    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[10vh] lg:mt-[10vh] pb-[15vh] lg:pb-[10vh] lg:mb-[40vh] gand-mardo-space-ka">
       {/* Left-Aligned Text Content */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[6vw] lg:px-[8vw] pointer-events-none">
+      <div className="relative z-10 w-full  mx-auto px-[6vw] lg:px-[10vw] pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -24,7 +24,8 @@ export const CompanySection: React.FC = () => {
         >
           {/* Main Title */}
           <h2 className="text-white font-normal lg:font-normal uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.8vw]  lg:leading-[1.5] mb-6 lg:mb-2 pointer-events-auto lg:leading-tight">
-            PRIVAE: <br className="lg:hidden" /> SEASONED EXPERIENCE. <br  className="lg:hidden"/> FRESH THINKING.
+            PRIVAE: <br className="lg:hidden" /> SEASONED EXPERIENCE.{" "}
+            <br className="lg:hidden" /> FRESH THINKING.
           </h2>
 
           {/* Stats Bar */}
@@ -37,7 +38,7 @@ export const CompanySection: React.FC = () => {
           </div>
 
           {/* Descriptive Text */}
-          <p className="text-white/80 font-medium text-[1rem]  leading-[1.7] md:text-[1.8vw] lg:text-[1rem] lg:leading-[1.8] pointer-events-auto z-20">
+          <p className="text-white/80 chikkad-madi-gandu font-medium text-[1rem]  leading-[1.7] md:text-[1.8vw] lg:text-[1rem] lg:leading-[1.8] pointer-events-auto z-20">
             Privae draws from a legacy of building world-class living spaces. A
             deep understanding of market needs and individual aspirations,
             combined with strong technical expertise, guides every decision. The
@@ -58,7 +59,7 @@ export const CompanySection: React.FC = () => {
             repeatType: "mirror",
             ease: "easeInOut",
           }}
-          className="absolute left-[-22vw] lg:left-[-6vw] bottom-[-15vh] lg:bottom-[-52vh] w-[65vw] md:w-[45vw] lg:w-[40vw] z-5 opacity-80 lg:opacity-100"
+          className="absolute left-[-22vw] fishing-boat-section-image-gand lg:left-[-6vw] bottom-[-15vh] lg:bottom-[-52vh] w-[65vw] md:w-[45vw] lg:w-[40vw] z-5 opacity-80 lg:opacity-100"
         >
           <Image
             src="/assets/fishing boat.webp"
@@ -81,7 +82,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Animated Fish Group - Center Bottom */}
-        <div className="absolute bottom-[-13vh] left-[48%] -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-80">
+        <div className="absolute bottom-[-13vh] left-[48%] fish-group-area-need-to-go -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-80">
           <motion.div
             animate={{ x: [15, -15], y: [10, -10], rotate: [10, -10] }}
             transition={{

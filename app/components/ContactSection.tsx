@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+
 const SocialIconButton: React.FC<{
   icon: string;
   index: number;
@@ -25,32 +26,43 @@ const SocialIconButton: React.FC<{
       animate={
         isAnimating
           ? {
-              scale: [1, 1.1, 0.95, 1.05, 1],
+              scale: [1, 1.1, 0.9, 1.05, 1],
               scaleX: [1, 1.15, 0.85, 1.05, 1],
               scaleY: [1, 0.85, 1.15, 0.95, 1],
+              rotate: [0, -2, 2, -1, 0],
             }
           : {
               scale: 1,
               scaleX: 1,
               scaleY: 1,
+              rotate: 0,
             }
       }
       onAnimationComplete={() => setIsAnimating(false)}
       transition={{
-        duration: 0.5,
+        duration: 0.4,
         ease: "easeInOut",
         times: [0, 0.2, 0.5, 0.8, 1],
       }}
       whileTap={{ scale: 0.9 }}
-      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-colors pointer-events-auto overflow-hidden hover:bg-white/10"
+      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-all pointer-events-auto overflow-hidden hover:opacity-90"
+      style={{
+        backgroundColor: "rgba(177, 178, 176, 0.6)",
+        boxShadow: `
+          -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
+          -16px 12px 30px -12px rgba(0,0,0,1),
+          0px 4px 4px 0px rgba(0,0,0,0.25),
+          0px 4px 4px 0px rgba(0,0,0,0.4) inset
+        `,
+      }}
       aria-label={`Social media link ${index + 1}`}
     >
-      <div className="relative w-full h-full mix-blend-screen">
+      <div className="relative w-[50%] h-[50%] mix-blend-screen rounded-sm overflow-hidden z-10">
         <Image
           src={icon}
           alt={`Social icon ${index + 1}`}
           fill
-          className="object-contain opacity-90"
+          className="object-contain opacity-90 drop-shadow-md"
         />
       </div>
     </motion.a>

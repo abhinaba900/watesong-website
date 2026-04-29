@@ -178,7 +178,7 @@ export const FloorPlanSection: React.FC = () => {
         {/* Heading */}
         <h2
           style={{ letterSpacing: "-0.3px" }}
-          className="hidden lg:block font-overwave text-white text-[7vw] lg:text-[3.2vw] text-center lg:text-left mb-[2vh] lg:mb-8 tracking-widest drop-shadow-lg uppercase"
+          className="hidden lg:block font-overwave pl-10 floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[3.2vw] text-center lg:text-left mb-[2vh] lg:mb-8 tracking-widest drop-shadow-lg uppercase"
         >
           Floor Plans
         </h2>
@@ -187,7 +187,7 @@ export const FloorPlanSection: React.FC = () => {
         <div className="flex flex-col relative z-3 lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
           {/* LEFT PANE: Tabs and Image */}
           <div
-            className="w-full lg:w-[55%] flex flex-col"
+            className="w-full lg:w-[55%] flex flex-col xl:h-[864px]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
@@ -227,11 +227,11 @@ export const FloorPlanSection: React.FC = () => {
               />
             </div>
           </div>
-          <h2 className="block lg:hidden font-overwave text-white text-[2rem] lg:text-[2.2vw] text-left lg:text-left  tracking-widest drop-shadow-lg uppercase">
+          <h2 className="block lg:hidden font-overwave text-white  text-[2rem] lg:text-[2.2vw] text-left lg:text-left  tracking-widest drop-shadow-lg uppercase">
             Floor Plans
           </h2>
           {/* RIGHT PANE: Lists and Area Table */}
-          <div className="w-full lg:w-[45%] flex flex-row gap-[3vw]">
+          <div className="w-full lg:w-[34%] flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
             <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[2vh]">
               {activeData.roomsCol1.map((room) => (
@@ -251,7 +251,7 @@ export const FloorPlanSection: React.FC = () => {
             </div>
 
             {/* Column 2 (Rooms 11+ and Area Box) */}
-            <div className="w-1/2 flex flex-col justify-between">
+            <div className="flex flex-col justify-between">
               {/* Rooms List */}
               <div className="flex flex-col gap-[1.5vh] lg:gap-[2vh]">
                 {activeData.roomsCol2.map((room) => (
@@ -301,25 +301,25 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── PHOTOS | VIDEOS Section ─── */}
-        <div className="relative z-20 mt-[10vh] lg:mt-[40vh] w-full flex flex-col items-center ">
+        <div className="relative z-20 mt-[10vh] lg:mt-[35vh] w-full flex flex-col items-center ">
           {/* Title */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave text-white text-[2rem] lg:mb-8 lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+            className="font-overwave master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
           >
             Photos | Videos
           </h2>
 
           {/* Glass Frame Container */}
-          <div className="relative w-full max-w-[90vw] lg:max-w-[70vw] aspect-[16/9] lg:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl">
+          <div className="relative w-full max-w-[90vw] lg:max-w-[65vw] glass-frame-container aspect-[15/9] lg:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl">
             {/* Floating Top Right Image */}
-            <div className="absolute -right-[2%] -top-[55%] lg:-right-[8vw] lg:-top-[14vw] w-[20vw] lg:w-[10vw] z-30 pointer-events-none drop-shadow-2xl">
+            <div className="absolute -right-[2%] floating-top-image-need-to-go-left -top-[55%] lg:-right-[8vw] lg:-top-[14vw] w-[20vw] lg:w-[10vw] z-30 pointer-events-none drop-shadow-2xl">
               <Image
                 src="/assets/middle image.webp"
                 alt="Floating Decor"
                 width={200}
                 height={200}
-                className="w-full h-auto object-contain scale-[1.8] rotate-240"
+                className="w-full h-auto object-contain scale-[1.8] badawala-need-hai rotate-240"
               />
             </div>
           </div>
@@ -332,7 +332,10 @@ export const FloorPlanSection: React.FC = () => {
         >
           {/* Title Group */}
           <div className="mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
-            <h2 style={{letterSpacing:"-0.3px"}} className="font-overwave text-white text-[2rem] lg:text-[3.2vw] lg:opacity-100 mb-[4px] lg:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase">
+            <h2
+              style={{ letterSpacing: "-0.3px" }}
+              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] lg:opacity-100 mb-[4px] lg:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase"
+            >
               Location Map
             </h2>
             <p className="text-white/60 text-[1rem] md:text-[2vw] lg:text-[1rem] font-medium">
@@ -341,7 +344,7 @@ export const FloorPlanSection: React.FC = () => {
           </div>
 
           {/* Map Image */}
-          <div className="relative hidden lg:block w-full lg:max-w-[54vw] lg:mt-[-10vw] lg:ml-[24vw] aspect-auto">
+          <div className="relative hidden lg:block w-full lg:max-w-[54vw] lg:mt-[-8vw] lg:ml-[24vw] aspect-auto">
             <Image
               src="/assets/location-map.webp"
               alt="Location Map"
