@@ -63,7 +63,7 @@ export const FeatureSection: React.FC = () => {
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
           className="relative w-full lg:w-[45%] mb-0 lg:mt-[50vh] text-white text-center lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
         >
-          <div className="flex flex-col items-start lg:items-start gap-0 lg:gap-4 mb-6">
+          <div className="flex flex-col items-start lg:items-start gap-0 lg:gap-2 mb-6">
             <h2 className="font-overwave text-white text-[2rem] lg:text-[1.8vw] leading-[120%] lg:leading-tight tracking-wide drop-shadow-lg uppercase text-center lg:text-left">
               Just forty Residences.
             </h2>
@@ -125,7 +125,7 @@ export const FeatureSection: React.FC = () => {
             A lake like this deserves
           </motion.p>
 
-          <h2 className="font-overwave text-white text-left max-w-[90%] lg:max-w-[100%] ml-[16%] lg:mx-0 lg:text-left text-[2rem] lg:text-[1.8vw] tracking-wider mb-4 drop-shadow-lg uppercase mx-0 lg:mx-0 leading-none">
+          <h2 className="font-overwave text-white text-left max-w-[90%] lg:max-w-[100%] ml-[16%] lg:mx-0 lg:text-left text-[2rem] lg:text-[1.8vw] tracking-wider mb-4 lg:mb-3 drop-shadow-lg uppercase mx-0 lg:mx-0 leading-none">
             A Lake Lounge
           </h2>
 
@@ -250,7 +250,7 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* Caption Image */}
-          <h2 className="font-overwave text-white text-left lg:text-left text-[1.8rem] lg:text-[1.8vw] tracking-wider drop-shadow-md uppercase ml-4 lg:mx-0 lg:ml-[2vw] text-center lg:text-left leading-tight mt-4">
+          <h2 className="font-overwave text-white text-left lg:text-left text-[1.8rem] lg:text-[1.8vw] tracking-wider drop-shadow-md uppercase ml-4 lg:mx-0 lg:ml-[5vw] text-center lg:text-left leading-tight mt-4">
             Features so thoughtful, you feel special
           </h2>
         </motion.div>

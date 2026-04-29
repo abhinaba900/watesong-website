@@ -49,7 +49,7 @@ const SocialIconButton: React.FC<{
         src={icon}
         alt={`Social icon ${index + 1}`}
         fill
-        className="object-contain opacity-90"
+        className="object-contain opacity-90 blend-multiply"
       />
     </motion.a>
   );
