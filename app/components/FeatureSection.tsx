@@ -145,11 +145,10 @@ export const FeatureSection: React.FC = () => {
 
             {/* PARAGRAPH */}
             <motion.p className="text-white/80 font-medium forget-boring-balconies-in-lake-lounge-section chikkad-madi-gandu text-left lg:text-left ml-[16%] lg:mx-0 leading-relaxed text-[1rem] lg:text-[1rem] lg:max-w-[90%] lg:max-w-[95%] mx-auto lg:mx-0 drop-shadow-md">
-              Forget boring balconies. Step out into a rare 200 sq. ft.{" "}
-              <br className="hidden lg:block" /> lake lounge: your private front
-              row to rippling water, <br className="hidden lg:block" /> open
-              skies, and evening breeze. It is a place to linger,{" "}
-              <br className="hidden lg:block" /> breathe, and truly unwind.
+              Forget boring balconies. Step out into a rare 200 sq. ft. 
+              lake lounge: your private front
+              row to rippling water, open
+              skies, and evening breeze. It is a place to linger, breathe, and truly unwind.
             </motion.p>
           </div>
         </motion.div>

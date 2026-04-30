@@ -82,7 +82,7 @@ body::-webkit-scrollbar {
   animation-play-state: paused !important;
 }
 
-/* @media (min-width: 1800px) and (max-width: 2200px) {
+@media (min-width: 1800px) and (max-width: 2200px) {
   .floating-lotus-buttom-left {
     left: 6vw !important;
     width: 12vw !important;
@@ -90,7 +90,7 @@ body::-webkit-scrollbar {
   }
 
   .top-right-floating-lotus {
-    width: 400px !important;
+    width: 310px !important;
   }
 
   .text-right-in-just-forty-recidence-section {
@@ -109,7 +109,7 @@ body::-webkit-scrollbar {
   }
 
   .floating-lotus-in-lake-lounge-section {
-    width: 440px !important;
+    width: 340px !important;
     transform: translateX(-6vw) translateY(4vh) !important;
   }
 
@@ -118,7 +118,7 @@ body::-webkit-scrollbar {
   }
 
   .top-decoration-lily-gand{
-    width: 210px !important;
+    width: 180px !important;
   }
 
   .lily-top-decoration-main-container{
@@ -138,7 +138,7 @@ body::-webkit-scrollbar {
   }
 
   .machi-ko-bada-karo{
-    width: 400px !important;
+    width: 350px !important;
   }
 
   .framed-map-image-aspect-rasio{
@@ -175,4 +175,4 @@ body::-webkit-scrollbar {
     margin-bottom: 14vh !important;
   }
  
-} */
+}
