@@ -196,9 +196,9 @@ export default function FloatingWaterImages({
 
       if (clientWidth === 0 || clientHeight === 0) return;
 
-      const MAX_PIXELS = 250000;
+      const MAX_PIXELS = 400000;
       const currentPixels = clientWidth * clientHeight;
-      let scale = 0.5;
+      let scale = 0.7;
 
       if (currentPixels * scale * scale > MAX_PIXELS) {
         scale = Math.sqrt(MAX_PIXELS / currentPixels);
@@ -268,7 +268,7 @@ export default function FloatingWaterImages({
       const currentBuffer1 = buffer1Ref.current;
       const currentBuffer2 = buffer2Ref.current;
 
-      const damping = 0.96;
+      const damping = 0.98;
 
       for (let y = 1; y < height - 1; y++) {
         for (let x = 1; x < width - 1; x++) {
@@ -341,8 +341,14 @@ export default function FloatingWaterImages({
       for (let j = scaledY - radius; j < scaledY + radius; j++) {
         for (let i = scaledX - radius; i < scaledX + radius; i++) {
           if (i >= 0 && i < width && j >= 0 && j < height) {
-            if ((i - scaledX) ** 2 + (j - scaledY) ** 2 <= radius ** 2) {
-              buffer1[i + j * width] = strength;
+            const dx = i - scaledX;
+            const dy = j - scaledY;
+            const distanceSq = dx * dx + dy * dy;
+            const radiusSq = radius * radius;
+            if (distanceSq <= radiusSq) {
+              const distance = Math.sqrt(distanceSq);
+              const falloff = 1 - distance / radius;
+              buffer1[i + j * width] += strength * falloff;
             }
           }
         }
@@ -360,8 +366,8 @@ export default function FloatingWaterImages({
       const rect = containerRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      // Nice splash on click
-      dropStone(x, y, 8, 45, false);
+      // Softer, larger splash on click
+      dropStone(x, y, 12, 35, false);
     };
 
     window.addEventListener("click", handleGlobalClick, { passive: true });
