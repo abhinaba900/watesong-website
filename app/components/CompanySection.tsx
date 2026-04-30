@@ -71,13 +71,13 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Wooden Pier - Middle Right */}
-        <motion.div className="absolute right-16 bottom-[70vh] lg:top-[60%] w-[40vw] md:w-[25vw] lg:w-[40dvw] z-5 translate-x-[20%] lg:translate-x-[15%]  lg:opacity-100">
+        <motion.div className="absolute right-16 bottom-[70vh]  lg:top-[60%] w-[40vw] md:w-[25vw] lg:w-[40dvw] z-5 translate-x-[20%] lg:translate-x-[15%]  lg:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
             alt="Wooden pier"
             width={800}
             height={200}
-            className="object-contain transform   skew-y-2 w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+            className="object-contain transform   skew-y-0 w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
           />
         </motion.div>
 
