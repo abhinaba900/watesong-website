@@ -34,7 +34,7 @@ const SocialIconButton: React.FC<{
       animate={controls}
       initial={{ scale: 1, rotate: 0 }}
       whileTap={{ scale: 0.92 }}
-      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full pointer-events-auto group overflow-hidden"
+      className="relative flex items-center justify-center w-[16vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full pointer-events-auto group overflow-hidden"
       style={{
         backgroundColor: "rgba(177, 178, 176, 0.6)",
         boxShadow: `
@@ -85,9 +85,9 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="relative no-scrollbar bg-transparent w-full px-[5vw] lg:px-[5vw] py-[8vh] lg:py-[5vh] overflow-x-hidden">
+    <section className="relative no-scrollbar bg-transparent w-full px-[5vw] lg:px-[5vw] py-[8vh] pb-8 lg:pb-[5vh] lg:py-[5vh] overflow-x-hidden">
       {/* Main Grid */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between px-[4vw] py-[1rem] gap-10 lg:gap-4 mt-[10vh]">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between px-0 py-[1rem] gap-10 lg:gap-4 mt-[10vh]">
         {/* COLUMN 1 */}
         <div className="w-full lg:w-[35%] flex flex-col items-start text-center lg:text-left text-white pointer-events-auto">
           <div className="mb-[2vh]">
@@ -96,11 +96,11 @@ export const ContactSection: React.FC = () => {
               alt="PRÍVAE"
               width={120}
               height={40}
-              className="object-contain w-[171px] md:w-[10vw] lg:w-[6vw] ml-[1rem] lg:ml-0"
+              className="object-contain w-[171px] md:w-[10vw] lg:w-[6vw]"
             />
           </div>
 
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col items-start lg:items-start">
             <Image
               src="/assets/watersong-logo-blue.webp"
               alt="Watersong"
@@ -108,7 +108,7 @@ export const ContactSection: React.FC = () => {
               height={200}
               className="object-contain w-[350px] md:w-[50vw] lg:w-[24vw] mb-[-1vh]"
             />
-            <h3 className="text-[20px] md:text-[4vw] lg:text-[1.6vw] ml-[-4rem] lg:ml-0 mt-[-1.5rem] lg:mt-[-1rem] font-medium tracking-tight mb-[0.5vh]">
+            <h3 className="text-[20px] md:text-[4vw] lg:text-[1.6vw]  lg:ml-0  lg:mt-[-1rem] font-medium tracking-tight mb-[0.5vh]">
               Lakefront Residences
             </h3>
             <p className="text-[14px] md:text-[2.2vw] lg:text-[1vw] font-medium opacity-80">

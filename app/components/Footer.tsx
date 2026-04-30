@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="relative bg-transparent w-full px-[5vw] lg:px-[8vw] pb-[6vh] lg:pb-[8vh] pt-0  no-scrollbar">
       {/* Corner Stones Pile */}
-      <div className="absolute right-0 -bottom-5 w-[45vw] lg:w-[15vw] h-[5vh] z-0 opacity-100 -translate-y-15 lg:-translate-y-35 pointer-events-none">
+      <div className="absolute right-0 -bottom-5 w-[75vw] lg:w-[15vw] h-[5vh] z-0 opacity-100 -translate-y-35 lg:-translate-y-35 pointer-events-none">
         <Image
           src="/assets/stone bg.webp"
           alt="Decorative stones"

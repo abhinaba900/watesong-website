@@ -12,7 +12,7 @@ export const CompanySection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[10vh] lg:mt-[10vh] pb-[15vh] lg:pb-[10vh] lg:mb-[40vh] gand-mardo-space-ka">
+    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[10vh] lg:mt-[10vh] pb-[25vh] lg:pb-[10vh] lg:mb-[40vh] gand-mardo-space-ka">
       {/* Left-Aligned Text Content */}
       <div className="relative z-10 w-full  mx-auto px-[6vw] lg:px-[10vw] pointer-events-none">
         <motion.div
@@ -59,7 +59,7 @@ export const CompanySection: React.FC = () => {
             repeatType: "mirror",
             ease: "easeInOut",
           }}
-          className="absolute left-[-22vw] fishing-boat-section-image-gand lg:left-[-6vw] bottom-[-15vh] lg:bottom-[-52vh] w-[65vw] md:w-[45vw] lg:w-[40vw] z-5 opacity-80 lg:opacity-100"
+          className="absolute left-[-52vw] fishing-boat-section-image-gand lg:left-[-6vw] bottom-[-24vh] lg:bottom-[-52vh] w-[28rem] md:w-[45vw] lg:w-[40vw] z-5 opacity-80 lg:opacity-100"
         >
           <Image
             src="/assets/fishing boat.webp"
@@ -71,7 +71,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Wooden Pier - Middle Right */}
-        <motion.div className="absolute right-16 bottom-[70vh]  lg:top-[60%] w-[40vw] md:w-[25vw] lg:w-[40dvw] z-5 translate-x-[20%] lg:translate-x-[15%]  lg:opacity-100">
+        <motion.div className="absolute right-16 bottom-[72vh]  lg:top-[60%] w-[80vw] md:w-[25vw] lg:w-[40dvw] z-5 translate-x-[25%] lg:translate-x-[15%]  lg:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
             alt="Wooden pier"
@@ -82,7 +82,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Animated Fish Group - Center Bottom */}
-        <div className="absolute bottom-[-13vh] left-[48%] fish-group-area-need-to-go -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-80">
+        <div className="absolute bottom-[2] lg:bottom-[-13vh] left-[74%] lg:left-[48%] fish-group-area-need-to-go -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-80">
           <motion.div
             animate={{ x: [15, -15], y: [10, -10], rotate: [10, -10] }}
             transition={{
