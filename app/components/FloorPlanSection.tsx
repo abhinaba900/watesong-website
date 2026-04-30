@@ -215,6 +215,7 @@ export const FloorPlanSection: React.FC = () => {
               ))}
             </div>
 
+            
             {/* Floor Plan Image */}
             <div className="flex-1 flex justify-center items-center w-full relative min-h-[40vh] md:min-h-[50vh] pb-[2vh] px-[2vw]">
               <Image
