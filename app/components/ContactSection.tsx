@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-
-
 
 
 const SocialIconButton: React.FC<{
@@ -12,20 +10,11 @@ const SocialIconButton: React.FC<{
   index: number;
   href: string;
 }> = ({ icon, index, href }) => {
-  const controls = useAnimation();
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const triggerAnimation = () => {
-    controls.start({
-      scale: [1, 1.15, 0.9, 1.08, 1],
-      scaleX: [1, 1.2, 0.8, 1.1, 1],
-      scaleY: [1, 0.8, 1.2, 0.9, 1],
-      rotate: [0, -3, 3, -1.5, 0],
-      transition: {
-        duration: 0.45,
-        ease: "easeInOut",
-        times: [0, 0.2, 0.4, 0.7, 1],
-      },
-    });
+    setIsAnimating(false);
+    setTimeout(() => setIsAnimating(true), 10);
   };
 
   return (
@@ -34,10 +23,29 @@ const SocialIconButton: React.FC<{
       target="_blank"
       rel="noopener noreferrer"
       onMouseEnter={triggerAnimation}
-      animate={controls}
-      initial={{ scale: 1, rotate: 0 }}
-      whileTap={{ scale: 0.92 }}
-      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full pointer-events-auto group overflow-hidden"
+      animate={
+        isAnimating
+          ? {
+              scale: [1, 1.1, 0.9, 1.05, 1],
+              scaleX: [1, 1.15, 0.85, 1.05, 1],
+              scaleY: [1, 0.85, 1.15, 0.95, 1],
+              rotate: [0, -2, 2, -1, 0],
+            }
+          : {
+              scale: 1,
+              scaleX: 1,
+              scaleY: 1,
+              rotate: 0,
+            }
+      }
+      onAnimationComplete={() => setIsAnimating(false)}
+      transition={{
+        duration: 0.4,
+        ease: "easeInOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+      }}
+      whileTap={{ scale: 0.9 }}
+      className="relative flex items-center justify-center w-[12vw] md:w-[6vw] lg:w-[3.5vw] aspect-square rounded-full transition-all pointer-events-auto overflow-hidden hover:opacity-90"
       style={{
         backgroundColor: "rgba(177, 178, 176, 0.6)",
         boxShadow: `
@@ -49,8 +57,7 @@ const SocialIconButton: React.FC<{
       }}
       aria-label={`Social media link ${index + 1}`}
     >
-      
-      <div className="relative w-[50%] h-[50%] flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110">
+      <div className="relative w-[50%] h-[50%] mix-blend-screen rounded-sm overflow-hidden z-10">
         <Image
           src={icon}
           alt={`Social icon ${index + 1}`}

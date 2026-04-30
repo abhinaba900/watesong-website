@@ -176,9 +176,3 @@ body::-webkit-scrollbar {
   }
  
 }
-
-@media screen and (width: 1920px) and (height: 911px) {
-  .framed-map-image-aspect-rasio{
-    aspect-ratio: 16/11 !important;
-  }
-}

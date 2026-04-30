@@ -93,7 +93,7 @@ export const FeatureSection: React.FC = () => {
         </motion.div>
 
         {/* Top Right Floating Lotus */}
-        <div className="absolute -top-[20%] top-right-floating-lotus right-0 lg:top-[5%] lg:right-[10%] pointer-events-none z-20 w-[150px] lg:w-[17vw]">
+        <div className="absolute -top-[20%] top-right-floating-lotus right-0 lg:top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[220px]">
           <Image
             src="/assets/Lotus - webp.webp"
             alt="Lotus"
@@ -122,7 +122,7 @@ export const FeatureSection: React.FC = () => {
                 alt="Lotus"
                 width={300}
                 height={300}
-                className="h-auto object-contain floating-lotus-in-lake-lounge-section opacity-90  transform -translate-x-[20%] lg:translate-x-25 translate-y-0 lg:-translate-y-22 rotate-180 lg:rotate-180  w-[220px] lg:w-[18vw]"
+                className="h-auto object-contain floating-lotus-in-lake-lounge-section opacity-90 s transform -translate-x-[20%] lg:translate-x-0 translate-y-0 lg:-translate-y-10 rotate-180 lg:rotate-180  w-[220px] lg:w-[230px]"
               />
             </motion.div>
           </div>
@@ -201,17 +201,17 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] text-white container-ko-left-mai-karo-vi text-left lg:text-left order-1 lg:order-2 flex flex-col justify-start z-10 lg:pl-[1vw] pointer-events-auto"
+          className="relative w-full lg:w-[45%] text-white container-ko-left-mai-karo-vi text-left lg:text-left order-1 lg:order-2 flex flex-col justify-start z-10 lg:pl-[4vw] pointer-events-auto"
         >
           {/* LILY (TOP DECORATION) */}
-          <div className="flex justify-start lily-top-decoration-main-container lg:justify-start -ml-0 mb-6 lg:mb-[30vh] xl:mt-[-24vh] lg:-ml-[1vw]">
+          <div className="flex justify-start lily-top-decoration-main-container lg:justify-start -ml-0 mb-6 lg:mb-[20vh] lg:-ml-[2vw]">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/with-flower-lily-image.webp"
                 alt="Lotus"
                 width={160}
                 height={160}
-                className="h-auto object-contain top-decoration-lily-gand opacity-90 w-[150px] lg:w-[10vw]"
+                className="h-auto object-contain top-decoration-lily-gand opacity-90 w-[150px] lg:w-[120px]"
               />
             </motion.div>
           </div>
@@ -291,7 +291,7 @@ export const FeatureSection: React.FC = () => {
                 repeat: Infinity,
                 repeatType: "mirror",
               }}
-              className="w-[240px] h-0 lg:w-[20vw] machi-ko-bada-karo"
+              className="w-[240px] h-0 lg:w-[280px] machi-ko-bada-karo"
             >
               <Image
                 src="/assets/fish-image-1.webp"
