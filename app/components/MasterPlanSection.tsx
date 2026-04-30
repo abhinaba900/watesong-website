@@ -27,13 +27,13 @@ export const MasterPlanSection: React.FC = () => {
           {/* HEADING */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave master-plan-with-proper-spacing-update lg:mb-8 text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+            className="font-overwave master-plan-with-proper-spacing-update mt-[8vh] lg:mb-8 text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-8 lg:mb-0 drop-shadow-lg text-left lg:text-left leading-none"
           >
             Master Plan
           </h2>
 
           {/* LIST */}
-          <div className="text-white/90 chikkad-madi-gandu font-medium leading-[1.8] text-[1rem] lg:text-[1rem] max-w-[95%] ml-[1.5rem] lg:ml-0 mx-0 lg:mx-0 text-left">
+          <div className="text-white/90 chikkad-madi-gandu font-medium leading-[1.8] text-[1rem] lg:text-[1rem] max-w-[95%]  lg:ml-0 mx-0 lg:mx-0 text-left">
             <ol className="list-decimal pl-5 space-y-[2px]">
               <li>Entry &amp; Exit</li>
               <li>Security Kiosk</li>
@@ -66,7 +66,7 @@ export const MasterPlanSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="w-full lg:w-[65%] flex justify-center items-center order-2 lg:order-2 relative z-10 pointer-events-auto"
+          className="w-full hidden lg:block lg:w-[65%] flex justify-center items-center order-2 lg:order-2 relative z-10 pointer-events-auto"
         >
           {/* Framed Map Image */}
           <div className="relative w-full h-[65dvh] lg:h-full lg:w-full rounded-[16px] lg:rounded-[24px] overflow-hidden border-[8px] lg:border-[3px] border-white/20 shadow-2xl rotate-90 lg:rotate-0">
@@ -76,6 +76,26 @@ export const MasterPlanSection: React.FC = () => {
               fill
               className="object-cover"
             />
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+          className="w-full block lg:hidden lg:w-[65%] flex justify-center mt-[15vh] items-center order-2 lg:order-2 relative z-10 pointer-events-auto"
+        >
+          {/* Framed Map Image - Refined Premium Frame */}
+          <div className="relative w-[125vw] h-[92vw] flex-none lg:flex-1 lg:h-full lg:w-full rounded-[24px] lg:rounded-[32px] overflow-hidden border-[2px] lg:border-[2px] border-white/40 bg-white/16 shadow-2xl b rotate-90 lg:rotate-0 p-2">
+            <div className="relative w-full h-full rounded-[16px] lg:rounded-[24px] overflow-hidden rotate-180 lg:rotate-0">
+              <Image
+                src="/assets/Masterplan new.webp"
+                alt="Masterplan Map"
+                fill
+                className="object-contain lg:object-cover"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
