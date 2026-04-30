@@ -154,6 +154,7 @@ export const FeatureSection: React.FC = () => {
           </div>
         </motion.div>
 
+        
         {/* IMAGE RIGHT */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
