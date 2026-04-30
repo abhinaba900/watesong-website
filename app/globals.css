@@ -84,9 +84,9 @@ body::-webkit-scrollbar {
 
 @media (min-width: 1800px) and (max-width: 2200px) {
   .floating-lotus-buttom-left {
-    left: 6vw !important;
-    width: 12vw !important;
-    bottom: -4vh !important;
+    left: 4vw !important;
+    width: 9vw !important;
+    bottom: -2vh !important;
   }
 
   .top-right-floating-lotus {
