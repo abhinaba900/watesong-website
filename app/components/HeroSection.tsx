@@ -66,7 +66,7 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* Floating Lotus Bottom Left - Overflows the section */}
-        <div className="absolute  top-[46vh] floating-lotus-buttom-left lg:top-auto lg:bottom-[-10vh] left-[8vw] lg:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw]">
+        <div className="absolute  top-[46vh] floating-lotus-buttom-left lg:top-auto lg:bottom-[-10vh] left-[8vw] lg:left-[4vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw]">
           <Image
             src="/assets/with-flower-lily-image.webp"
             alt="Lotus Flower"
