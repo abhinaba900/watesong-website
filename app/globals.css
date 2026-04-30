@@ -200,4 +200,9 @@ body::-webkit-scrollbar {
   .healty-and-active-lifestyle-container{
     margin-top: 1rem;
   }
+
+  .fishing-boat-section-image-gand{
+    bottom: -26vh !important;
+    width: 42vw !important;
+  }
 }
