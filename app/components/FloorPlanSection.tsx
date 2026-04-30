@@ -187,7 +187,7 @@ export const FloorPlanSection: React.FC = () => {
         <div className="flex flex-col relative z-3 lg:flex-row items-stretch justify-center w-full gap-[4vw] lg:gap-[3vw]">
           {/* LEFT PANE: Tabs and Image */}
           <div
-            className="w-full lg:w-[55%] flex flex-col xl:h-[864px]"
+            className="w-full lg:w-[55%] flex flex-col xl:h-[700px]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
