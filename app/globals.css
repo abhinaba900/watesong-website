@@ -188,4 +188,16 @@ body::-webkit-scrollbar {
   .top-decoration-lily-gand{
     width: 180px !important;
   }
+
+  .lily-top-decoration-main-container{
+    margin-top: -130px;
+  }
+
+  .container-ko-left-mai-karo-vi{
+    padding-left: 0.1rem !important;
+  }
+
+  .healty-and-active-lifestyle-container{
+    margin-top: 1rem;
+  }
 }
