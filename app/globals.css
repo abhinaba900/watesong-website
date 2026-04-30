@@ -184,4 +184,8 @@ body::-webkit-scrollbar {
     left: 4vw !important;
     bottom: 2vh !important;
   }
+
+  .top-decoration-lily-gand{
+    width: 180px !important;
+  }
 }
