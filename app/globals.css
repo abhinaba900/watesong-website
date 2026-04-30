@@ -176,3 +176,12 @@ body::-webkit-scrollbar {
   }
  
 }
+
+
+@media screen and (min-width: 1352px) and (max-width: 1400px) 
+       and (min-height: 726px) and (max-height: 850px) {
+  .floating-lotus-buttom-left {
+    left: 4vw !important;
+    bottom: 2vh !important;
+  }
+}
