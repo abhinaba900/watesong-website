@@ -71,7 +71,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Wooden Pier - Middle Right */}
-        <motion.div className="absolute right-16 bottom-[78vh]  lg:top-[60%] w-[80vw] md:w-[25vw] lg:w-[40dvw] z-5 translate-x-[25%] lg:translate-x-[15%]  lg:opacity-100">
+        <motion.div className="absolute right-16 bottom-[45rem]  lg:top-[60%] w-[80vw] md:w-[25vw] lg:w-[40dvw] z-5 translate-x-[25%] lg:translate-x-[15%]  lg:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
             alt="Wooden pier"
