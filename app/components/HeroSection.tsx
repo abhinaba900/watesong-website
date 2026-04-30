@@ -13,15 +13,15 @@ export const HeroSection: React.FC = () => {
   if (!mounted) return <section className="w-full h-screen bg-transparent" />;
 
   return (
-    <section className="relative w-full h-[800px] lg:h-screen bg-transparent">
-      <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[10vh] lg:pt-0 gap-0 lg:gap-0 h-full pointer-events-none">
+    <section className="relative w-full h-fit lg:h-screen bg-transparent">
+      <div className="relative lg:absolute lg:inset-0 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-[4vw] lg:pl-[10vw] lg:pr-[5vw] pt-[0.8rem] lg:pt-0 gap-8 lg:gap-0 h-auto lg:h-full pointer-events-none">
         {/* Make children pointer-events-auto so they can be interacted with, but the background passes clicks to the global ripple */}
         {/* LEFT */}
-        <div className="flex flex-col items-center lg:items-start w-full lg:w-[45vw] h-full justify-center relative pointer-events-auto">
+        <div className="flex flex-col items-start lg:items-start w-full lg:w-[45vw] h-auto lg:h-full justify-center relative pointer-events-auto gap-4 lg:gap-0">
           {/* Top Logo Cluster */}
-          <div className="flex flex-col items-center lg:items-start mb-6 lg:mb-[10vh] mt-4 lg:mt-0 z-10">
+          <div className="flex flex-col items-start lg:items-start ml-1 mb-6 lg:mb-[10vh] mt-4 lg:mt-0 z-10">
             {/* PRIVAE Logo */}
-            <div className="mb-1 lg:mb-2 ml-0 lg:ml-2">
+            <div className="mb-1 lg:mb-2  lg:ml-2">
               <Image
                 src="/assets/navbar-right-logo.webp"
                 alt="Privae"
@@ -66,7 +66,7 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* Floating Lotus Bottom Left - Overflows the section */}
-        <div className="absolute  top-[46vh] floating-lotus-buttom-left lg:top-auto lg:bottom-[-10vh] left-[8vw] lg:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw]">
+        <div className="absolute  top-[20rem] floating-lotus-buttom-left lg:top-auto lg:bottom-[-10vh] left-[8vw] lg:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw]">
           <Image
             src="/assets/with-flower-lily-image.webp"
             alt="Lotus Flower"
@@ -77,7 +77,7 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* RIGHT */}
-        <div className="flex justify-center items-center w-full lg:w-[50vw] h-full relative z-10 translate-y-[2vh] lg:translate-y-[4vh] pointer-events-auto">
+        <div className="flex justify-center items-center w-full lg:w-[50vw] h-auto lg:h-full relative z-10 translate-y-[2vh] lg:translate-y-[4vh] pointer-events-auto pb-12 lg:pb-0">
           <div className="relative aspect-square w-full lg:w-[45vw] ">
             <Image
               src="/assets/elevation.webp"

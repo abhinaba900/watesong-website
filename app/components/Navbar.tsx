@@ -39,7 +39,11 @@ const RightGlare: React.FC = () => (
   </svg>
 );
 
-const NavigationPill: React.FC<NavigationPillProps> = ({ label, action, isHighlight = false }) => {
+const NavigationPill: React.FC<NavigationPillProps> = ({
+  label,
+  action,
+  isHighlight = false,
+}) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const triggerAnimation = () => {
@@ -82,7 +86,9 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label, action, isHighli
                  rounded-full select-none outline-none border-none
                  ${action ? "cursor-pointer" : "cursor-default drop-shadow-sm"}`}
       style={{
-        backgroundColor: isHighlight ? "rgba(201, 160, 80, 0.9)" : "rgba(177, 178, 176, 0.6)",
+        backgroundColor: isHighlight
+          ? "rgba(201, 160, 80, 0.9)"
+          : "rgba(177, 178, 176, 0.6)",
         color: isHighlight ? "#113239" : "white",
         boxShadow: `
           -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
@@ -94,7 +100,9 @@ const NavigationPill: React.FC<NavigationPillProps> = ({ label, action, isHighli
     >
       <TopGlare />
       <RightGlare />
-      <span className={`relative z-10 opacity-90 ${isHighlight ? 'text-[#113239] font-bold' : 'text-white font-medium'} pointer-events-none drop-shadow-md`}>
+      <span
+        className={`relative z-10 opacity-90 ${isHighlight ? "text-[#113239] font-bold" : "text-white font-medium"} pointer-events-none drop-shadow-md`}
+      >
         {label}
       </span>
     </motion.button>
@@ -106,7 +114,6 @@ export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -133,14 +140,14 @@ export const Navbar: React.FC = () => {
   };
 
   const navigationItems: NavigationItem[] = [
-    { label: "Home",        action: () => scrollToSection("hero") },
-    { label: "Amenities",   action: () => scrollToSection("amenities") },
-    { label: "Masterplan",  action: () => scrollToSection("masterplan") },
+    { label: "Home", action: () => scrollToSection("hero") },
+    { label: "Amenities", action: () => scrollToSection("amenities") },
+    { label: "Masterplan", action: () => scrollToSection("masterplan") },
     { label: "Floor Plans", action: () => scrollToSection("floor-plans") },
-    { label: "Location",    action: () => scrollToSection("location") },
-    { label: "About Us",    action: () => scrollToSection("about") },
-    { label: "Contact Us",  action: () => scrollToSection("contact") },
-    { label: "360° View",   action: () => scrollToSection("hero") },
+    { label: "Location", action: () => scrollToSection("location") },
+    { label: "About Us", action: () => scrollToSection("about") },
+    { label: "Contact Us", action: () => scrollToSection("contact") },
+    { label: "360° View", action: () => scrollToSection("hero") },
   ];
 
   return (
@@ -155,23 +162,12 @@ export const Navbar: React.FC = () => {
             className="fixed inset-0 z-[110] bg-[#113239]/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col h-full p-8 relative overflow-hidden">
-              <div className="flex justify-between items-center mb-10 relative z-10">
-                <Link href="/" onClick={() => setIsOpen(false)}>
-                  <Image
-                    src="/assets/navbar-right-logo.webp"
-                    alt="Logo"
-                    width={150}
-                    height={75}
-                    className="w-24 md:w-32 h-auto object-contain"
-                  />
-                </Link>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-white"
-                >
-                  <X size={32} />
-                </button>
-              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="self-end text-white mb-10"
+              >
+                <X size={32} />
+              </button>
               <div className="flex flex-col gap-4 relative z-10">
                 {navigationItems.map((item, index) => (
                   <NavigationPill
@@ -189,7 +185,7 @@ export const Navbar: React.FC = () => {
                   />
                 ))}
               </div>
-              
+
               {/* Stone Background Image at Bottom */}
               <div className="absolute bottom-0 -right-10 w-[280px] h-[280px] pointer-events-none z-0">
                 <Image
@@ -208,10 +204,10 @@ export const Navbar: React.FC = () => {
         className={`fixed top-0 left-0 w-full z-[100] flex justify-between items-center transition-all duration-300 ${
           scrolled
             ? "bg-[#113239]/90 backdrop-blur-md px-4 py-4 md:px-8 md:py-4 lg:px-[4vw] lg:py-[2vh] shadow-xl"
-            : "bg-transparent px-6 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh]"
+            : "bg-transparent px-4 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh]"
         }`}
       >
-        <div className="shrink-0 order-1 lg:order-2 relative z-0 ">
+        <div className="shrink-0 order-1 lg:order-2 relative z-[99] ">
           <Link href="/">
             <Image
               src="/assets/navbar-right-logo.webp"
