@@ -274,7 +274,7 @@ export const FloorPlanSection: React.FC = () => {
               </div>
 
               {/* Area Table (Bottom Right) */}
-              <div className="mt-[2vh] hidden lg:block grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+              <div className="mt-[2vh] hidden lg:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
                 {/* Table Rows */}
                 {[
                   { label: "SALEABLE AREA", value: activeData.areas.saleable },
@@ -287,12 +287,12 @@ export const FloorPlanSection: React.FC = () => {
                 ].map((row, idx) => (
                   <React.Fragment key={idx}>
                     <div className="bg-white/40 flex items-center justify-start px-[1.5vw] py-[1vh]">
-                      <span className="text-black font-semibold text-[2.5vw] md:text-[1.5vw] lg:text-[0.8vw] leading-tight">
+                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] leading-tight">
                         {row.label}
                       </span>
                     </div>
                     <div className="bg-white/40 flex items-center justify-center p-[1vh]">
-                      <span className="text-black font-bold text-[2.5vw] md:text-[1.5vw] lg:text-[0.8vw] whitespace-nowrap">
+                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] whitespace-nowrap">
                         {row.value}
                       </span>
                     </div>
@@ -303,7 +303,7 @@ export const FloorPlanSection: React.FC = () => {
           </div>
 
           {/* Area Table (Bottom Right) */}
-          <div className="mt-[2vh] block lg:hidden grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+          <div className="mt-[2vh] grid lg:hidden grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
             {/* Table Rows */}
             {[
               { label: "SALEABLE AREA", value: activeData.areas.saleable },
