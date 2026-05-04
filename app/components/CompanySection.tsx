@@ -12,7 +12,7 @@ export const CompanySection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[1030px] lg:min-h-[40vh] xl:min-h-[90vh] flex flex-col justify-start pt-[15rem] lg:pt-[0vh] xl:pt-[10vh] lg:mt-[10vh] xl:mt-[10vh] pb-[15rem] lg:pb-[2vh] xl:pb-[10vh] lg:mb-[2vh] xl:mb-[40vh] gand-mardo-space-ka">
+    <section className="relative w-full min-h-fit lg:min-h-[40vh] xl:min-h-[90vh] flex flex-col justify-start pt-[15rem] lg:pt-[0vh] xl:pt-[10vh] lg:mt-[10vh] xl:mt-[10vh] pb-[15rem] lg:pb-[2vh] xl:pb-[10vh] lg:mb-[2vh] xl:mb-[40vh] gand-mardo-space-ka">
       {/* Left-Aligned Text Content */}
       <div className="relative z-10 w-full  mx-auto px-[6vw] lg:px-[10vw] xl:px-[10vw] pointer-events-none">
         <motion.div
