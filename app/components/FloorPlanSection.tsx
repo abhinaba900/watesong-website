@@ -236,17 +236,17 @@ export const FloorPlanSection: React.FC = () => {
           {/* RIGHT PANE: Lists and Area Table */}
           <div className="w-full lg:w-[34%] xl:w-[34%] flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
-            <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[1.5rem] xl:gap-[2vh]">
+            <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[1.2rem] xl:gap-[2vh]">
               {activeData.roomsCol1.map((room) => (
                 <div
                   key={room.id}
                   className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
                 >
-                  <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1.1vw] xl:text-[1.1vw]">
+                  <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1.1vw]">
                     {room.id}. {room.name}
                   </span>
                   <br />
-                  <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.9vw] xl:text-[0.9vw] text-white/80">
+                  <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.7rem] xl:text-[0.9vw] text-white/80">
                     {room.dims}
                   </span>
                 </div>
@@ -256,17 +256,17 @@ export const FloorPlanSection: React.FC = () => {
             {/* Column 2 (Rooms 11+ and Area Box) */}
             <div className="flex flex-col justify-between">
               {/* Rooms List */}
-              <div className="flex flex-col gap-[1.5vh] lg:gap-[1.5rem] xl:gap-[2vh]">
+              <div className="flex flex-col gap-[1.5vh] lg:gap-[1.2rem] xl:gap-[2vh]">
                 {activeData.roomsCol2.map((room) => (
                   <div
                     key={room.id}
                     className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
                   >
-                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1.1vw] xl:text-[1.1vw]">
+                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1.1vw]">
                       {room.id}. {room.name}
                     </span>
                     <br />
-                    <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.9vw] xl:text-[0.9vw] text-white/80">
+                    <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.7rem] xl:text-[0.9vw] text-white/80">
                       {room.dims}
                     </span>
                   </div>
@@ -274,7 +274,7 @@ export const FloorPlanSection: React.FC = () => {
               </div>
 
               {/* Area Table (Bottom Right) */}
-              <div className="mt-[2vh] lg:mt-2 xl:mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+              <div className="mt-[2vh] lg:mt-2 xl:mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] lg:gap-y-[0.4rem] xl:gap-y-[2vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
                 {/* Table Rows */}
                 {[
                   { label: "SALEABLE AREA", value: activeData.areas.saleable },
