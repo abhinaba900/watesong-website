@@ -230,7 +230,7 @@ export const FeatureSection: React.FC = () => {
             </h2>
 
             {/* LIST */}
-            <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-disc xl:list-none ml-5 lg:ml-0 xl:ml-0 space-y-0">
+            <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-disc xl:list-none ml-5 lg:ml-5 xl:ml-0 space-y-0">
               {[
                 "Jogging / Walking Path",
                 "Children’s play area",
@@ -272,7 +272,7 @@ export const FeatureSection: React.FC = () => {
           {/* Caption Image */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave text-white text-[2rem] mt-8 lg:mt-0 xl:mt-0 lg:text-[2.8vw] xl:text-[2.8vw] lg:ml-[2vw] xl:ml-[2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
+            className="font-overwave text-white text-[2rem] mt-8 lg:mt-0 xl:mt-0 lg:text-[2.5vw] xl:text-[2.8vw] lg:ml-[5vw] xl:ml-[2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
           >
             Features so thoughtful, you feel special
           </h2>
