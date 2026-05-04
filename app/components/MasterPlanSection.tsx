@@ -27,7 +27,7 @@ export const MasterPlanSection: React.FC = () => {
           {/* HEADING */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave master-plan-with-proper-spacing-update mt-[8vh] lg:mt-0 xl:mt-[8vh] lg:mb-8 xl:mb-8 text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-8 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
+            className="font-overwave master-plan-with-proper-spacing-update mt-[8vh] lg:mt-0 xl:mt-[0vh] lg:mb-8 xl:mb-8 text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-8 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
           >
             Master Plan
           </h2>
