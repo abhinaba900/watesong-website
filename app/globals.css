@@ -302,7 +302,13 @@ body::-webkit-scrollbar {
   }
 
   .master-plan-with-proper-spacing-update{
-   padding-top: 10vh !important;
+   padding-block: 0vh !important;
+
+  }
+
+  .padding-top-mai-dena-hi-hoga-nahito-gand-marwalo{
+    padding-top: 12vh !important;
+    
   }
 
   .master-plan-section-new-frame-class{
