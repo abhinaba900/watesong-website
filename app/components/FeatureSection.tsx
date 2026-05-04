@@ -34,7 +34,10 @@ export const FeatureSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="highlights" className="relative w-full pt-[15vh] lg:pt-[0vh] xl:pt-[12vh]">
+    <section
+      id="highlights"
+      className="relative w-full pt-[15vh] lg:pt-[0vh] xl:pt-[12vh]"
+    >
       {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
       <div className="relative z-10 w-full flex flex-col lg:flex-row xl:flex-row items-center lg:items-center xl:items-center px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[2vh] lg:py-[2vh] xl:py-[2vh] gap-10 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* IMAGE LEFT */}
@@ -61,20 +64,21 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] xl:w-[45%] -ml-[3vw] mb-0 text-right-in-just-forty-recidence-section lg:mt-[30vh] xl:mt-[50vh] text-white text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col justify-center z-10 pointer-events-auto"
+          className="relative w-full lg:w-[45%] xl:w-[45%] -ml-[3vw] mb-0 text-right-in-just-forty-recidence-section lg:mt-[12vh] xl:mt-[50vh] text-white text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col justify-center z-10 pointer-events-auto"
         >
           <div className="flex flex-col items-start lg:items-start xl:items-start gap-0 lg:gap-2 xl:gap-2 mb-6 lg:mb-0 xl:mb-0 gap-to-heading-and-subheading-in-just-forty-recidence-section">
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
+              className="font-overwave text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
             >
               Just forty Residences.
             </h2>
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] uppercase leading-tight lg:leading-none xl:leading-none tracking-wider mb-2 lg:mb-4 xl:mb-4 drop-shadow-lg text-left lg:text-left xl:text-left "
+              className="font-overwave text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase leading-tight lg:leading-none xl:leading-none tracking-wider mb-2 lg:mb-4 xl:mb-4 drop-shadow-lg text-left lg:text-left xl:text-left "
             >
-              Just two homes <br className="block lg:hidden xl:hidden" /> per floor.
+              Just two homes <br className="block lg:hidden xl:hidden" /> per
+              floor.
             </h2>
           </div>
 
@@ -86,14 +90,14 @@ export const FeatureSection: React.FC = () => {
             className="text-white/90 text-left chikkad-madi-gandu lg:text-left xl:text-left font-medium leading-[140%] lg:leading-relaxed xl:leading-relaxed text-[1rem] lg:text-[1rem] xl:text-[1rem] lg:max-w-[90%] xl:max-w-[90%] mx-auto lg:mx-0 xl:mx-0 drop-shadow-md"
           >
             Homes at Watersong are so private, it feels like a villa.{" "}
-            <br className="hidden lg:block xl:block" /> No doors face each other. No
-            shared walls. <br className="hidden lg:block xl:block" /> Only expansive
-            balconies, open air & a serene lake view.
+            <br className="hidden lg:hidden xl:block" /> No doors face each
+            other. No shared walls. <br className="hidden lg:hidden xl:block" />{" "}
+            Only expansive balconies, open air & a serene lake view.
           </motion.p>
         </motion.div>
 
         {/* Top Right Floating Lotus */}
-        <div className="absolute -top-[28%] top-right-floating-lotus right-0 lg:top-[5%] xl:top-[5%] lg:right-[5%] xl:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[220px] xl:w-[220px]">
+        <div className="absolute -top-[28%] top-right-floating-lotus right-0 lg:top-[-10%] xl:top-[5%] lg:right-[5%] xl:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[220px] xl:w-[220px]">
           <Image
             src="/assets/Lotus - webp.webp"
             alt="Lotus"
@@ -144,16 +148,15 @@ export const FeatureSection: React.FC = () => {
             </motion.p>
 
             {/* PARAGRAPH */}
-            <motion.p className="text-white/80 font-medium forget-boring-balconies-in-lake-lounge-section chikkad-madi-gandu text-left lg:text-left xl:text-left  lg:mx-0 xl:mx-0 leading-relaxed text-[1rem] lg:text-[1rem] xl:text-[1rem] lg:max-w-[90%] xl:max-w-[90%] lg:max-w-[95%] xl:max-w-[95%] mx-auto lg:mx-0 xl:mx-0 drop-shadow-md">
-              Forget boring balconies. Step out into a rare 200 sq. ft. 
-              lake lounge: your private front
-              row to rippling water, open
-              skies, and evening breeze. It is a place to linger, breathe, and truly unwind.
+            <motion.p className="text-white/80 font-medium forget-boring-balconies-in-lake-lounge-section chikkad-madi-gandu text-left lg:text-left xl:text-left  lg:mx-0 xl:mx-0 leading-relaxed text-[1rem] lg:text-[1rem] xl:text-[1rem] lg:max-w-[100%] xl:max-w-[90%] lg:max-w-[100%] xl:max-w-[95%] mx-auto lg:mx-0 xl:mx-0 drop-shadow-md">
+              Forget boring balconies. Step out into a rare 200 sq. ft. lake
+              lounge: your private front row to rippling water, open skies, and
+              evening breeze. It is a place to linger, breathe, and truly
+              unwind.
             </motion.p>
           </div>
         </motion.div>
 
-        
         {/* IMAGE RIGHT */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
@@ -222,7 +225,8 @@ export const FeatureSection: React.FC = () => {
               style={{ letterSpacing: "-0.3px" }}
               className="font-overwave text-white text-[2rem] lg:-mt-15 xl:-mt-15 mb-8 lg:mb-8 xl:mb-8 lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
             >
-              Healthy and <br className="hidden lg:block xl:block" /> Active Lifestyle
+              Healthy and <br className="hidden lg:block xl:block" /> Active
+              Lifestyle
             </h2>
 
             {/* LIST */}
