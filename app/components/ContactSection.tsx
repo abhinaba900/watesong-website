@@ -35,7 +35,7 @@ const SocialIconButton: React.FC<{
       animate={controls}
       initial={{ scale: 1, rotate: 0 }}
       whileTap={{ scale: 0.92 }}
-      className="relative flex items-center justify-center w-[16vw] md:w-[6vw] lg:w-[3.5vw] xl:w-[3.5vw] aspect-square rounded-full pointer-events-auto group overflow-hidden"
+      className="relative flex items-center justify-center w-[16vw] md:w-[6vw] lg:w-[5vw] xl:w-[3.5vw] aspect-square rounded-full pointer-events-auto group overflow-hidden"
       style={{
         backgroundColor: "rgba(177, 178, 176, 0.6)",
         boxShadow: `
@@ -110,7 +110,7 @@ export const ContactSection: React.FC = () => {
                 height={200}
                 className="object-contain w-[350px] md:w-[50vw] lg:w-[24vw] xl:w-[24vw] mb-[-1vh]"
               />
-              <h3 className="text-[20px] md:text-[4vw] lg:text-[1.6vw] xl:text-[1.6vw]  lg:ml-0 xl:ml-0  lg:mt-[-1rem] xl:mt-[-1rem] font-medium tracking-tight mb-[0.5vh]">
+              <h3 className="text-[20px] md:text-[4vw] lg:text-[1.6vw] xl:text-[1.6vw]  lg:ml-0 xl:ml-0  lg:mt-[-0.5rem] xl:mt-[-1rem] font-medium tracking-tight mb-[0.5vh]">
                 Lakefront Residences
               </h3>
               <p className="text-[14px] md:text-[2.2vw] lg:text-[1vw] xl:text-[1vw] font-medium opacity-80">
@@ -119,7 +119,7 @@ export const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-[30%] xl:w-[30%] flex flex-col items-center gap-[4vh] pointer-events-auto">
+          <div className="w-full lg:w-[30%] xl:w-[30%] flex flex-col items-center xl:gap-[4vh] gap-[4vh] lg:gap-[2vh] pointer-events-auto">
             <div className="flex items-center gap-[4vw] lg:gap-[1.5vw] xl:gap-[1.5vw] isolate">
               {socialIcons.map((social, index) => (
                 <SocialIconButton

@@ -33,7 +33,7 @@ export const MasterPlanSection: React.FC = () => {
           </h2>
 
           {/* LIST */}
-          <div className="text-white/90 chikkad-madi-gandu font-medium leading-[1.8] text-[1rem] lg:text-[1rem] xl:text-[1rem] max-w-[95%]  lg:ml-0 xl:ml-0 mx-0 lg:mx-0 xl:mx-0 text-left">
+          <div className="text-white/90 chikkad-madi-gandu font-medium leading-[1.8] text-[1rem] lg:text-[0.8rem] xl:text-[1rem] max-w-[95%]  lg:ml-0 xl:ml-0 mx-0 lg:mx-0 xl:mx-0 text-left">
             <ol className="list-decimal pl-5 space-y-[2px]">
               <li>Entry &amp; Exit</li>
               <li>Security Kiosk</li>
