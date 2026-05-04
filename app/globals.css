@@ -275,4 +275,21 @@ body::-webkit-scrollbar {
     width:250px !important;
   }
 
+  .floating-lotus-in-lake-lounge-section{
+    width: 260px !important;
+  }
+
+  .top-decoration-lily-gand{
+    width: 160px !important;
+  }
+
+  .lily-top-decoration-main-container{
+    margin-top: -110px !important;
+  }
+
+  .need-to-add-bullet-here{
+    list-style-type: disc !important;
+    margin-left: 22px !important;
+  }
+
 }
