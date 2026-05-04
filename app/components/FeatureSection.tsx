@@ -119,7 +119,7 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[45%] xl:w-[45%]  text-white text-center lg:text-left xl:text-left order-1 flex flex-col justify-center lg:pl-[6vw] xl:pl-[6vw] z-10 pointer-events-auto"
         >
           {/* FLOATING LOTUS */}
-          <div className="mb-0 lg:mb-8 xl:mb-8 flex justify-start mb-[0.8rem] lg:justify-start xl:justify-start lg:ml-[2vw] xl:ml-[2vw]">
+          <div className="mb-0 lg:mb-1 xl:mb-8 flex justify-start mb-[0.8rem] lg:justify-start xl:justify-start lg:ml-[2vw] xl:ml-[2vw]">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/middle image.webp"
@@ -138,7 +138,7 @@ export const FeatureSection: React.FC = () => {
 
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-3 lg:mb-0 xl:mb-0 drop-shadow-lg text-left  lg:mx-0 xl:mx-0 lg:text-left xl:text-left leading-none"
+              className="font-overwave text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-3 lg:mb-0 xl:mb-0 drop-shadow-lg text-left  lg:mx-0 xl:mx-0 lg:text-left xl:text-left leading-none"
             >
               A Lake Lounge
             </h2>
@@ -170,7 +170,7 @@ export const FeatureSection: React.FC = () => {
               src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
               alt="Lake lounge"
               fill
-              className="object-contain drop-shadow-2xl scale-[1.3] lg:scale-auto xl:scale-auto"
+              className="object-contain drop-shadow-2xl scale-[1.3] lg:scale-[1.4] xl:scale-auto"
             />
           </div>
         </motion.div>
