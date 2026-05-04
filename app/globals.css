@@ -263,5 +263,8 @@ body::-webkit-scrollbar {
     left: 6vw !important;
     bottom: 4vh !important;
   }
+  .gap-need-to-be-removed-from-this-section{
+    padding-top: 0vh !important;
+  }
 
 }

@@ -36,7 +36,7 @@ export const FeatureSection: React.FC = () => {
   return (
     <section
       id="highlights"
-      className="relative w-full pt-[15vh] lg:pt-[0vh] xl:pt-[12vh]"
+      className="relative w-full pt-[15vh] lg:pt-[0vh] xl:pt-[12vh] gap-need-to-be-removed-from-this-section"
     >
       {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
       <div className="relative z-10 w-full flex flex-col lg:flex-row xl:flex-row items-center lg:items-center xl:items-center px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[2vh] lg:py-[2vh] xl:py-[2vh] gap-10 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
