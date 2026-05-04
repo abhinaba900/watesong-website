@@ -13,7 +13,7 @@ export const MasterPlanSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-transparent w-full max-md:max-w-full relative py-[0vh] lg:py-[0vh] xl:py-[15vh]">
+    <section className="bg-transparent master-plan-with-proper-spacing-update w-full max-md:max-w-full relative py-[0vh] lg:py-[0vh] xl:py-[15vh]">
       {/* ── BLOCK 5 ─ Master Plan ───────────────────────────────────────── */}
       <div className="relative z-10 w-full flex flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-center xl:items-stretch px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[4vh] lg:py-[2vh] xl:py-[2vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}
@@ -69,7 +69,7 @@ export const MasterPlanSection: React.FC = () => {
           className="w-full hidden lg:block xl:block lg:w-[65%] xl:w-[65%] flex justify-center items-center order-2 lg:order-2 xl:order-2 relative z-10 pointer-events-auto"
         >
           {/* Framed Map Image */}
-          <div className="relative w-full h-[65dvh] lg:h-[500px] xl:h-full lg:w-full xl:w-full rounded-[16px] lg:rounded-[24px] xl:rounded-[24px] overflow-hidden border-[8px] lg:border-[3px] xl:border-[3px] border-white/20 shadow-2xl rotate-90 lg:rotate-0 xl:rotate-0">
+          <div className="relative w-full h-[65dvh] lg:h-[500px] xl:h-full lg:w-full xl:w-full rounded-[16px] lg:rounded-[24px] xl:rounded-[24px] overflow-hidden border-[8px] lg:border-[3px] xl:border-[3px] border-white/20 shadow-2xl rotate-90 lg:rotate-0 xl:rotate-0 master-plan-section-new-frame-class">
             <Image
               src="/assets/Masterplan new.webp"
               alt="Masterplan Map"

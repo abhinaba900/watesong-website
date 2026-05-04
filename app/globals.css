@@ -301,4 +301,17 @@ body::-webkit-scrollbar {
     padding-bottom: 4vh !important;
   }
 
+  .master-plan-with-proper-spacing-update{
+   padding-top: 10vh !important;
+  }
+
+  .master-plan-section-new-frame-class{
+    height: 61vh !important;
+  }
+
+  .master-plan-with-proper-spacing-update{
+    margin-top: 0px !important;
+    padding-top: 1px !important;
+  }
+
 }
