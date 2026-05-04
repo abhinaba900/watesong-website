@@ -330,4 +330,8 @@ body::-webkit-scrollbar {
 
   }
 
+  .same-here-also-margin-top-is-high{
+    margin-top: 15vh !important;
+  }
+
 }

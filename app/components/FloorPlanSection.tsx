@@ -357,7 +357,7 @@ export const FloorPlanSection: React.FC = () => {
 
         {/* ─── LOCATION MAP Section ─── */}
         <div
-          className="relative z-20 mt-20 lg:mt-[10vh] xl:mt-[28vh] w-full flex flex-col items-center"
+          className="relative z-20 mt-20 lg:mt-[10vh] xl:mt-[28vh] w-full flex flex-col items-center same-here-also-margin-top-is-high"
           id="location"
         >
           {/* Title Group */}
