@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Shared floating animation settings
 const floatAnim = {
@@ -25,12 +25,95 @@ const floatAnim = {
     },
   },
 } as const;
+const amenitiesData = [
+  {
+    label: "Jogging / Walking Path",
+    image: "/assets/Walking Path.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+  {
+    label: "Children’s play area",
+    image: "/assets/Children's play area.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+  {
+    label: "Multipurpose court",
+    image: "/assets/Multi-purpose court.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+  {
+    label: "Private Terrace",
+    image: "/assets/Private Terrace.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+  {
+    label: "Gym",
+    image: "/assets/Gym.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+  {
+    label: "Swimming Pool",
+    image: "/assets/swimming.webp",
+    scale: "scale-[1.3]",
+  },
+  {
+    label: "Multi-purpose Hall",
+    image: "/assets/elevation.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+  {
+    label: "Indoor Games Room",
+    image: "/assets/Indoor Games Room.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+  {
+    label: "Open Yoga / Aerobics Area",
+    image: "/assets/Yoga.webp",
+    scale: "scale-[1.35] lg:scale-[1.48]",
+  },
+];
+
+const featuresData = [
+  {
+    label: "Double-height car parking",
+    image: "/assets/Double-height car parking.webp",
+  },
+  { label: "3 balconies per home", image: "/assets/3 balconies per home.webp" },
+  {
+    label: "Anti-skid tiles on the balcony",
+    image: "/assets/Anti-skid tiles on the balcony.webp",
+  },
+  { label: "Seamless common areas", image: "/assets/just-40-residences.webp" },
+  {
+    label: "Provision for island kitchen",
+    image: "/assets/Provision for island kitchen.webp",
+  },
+  { label: "No common walls", image: "/assets/No common walls.webp" },
+];
 
 export const FeatureSection: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  const [currentAmenityIndex, setCurrentAmenityIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentAmenityIndex((prev) => (prev + 1) % amenitiesData.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentFeatureIndex((prev) => (prev + 1) % featuresData.length);
+    }, 3000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -189,12 +272,23 @@ export const FeatureSection: React.FC = () => {
           className="w-full lg:w-[50vw] xl:w-[50vw] flex justify-center items-center order-2 lg:order-1 xl:order-1 relative z-10 pointer-events-auto"
         >
           <div className="relative aspect-square w-full scale-[0.77] lg:w-[44vw] xl:w-[44vw] ">
-            <Image
-              src="/assets/swimming.webp"
-              alt="Swimming Pool"
-              fill
-              className="object-contain drop-shadow-2xl scale-[1.35] lg:scale-[1.48] xl:scale-auto"
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentAmenityIndex}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={amenitiesData[currentAmenityIndex].image}
+                  alt={amenitiesData[currentAmenityIndex].label}
+                  fill
+                  className={`object-cover drop-shadow-2xl xl:scale-auto ${amenitiesData[currentAmenityIndex].scale}`}
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
 
@@ -231,18 +325,18 @@ export const FeatureSection: React.FC = () => {
 
             {/* LIST */}
             <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-disc need-to-add-bullet-here xl:list-none ml-5 lg:ml-5 xl:ml-0 space-y-0">
-              {[
-                "Jogging / Walking Path",
-                "Children’s play area",
-                "Multipurpose court",
-                "Private Terrace",
-                "Gym",
-                "Swimming Pool",
-                "Multi-purpose Hall",
-                "Indoor Games Room",
-                "Open Yoga / Aerobics Area",
-              ].map((item) => (
-                <li key={item}>{item}</li>
+              {amenitiesData.map((item, index) => (
+                <li
+                  key={item.label}
+                  onClick={() => setCurrentAmenityIndex(index)}
+                  className={`transition-all duration-500 cursor-pointer ${
+                    index === currentAmenityIndex
+                      ? "text-white opacity-100 font-bold scale-105 origin-left"
+                      : "opacity-40"
+                  }`}
+                >
+                  {item.label}
+                </li>
               ))}
             </ul>
           </div>
@@ -261,12 +355,23 @@ export const FeatureSection: React.FC = () => {
         >
           {/* Framed Image */}
           <div className="relative w-full  aspect-[4/3] lg:aspect-[16/10] xl:aspect-[16/10] rounded-[16px] lg:rounded-[24px] xl:rounded-[24px] overflow-hidden border-[8px] lg:border-[4px] xl:border-[4px] border-white/20 shadow-2xl mb-4 lg:mb-6 xl:mb-6">
-            <Image
-              src="/assets/just-40-residences.webp"
-              alt="Family"
-              fill
-              className="object-cover"
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentFeatureIndex}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={featuresData[currentFeatureIndex].image}
+                  alt={featuresData[currentFeatureIndex].label}
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Caption Image */}
@@ -309,15 +414,18 @@ export const FeatureSection: React.FC = () => {
 
           {/* LIST */}
           <ul className="text-white/85 chikkad-madi-gandu font-medium leading-[1.3] lg:leading-[2] xl:leading-[2] text-[16px] lg:text-[1rem] xl:text-[1rem] mx-0 lg:mx-0 xl:mx-0 text-left list-disc space-y-1 relative z-10 mt-[0vh] lg:mt-auto xl:mt-auto">
-            {[
-              "Double-height car parking",
-              "3 balconies per home",
-              "Anti-skid tiles on the balcony",
-              "Seamless common areas",
-              "Provision for island kitchen",
-              "No common walls",
-            ].map((item) => (
-              <li key={item}>{item}</li>
+            {featuresData.map((item, index) => (
+              <li
+                key={item.label}
+                onClick={() => setCurrentFeatureIndex(index)}
+                className={`transition-all duration-500 cursor-pointer ${
+                  index === currentFeatureIndex
+                    ? "text-white opacity-100 font-bold scale-105 origin-left"
+                    : "opacity-40"
+                }`}
+              >
+                {item.label}
+              </li>
             ))}
           </ul>
         </motion.div>
