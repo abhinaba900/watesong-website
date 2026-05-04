@@ -335,7 +335,7 @@ export const FloorPlanSection: React.FC = () => {
           {/* Title */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave mb-8  master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 xl:mb-8 lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider lg:mb-0 xl:mb-0 drop-shadow-lg text-center lg:text-left xl:text-left leading-none"
+            className="font-overwave mb-8  master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 xl:mb-8 lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider lg:mb-0 xl:mb-0 drop-shadow-lg text-center lg:text-left xl:text-left leading-none"
           >
             Photos | Videos
           </h2>
@@ -364,7 +364,7 @@ export const FloorPlanSection: React.FC = () => {
           <div className="mb-8 lg:mb-[6vh] xl:mb-[6vh] text-center lg:text-left xl:text-left w-full lg:px-[5vw] xl:px-[5vw]">
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] lg:opacity-100 xl:opacity-100 mb-[4px] lg:mb-[-1vh] xl:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase"
+              className="font-overwave text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] lg:opacity-100 xl:opacity-100 mb-[4px] lg:mb-[-1vh] xl:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase"
             >
               Location Map
             </h2>
