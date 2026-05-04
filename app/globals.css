@@ -308,7 +308,7 @@ body::-webkit-scrollbar {
 
   .padding-top-mai-dena-hi-hoga-nahito-gand-marwalo{
     padding-top: 12vh !important;
-    
+
   }
 
   .master-plan-section-new-frame-class{
@@ -318,6 +318,11 @@ body::-webkit-scrollbar {
   .master-plan-with-proper-spacing-update{
     margin-top: 0px !important;
     padding-top: 1px !important;
+  }
+
+  .iss-section-ka-jo-top-mai-margin-hai-use-kaam-karo{
+    margin-top: 20vh !important;
+    
   }
 
 }

@@ -331,7 +331,7 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── PHOTOS | VIDEOS Section ─── */}
-        <div className="relative z-20 mt-[18vh] lg:mt-[13vh] xl:mt-[35vh] w-full flex flex-col items-center ">
+        <div className="relative z-20 mt-[18vh] lg:mt-[13vh] xl:mt-[35vh] w-full flex flex-col items-center  iss-section-ka-jo-top-mai-margin-hai-use-kaam-karo ">
           {/* Title */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
