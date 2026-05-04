@@ -252,3 +252,16 @@ body::-webkit-scrollbar {
   }
 
 }
+
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: landscape) {
+  
+  .floating-lotus-buttom-left {
+    left: 6vw !important;
+    bottom: 4vh !important;
+  }
+
+}
