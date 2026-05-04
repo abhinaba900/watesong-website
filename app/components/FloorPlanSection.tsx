@@ -274,7 +274,7 @@ export const FloorPlanSection: React.FC = () => {
               </div>
 
               {/* Area Table (Bottom Right) */}
-              <div className="mt-[2vh] lg:mt-2 xl:mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] lg:gap-y-[0.4rem] xl:gap-y-[2vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+              <div className="mt-[2vh] lg:mt-2 xl:mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] lg:gap-y-[0.4rem] xl:gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
                 {/* Table Rows */}
                 {[
                   { label: "SALEABLE AREA", value: activeData.areas.saleable },
