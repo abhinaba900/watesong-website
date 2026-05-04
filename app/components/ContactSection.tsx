@@ -163,7 +163,7 @@ export const ContactSection: React.FC = () => {
 
       <footer className="relative bg-transparent w-full px-[5vw] lg:px-[5vw] xl:px-[5vw] pb-[6vh] lg:pb-[6vh] xl:pb-[8vh] pt-0  no-scrollbar">
         {/* Corner Stones Pile */}
-        <div className="absolute right-0 -bottom-5 w-[75vw] lg:w-[15vw] xl:w-[15vw] h-[5vh] z-0 opacity-100 -translate-y-35 lg:-translate-y-16 xl:-translate-y-35 pointer-events-none">
+        <div className="absolute right-0 buttom-stone-for-some-screen -bottom-5 w-[75vw] lg:w-[15vw] xl:w-[15vw] h-[5vh] z-0 opacity-100 -translate-y-35 lg:-translate-y-16 xl:-translate-y-35 pointer-events-none">
           <Image
             src="/assets/stone bg.webp"
             alt="Decorative stones"

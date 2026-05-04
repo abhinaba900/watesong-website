@@ -334,4 +334,24 @@ body::-webkit-scrollbar {
     margin-top: 15vh !important;
   }
 
+
+  .gand-mardo-space-ka{
+    margin-bottom: 0vh !important; 
+    margin-top: 2vh !important;
+
+  }
+
+  .fishing-boat-section-image-gand{
+    bottom: -8vh !important;
+
+  }
+
+  .fish-group-area-need-to-go{
+    bottom: 12vh !important;
+  }
+
+  .buttom-stone-for-some-screen{
+    transform: translateY(2vh) !important;
+  
+  }
 }
