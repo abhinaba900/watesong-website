@@ -13,7 +13,7 @@ export const MasterPlanSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-transparent master-plan-with-proper-spacing-update w-full max-md:max-w-full relative py-[0vh] lg:py-[0vh] xl:py-[15vh]">
+    <section className="bg-transparent master-plan-with-proper-spacing-update section-space-for-master-plan-with-proper-spacing-update w-full max-md:max-w-full relative py-[0vh] lg:py-[0vh] xl:py-[15vh]">
       {/* ── BLOCK 5 ─ Master Plan ───────────────────────────────────────── */}
       <div className="relative  padding-top-mai-dena-hi-hoga-nahito-gand-marwalo z-10 w-full flex flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-center xl:items-stretch px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[4vh] lg:py-[2vh] xl:py-[2vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}

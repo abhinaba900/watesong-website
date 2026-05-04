@@ -203,7 +203,7 @@ body::-webkit-scrollbar {
 
   .fishing-boat-section-image-gand{
     bottom: -28vh !important;
-    
+
     width: 42vw !important;
   }
   .machi-ka-choda-niche-lao{
@@ -212,6 +212,11 @@ body::-webkit-scrollbar {
 
   .gand-mardo-space-ka{
     margin-bottom: 14vh !important;
+  }
+  .section-space-for-master-plan-with-proper-spacing-update{
+   padding-bottom: 5vh !important;
+   
+
   }
 }
 
