@@ -12,7 +12,7 @@ export const CompanySection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen lg:min-h-[40vh] xl:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[0vh] xl:pt-[10vh] lg:mt-[10vh] xl:mt-[10vh] pb-[15rem] lg:pb-[2vh] xl:pb-[10vh] lg:mb-[2vh] xl:mb-[40vh] gand-mardo-space-ka">
+    <section className="relative w-full min-h-screen lg:min-h-[40vh] xl:min-h-[90vh] flex flex-col justify-start pt-[15rem] lg:pt-[0vh] xl:pt-[10vh] lg:mt-[10vh] xl:mt-[10vh] pb-[15rem] lg:pb-[2vh] xl:pb-[10vh] lg:mb-[2vh] xl:mb-[40vh] gand-mardo-space-ka">
       {/* Left-Aligned Text Content */}
       <div className="relative z-10 w-full  mx-auto px-[6vw] lg:px-[10vw] xl:px-[10vw] pointer-events-none">
         <motion.div
@@ -71,7 +71,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Wooden Pier - Middle Right */}
-        <motion.div className="absolute right-16 bottom-[47rem]  lg:top-[60%] xl:top-[60%] w-[80vw] md:w-[25vw] lg:w-[40dvw] xl:w-[40dvw] z-5 translate-x-[25%] lg:translate-x-[20%] xl:translate-x-[15%]  lg:opacity-100 xl:opacity-100">
+        <motion.div className="absolute right-16 bottom-[49rem]  lg:top-[60%] xl:top-[60%] w-[80vw] md:w-[25vw] lg:w-[40dvw] xl:w-[40dvw] z-5 translate-x-[25%] lg:translate-x-[20%] xl:translate-x-[15%]  lg:opacity-100 xl:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
             alt="Wooden pier"
