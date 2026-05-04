@@ -172,22 +172,22 @@ export const FloorPlanSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-[0vh] lg:pt-[10vh]  w-full flex flex-col justify-center px-[5vw]">
+    <section className="relative pt-[0vh] lg:pt-[10vh] xl:pt-[10vh]  w-full flex flex-col justify-center px-[5vw]">
       {/* ─── Main Content (Layered over background) ─── */}
       <div className="relative z-20 pointer-events-auto">
         {/* Heading */}
         <h2
           style={{ letterSpacing: "-0.3px" }}
-          className="hidden lg:block font-overwave pl-10 floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[3.2vw] text-center lg:text-left mb-[2vh] lg:mb-8 tracking-widest drop-shadow-lg uppercase"
+          className="hidden lg:block xl:block font-overwave pl-10 floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[3.2vw] xl:text-[3.2vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
         >
           Floor Plans
         </h2>
 
         {/* Main Content Grid */}
-        <div className="flex flex-col relative z-3 lg:flex-row items-stretch justify-center w-full gap-8 lg:gap-[3vw]">
+        <div className="flex flex-col relative z-3 lg:flex-row xl:flex-row items-stretch justify-center w-full gap-8 lg:gap-[3vw] xl:gap-[3vw]">
           {/* LEFT PANE: Tabs and Image */}
           <div
-            className="w-full lg:w-[55%] flex flex-col xl:h-[700px]"
+            className="w-full lg:w-[55%] xl:w-[55%] flex flex-col xl:h-[700px]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
@@ -203,7 +203,7 @@ export const FloorPlanSection: React.FC = () => {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-[1.5vh] text-[3.5vw] md:text-[2vw] lg:text-[1vw] font-medium transition-colors border-r border-white/30 last:border-none
+                  className={`flex-1 py-[1.5vh] text-[3.5vw] md:text-[2vw] lg:text-[1vw] xl:text-[1vw] font-medium transition-colors border-r border-white/30 last:border-none
                     ${
                       activeTab === tab
                         ? "bg-transparent text-white"
@@ -229,24 +229,24 @@ export const FloorPlanSection: React.FC = () => {
           </div>
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="block lg:hidden font-overwave text-white  text-[2rem] lg:text-[2.2vw] text-left lg:text-left  tracking-widest drop-shadow-lg uppercase"
+            className="block lg:hidden xl:hidden font-overwave text-white  text-[2rem] lg:text-[2.2vw] xl:text-[2.2vw] text-left lg:text-left xl:text-left  tracking-widest drop-shadow-lg uppercase"
           >
             Floor Plans
           </h2>
           {/* RIGHT PANE: Lists and Area Table */}
-          <div className="w-full lg:w-[34%] flex flex-row gap-[0vw]">
+          <div className="w-full lg:w-[34%] xl:w-[34%] flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
-            <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[2vh]">
+            <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[2vh] xl:gap-[2vh]">
               {activeData.roomsCol1.map((room) => (
                 <div
                   key={room.id}
                   className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
                 >
-                  <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1.1vw]">
+                  <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1.1vw] xl:text-[1.1vw]">
                     {room.id}. {room.name}
                   </span>
                   <br />
-                  <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.9vw] text-white/80">
+                  <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.9vw] xl:text-[0.9vw] text-white/80">
                     {room.dims}
                   </span>
                 </div>
@@ -256,17 +256,17 @@ export const FloorPlanSection: React.FC = () => {
             {/* Column 2 (Rooms 11+ and Area Box) */}
             <div className="flex flex-col justify-between">
               {/* Rooms List */}
-              <div className="flex flex-col gap-[1.5vh] lg:gap-[2vh]">
+              <div className="flex flex-col gap-[1.5vh] lg:gap-[2vh] xl:gap-[2vh]">
                 {activeData.roomsCol2.map((room) => (
                   <div
                     key={room.id}
                     className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
                   >
-                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1.1vw]">
+                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1.1vw] xl:text-[1.1vw]">
                       {room.id}. {room.name}
                     </span>
                     <br />
-                    <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.9vw] text-white/80">
+                    <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.9vw] xl:text-[0.9vw] text-white/80">
                       {room.dims}
                     </span>
                   </div>
@@ -274,7 +274,7 @@ export const FloorPlanSection: React.FC = () => {
               </div>
 
               {/* Area Table (Bottom Right) */}
-              <div className="mt-[2vh] hidden lg:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+              <div className="mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
                 {/* Table Rows */}
                 {[
                   { label: "SALEABLE AREA", value: activeData.areas.saleable },
@@ -287,12 +287,12 @@ export const FloorPlanSection: React.FC = () => {
                 ].map((row, idx) => (
                   <React.Fragment key={idx}>
                     <div className="bg-white/40 flex items-center justify-start px-[1.5vw] py-[1vh]">
-                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] leading-tight">
+                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] xl:text-[0.8vw] leading-tight">
                         {row.label}
                       </span>
                     </div>
                     <div className="bg-white/40 flex items-center justify-center p-[1vh]">
-                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] whitespace-nowrap">
+                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] xl:text-[0.8vw] whitespace-nowrap">
                         {row.value}
                       </span>
                     </div>
@@ -303,7 +303,7 @@ export const FloorPlanSection: React.FC = () => {
           </div>
 
           {/* Area Table (Bottom Right) */}
-          <div className="mt-[2vh] grid lg:hidden grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+          <div className="mt-[2vh] grid lg:hidden xl:hidden grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
             {/* Table Rows */}
             {[
               { label: "SALEABLE AREA", value: activeData.areas.saleable },
@@ -331,19 +331,19 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── PHOTOS | VIDEOS Section ─── */}
-        <div className="relative z-20 mt-[18vh] lg:mt-[35vh] w-full flex flex-col items-center ">
+        <div className="relative z-20 mt-[18vh] lg:mt-[35vh] xl:mt-[35vh] w-full flex flex-col items-center ">
           {/* Title */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave mb-8  master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 lg:text-[3.2vw] uppercase tracking-wider lg:mb-0 drop-shadow-lg text-center lg:text-left leading-none"
+            className="font-overwave mb-8  master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 xl:mb-8 lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider lg:mb-0 xl:mb-0 drop-shadow-lg text-center lg:text-left xl:text-left leading-none"
           >
             Photos | Videos
           </h2>
 
           {/* Glass Frame Container */}
-          <div className="relative w-full max-w-[90vw] lg:max-w-[65vw] glass-frame-container aspect-[15/9] lg:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl">
+          <div className="relative w-full max-w-[90vw] lg:max-w-[65vw] xl:max-w-[65vw] glass-frame-container aspect-[15/9] lg:aspect-[2/1] xl:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] xl:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl">
             {/* Floating Top Right Image */}
-            <div className="absolute right-[3%] floating-top-image-need-to-go-left -top-[75%] lg:-right-[8vw] lg:-top-[14vw] w-[20vw] lg:w-[10vw] z-30 pointer-events-none drop-shadow-2xl">
+            <div className="absolute right-[3%] floating-top-image-need-to-go-left -top-[75%] lg:-right-[8vw] xl:-right-[8vw] lg:-top-[14vw] xl:-top-[14vw] w-[20vw] lg:w-[10vw] xl:w-[10vw] z-30 pointer-events-none drop-shadow-2xl">
               <Image
                 src="/assets/middle image.webp"
                 alt="Floating Decor"
@@ -357,24 +357,24 @@ export const FloorPlanSection: React.FC = () => {
 
         {/* ─── LOCATION MAP Section ─── */}
         <div
-          className="relative z-20 mt-20 lg:mt-[28vh] w-full flex flex-col items-center"
+          className="relative z-20 mt-20 lg:mt-[28vh] xl:mt-[28vh] w-full flex flex-col items-center"
           id="location"
         >
           {/* Title Group */}
-          <div className="mb-8 lg:mb-[6vh] text-center lg:text-left w-full lg:px-[5vw]">
+          <div className="mb-8 lg:mb-[6vh] xl:mb-[6vh] text-center lg:text-left xl:text-left w-full lg:px-[5vw] xl:px-[5vw]">
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] lg:opacity-100 mb-[4px] lg:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase"
+              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] lg:opacity-100 xl:opacity-100 mb-[4px] lg:mb-[-1vh] xl:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase"
             >
               Location Map
             </h2>
-            <p className="text-white/60 text-[1rem] md:text-[2vw] lg:text-[1rem] font-medium">
+            <p className="text-white/60 text-[1rem] md:text-[2vw] lg:text-[1rem] xl:text-[1rem] font-medium">
               (Not to scale)
             </p>
           </div>
 
           {/* Map Image */}
-          <div className="relative hidden lg:block w-full lg:max-w-[54vw] lg:mt-[-8vw] lg:ml-[24vw] aspect-auto">
+          <div className="relative hidden lg:block xl:block w-full lg:max-w-[54vw] xl:max-w-[54vw] lg:mt-[-8vw] xl:mt-[-8vw] lg:ml-[24vw] xl:ml-[24vw] aspect-auto">
             <Image
               src="/assets/location-map.webp"
               alt="Location Map"
@@ -384,7 +384,7 @@ export const FloorPlanSection: React.FC = () => {
             />
           </div>
           {/* Map Image */}
-          <div className="relative block lg:hidden w-full lg:max-w-[70vw] lg:mt-[-10vw] aspect-auto">
+          <div className="relative block lg:hidden xl:hidden w-full lg:max-w-[70vw] xl:max-w-[70vw] lg:mt-[-10vw] xl:mt-[-10vw] aspect-auto">
             <Image
               src="/assets/mobile-location-image.webp"
               alt="Location Map"

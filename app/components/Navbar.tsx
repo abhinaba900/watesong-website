@@ -17,7 +17,7 @@ const TopGlare: React.FC = () => (
   <svg
     viewBox="0 0 41 11"
     fill="none"
-    className="absolute w-[25vw] h-[1.2vh] lg:w-[2vw] lg:h-[0.7vh] xl:w-[2vw] xl:h-[1.2vh] top-[0.4vh] right-[2vw] lg:top-[0.3vh] lg:right-[1.4vw] pointer-events-none opacity-40"
+    className="absolute w-[25vw] h-[1.2vh] lg:w-[2vw] lg:h-[0.7vh] xl:w-[2vw] xl:h-[1.2vh] top-[0.4vh] right-[2vw] lg:top-[0.3vh] xl:top-[0.3vh] lg:right-[1.4vw] xl:right-[1.4vw] pointer-events-none opacity-40"
   >
     <path
       d="M37.9952 8.97509C37.0777 9.36997 29.2478 4.94799 14.5277 4.35839C12.0929 4.26087 2 4.08677 2 2.78427C2 1.48177 19.7522 2.19473 31.127 2.19473C32.717 2.19473 33.7371 2.19456 35.1985 2.78425C37.7638 3.81937 40.5336 7.88268 37.9952 8.97509Z"
@@ -30,7 +30,7 @@ const RightGlare: React.FC = () => (
   <svg
     viewBox="0 0 14 12"
     fill="none"
-    className="absolute w-[10vw] h-[1.5vh] lg:w-[0.9vw] lg:h-[1vh] xl:w-[0.9vw] xl:h-[2vh] top-[0.6vh] right-[2vw] lg:right-[0.5vw] pointer-events-none opacity-50"
+    className="absolute w-[10vw] h-[1.5vh] lg:w-[0.9vw] lg:h-[1vh] xl:w-[0.9vw] xl:h-[2vh] top-[0.6vh] right-[2vw] lg:right-[0.5vw] xl:right-[0.5vw] pointer-events-none opacity-50"
   >
     <path
       d="M12 9.72418C12 11.0893 5.76311 6.94347 4.42424 6.94347C3.08537 6.94347 2 5.83684 2 4.47174C2 3.10663 3.08537 2 4.42424 2C5.76311 2 12 8.35907 12 9.72418Z"
@@ -82,7 +82,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
         times: [0, 0.2, 0.5, 0.8, 1],
       }}
       className={`relative font-medium flex items-center justify-center whitespace-nowrap overflow-hidden
-                 w-full lg:w-auto px-6 lg:px-[2.5vw] lg:min-w-[8vw] h-12 lg:h-[2.5vh] xl:h-[4.5vh] text-[1rem] lg:text-[0.73vw]
+                 w-full lg:w-auto xl:w-auto px-6 lg:px-[2.5vw] xl:px-[2.5vw] lg:min-w-[8vw] xl:min-w-[8vw] h-12 lg:h-[2.5vh] xl:h-[4.5vh] text-[1rem] lg:text-[0.73vw] xl:text-[0.73vw]
                  rounded-full select-none outline-none border-none
                  ${action ? "cursor-pointer" : "cursor-default drop-shadow-sm"}`}
       style={{
@@ -203,8 +203,8 @@ export const Navbar: React.FC = () => {
       <header
         className={`fixed top-0 left-0 w-full z-[100] flex justify-between items-center transition-all duration-300 ${
           scrolled
-            ? "bg-[#113239]/90 backdrop-blur-md px-4 py-4 md:px-8 md:py-4 lg:px-[4vw] lg:py-[2vh] shadow-xl"
-            : "bg-transparent px-4 py-6 md:px-10 md:py-8 lg:px-[5vw] lg:py-[4vh]"
+            ? "bg-[#113239]/90 backdrop-blur-md px-4 py-4 md:px-8 md:py-4 lg:px-[4vw] xl:px-[4vw] lg:py-[2vh] xl:py-[2vh] shadow-xl"
+            : "bg-transparent px-4 py-6 md:px-10 md:py-8 lg:px-[5vw] xl:px-[5vw] lg:py-[4vh] xl:py-[4vh]"
         }`}
       >
         <div className="shrink-0 order-1 lg:order-2 relative z-[99] ">
@@ -215,13 +215,13 @@ export const Navbar: React.FC = () => {
               width={200}
               height={100}
               priority
-              className={`w-24 md:w-36 lg:w-[8.5vw] h-auto object-contain cursor-pointer ${
+              className={`w-24 md:w-36 lg:w-[8.5vw] xl:w-[8.5vw] h-auto object-contain cursor-pointer ${
                 scrolled || isOpen ? "block" : "hidden"
-              } lg:block`}
+              } lg:block xl:block`}
             />
           </Link>
         </div>
-        <nav className="hidden lg:flex flex-wrap gap-x-[1.2vw] gap-y-[1vh] order-2 lg:order-1 justify-center">
+        <nav className="hidden lg:flex xl:flex flex-wrap gap-x-[1.2vw] gap-y-[1vh] order-2 lg:order-1 xl:order-1 justify-center">
           {navigationItems.map((item, index) => (
             <NavigationPill
               key={index}

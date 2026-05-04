@@ -12,33 +12,33 @@ export const CompanySection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen lg:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[10vh] lg:mt-[10vh] pb-[15rem] lg:pb-[10vh] lg:mb-[40vh] gand-mardo-space-ka">
+    <section className="relative w-full min-h-screen lg:min-h-[90vh] xl:min-h-[90vh] flex flex-col justify-start pt-[30vh] lg:pt-[10vh] xl:pt-[10vh] lg:mt-[10vh] xl:mt-[10vh] pb-[15rem] lg:pb-[10vh] xl:pb-[10vh] lg:mb-[40vh] xl:mb-[40vh] gand-mardo-space-ka">
       {/* Left-Aligned Text Content */}
-      <div className="relative z-10 w-full  mx-auto px-[6vw] lg:px-[10vw] pointer-events-none">
+      <div className="relative z-10 w-full  mx-auto px-[6vw] lg:px-[10vw] xl:px-[10vw] pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex flex-col items-start text-left max-w-[95dvw] lg:max-w-[55dvw]"
+          className="flex flex-col items-start text-left max-w-[95dvw] lg:max-w-[55dvw] xl:max-w-[55dvw]"
         >
           {/* Main Title */}
-          <h2 className="text-white font-normal lg:font-normal uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.8vw]  lg:leading-[1.5] mb-6 lg:mb-2 pointer-events-auto lg:leading-tight">
+          <h2 className="text-white font-normal lg:font-normal xl:font-normal uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.8vw] xl:text-[1.8vw]  lg:leading-[1.5] xl:leading-[1.5] mb-6 lg:mb-2 xl:mb-2 pointer-events-auto lg:leading-tight xl:leading-tight">
             PRIVAE: <br className="lg:hidden" /> SEASONED EXPERIENCE.{" "}
             <br className="lg:hidden" /> FRESH THINKING.
           </h2>
 
           {/* Stats Bar */}
-          <div className="text-white font-normal uppercase tracking-widest text-[1.6rem] md:text-[2vw] lg:text-[1.8vw] mb-6 lg:mb-8 flex flex-wrap items-center gap-x-4 lg:gap-y-2 pointer-events-auto">
+          <div className="text-white font-normal uppercase tracking-widest text-[1.6rem] md:text-[2vw] lg:text-[1.8vw] xl:text-[1.8vw] mb-6 lg:mb-8 xl:mb-8 flex flex-wrap items-center gap-x-4 lg:gap-y-2 xl:gap-y-2 pointer-events-auto">
             <span className=" font-normal whitespace-nowrap">20 YEARS</span>
-            <span className="text-[#FF3B30] font-light hidden lg:block">|</span>
+            <span className="text-[#FF3B30] font-light hidden lg:block xl:block">|</span>
             <span className="font-normal whitespace-nowrap">
               4 MILLION SQ. FT.
             </span>
           </div>
 
           {/* Descriptive Text */}
-          <p className="text-white/80 chikkad-madi-gandu font-medium text-[1rem]  leading-[1.7] md:text-[1.8vw] lg:text-[1rem] lg:leading-[1.8] pointer-events-auto z-20">
+          <p className="text-white/80 chikkad-madi-gandu font-medium text-[1rem]  leading-[1.7] md:text-[1.8vw] lg:text-[1rem] xl:text-[1rem] lg:leading-[1.8] xl:leading-[1.8] pointer-events-auto z-20">
             Privae draws from a legacy of building world-class living spaces. A
             deep understanding of market needs and individual aspirations,
             combined with strong technical expertise, guides every decision. The
@@ -59,7 +59,7 @@ export const CompanySection: React.FC = () => {
             repeatType: "mirror",
             ease: "easeInOut",
           }}
-          className="absolute left-[-52vw] fishing-boat-section-image-gand lg:left-[-6vw] bottom-[-24vh] lg:bottom-[-52vh] w-[28rem] md:w-[45vw] lg:w-[40vw] z-5 opacity-80 lg:opacity-100"
+          className="absolute left-[-52vw] fishing-boat-section-image-gand lg:left-[-6vw] xl:left-[-6vw] bottom-[-24vh] lg:bottom-[-52vh] xl:bottom-[-52vh] w-[28rem] md:w-[45vw] lg:w-[40vw] xl:w-[40vw] z-5 opacity-80 lg:opacity-100 xl:opacity-100"
         >
           <Image
             src="/assets/fishing boat.webp"
@@ -71,7 +71,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Wooden Pier - Middle Right */}
-        <motion.div className="absolute right-16 bottom-[45rem]  lg:top-[60%] w-[80vw] md:w-[25vw] lg:w-[40dvw] z-5 translate-x-[25%] lg:translate-x-[15%]  lg:opacity-100">
+        <motion.div className="absolute right-16 bottom-[45rem]  lg:top-[60%] xl:top-[60%] w-[80vw] md:w-[25vw] lg:w-[40dvw] xl:w-[40dvw] z-5 translate-x-[25%] lg:translate-x-[15%] xl:translate-x-[15%]  lg:opacity-100 xl:opacity-100">
           <Image
             src="/assets/hf_20260304_121041_3fde8b1c-31ed-4253-9046-06cd9fa2486e.webp"
             alt="Wooden pier"
@@ -82,7 +82,7 @@ export const CompanySection: React.FC = () => {
         </motion.div>
 
         {/* Animated Fish Group - Center Bottom */}
-        <div className="absolute bottom-[2] lg:bottom-[-13vh] left-[74%] lg:left-[48%] fish-group-area-need-to-go -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] opacity-80">
+        <div className="absolute bottom-[2] lg:bottom-[-13vh] xl:bottom-[-13vh] left-[74%] lg:left-[48%] xl:left-[48%] fish-group-area-need-to-go -translate-x-1/2 flex gap-[8vw] lg:gap-[6vw] xl:gap-[6vw] opacity-80">
           <motion.div
             animate={{ x: [15, -15], y: [10, -10], rotate: [10, -10] }}
             transition={{
@@ -91,7 +91,7 @@ export const CompanySection: React.FC = () => {
               repeatType: "mirror",
               delay: 1,
             }}
-            className="w-[50vw] lg:w-[17vw] mt-12"
+            className="w-[50vw] lg:w-[17vw] xl:w-[17vw] mt-12"
           >
             <Image
               src="/assets/fish-image-2.webp"

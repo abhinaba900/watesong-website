@@ -34,23 +34,23 @@ export const FeatureSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="highlights" className="relative w-full pt-[15vh] lg:pt-[12vh]">
+    <section id="highlights" className="relative w-full pt-[15vh] lg:pt-[0vh] xl:pt-[12vh]">
       {/* ── BLOCK 1 ─ Just 40 Residences ───────────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[2vh] lg:py-[2vh] gap-10 lg:gap-[4vw] pointer-events-none">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row xl:flex-row items-center lg:items-center xl:items-center px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[2vh] lg:py-[2vh] xl:py-[2vh] gap-10 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10 pointer-events-auto"
+          className="w-full lg:w-[50vw] xl:w-[50vw] flex justify-center items-center order-2 lg:order-1 xl:order-1 relative z-10 pointer-events-auto"
         >
-          <div className="relative aspect-square w-full lg:w-[45vw]">
+          <div className="relative aspect-square w-full lg:w-[45vw] xl:w-[45vw]">
             <Image
               src="/assets/features-so-thoughtful-you-feel-spcial.webp"
               alt="Family enjoying life at Watersong"
               fill
-              className="object-contain drop-shadow-2xl scale-[1.3] lg:scale-auto"
+              className="object-contain drop-shadow-2xl scale-[1.3] lg:scale-auto xl:scale-auto"
             />
           </div>
         </motion.div>
@@ -61,20 +61,20 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] -ml-[3vw] mb-0 text-right-in-just-forty-recidence-section lg:mt-[50vh] text-white text-left lg:text-left order-1 lg:order-2 flex flex-col justify-center z-10 pointer-events-auto"
+          className="relative w-full lg:w-[45%] xl:w-[45%] -ml-[3vw] mb-0 text-right-in-just-forty-recidence-section lg:mt-[30vh] xl:mt-[50vh] text-white text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col justify-center z-10 pointer-events-auto"
         >
-          <div className="flex flex-col items-start lg:items-start gap-0 lg:gap-2 mb-6 lg:mb-0 gap-to-heading-and-subheading-in-just-forty-recidence-section">
+          <div className="flex flex-col items-start lg:items-start xl:items-start gap-0 lg:gap-2 xl:gap-2 mb-6 lg:mb-0 xl:mb-0 gap-to-heading-and-subheading-in-just-forty-recidence-section">
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-left lg:text-left leading-none"
+              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
             >
               Just forty Residences.
             </h2>
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] uppercase leading-tight lg:leading-none tracking-wider mb-2 lg:mb-4 drop-shadow-lg text-left lg:text-left "
+              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] uppercase leading-tight lg:leading-none xl:leading-none tracking-wider mb-2 lg:mb-4 xl:mb-4 drop-shadow-lg text-left lg:text-left xl:text-left "
             >
-              Just two homes <br className="block lg:hidden" /> per floor.
+              Just two homes <br className="block lg:hidden xl:hidden" /> per floor.
             </h2>
           </div>
 
@@ -83,17 +83,17 @@ export const FeatureSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="text-white/90 text-left chikkad-madi-gandu lg:text-left font-medium leading-[140%] lg:leading-relaxed text-[1rem] lg:text-[1rem] lg:max-w-[90%] mx-auto lg:mx-0 drop-shadow-md"
+            className="text-white/90 text-left chikkad-madi-gandu lg:text-left xl:text-left font-medium leading-[140%] lg:leading-relaxed xl:leading-relaxed text-[1rem] lg:text-[1rem] xl:text-[1rem] lg:max-w-[90%] xl:max-w-[90%] mx-auto lg:mx-0 xl:mx-0 drop-shadow-md"
           >
             Homes at Watersong are so private, it feels like a villa.{" "}
-            <br className="hidden lg:block" /> No doors face each other. No
-            shared walls. <br className="hidden lg:block" /> Only expansive
+            <br className="hidden lg:block xl:block" /> No doors face each other. No
+            shared walls. <br className="hidden lg:block xl:block" /> Only expansive
             balconies, open air & a serene lake view.
           </motion.p>
         </motion.div>
 
         {/* Top Right Floating Lotus */}
-        <div className="absolute -top-[28%] top-right-floating-lotus right-0 lg:top-[5%] lg:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[220px]">
+        <div className="absolute -top-[28%] top-right-floating-lotus right-0 lg:top-[5%] xl:top-[5%] lg:right-[5%] xl:right-[5%] pointer-events-none z-20 w-[150px] lg:w-[220px] xl:w-[220px]">
           <Image
             src="/assets/Lotus - webp.webp"
             alt="Lotus"
@@ -105,46 +105,46 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 2 ─ Lake Lounge ───────────────────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[0vh] lg:py-[8vh] gap-0 lg:gap-[4vw] pointer-events-none">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row xl:flex-row items-center lg:items-center xl:items-center px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[0vh] lg:py-[8vh] xl:py-[8vh] gap-0 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative w-full lg:w-[45%]  text-white text-center lg:text-left order-1 flex flex-col justify-center lg:pl-[6vw] z-10 pointer-events-auto"
+          className="relative w-full lg:w-[45%] xl:w-[45%]  text-white text-center lg:text-left xl:text-left order-1 flex flex-col justify-center lg:pl-[6vw] xl:pl-[6vw] z-10 pointer-events-auto"
         >
           {/* FLOATING LOTUS */}
-          <div className="mb-0 lg:mb-8 flex justify-start mb-[0.8rem] lg:justify-start lg:ml-[2vw]">
+          <div className="mb-0 lg:mb-8 xl:mb-8 flex justify-start mb-[0.8rem] lg:justify-start xl:justify-start lg:ml-[2vw] xl:ml-[2vw]">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/middle image.webp"
                 alt="Lotus"
                 width={300}
                 height={300}
-                className="h-auto object-contain floating-lotus-in-lake-lounge-section opacity-90 s transform -translate-x-[20%] lg:translate-x-0 translate-y-0 lg:-translate-y-10 rotate-180 lg:rotate-180  w-[220px] lg:w-[230px]"
+                className="h-auto object-contain floating-lotus-in-lake-lounge-section opacity-90 s transform -translate-x-[20%] lg:translate-x-0 xl:translate-x-0 translate-y-0 lg:-translate-y-10 xl:-translate-y-10 rotate-180 lg:rotate-180 xl:rotate-180  w-[220px] lg:w-[230px] xl:w-[230px]"
               />
             </motion.div>
           </div>
 
           <div className="block-2-lake-longe-section">
-            <motion.p className="text-white/90 text-left chikkad-madi-gandu lg:text-left max-w-[90%] lg:max-w-[100%]   lg:mx-0 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] mb-2 font-light text-[1rem] lg:text-[14px]">
+            <motion.p className="text-white/90 text-left chikkad-madi-gandu lg:text-left xl:text-left max-w-[90%] lg:max-w-[100%] xl:max-w-[100%]   lg:mx-0 xl:mx-0 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] xl:tracking-[0.15em] mb-2 font-light text-[1rem] lg:text-[14px] xl:text-[14px]">
               A lake like this deserves
             </motion.p>
 
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] uppercase tracking-wider mb-3 lg:mb-0 drop-shadow-lg text-left  lg:mx-0 lg:text-left leading-none"
+              className="font-overwave text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-3 lg:mb-0 xl:mb-0 drop-shadow-lg text-left  lg:mx-0 xl:mx-0 lg:text-left xl:text-left leading-none"
             >
               A Lake Lounge
             </h2>
 
-            <motion.p className="text-white/90  text-left lg:text-left max-w-[90%] lg:max-w-[100%]   lg:mx-0 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] lg:mt-2 mb-8 font-light text-[1rem] lg:text-[14px]   chikkad-madi-gandu">
+            <motion.p className="text-white/90  text-left lg:text-left xl:text-left max-w-[90%] lg:max-w-[100%] xl:max-w-[100%]   lg:mx-0 xl:mx-0 font-medium uppercase tracking-[0.1em] lg:tracking-[0.15em] xl:tracking-[0.15em] lg:mt-2 xl:mt-2 mb-8 font-light text-[1rem] lg:text-[14px] xl:text-[14px]   chikkad-madi-gandu">
               UP TO 200 SQ. FT. LAKE LOUNGE.
             </motion.p>
 
             {/* PARAGRAPH */}
-            <motion.p className="text-white/80 font-medium forget-boring-balconies-in-lake-lounge-section chikkad-madi-gandu text-left lg:text-left  lg:mx-0 leading-relaxed text-[1rem] lg:text-[1rem] lg:max-w-[90%] lg:max-w-[95%] mx-auto lg:mx-0 drop-shadow-md">
+            <motion.p className="text-white/80 font-medium forget-boring-balconies-in-lake-lounge-section chikkad-madi-gandu text-left lg:text-left xl:text-left  lg:mx-0 xl:mx-0 leading-relaxed text-[1rem] lg:text-[1rem] xl:text-[1rem] lg:max-w-[90%] xl:max-w-[90%] lg:max-w-[95%] xl:max-w-[95%] mx-auto lg:mx-0 xl:mx-0 drop-shadow-md">
               Forget boring balconies. Step out into a rare 200 sq. ft. 
               lake lounge: your private front
               row to rippling water, open
@@ -160,14 +160,14 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="w-full lg:w-[50vw] flex justify-center items-center order-2 relative z-10 pointer-events-auto"
+          className="w-full lg:w-[50vw] xl:w-[50vw] flex justify-center items-center order-2 relative z-10 pointer-events-auto"
         >
-          <div className="relative aspect-square w-full lg:w-[45vw]">
+          <div className="relative aspect-square w-full lg:w-[45vw] xl:w-[45vw]">
             <Image
               src="/assets/a-lake-like-this-deserves-a-lake-lounge.webp"
               alt="Lake lounge"
               fill
-              className="object-contain drop-shadow-2xl scale-[1.3] lg:scale-auto"
+              className="object-contain drop-shadow-2xl scale-[1.3] lg:scale-auto xl:scale-auto"
             />
           </div>
         </motion.div>
@@ -175,7 +175,7 @@ export const FeatureSection: React.FC = () => {
       {/* ── BLOCK 3 ─ Healthy & Active Lifestyle ────────────────────────── */}
       <div
         id="amenities"
-        className="relative z-10 w-full flex flex-col lg:flex-row items-center lg:items-center px-[6vw] lg:px-[4vw] py-[0vh] pb-20 lg:pb-[2vh] lg:py-[12vh] gap-10 lg:gap-[4vw] pointer-events-none"
+        className="relative z-10 w-full flex flex-col lg:flex-row xl:flex-row items-center lg:items-center xl:items-center px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[0vh] pb-20 lg:pb-[2vh] xl:pb-[2vh] lg:py-[12vh] xl:py-[12vh] gap-10 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none"
       >
         {/* IMAGE LEFT */}
         <motion.div
@@ -183,14 +183,14 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[50vw] flex justify-center items-center order-2 lg:order-1 relative z-10 pointer-events-auto"
+          className="w-full lg:w-[50vw] xl:w-[50vw] flex justify-center items-center order-2 lg:order-1 xl:order-1 relative z-10 pointer-events-auto"
         >
-          <div className="relative aspect-square w-full scale-[0.77] lg:w-[44vw] ">
+          <div className="relative aspect-square w-full scale-[0.77] lg:w-[44vw] xl:w-[44vw] ">
             <Image
               src="/assets/swimming.webp"
               alt="Swimming Pool"
               fill
-              className="object-contain drop-shadow-2xl scale-[1.35] lg:scale-auto"
+              className="object-contain drop-shadow-2xl scale-[1.35] lg:scale-auto xl:scale-auto"
             />
           </div>
         </motion.div>
@@ -201,17 +201,17 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[45%] text-white container-ko-left-mai-karo-vi text-left lg:text-left order-1 lg:order-2 flex flex-col justify-start z-10 lg:pl-[4vw] pointer-events-auto"
+          className="relative w-full lg:w-[45%] xl:w-[45%] text-white container-ko-left-mai-karo-vi text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col justify-start z-10 lg:pl-[4vw] xl:pl-[4vw] pointer-events-auto"
         >
           {/* LILY (TOP DECORATION) */}
-          <div className="flex justify-start lily-top-decoration-main-container lg:justify-start -ml-0 mb-6 lg:mb-[20vh] lg:-ml-[2vw]">
+          <div className="flex justify-start lily-top-decoration-main-container lg:justify-start xl:justify-start -ml-0 mb-6 lg:mb-[20vh] xl:mb-[20vh] lg:-ml-[2vw] xl:-ml-[2vw]">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/with-flower-lily-image.webp"
                 alt="Lotus"
                 width={160}
                 height={160}
-                className="h-auto object-contain mb-[1.5rem] lg:mb-0 top-decoration-lily-gand opacity-90 w-[150px] lg:w-[120px]"
+                className="h-auto object-contain mb-[1.5rem] lg:mb-0 xl:mb-0 top-decoration-lily-gand opacity-90 w-[150px] lg:w-[120px] xl:w-[120px]"
               />
             </motion.div>
           </div>
@@ -220,13 +220,13 @@ export const FeatureSection: React.FC = () => {
             {/* HEADING */}
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:-mt-15 mb-8 lg:mb-8 lg:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-left lg:text-left leading-none"
+              className="font-overwave text-white text-[2rem] lg:-mt-15 xl:-mt-15 mb-8 lg:mb-8 xl:mb-8 lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
             >
-              Healthy and <br className="hidden lg:block" /> Active Lifestyle
+              Healthy and <br className="hidden lg:block xl:block" /> Active Lifestyle
             </h2>
 
             {/* LIST */}
-            <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-[16px] lg:max-w-[90%] lg:mx-0 list-disc lg:list-none ml-5 lg:ml-0 space-y-0">
+            <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-none xl:list-none ml-5 lg:ml-0 xl:ml-0 space-y-0">
               {[
                 "Jogging / Walking Path",
                 "Children’s play area",
@@ -246,17 +246,17 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col flex-col-reverse lg:flex-row items-center lg:items-end px-[6vw] lg:px-[8vw] pb-30 lg:pb-[2vh] py-[4vh] lg:py-[2vh] pt-0 lg:pt-[20vh] gap-8 lg:gap-[4vw] pointer-events-none">
+      <div className="relative z-10 w-full flex flex-col flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-end xl:items-end px-[6vw] lg:px-[8vw] xl:px-[8vw] pb-30 lg:pb-[2vh] xl:pb-[2vh] py-[4vh] lg:py-[2vh] xl:py-[2vh] pt-0 lg:pt-[20vh] xl:pt-[20vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="w-full lg:w-[90%] flex flex-col items-center lg:items-start order-2 lg:order-1 relative z-10 lg:pb-[5vh] pointer-events-auto"
+          className="w-full lg:w-[90%] xl:w-[90%] flex flex-col items-center lg:items-start xl:items-start order-2 lg:order-1 xl:order-1 relative z-10 lg:pb-[5vh] xl:pb-[5vh] pointer-events-auto"
         >
           {/* Framed Image */}
-          <div className="relative w-full  aspect-[4/3] lg:aspect-[16/10] rounded-[16px] lg:rounded-[24px] overflow-hidden border-[8px] lg:border-[4px] border-white/20 shadow-2xl mb-4 lg:mb-6">
+          <div className="relative w-full  aspect-[4/3] lg:aspect-[16/10] xl:aspect-[16/10] rounded-[16px] lg:rounded-[24px] xl:rounded-[24px] overflow-hidden border-[8px] lg:border-[4px] xl:border-[4px] border-white/20 shadow-2xl mb-4 lg:mb-6 xl:mb-6">
             <Image
               src="/assets/just-40-residences.webp"
               alt="Family"
@@ -268,7 +268,7 @@ export const FeatureSection: React.FC = () => {
           {/* Caption Image */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave text-white text-[2rem] mt-8 lg:mt-0 lg:text-[2.8vw] lg:ml-[2vw] uppercase tracking-wider mb-2 lg:mb-0 drop-shadow-lg text-left lg:text-left leading-none"
+            className="font-overwave text-white text-[2rem] mt-8 lg:mt-0 xl:mt-0 lg:text-[2.8vw] xl:text-[2.8vw] lg:ml-[2vw] xl:ml-[2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
           >
             Features so thoughtful, you feel special
           </h2>
@@ -280,10 +280,10 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[40%] text-white text-left lg:text-left order-1 lg:order-2 flex flex-col  flex-col-reverse justify-end lg:h-[70vh] z-10 pl-4 lg:pl-[4vw] pb-[0h] lg:pb-[12vh] pointer-events-auto"
+          className="relative w-full lg:w-[40%] xl:w-[40%] text-white text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col  flex-col-reverse justify-end lg:h-[70vh] xl:h-[70vh] z-10 pl-4 lg:pl-[4vw] xl:pl-[4vw] pb-[0h] lg:pb-[12vh] xl:pb-[12vh] pointer-events-auto"
         >
           {/* FLOATING FISH */}
-          <div className="absolute top-[15vh] lg:top-[-18vh] machi-ka-choda-niche-lao -right-[10vw] lg:left-[1vw] pointer-events-none z-0">
+          <div className="absolute top-[15vh] lg:top-[-18vh] xl:top-[-18vh] machi-ka-choda-niche-lao -right-[10vw] lg:left-[1vw] xl:left-[1vw] pointer-events-none z-0">
             <motion.div
               animate={{ x: ["-3%", "3%"], y: ["-2%", "2%"] }}
               transition={{
@@ -291,7 +291,7 @@ export const FeatureSection: React.FC = () => {
                 repeat: Infinity,
                 repeatType: "mirror",
               }}
-              className="w-[280px] h-0 lg:w-[280px] machi-ko-bada-karo"
+              className="w-[280px] h-0 lg:w-[280px] xl:w-[280px] machi-ko-bada-karo"
             >
               <Image
                 src="/assets/fish-image-1.webp"
@@ -304,7 +304,7 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* LIST */}
-          <ul className="text-white/85 chikkad-madi-gandu font-medium leading-[1.3] lg:leading-[2] text-[16px] lg:text-[1rem] mx-0 lg:mx-0 text-left list-disc space-y-1 relative z-10 mt-[0vh] lg:mt-auto">
+          <ul className="text-white/85 chikkad-madi-gandu font-medium leading-[1.3] lg:leading-[2] xl:leading-[2] text-[16px] lg:text-[1rem] xl:text-[1rem] mx-0 lg:mx-0 xl:mx-0 text-left list-disc space-y-1 relative z-10 mt-[0vh] lg:mt-auto xl:mt-auto">
             {[
               "Double-height car parking",
               "3 balconies per home",
