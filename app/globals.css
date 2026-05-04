@@ -271,4 +271,8 @@ body::-webkit-scrollbar {
     margin-top: 35vh !important;
   }
 
+  .top-right-floating-lotus{
+    width:250px !important;
+  }
+
 }
