@@ -172,13 +172,13 @@ export const FloorPlanSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-[0vh] lg:pt-[10vh] xl:pt-[10vh]  w-full flex flex-col justify-center px-[5vw]">
+    <section className="relative pt-[0vh] lg:pt-[5vh] xl:pt-[10vh]  w-full flex flex-col justify-center px-[5vw]">
       {/* ─── Main Content (Layered over background) ─── */}
       <div className="relative z-20 pointer-events-auto">
         {/* Heading */}
         <h2
           style={{ letterSpacing: "-0.3px" }}
-          className="hidden lg:block xl:block font-overwave pl-10 floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[3.2vw] xl:text-[3.2vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
+          className="hidden lg:block xl:block font-overwave pl-10 floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[2.5rem] xl:text-[3.2vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
         >
           Floor Plans
         </h2>
@@ -216,7 +216,7 @@ export const FloorPlanSection: React.FC = () => {
             </div>
 
             {/* Floor Plan Image */}
-            <div className="flex-1 flex justify-center items-center w-full relative min-h-[40vh] md:min-h-[50vh] pb-[2vh] px-[2vw]">
+            <div className="flex-1 flex justify-center items-center w-full relative min-h-[40vh] md:min-h-[50vh] lg:min-h-[32vh] xl:min-h-[50vh] pb-[2vh] px-[2vw]">
               <Image
                 key={activeTab}
                 src={activeData.image}
@@ -236,7 +236,7 @@ export const FloorPlanSection: React.FC = () => {
           {/* RIGHT PANE: Lists and Area Table */}
           <div className="w-full lg:w-[34%] xl:w-[34%] flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
-            <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[2vh] xl:gap-[2vh]">
+            <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[1.5rem] xl:gap-[2vh]">
               {activeData.roomsCol1.map((room) => (
                 <div
                   key={room.id}
@@ -256,7 +256,7 @@ export const FloorPlanSection: React.FC = () => {
             {/* Column 2 (Rooms 11+ and Area Box) */}
             <div className="flex flex-col justify-between">
               {/* Rooms List */}
-              <div className="flex flex-col gap-[1.5vh] lg:gap-[2vh] xl:gap-[2vh]">
+              <div className="flex flex-col gap-[1.5vh] lg:gap-[1.5rem] xl:gap-[2vh]">
                 {activeData.roomsCol2.map((room) => (
                   <div
                     key={room.id}
@@ -274,7 +274,7 @@ export const FloorPlanSection: React.FC = () => {
               </div>
 
               {/* Area Table (Bottom Right) */}
-              <div className="mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+              <div className="mt-[2vh] lg:mt-2 xl:mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
                 {/* Table Rows */}
                 {[
                   { label: "SALEABLE AREA", value: activeData.areas.saleable },
@@ -331,7 +331,7 @@ export const FloorPlanSection: React.FC = () => {
         </div>
 
         {/* ─── PHOTOS | VIDEOS Section ─── */}
-        <div className="relative z-20 mt-[18vh] lg:mt-[35vh] xl:mt-[35vh] w-full flex flex-col items-center ">
+        <div className="relative z-20 mt-[18vh] lg:mt-[13vh] xl:mt-[35vh] w-full flex flex-col items-center ">
           {/* Title */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
@@ -357,7 +357,7 @@ export const FloorPlanSection: React.FC = () => {
 
         {/* ─── LOCATION MAP Section ─── */}
         <div
-          className="relative z-20 mt-20 lg:mt-[28vh] xl:mt-[28vh] w-full flex flex-col items-center"
+          className="relative z-20 mt-20 lg:mt-[10vh] xl:mt-[28vh] w-full flex flex-col items-center"
           id="location"
         >
           {/* Title Group */}

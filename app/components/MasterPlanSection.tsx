@@ -15,19 +15,19 @@ export const MasterPlanSection: React.FC = () => {
   return (
     <section className="bg-transparent w-full max-md:max-w-full relative py-[0vh] lg:py-[0vh] xl:py-[15vh]">
       {/* ── BLOCK 5 ─ Master Plan ───────────────────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-stretch xl:items-stretch px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[4vh] lg:py-[2vh] xl:py-[2vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
+      <div className="relative z-10 w-full flex flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-center xl:items-stretch px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[4vh] lg:py-[2vh] xl:py-[2vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* TEXT LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative w-full lg:w-[35%] xl:w-[35%] text-white text-center lg:text-left xl:text-left order-1 lg:order-1 xl:order-1 flex flex-col justify-center z-10 lg:pl-[4vw] xl:pl-[4vw] pb-[2vh] pointer-events-auto"
+          className="relative w-full lg:w-[35%] xl:w-[35%] text-white text-center lg:text-left xl:text-left order-1 lg:order-1 xl:order-1 flex flex-col justify-center z-10 lg:pl-[4vw] xl:pl-[4vw] pb-[2vh] lg:pb-0 xl:pb-[2vh] pointer-events-auto"
         >
           {/* HEADING */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave master-plan-with-proper-spacing-update mt-[8vh] lg:mb-8 xl:mb-8 text-white text-[2rem] lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-8 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
+            className="font-overwave master-plan-with-proper-spacing-update mt-[8vh] lg:mt-0 xl:mt-[8vh] lg:mb-8 xl:mb-8 text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-8 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
           >
             Master Plan
           </h2>
@@ -69,7 +69,7 @@ export const MasterPlanSection: React.FC = () => {
           className="w-full hidden lg:block xl:block lg:w-[65%] xl:w-[65%] flex justify-center items-center order-2 lg:order-2 xl:order-2 relative z-10 pointer-events-auto"
         >
           {/* Framed Map Image */}
-          <div className="relative w-full h-[65dvh] lg:h-full xl:h-full lg:w-full xl:w-full rounded-[16px] lg:rounded-[24px] xl:rounded-[24px] overflow-hidden border-[8px] lg:border-[3px] xl:border-[3px] border-white/20 shadow-2xl rotate-90 lg:rotate-0 xl:rotate-0">
+          <div className="relative w-full h-[65dvh] lg:h-[500px] xl:h-full lg:w-full xl:w-full rounded-[16px] lg:rounded-[24px] xl:rounded-[24px] overflow-hidden border-[8px] lg:border-[3px] xl:border-[3px] border-white/20 shadow-2xl rotate-90 lg:rotate-0 xl:rotate-0">
             <Image
               src="/assets/Masterplan new.webp"
               alt="Masterplan Map"
