@@ -2,6 +2,29 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+// --- Gallery Data ---
+const galleryPhotos = [
+  "/assets/hf_20260415_110320_49783d9f-a1e5-4eab-841e-22d5b25c678a.webp",
+  "/assets/hf_20260417_053258_0f5d09ab-533c-44de-bc89-0aaf27618a08.webp",
+  "/assets/hf_20260417_070126_3514e84c-bddd-41c6-b98a-32c3e85fd6dd.webp",
+  "/assets/hf_20260417_082627_ad33f00a-b3d8-4f81-b305-ba98e64903fa.webp",
+  "/assets/hf_20260423_190903_facfc9a6-b1bb-4e30-b937-a192aa22dc76.webp",
+  "/assets/hf_20260427_073316_92b21e5d-2f11-4bdf-ae89-ec67bd3b0f6c.webp",
+  "/assets/hf_20260427_111207_5805814a-147a-4ab3-a621-2cd8156ad613.webp",
+  "/assets/hf_20260428_051839_ff46c691-267b-48e9-b11b-6a2a749bbfae.webp",
+  "/assets/hf_20260428_074453_fd156fd2-34c4-4422-9cbd-adc778b8a2af.webp",
+  "/assets/watersong entry.webp",
+  "/assets/hf_20260408_123851_32ef4287-ba2a-440f-8909-467fbc87f92d.webp",
+  "/assets/hf_20260415_063251_e23aa486-e88e-40e8-80a3-b6718fea834c.webp",
+];
+
+const galleryVideos = [
+  // Using a sample video for now as requested
+  "https://player.vimeo.com/external/494252666.hd.mp4?s=2f059a46a5d4d380f2d909c00b0c279c723f668f&profile_id=175",
+];
 
 // --- Dynamic Data Structure ---
 const floorPlanData = {
@@ -171,6 +194,21 @@ export const FloorPlanSection: React.FC = () => {
     setIsMounted(true);
   }, []);
 
+  // --- Gallery State ---
+  const [galleryTab, setGalleryTab] = useState<"photos" | "videos">("photos");
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [videoIndex, setVideoIndex] = useState(0);
+
+  // Auto-cycle for photos
+  useEffect(() => {
+    if (galleryTab === "photos") {
+      const timer = setInterval(() => {
+        setPhotoIndex((prev) => (prev + 1) % galleryPhotos.length);
+      }, 5000); // Increased to 6s for more delay
+      return () => clearInterval(timer);
+    }
+  }, [galleryTab]);
+
   return (
     <section className="relative pt-[0vh] lg:pt-[5vh] xl:pt-[10vh]  w-full flex flex-col justify-center px-[5vw]">
       {/* ─── Main Content (Layered over background) ─── */}
@@ -335,14 +373,180 @@ export const FloorPlanSection: React.FC = () => {
           {/* Title */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave mb-8  master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 xl:mb-8 lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider lg:mb-0 xl:mb-0 drop-shadow-lg text-center lg:text-left xl:text-left leading-none"
+            className="font-overwave mb-8 master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 xl:mb-8 lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider drop-shadow-lg text-center lg:text-left xl:text-left leading-none flex gap-4 select-none"
           >
-            Photos | Videos
+            <span
+              onClick={() => setGalleryTab("photos")}
+              className={`cursor-pointer transition-all duration-300 ${
+                galleryTab === "photos"
+                  ? "opacity-100 scale-105"
+                  : "opacity-40 hover:opacity-70"
+              }`}
+            >
+              Photos
+            </span>
+            <span className="opacity-40">|</span>
+            <span
+              onClick={() => setGalleryTab("videos")}
+              className={`cursor-pointer transition-all duration-300 ${
+                galleryTab === "videos"
+                  ? "opacity-100 scale-105"
+                  : "opacity-40 hover:opacity-70"
+              }`}
+            >
+              Videos
+            </span>
           </h2>
 
-          {/* Glass Frame Container */}
-          <div className="relative w-full max-w-[90vw] lg:max-w-[65vw] xl:max-w-[65vw] glass-frame-container aspect-[15/9] lg:aspect-[2/1] xl:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] xl:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl">
-            {/* Floating Top Right Image */}
+          <div className="relative w-full max-w-[90vw] lg:max-w-[65vw] xl:max-w-[65vw] glass-frame-container aspect-[15/9] lg:aspect-[2/1] xl:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] xl:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl pointer-events-auto group">
+            {/* Gallery Wrapper (Handles overflow clipping for transitions) */}
+            <div className="absolute inset-0 overflow-hidden rounded-[20px] lg:rounded-[30px] xl:rounded-[30px]">
+              <AnimatePresence mode="wait">
+                {galleryTab === "photos" ? (
+                  <motion.div
+                    key={`photo-${photoIndex}`}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(_, info) => {
+                      const swipeThreshold = 50;
+                      const swipeVelocity = 500;
+                      if (
+                        info.offset.x < -swipeThreshold ||
+                        info.velocity.x < -swipeVelocity
+                      ) {
+                        setPhotoIndex(
+                          (prev) => (prev + 1) % galleryPhotos.length
+                        );
+                      } else if (
+                        info.offset.x > swipeThreshold ||
+                        info.velocity.x > swipeVelocity
+                      ) {
+                        setPhotoIndex(
+                          (prev) =>
+                            (prev + galleryPhotos.length - 1) %
+                            galleryPhotos.length
+                        );
+                      }
+                    }}
+                  >
+                    <Image
+                      src={galleryPhotos[photoIndex]}
+                      alt={`Gallery Photo ${photoIndex + 1}`}
+                      fill
+                      className="object-cover pointer-events-none"
+                      priority
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={`video-${videoIndex}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0 w-full h-full bg-black/20 cursor-grab active:cursor-grabbing"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(_, info) => {
+                      if (galleryVideos.length <= 1) return;
+                      const swipeThreshold = 50;
+                      const swipeVelocity = 500;
+                      if (
+                        info.offset.x < -swipeThreshold ||
+                        info.velocity.x < -swipeVelocity
+                      ) {
+                        setVideoIndex(
+                          (prev) => (prev + 1) % galleryVideos.length
+                        );
+                      } else if (
+                        info.offset.x > swipeThreshold ||
+                        info.velocity.x > swipeVelocity
+                      ) {
+                        setVideoIndex(
+                          (prev) =>
+                            (prev + galleryVideos.length - 1) %
+                            galleryVideos.length
+                        );
+                      }
+                    }}
+                  >
+                    <video
+                      src={galleryVideos[videoIndex]}
+                      className="w-full h-full object-cover pointer-events-none"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                    {/* Video Overlay gradient for premium feel */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => {
+                if (galleryTab === "photos") {
+                  setPhotoIndex(
+                    (prev) =>
+                      (prev + galleryPhotos.length - 1) % galleryPhotos.length
+                  );
+                } else {
+                  setVideoIndex(
+                    (prev) =>
+                      (prev + galleryVideos.length - 1) % galleryVideos.length
+                  );
+                }
+              }}
+              className="absolute left-4 z-40 p-2 rounded-full bg-black/30 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50"
+            >
+              <ChevronLeft size={32} />
+            </button>
+            <button
+              onClick={() => {
+                if (galleryTab === "photos") {
+                  setPhotoIndex((prev) => (prev + 1) % galleryPhotos.length);
+                } else {
+                  setVideoIndex((prev) => (prev + 1) % galleryVideos.length);
+                }
+              }}
+              className="absolute right-4 z-40 p-2 rounded-full bg-black/30 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50"
+            >
+              <ChevronRight size={32} />
+            </button>
+
+            {/* Pagination Dots */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 flex gap-2">
+              {(galleryTab === "photos" ? galleryPhotos : galleryVideos).map(
+                (_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() =>
+                      galleryTab === "photos"
+                        ? setPhotoIndex(idx)
+                        : setVideoIndex(idx)
+                    }
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      (galleryTab === "photos" ? photoIndex : videoIndex) ===
+                      idx
+                        ? "bg-white w-6"
+                        : "bg-white/40 hover:bg-white/60"
+                    }`}
+                  />
+                )
+              )}
+            </div>
+
+            {/* Floating Top Right Image (Keep as is) */}
             <div className="absolute right-[3%] floating-top-image-need-to-go-left -top-[75%] lg:-right-[8vw] xl:-right-[8vw] lg:-top-[14vw] xl:-top-[14vw] w-[20vw] lg:w-[10vw] xl:w-[10vw] z-30 pointer-events-none drop-shadow-2xl">
               <Image
                 src="/assets/middle image.webp"
