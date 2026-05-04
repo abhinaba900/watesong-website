@@ -49,7 +49,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Spacious Premium Cluster */}
-          <div className="flex flex-col items-center lg:items-start xl:items-start z-10 lg:ml-4 xl:ml-4 mx-auto lg:mx-0 xl:mx-0">
+          <div className="flex flex-col items-start lg:items-start xl:items-start z-10 lg:ml-4 xl:ml-4 mx-0 lg:mx-0 xl:mx-0">
             <h2
               style={{ letterSpacing: "-0.3px" }}
               className="font-overwave text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-4 xl:mb-4 drop-shadow-lg text-center lg:text-left xl:text-left leading-none"
@@ -57,7 +57,7 @@ export const HeroSection: React.FC = () => {
               Spacious Premium
             </h2>
 
-            <p className="text-white/90 text-[16px] lg:text-[1.2rem] xl:text-[1.4vw] text-center lg:text-left xl:text-left font-light leading-relaxed drop-shadow-md">
+            <p className="text-white/90 text-[16px] lg:text-[1.2rem] xl:text-[1.4vw] text-left lg:text-left xl:text-left font-light leading-relaxed drop-shadow-md">
               3 BHK+ Homes from
               <br />
               2565 to 3495 sq. ft.
@@ -66,7 +66,7 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* Floating Lotus Bottom Left - Overflows the section */}
-        <div className="absolute  top-[20rem] floating-lotus-buttom-left lg:top-[38rem] xl:top-auto lg:bottom-[-10vh] xl:bottom-[-10vh] left-[8vw] lg:left-[2vw] xl:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw] xl:w-[10vw]">
+        <div className="absolute  top-[22rem] floating-lotus-buttom-left lg:top-[38rem] xl:top-auto lg:bottom-[-10vh] xl:bottom-[-10vh] left-[8vw] lg:left-[2vw] xl:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw] xl:w-[10vw]">
           <Image
             src="/assets/with-flower-lily-image.webp"
             alt="Lotus Flower"
