@@ -30,46 +30,55 @@ const amenitiesData = [
     label: "Jogging / Walking Path",
     image: "/assets/Walking Path.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
   {
     label: "Children’s play area",
     image: "/assets/Children's play area.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
   {
     label: "Multipurpose court",
     image: "/assets/Multi-purpose court.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
   {
     label: "Private Terrace",
     image: "/assets/Private Terrace.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
   {
     label: "Gym",
     image: "/assets/Gym.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
   {
     label: "Swimming Pool",
     image: "/assets/swimming.webp",
-    scale: "scale-[1.3]",
+    scale: "scale-[1.45]",
+    fit: "object-contain",
   },
   {
     label: "Multi-purpose Hall",
     image: "/assets/elevation.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
   {
     label: "Indoor Games Room",
     image: "/assets/Indoor Games Room.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
   {
     label: "Open Yoga / Aerobics Area",
     image: "/assets/Yoga.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
+    fit: "object-cover",
   },
 ];
 
@@ -285,7 +294,7 @@ export const FeatureSection: React.FC = () => {
                   src={amenitiesData[currentAmenityIndex].image}
                   alt={amenitiesData[currentAmenityIndex].label}
                   fill
-                  className={`object-cover drop-shadow-2xl xl:scale-auto ${amenitiesData[currentAmenityIndex].scale}`}
+                  className={`${amenitiesData[currentAmenityIndex].fit} drop-shadow-2xl xl:scale-auto ${amenitiesData[currentAmenityIndex].scale}`}
                 />
               </motion.div>
             </AnimatePresence>
