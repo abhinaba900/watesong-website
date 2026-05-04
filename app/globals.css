@@ -292,4 +292,13 @@ body::-webkit-scrollbar {
     margin-left: 22px !important;
   }
 
+  .iska-margin-and-sab-kam-karneka-gandu-container-class{
+    padding-top: 10vh !important;
+  }
+
+  .ye-class-sabka-gand-marne-keliye-rakha-hai{
+    height: 40vh !important;
+    padding-bottom: 4vh !important;
+  }
+
 }

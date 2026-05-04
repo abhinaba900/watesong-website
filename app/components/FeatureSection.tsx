@@ -250,7 +250,7 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
-      <div className="relative z-10 w-full flex flex-col flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-end xl:items-end px-[6vw] lg:px-[8vw] xl:px-[8vw] pb-30 lg:pb-[2vh] xl:pb-[2vh] py-[4vh] lg:py-[2vh] xl:py-[2vh] pt-0 lg:pt-[15vh] xl:pt-[20vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
+      <div className="relative iska-margin-and-sab-kam-karneka-gandu-container-class z-10 w-full flex flex-col flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-end xl:items-end px-[6vw] lg:px-[8vw] xl:px-[8vw] pb-30 lg:pb-[2vh] xl:pb-[2vh] py-[4vh] lg:py-[2vh] xl:py-[2vh] pt-0 lg:pt-[15vh] xl:pt-[20vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -284,7 +284,7 @@ export const FeatureSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-          className="relative w-full lg:w-[40%] xl:w-[40%] text-white text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col  flex-col-reverse justify-end lg:h-[30vh] xl:h-[70vh] z-10 pl-4 lg:pl-[4vw] xl:pl-[4vw] pb-[0h] lg:pb-[5vh] xl:pb-[12vh] pointer-events-auto"
+          className="relative w-full lg:w-[40%] xl:w-[40%] text-white text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col  flex-col-reverse justify-end lg:h-[30vh] xl:h-[70vh] z-10 pl-4 lg:pl-[4vw] xl:pl-[4vw] pb-[0h] lg:pb-[5vh] xl:pb-[12vh] pointer-events-auto ye-class-sabka-gand-marne-keliye-rakha-hai"
         >
           {/* FLOATING FISH */}
           <div className="absolute top-[15vh] lg:top-[-18vh] xl:top-[-18vh] machi-ka-choda-niche-lao -right-[10vw] lg:left-[1vw] xl:left-[1vw] pointer-events-none z-0">
