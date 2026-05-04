@@ -72,7 +72,7 @@ export const HeroSection: React.FC = () => {
             alt="Lotus Flower"
             width={120}
             height={120}
-            className="w-full h-auto scale-[1] lg:scale-auto xl:scale-auto object-contain drop-shadow-2xl opacity-90"
+            className="w-full h-auto scale-[1] lg:scale-[1.2] xl:scale-auto object-contain drop-shadow-2xl opacity-90"
           />
         </div>
 
