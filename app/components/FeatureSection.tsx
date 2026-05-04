@@ -178,7 +178,7 @@ export const FeatureSection: React.FC = () => {
       {/* ── BLOCK 3 ─ Healthy & Active Lifestyle ────────────────────────── */}
       <div
         id="amenities"
-        className="relative z-10 w-full flex flex-col lg:flex-row xl:flex-row items-center lg:items-center xl:items-center px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[0vh] pb-20 lg:pb-[2vh] xl:pb-[2vh] lg:py-[12vh] xl:py-[12vh] gap-10 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none"
+        className="relative z-10 w-full flex flex-col lg:flex-row xl:flex-row items-center lg:items-center xl:items-center px-[6vw] lg:px-[4vw] xl:px-[4vw] py-[0vh] pb-20 lg:pb-[2vh] xl:pb-[2vh] lg:py-[10vh] xl:py-[12vh] gap-10 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none"
       >
         {/* IMAGE LEFT */}
         <motion.div
@@ -193,7 +193,7 @@ export const FeatureSection: React.FC = () => {
               src="/assets/swimming.webp"
               alt="Swimming Pool"
               fill
-              className="object-contain drop-shadow-2xl scale-[1.35] lg:scale-auto xl:scale-auto"
+              className="object-contain drop-shadow-2xl scale-[1.35] lg:scale-[1.48] xl:scale-auto"
             />
           </div>
         </motion.div>
@@ -207,14 +207,14 @@ export const FeatureSection: React.FC = () => {
           className="relative w-full lg:w-[45%] xl:w-[45%] text-white container-ko-left-mai-karo-vi text-left lg:text-left xl:text-left order-1 lg:order-2 xl:order-2 flex flex-col justify-start z-10 lg:pl-[4vw] xl:pl-[4vw] pointer-events-auto"
         >
           {/* LILY (TOP DECORATION) */}
-          <div className="flex justify-start lily-top-decoration-main-container lg:justify-start xl:justify-start -ml-0 mb-6 lg:mb-[20vh] xl:mb-[20vh] lg:-ml-[2vw] xl:-ml-[2vw]">
+          <div className="flex justify-start lily-top-decoration-main-container lg:justify-start xl:justify-start -ml-0 mb-6 lg:mb-[10vh] xl:mb-[20vh] lg:-ml-[2vw] xl:-ml-[2vw]">
             <motion.div {...floatAnim}>
               <Image
                 src="/assets/with-flower-lily-image.webp"
                 alt="Lotus"
                 width={160}
                 height={160}
-                className="h-auto object-contain mb-[1.5rem] lg:mb-0 xl:mb-0 top-decoration-lily-gand opacity-90 w-[150px] lg:w-[120px] xl:w-[120px]"
+                className="h-auto object-contain mb-[1.5rem] lg:mb-0 xl:mb-0 top-decoration-lily-gand opacity-90 w-[150px] lg:mt-[-10vh] xl:mt-0 lg:w-[150px] xl:w-[120px]"
               />
             </motion.div>
           </div>
@@ -223,14 +223,14 @@ export const FeatureSection: React.FC = () => {
             {/* HEADING */}
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:-mt-15 xl:-mt-15 mb-8 lg:mb-8 xl:mb-8 lg:text-[3.2vw] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
+              className="font-overwave text-white text-[2rem] lg:-mt-15 xl:-mt-15 mb-8 lg:mb-8 xl:mb-8 lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
             >
               Healthy and <br className="hidden lg:block xl:block" /> Active
               Lifestyle
             </h2>
 
             {/* LIST */}
-            <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-none xl:list-none ml-5 lg:ml-0 xl:ml-0 space-y-0">
+            <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-disc xl:list-none ml-5 lg:ml-0 xl:ml-0 space-y-0">
               {[
                 "Jogging / Walking Path",
                 "Children’s play area",
