@@ -1,9 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Slider from "react-slick";
+
+// Slick carousel styles
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // --- Gallery Data ---
 const galleryPhotos = [
@@ -199,15 +204,37 @@ export const FloorPlanSection: React.FC = () => {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
 
-  // Auto-cycle for photos
-  useEffect(() => {
-    if (galleryTab === "photos") {
-      const timer = setInterval(() => {
-        setPhotoIndex((prev) => (prev + 1) % galleryPhotos.length);
-      }, 5000); // Increased to 6s for more delay
-      return () => clearInterval(timer);
-    }
-  }, [galleryTab]);
+  const photoSliderRef = useRef<Slider>(null);
+  const videoSliderRef = useRef<Slider>(null);
+
+  const photoSettings = {
+    dots: false,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: galleryTab === "photos",
+    autoplaySpeed: 5000,
+    fade: true,
+    cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
+    afterChange: (current: number) => setPhotoIndex(current),
+    arrows: false,
+    draggable: true,
+    swipe: true,
+  };
+
+  const videoSettings = {
+    dots: false,
+    infinite: galleryVideos.length > 1,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    afterChange: (current: number) => setVideoIndex(current),
+    arrows: false,
+    draggable: true,
+    swipe: true,
+  };
 
   return (
     <section className="relative pt-[0vh] lg:pt-[5vh] xl:pt-[10vh]  w-full flex flex-col justify-center px-[5vw]">
@@ -399,112 +426,49 @@ export const FloorPlanSection: React.FC = () => {
           </h2>
 
           <div className="relative w-full max-w-[90vw] lg:max-w-[65vw] xl:max-w-[65vw] glass-frame-container aspect-[15/9] lg:aspect-[2/1] xl:aspect-[2/1] flex justify-center items-center rounded-[20px] lg:rounded-[30px] xl:rounded-[30px] border border-white/40 bg-white/5 backdrop-blur-md shadow-2xl pointer-events-auto group">
-            {/* Gallery Wrapper (Handles overflow clipping for transitions) */}
-            <div className="absolute inset-0 overflow-hidden rounded-[20px] lg:rounded-[30px] xl:rounded-[30px]">
-              <AnimatePresence mode="wait">
-                {galleryTab === "photos" ? (
-                  <motion.div
-                    key={`photo-${photoIndex}`}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.2}
-                    onDragEnd={(_, info) => {
-                      const swipeThreshold = 50;
-                      const swipeVelocity = 500;
-                      if (
-                        info.offset.x < -swipeThreshold ||
-                        info.velocity.x < -swipeVelocity
-                      ) {
-                        setPhotoIndex(
-                          (prev) => (prev + 1) % galleryPhotos.length
-                        );
-                      } else if (
-                        info.offset.x > swipeThreshold ||
-                        info.velocity.x > swipeVelocity
-                      ) {
-                        setPhotoIndex(
-                          (prev) =>
-                            (prev + galleryPhotos.length - 1) %
-                            galleryPhotos.length
-                        );
-                      }
-                    }}
-                  >
-                    <Image
-                      src={galleryPhotos[photoIndex]}
-                      alt={`Gallery Photo ${photoIndex + 1}`}
-                      fill
-                      className="object-cover pointer-events-none"
-                      priority
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key={`video-${videoIndex}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="absolute inset-0 w-full h-full bg-black/20 cursor-grab active:cursor-grabbing"
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.2}
-                    onDragEnd={(_, info) => {
-                      if (galleryVideos.length <= 1) return;
-                      const swipeThreshold = 50;
-                      const swipeVelocity = 500;
-                      if (
-                        info.offset.x < -swipeThreshold ||
-                        info.velocity.x < -swipeVelocity
-                      ) {
-                        setVideoIndex(
-                          (prev) => (prev + 1) % galleryVideos.length
-                        );
-                      } else if (
-                        info.offset.x > swipeThreshold ||
-                        info.velocity.x > swipeVelocity
-                      ) {
-                        setVideoIndex(
-                          (prev) =>
-                            (prev + galleryVideos.length - 1) %
-                            galleryVideos.length
-                        );
-                      }
-                    }}
-                  >
-                    <video
-                      src={galleryVideos[videoIndex]}
-                      className="w-full h-full object-cover pointer-events-none"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    />
-                    {/* Video Overlay gradient for premium feel */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            {/* Gallery Wrapper (Using Slick Slider) */}
+            <div className="absolute inset-0 overflow-hidden rounded-[20px] lg:rounded-[30px] xl:rounded-[30px] gallery-slick-container">
+              {galleryTab === "photos" ? (
+                <Slider ref={photoSliderRef} {...photoSettings} className="h-full w-full">
+                  {galleryPhotos.map((photo, idx) => (
+                    <div key={`photo-${idx}`} className="relative w-full h-full outline-none">
+                      <Image
+                        src={photo}
+                        alt={`Gallery Photo ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                        priority={idx === 0}
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              ) : (
+                <Slider ref={videoSliderRef} {...videoSettings} className="h-full w-full">
+                  {galleryVideos.map((video, idx) => (
+                    <div key={`video-${idx}`} className="relative w-full h-full bg-black/20 outline-none">
+                      <video
+                        src={video}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      {/* Video Overlay gradient for premium feel */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                    </div>
+                  ))}
+                </Slider>
+              )}
             </div>
 
             {/* Navigation Arrows */}
             <button
               onClick={() => {
                 if (galleryTab === "photos") {
-                  setPhotoIndex(
-                    (prev) =>
-                      (prev + galleryPhotos.length - 1) % galleryPhotos.length
-                  );
+                  photoSliderRef.current?.slickPrev();
                 } else {
-                  setVideoIndex(
-                    (prev) =>
-                      (prev + galleryVideos.length - 1) % galleryVideos.length
-                  );
+                  videoSliderRef.current?.slickPrev();
                 }
               }}
               className="absolute left-4 z-40 p-2 rounded-full bg-black/30 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50"
@@ -514,9 +478,9 @@ export const FloorPlanSection: React.FC = () => {
             <button
               onClick={() => {
                 if (galleryTab === "photos") {
-                  setPhotoIndex((prev) => (prev + 1) % galleryPhotos.length);
+                  photoSliderRef.current?.slickNext();
                 } else {
-                  setVideoIndex((prev) => (prev + 1) % galleryVideos.length);
+                  videoSliderRef.current?.slickNext();
                 }
               }}
               className="absolute right-4 z-40 p-2 rounded-full bg-black/30 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50"
@@ -530,11 +494,13 @@ export const FloorPlanSection: React.FC = () => {
                 (_, idx) => (
                   <button
                     key={idx}
-                    onClick={() =>
-                      galleryTab === "photos"
-                        ? setPhotoIndex(idx)
-                        : setVideoIndex(idx)
-                    }
+                    onClick={() => {
+                      if (galleryTab === "photos") {
+                        photoSliderRef.current?.slickGoTo(idx);
+                      } else {
+                        videoSliderRef.current?.slickGoTo(idx);
+                      }
+                    }}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       (galleryTab === "photos" ? photoIndex : videoIndex) ===
                       idx
@@ -612,6 +578,22 @@ export const FloorPlanSection: React.FC = () => {
           }
           .animate-bounce-slow {
             animation: bounceSlow 4s ease-in-out infinite;
+          }
+          
+          /* Slick Slider Custom Styles */
+          .gallery-slick-container .slick-slider,
+          .gallery-slick-container .slick-list,
+          .gallery-slick-container .slick-track {
+            height: 100%;
+          }
+          .gallery-slick-container .slick-slide > div {
+            height: 100%;
+          }
+          .gallery-slick-container .slick-slide {
+            cursor: grab;
+          }
+          .gallery-slick-container .slick-slide:active {
+            cursor: grabbing;
           }
         `,
           }}
