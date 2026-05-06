@@ -252,7 +252,7 @@ export const FloorPlanSection: React.FC = () => {
         <div className="flex flex-col relative z-3 lg:flex-row xl:flex-row items-stretch justify-center w-full gap-8 lg:gap-[3vw] xl:gap-[3vw]">
           {/* LEFT PANE: Tabs and Image */}
           <div
-            className="w-full lg:w-[65%] xl:w-[70%] flex flex-col xl:h-[900px]"
+            className="w-full lg:w-[65%] xl:w-[65%] flex flex-col xl:h-[700px]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
@@ -299,7 +299,7 @@ export const FloorPlanSection: React.FC = () => {
             Floor Plans
           </h2>
           {/* RIGHT PANE: Lists and Area Table */}
-          <div className="w-full lg:w-[28%] xl:w-[25%] flex flex-row gap-[0vw]">
+          <div className="w-full lg:w-[28%] xl:w-[35%] flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
             <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[1.2rem] xl:gap-[2vh]">
               {activeData.roomsCol1.map((room, index) => {
