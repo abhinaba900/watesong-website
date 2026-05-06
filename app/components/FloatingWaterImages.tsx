@@ -97,7 +97,7 @@ function SwimmerClone({
 
       if (distanceMoved > 0.8) {
         // Drops stones more frequently with subtle, smooth wake
-        dropStone(currentX, currentY, 4, 30, true);
+        dropStone(currentX, currentY, 2, 8, true);
         lastX = currentX;
         lastY = currentY;
       }
@@ -285,8 +285,8 @@ export default function FloatingWaterImages({
           currentBuffer2[i] *= damping;
 
           let dataOffset = currentBuffer2[i] - currentBuffer1[i];
-          let xOffset = x + Math.floor(dataOffset);
-          let yOffset = y + Math.floor(dataOffset);
+          let xOffset = x + Math.floor(dataOffset * 2);
+          let yOffset = y + Math.floor(dataOffset * 2);
 
           if (xOffset < 0) xOffset = 0;
           if (xOffset >= width) xOffset = width - 1;
@@ -296,9 +296,9 @@ export default function FloatingWaterImages({
           const sourcePixel = (xOffset + yOffset * width) * 4;
           const targetPixel = i * 4;
 
-          let light = dataOffset * 0.5;
-          if (light < -15) light = -15;
-          if (light > 30) light = 30;
+          let light = dataOffset * 1.5;
+          if (light < -25) light = -25;
+          if (light > 60) light = 60;
 
           outputPixels[targetPixel] = Math.min(255, Math.max(0, bgPixels[sourcePixel] + light));
           outputPixels[targetPixel + 1] = Math.min(255, Math.max(0, bgPixels[sourcePixel + 1] + light));
@@ -326,7 +326,7 @@ export default function FloatingWaterImages({
       const buffer1 = buffer1Ref.current;
       const scale = scaleRef.current;
 
-      const radius = Math.max(1, Math.floor(baseRadius * scale));
+      const radius = Math.max(2, Math.floor(baseRadius * scale));
 
       let scaledX, scaledY;
 
@@ -367,7 +367,7 @@ export default function FloatingWaterImages({
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       // Softer, larger splash on click
-      dropStone(x, y, 12, 35, false);
+      dropStone(x, y, 15, 100, false);
     };
 
     window.addEventListener("click", handleGlobalClick, { passive: true });

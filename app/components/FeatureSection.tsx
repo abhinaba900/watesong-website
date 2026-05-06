@@ -64,7 +64,7 @@ const amenitiesData = [
   },
   {
     label: "Multi-purpose Hall",
-    image: "/assets/elevation.webp",
+    image: "/assets/Multipurpose hall.webp",
     scale: "scale-[1.35] lg:scale-[1.48]",
     fit: "object-cover",
   },
@@ -92,7 +92,6 @@ const featuresData = [
     label: "Anti-skid tiles on the balcony",
     image: "/assets/Anti-skid tiles on the balcony.webp",
   },
-  { label: "Seamless common areas", image: "/assets/just-40-residences.webp" },
   {
     label: "Provision for island kitchen",
     image: "/assets/Provision for island kitchen.webp",

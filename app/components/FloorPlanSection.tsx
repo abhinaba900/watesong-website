@@ -302,26 +302,49 @@ export const FloorPlanSection: React.FC = () => {
           <div className="w-full lg:w-[34%] xl:w-[34%] flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
             <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[1.2rem] xl:gap-[2vh]">
-              {activeData.roomsCol1.map((room) => (
-                <div
-                  key={room.id}
-                  className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
-                >
-                  <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1.1vw]">
-                    {room.id}. {room.name}
-                  </span>
-                  <br />
-                  <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.7rem] xl:text-[0.9vw] text-white/80">
-                    {room.dims}
-                  </span>
-                </div>
-              ))}
+              {activeData.roomsCol1.map((room, index) => {
+                const isLast = index === activeData.roomsCol1.length - 1;
+                return (
+                  <div
+                    key={room.id}
+                    className={`text-white leading-tight animate-[fadeIn_0.5s_ease-in-out] ${isLast ? "hidden lg:block" : ""}`}
+                  >
+                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1.1vw]">
+                      {room.id}. {room.name}
+                    </span>
+                    <br />
+                    <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.7rem] xl:text-[0.9vw] text-white/80">
+                      {room.dims}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Column 2 (Rooms 11+ and Area Box) */}
             <div className="flex flex-col justify-between">
               {/* Rooms List */}
               <div className="flex flex-col gap-[1.5vh] lg:gap-[1.2rem] xl:gap-[2vh]">
+                {/* Mobile only: item 10 from Col 1 */}
+                {activeData.roomsCol1.length > 0 && (
+                  <div className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out] block lg:hidden">
+                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1.1vw]">
+                      {activeData.roomsCol1[activeData.roomsCol1.length - 1].id}
+                      .{" "}
+                      {
+                        activeData.roomsCol1[activeData.roomsCol1.length - 1]
+                          .name
+                      }
+                    </span>
+                    <br />
+                    <span className="text-[0.8rem] md:text-[1.5vw] lg:text-[0.7rem] xl:text-[0.9vw] text-white/80">
+                      {
+                        activeData.roomsCol1[activeData.roomsCol1.length - 1]
+                          .dims
+                      }
+                    </span>
+                  </div>
+                )}
                 {activeData.roomsCol2.map((room) => (
                   <div
                     key={room.id}
@@ -429,9 +452,16 @@ export const FloorPlanSection: React.FC = () => {
             {/* Gallery Wrapper (Using Slick Slider) */}
             <div className="absolute inset-0 overflow-hidden rounded-[20px] lg:rounded-[30px] xl:rounded-[30px] gallery-slick-container">
               {galleryTab === "photos" ? (
-                <Slider ref={photoSliderRef} {...photoSettings} className="h-full w-full">
+                <Slider
+                  ref={photoSliderRef}
+                  {...photoSettings}
+                  className="h-full w-full"
+                >
                   {galleryPhotos.map((photo, idx) => (
-                    <div key={`photo-${idx}`} className="relative w-full h-full outline-none">
+                    <div
+                      key={`photo-${idx}`}
+                      className="relative w-full h-full outline-none"
+                    >
                       <Image
                         src={photo}
                         alt={`Gallery Photo ${idx + 1}`}
@@ -443,9 +473,16 @@ export const FloorPlanSection: React.FC = () => {
                   ))}
                 </Slider>
               ) : (
-                <Slider ref={videoSliderRef} {...videoSettings} className="h-full w-full">
+                <Slider
+                  ref={videoSliderRef}
+                  {...videoSettings}
+                  className="h-full w-full"
+                >
                   {galleryVideos.map((video, idx) => (
-                    <div key={`video-${idx}`} className="relative w-full h-full bg-black/20 outline-none">
+                    <div
+                      key={`video-${idx}`}
+                      className="relative w-full h-full bg-black/20 outline-none"
+                    >
                       <video
                         src={video}
                         className="w-full h-full object-cover"
@@ -508,7 +545,7 @@ export const FloorPlanSection: React.FC = () => {
                         : "bg-white/40 hover:bg-white/60"
                     }`}
                   />
-                )
+                ),
               )}
             </div>
 
@@ -525,11 +562,9 @@ export const FloorPlanSection: React.FC = () => {
           </div>
         </div>
 
+        <div id="location" className="mb-[-20vh]"></div>
         {/* ─── LOCATION MAP Section ─── */}
-        <div
-          className="relative z-20 mt-20 lg:mt-[10vh] xl:mt-[28vh] w-full flex flex-col items-center same-here-also-margin-top-is-high"
-          id="location"
-        >
+        <div className="relative z-20 mt-20 lg:mt-[10vh] xl:mt-[28vh] w-full flex flex-col items-center same-here-also-margin-top-is-high scroll-mt-32 lg:scroll-mt-[15vh] xl:scroll-mt-[15vh]">
           {/* Title Group */}
           <div className="mb-8 lg:mb-[6vh] xl:mb-[6vh] text-center lg:text-left xl:text-left w-full lg:px-[5vw] xl:px-[5vw]">
             <h2
