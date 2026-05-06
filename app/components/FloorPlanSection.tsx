@@ -243,7 +243,7 @@ export const FloorPlanSection: React.FC = () => {
         {/* Heading */}
         <h2
           style={{ letterSpacing: "-0.3px" }}
-          className="hidden lg:block xl:block font-overwave pl-10 floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[2.5rem] xl:text-[3.2vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
+          className="hidden lg:block xl:block font-overwave  floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[2.5rem] xl:text-[3.2vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
         >
           Floor Plans
         </h2>

@@ -97,10 +97,7 @@ const featuresData = [
     image: "/assets/Provision for island kitchen.webp",
   },
   { label: "No common walls", image: "/assets/No common walls.webp" },
-  {
-    label: "Breathtaking Aerial View",
-    image: "/360-tour/images/image_1.png",
-  },
+  
 ];
 
 export const FeatureSection: React.FC = () => {
