@@ -309,7 +309,7 @@ export const FloorPlanSection: React.FC = () => {
                     key={room.id}
                     className={`text-white leading-tight animate-[fadeIn_0.5s_ease-in-out] ${isLast ? "hidden lg:block" : ""}`}
                   >
-                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1vw]">
+                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1.1vw]">
                       {room.id}. {room.name}
                     </span>
                     <br />
@@ -350,7 +350,7 @@ export const FloorPlanSection: React.FC = () => {
                     key={room.id}
                     className="text-white leading-tight animate-[fadeIn_0.5s_ease-in-out]"
                   >
-                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1vw]">
+                    <span className="font-semibold text-[1rem] md:text-[1.8vw] lg:text-[1rem] xl:text-[1.1vw]">
                       {room.id}. {room.name}
                     </span>
                     <br />
