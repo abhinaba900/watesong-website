@@ -128,7 +128,8 @@ export const Navbar: React.FC = () => {
   }, []);
 
   // Hide Navbar on Tour pages
-  if (pathname === "/virtual-tour" || pathname === "/internal-tour") return null;
+  if (pathname === "/virtual-tour" || pathname === "/internal-tour")
+    return null;
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -136,7 +137,11 @@ export const Navbar: React.FC = () => {
     router.push("/");
     const navbarHeight = 20; // approximate fixed navbar height in px
     const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
-    window.scrollTo({ top, behavior: "smooth" });
+    if (id == "location") {
+      window.scrollTo({ top: top - 50, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top, behavior: "smooth" });
+    }
   };
 
   type NavigationItem = {
