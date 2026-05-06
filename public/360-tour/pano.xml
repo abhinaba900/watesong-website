@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tour start="node3" apprev="20986" appversion="7.1.8" hassounds="1">
+  <panorama id="node3">
+    <input leveltilesize="510" levelbias="0.400" levelingroll="0" leveltileurl="tiles/node3/cf_%c/l_%l/c_%x/tile_%y.jpg" levelbiashidpi="1.000" overlap="1" height="3600" levelingpitch="0" width="3600">
+      <level preload="0" predecode="0" height="3600" width="3600"/>
+      <level preload="0" predecode="0" height="1800" width="1800"/>
+      <level preload="0" predecode="0" height="900" width="900"/>
+      <level preload="1" predecode="1" height="450" width="450"/>
+      <preview strip="1" color="0x808080"/>
+    </input>
+    <view pannorth="92" fovmode="2">
+      <start pan="84.99" tilt="-10.47" projection="4" fov="102.93"/>
+      <flyin pan="90" tilt="-90" projection="9" fov="300"/>
+      <min pan="0" tilt="-90" fovpixel="10"/>
+      <max fovstereographic="330" fovfisheye="360" pan="360" tilt="90" scaletofit="1" fov="140"/>
+    </view>
+    <userdata nodeid="node3" description="" copyright="" datetime="02-11-2025 08:59 AM" altitude="921.48" info="" heading="92" longitude="77.73440838" title="Solace" author="" customnodeid="" source="" tags="IMAGES" comment="" latitude="12.97118218"/>
+    <hotspots wordwrap="1" height="20" smoothmovement="0" width="180">
+      <label textcolor="0x000000" backgroundalpha="1" bordercolor="0x000000" enabled="1" background="1" borderalpha="1" border="1" wordwrap="1" borderradius="1" height="20" textalpha="1" backgroundcolor="0xffffff" width="180"/>
+      <polystyle backgroundalpha="0.25098" bordercolor="0x0000ff" handcursor="1" mode="0" backgroundcolor="0x0000ff" borderalpha="1"/>
+      <polyhotspot id="Poly01" description="" target="_blank" title="" url="">
+        <polystring>-139.11/-69.36|-45.38/-69.96|-267.47/-66.1|-238.01/-61.26</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly02" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Nallur+Halli,+Vijayanagar,+KIADB+Export+Promotion+Industrial+Area,+Whitefield,+Bengaluru,+Karnataka+560066/@12.9728225,77.7280166,17z/data=!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae11f4fbf3d6c7:0x7b3172ac6fe24d35!2m2!1d77.724752!2d12.976632!3e0?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-198.1/4.07|-198.12/2.22|-196.15/2.22|-196.09/4.1</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly03" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-196.09/4.1|-196.15/2.2|-190.56/2.16|-190.56/3.99</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly04" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-199.97/-0.29|-199.92/-1.77|-204.63/-1.73|-204.71/-0.29</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly05" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Vydehi+Hospital,+%2382,+Nallurahalli+Main+Rd,+near+BMTC+18th+Depot,+Vijayanagar,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/@12.9730511,77.72591,16z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae11f668162e23:0x7a97ffa953dc9705!2m2!1d77.7294426!2d12.9757752!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!3e0?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-204.67/-0.29|-204.63/-1.74|-205.74/-1.77|-205.75/-0.32</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly06" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-226.56/3.48|-226.58/1.98|-231.57/1.98|-231.56/3.45</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly07" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Sri+Sathya+Sai+Super+Speciality+Hospital+Registration+Block,+4,+SAI+Baba+Hospital+Road,+KIADB+Export+Promotion+Industrial+Area,+Whitefield,+Bengaluru,+Karnataka+560066/@12.9783306,77.7204013,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae11f1a2a3a18b:0xa30c8617d745dbad!2m2!1d77.7297765!2d12.982001!3e9?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-231.55/3.45|-231.56/2.02|-232.62/2.02|-232.61/3.44</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly08" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-253.72/4.55|-253.74/3.06|-258.42/3.07|-258.43/4.57</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly09" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-40.4/3.3|-40.44/1.35|-46.74/1.35|-46.78/3.3</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly10" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Palm+Meadows+Resort,+Varthur+Main+Rd,+Phase+1,+Ramagondanahalli,+Whitefield,+Bengaluru,+Karnataka+560066/@12.9643998,77.726739,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae12095f5a49b3:0x8be0fe2bd0482218!2m2!1d77.7391409!2d12.9641583!3e9?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-46.78/3.3|-46.75/1.37|-48.24/1.36|-48.29/3.3</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly11" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/ITPL,+ITPL+Main+Rd,+Pattandur+Agrahara,+Kadugodi,+Bengaluru,+Karnataka+560066/@12.9796784,77.7284943,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae11c4f2593603:0xfd28e018220a1c4f!2m2!1d77.7373112!2d12.9872217!3e9?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-259.51/4.59|-258.44/4.6|-258.42/3.08|-259.49/3.05</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly13" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Manipal+Hospital+Whitefield,+ITPL+Main+Rd,+opposite+Prestige+Shantiniketan,+KIADB+Export+Promotion+Industrial+Area,+Whitefield,+Bengaluru,+Karnataka+560066/@12.9794329,77.7204013,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae11fc05fbc8a1:0xd4c8ae89f2811666!2m2!1d77.7287744!2d12.9880554!3e9?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-211.78/5.17|-211.08/5.18|-211.11/3.8|-211.78/3.79</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly12" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-211.09/3.79|-206.76/3.79|-206.75/5.18|-211.08/5.15</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly14" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-208.85/-5.28|-208.82/-7.07|-215.12/-7.03|-215.12/-5.29</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly15" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/place/Vydehi+School+of+Excellence/@12.9723351,77.728485,17z/data=!4m23!1m16!4m15!1m6!1m2!1s0x3bae1300770b5383:0x5448807beb79c99c!2sWatersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7344322!2d12.971766!1m6!1m2!1s0x3bae11f7cb5cea39:0x41cbbb778ffead56!2sVydehi+School+of+Excellence,+Vydehi+Campus+82,+Whitefield+Main+Road+EPIP+Zone,+Whitefield+Located,+82,+next+to+TESCO,+EPIP+Zone,+Whitefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7306449!2d12.9746124!3e0!3m5!1s0x3bae11f7cb5cea39:0x41cbbb778ffead56!8m2!3d12.9746124!4d77.7306449!16s%2Fg%2F1tc_2jks?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-216.27/-5.3|-215.11/-5.29|-215.12/-7.05|-216.28/-6.99</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly16" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-183.69/5.86|-183.71/4.26|-189.92/4.33|-189.85/5.94</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly17" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/place/Vydehi+School+of+Excellence/@12.982279,77.7065693,15z/data=!4m23!1m16!4m15!1m6!1m2!1s0x3bae1300770b5383:0x5448807beb79c99c!2sWatersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7344322!2d12.971766!1m6!1m2!1s0x3bae119f8dae1dd1:0x49ffa4590c784f51!2sDecathlon+Sports+-+Whitefield,+Ground+Floor,+ITPL+Main+Rd,+near+Phoenix+Market+City,+KEB+Colony,+Industrial+Area,+Krishnarajapuram,+Bengaluru,+Karnataka+560048!2m2!1d77.701081!2d12.9947894!3e0!3m5!1s0x3bae11f7cb5cea39:0x41cbbb778ffead56!8m2!3d12.9746124!4d77.7306449!16s%2Fg%2F1tc_2jks?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-190.83/5.95|-189.88/5.96|-189.93/4.36|-190.91/4.35</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly18" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-164.24/5.19|-164.26/3.47|-169.82/3.53|-169.82/5.23</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly19" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/place/Vydehi+School+of+Excellence/@12.970596,77.7280177,17z/data=!4m23!1m16!4m15!1m6!1m2!1s0x3bae1300770b5383:0x5448807beb79c99c!2sWatersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7344322!2d12.971766!1m6!1m2!1s0x3bae12194ccb6e21:0xf20c23826adf9ee8!2sHuawei,+37,+Divyasree+Technopark+Main+Rd,+Kundalahalli,+Brookefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7264169!2d12.96868!3e0!3m5!1s0x3bae11f7cb5cea39:0x41cbbb778ffead56!8m2!3d12.9746124!4d77.7306449!16s%2Fg%2F1tc_2jks?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-170.83/5.21|-169.78/5.19|-169.8/3.49|-170.81/3.47</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly20" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-151.65/5.19|-151.65/3.18|-157.78/3.19|-157.78/5.19</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly21" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/place/Vydehi+School+of+Excellence/@12.9704925,77.7273099,17z/data=!4m23!1m16!4m15!1m6!1m2!1s0x3bae1300770b5383:0x5448807beb79c99c!2sWatersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7344322!2d12.971766!1m6!1m2!1s0x3bae0df955555555:0x749cf716a431acb6!2sAccenture,+K.R.+Puram,+Divyasree+Technopark+SEZ,+36%2F2,+Hobli,+Kundalahalli,+Whitefield,+Karnataka+560037!2m2!1d77.7247781!2d12.9690284!3e0!3m5!1s0x3bae11f7cb5cea39:0x41cbbb778ffead56!8m2!3d12.9746124!4d77.7306449!16s%2Fg%2F1tc_2jks?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-158.94/5.19|-157.78/5.21|-157.8/3.21|-158.92/3.21</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly22" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-141.83/-0.54|-141.81/-2.28|-150.11/-2.23|-150.1/-0.54</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly23" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/place/Vydehi+School+of+Excellence/@12.9710422,77.731675,18z/data=!4m23!1m16!4m15!1m6!1m2!1s0x3bae1300770b5383:0x5448807beb79c99c!2sWatersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7344322!2d12.971766!1m6!1m2!1s0x3bae11bbed8d2ba1:0x5a8fda4c94386561!2sWebdrills+Academy+-+Data+Science,+Digital+Marketing+Classes,+5th+floor,+Nallurhalli+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066!2m2!1d77.7306965!2d12.9702496!3e0!3m5!1s0x3bae11f7cb5cea39:0x41cbbb778ffead56!8m2!3d12.9746124!4d77.7306449!16s%2Fg%2F1tc_2jks?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-151.25/-0.53|-150.09/-0.55|-150.11/-2.21|-151.31/-2.22</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly24" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-105.84/3.89|-105.82/2.35|-112.44/2.36|-112.44/3.92</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly25" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Siddhapura+Lake+East+Entrance,+XP5G%2BPMP,+Siddapura,+Whitefield,+Bengaluru,+Karnataka+560066/@12.9659304,77.7260075,16z/data=!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae13000d2db713:0xc929ff1f56539d07!2m2!1d77.7266907!2d12.9593383!3e0?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-113.37/3.92|-112.45/3.91|-112.46/2.34|-113.37/2.34</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly26" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-339.11/3.58|-339.11/1.86|-345.5/1.88|-345.5/3.56</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly27" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Inner+circle+municipal+park,+XPCX%2BQ95,+Dodsworth+Layout,+Whitefield,+Bengaluru,+Karnataka+560066/@12.9733924,77.7360521,16z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae0dff00cd739d:0x53ccbb1af69cdd3d!2m2!1d77.7484923!2d12.9718951!3e0?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-345.48/1.83|-346.45/1.91|-346.45/3.56|-345.5/3.56</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly28" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-298.26/4.36|-298.29/3.21|-303.63/3.21|-303.63/4.34</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly29" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Kadugodi+Tree+Park+Metro+towards+ITPL,+141%2F1B,+Upkar+Layout,+Whitefield,+Bengaluru,+Karnataka+560066/@12.979444,77.7303708,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae0f0004fda485:0x85eaf0a3dc1f3995!2m2!1d77.7467597!2d12.9852558!3e0?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-303.65/3.2|-304.32/3.2|-304.33/4.33|-303.65/4.35</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly30" description="" target="_blank" title="Tap to Open" url="">
+        <polystring>-269.28/4.7|-269.28/3.36|-275.4/3.35|-275.4/4.76</polystring>
+      </polyhotspot>
+      <polyhotspot id="Poly31" description="" target="_blank" title="View on Google Maps" url="https://www.google.com/maps/dir/Watersong,+1%2F1,+Itpl+Rd,+Nallurhalli,+Whitefield,+Bengaluru,+Karnataka+560066/Park+Square+Mall,+Park+square+Mall+,+ITPB+main+road+,+international+tech+park,+Whitefield+Main+Rd,+Bengaluru,+Karnataka+560066/@12.9796972,77.7289058,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae1300770b5383:0x5448807beb79c99c!2m2!1d77.7344322!2d12.971766!1m5!1m1!1s0x3bae11e51c88286d:0xec44a3e148618c4b!2m2!1d77.7362403!2d12.9869757!3e0?authuser=0&amp;entry=ttu&amp;g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D">
+        <polystring>-275.43/4.74|-276.45/4.72|-276.4/3.36|-275.35/3.39</polystring>
+      </polyhotspot>
+    </hotspots>
+    <media>
+      <image popbackmode="0" popoutscaling="100" tilt="3.090" clickmode="4" roty="39.300" hidepinned="1" id="Element16" rotz="-1.030" pan="166.730" stretch="0.500" height="834" handcursor="0" fov="7.110" rotx="1.490" width="1602">
+        <source url="media/UI designe_Nallurhalli Metro St 2.png"/>
+        <source url="media/summa.png"/>
+        <source url="media/UI designe_Nallurhalli Metro St 2-1.png"/>
+        <source url="media/UI designe_Nallurhalli Metro St 2-1.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-0.640" clickmode="0" roty="0.000" hidepinned="0" id="Element02" rotz="0.000" pan="-194.640" stretch="1.000" height="1784" handcursor="0" fov="9.000" rotx="0.000" width="950">
+        <source url="media/UI designe_Nallurhalli Metro St-1.png"/>
+        <source url="media/UI designe.png"/>
+        <source url="media/UI designe_Nallurhalli Metro St.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-1.008" clickmode="4" roty="2.382" hidepinned="0" id="Element17" rotz="0.038" pan="157.713" stretch="0.876" height="834" handcursor="1" fov="4.678" rotx="46.373" width="1602">
+        <source url="media/UI designe_Vydehi Hospital 2-1.png"/>
+        <source url="media/UI designe_Vydehi Hospital 2.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-3.920" clickmode="0" roty="0.000" hidepinned="0" id="Element01" rotz="0.000" pan="-202.780" stretch="1.000" height="1784" handcursor="0" fov="7.000" rotx="0.000" width="950">
+        <source url="media/UI designe_Vydehi Hospital-1.png"/>
+        <source url="media/UI designe_Vydehi Hospital.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="2.755" clickmode="1" roty="-27.740" hidepinned="1" id="Element18" rotz="0.436" pan="130.883" stretch="0.500" height="834" handcursor="0" fov="5.615" rotx="3.427" width="1602">
+        <source url="media/w_Sri Sathya Sai Hospital 2-1.png"/>
+        <source url="media/UI designe_Sri Sathya Sai Hospital 2.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-0.800" clickmode="0" roty="0.000" hidepinned="0" id="Element03" rotz="0.000" pan="-229.640" stretch="1.000" height="1784" handcursor="0" fov="7.000" rotx="0.000" width="950">
+        <source url="media/w_Sri Sathya Sai Hospital-1.png"/>
+        <source url="media/UI designe_Sri Sathya Sai Hospital.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="2.315" clickmode="4" roty="-33.766" hidepinned="1" id="Element05" rotz="0.436" pan="-43.694" stretch="0.500" height="834" handcursor="1" fov="7.684" rotx="-1.504" width="1602">
+        <source url="media/a_Palm Meadows Resort 2-1.png"/>
+        <source url="media/UI designe_Palm Meadows Resort 2.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-2.130" clickmode="0" roty="0.000" hidepinned="0" id="Element04" rotz="0.000" pan="-44.190" stretch="1.000" height="1784" handcursor="0" fov="9.000" rotx="0.000" width="950">
+        <source url="media/a_Palm Meadows Resort-1.png"/>
+        <source url="media/UI designe_Palm Meadows Resort.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="3.820" clickmode="4" roty="-34.543" hidepinned="1" id="Element19" rotz="0.283" pan="103.848" stretch="0.500" height="834" handcursor="1" fov="5.669" rotx="5.776" width="1602">
+        <source url="media/B_ITPL 2-1.png"/>
+        <source url="media/UI designe_ITPL 2.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-0.020" clickmode="0" roty="0.000" hidepinned="0" id="Element20" rotz="0.000" pan="-256.590" stretch="1.000" height="1784" handcursor="0" fov="7.000" rotx="0.000" width="950">
+        <source url="media/B_ITPL-1.png"/>
+        <source url="media/UI designe_ITPL.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="4.480" clickmode="1" roty="0.000" hidepinned="1" id="Element21" rotz="0.000" pan="-208.710" stretch="1.000" height="834" handcursor="1" fov="5.000" rotx="0.000" width="1602">
+        <source url="media/UI designe-12-1.png"/>
+        <source url="media/UI designe-12.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="1.200" clickmode="0" roty="0.000" hidepinned="0" id="Element06" rotz="0.000" pan="-209.360" stretch="1.000" height="1784" handcursor="0" fov="6.000" rotx="0.000" width="950">
+        <source url="media/UI designe-11-1.png"/>
+        <source url="media/UI designe-11.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-6.166" clickmode="4" roty="-24.782" hidepinned="1" id="Element22" rotz="0.444" pan="147.933" stretch="0.500" height="834" handcursor="1" fov="6.757" rotx="0.869" width="1602">
+        <source url="media/UI designe-16-1.png"/>
+        <source url="media/UI designe-16.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-11.160" clickmode="0" roty="0.000" hidepinned="0" id="Element08" rotz="0.000" pan="-212.840" stretch="1.000" height="1784" handcursor="0" fov="9.000" rotx="0.000" width="950">
+        <source url="media/UI designe-15-1.png"/>
+        <source url="media/UI designe_Vydehi Hospital.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="5.132" clickmode="1" roty="-6.522" hidepinned="1" id="Element23" rotz="-0.830" pan="173.177" stretch="0.579" height="834" handcursor="1" fov="6.186" rotx="33.275" width="1602">
+        <source url="media/UI designe-18-1.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="1.130" clickmode="0" roty="0.000" hidepinned="0" id="Element09" rotz="0.000" pan="-187.220" stretch="1.000" height="1784" handcursor="0" fov="7.700" rotx="0.000" width="950">
+        <source url="media/UI designe-17-1.png"/>
+        <source url="media/UI designe-17.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="4.331" clickmode="1" roty="-32.885" hidepinned="1" id="Element24" rotz="-0.505" pan="-167.091" stretch="0.500" height="834" handcursor="1" fov="6.500" rotx="2.890" width="1602">
+        <source url="media/UI designe-24-1.png"/>
+        <source url="media/UI designe-24.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-0.090" clickmode="0" roty="0.000" hidepinned="0" id="Element12" rotz="0.000" pan="-167.720" stretch="1.000" height="1784" handcursor="0" fov="8.000" rotx="0.000" width="950">
+        <source url="media/UI designe-23-1.png"/>
+        <source url="media/UI designe-23.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="4.210" clickmode="1" roty="-37.390" hidepinned="1" id="Element25" rotz="0.210" pan="-154.850" stretch="0.500" height="834" handcursor="1" fov="7.590" rotx="-0.290" width="1602">
+        <source url="media/UI designe-22-1.png"/>
+        <source url="media/UI designe-22.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-0.770" clickmode="0" roty="0.000" hidepinned="0" id="Element11" rotz="0.000" pan="-155.540" stretch="1.000" height="1784" handcursor="0" fov="9.000" rotx="0.000" width="950">
+        <source url="media/UI designe-21-1.png"/>
+        <source url="media/sasdasd.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-1.417" clickmode="1" roty="-6.632" hidepinned="1" id="Element26" rotz="-0.085" pan="-145.958" stretch="0.500" height="834" handcursor="1" fov="8.295" rotx="-34.972" width="1602">
+        <source url="media/UI designe-30-1.png"/>
+        <source url="media/UI designe-30.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-6.150" clickmode="0" roty="0.000" hidepinned="0" id="Element15" rotz="0.000" pan="-146.310" stretch="1.000" height="1784" handcursor="0" fov="11.000" rotx="0.000" width="1209">
+        <source url="media/UI designe-29-1.png"/>
+        <source url="media/UI designe-29.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="3.160" clickmode="1" roty="0.010" hidepinned="1" id="Element27" rotz="0.210" pan="-109.190" stretch="0.506" height="834" handcursor="1" fov="6.580" rotx="-30.450" width="1602">
+        <source url="media/UI designe-26.png"/>
+        <source url="media/UI designe-26-1.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-0.910" clickmode="0" roty="0.000" hidepinned="0" id="Element13" rotz="0.000" pan="-109.650" stretch="1.000" height="1784" handcursor="0" fov="9.200" rotx="0.000" width="1209">
+        <source url="media/UI designe-25-1.png"/>
+        <source url="media/UI designe-25.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="2.720" clickmode="1" roty="-8.500" hidepinned="1" id="Element28" rotz="-0.140" pan="17.660" stretch="0.500" height="834" handcursor="1" fov="6.440" rotx="-5.650" width="1602">
+        <source url="media/UI designe-14-1.png"/>
+        <source url="media/UI designe-14.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="-1.310" clickmode="0" roty="0.000" hidepinned="0" id="Element07" rotz="0.000" pan="-342.680" stretch="1.000" height="1784" handcursor="0" fov="8.000" rotx="0.000" width="950">
+        <source url="media/UI designe-13-1.png"/>
+        <source url="media/UI designe-13.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="3.780" clickmode="1" roty="-1.000" hidepinned="1" id="Element29" rotz="0.220" pan="59.020" stretch="0.500" height="834" handcursor="1" fov="5.340" rotx="-35.710" width="1602">
+        <source url="media/UI designe-20-1.png"/>
+        <source url="media/UI designe-20.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="0.970" clickmode="0" roty="0.000" hidepinned="0" id="Element10" rotz="0.000" pan="-301.300" stretch="1.000" height="1784" handcursor="0" fov="7.000" rotx="0.000" width="1179">
+        <source url="media/UI designe-19-1.png"/>
+        <source url="media/UI designe-19.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="4.070" clickmode="1" roty="6.250" hidepinned="1" id="Element30" rotz="-0.370" pan="87.670" stretch="0.500" height="834" handcursor="1" fov="6.230" rotx="32.020" width="1602">
+        <source url="media/UI designe-28-1.png"/>
+        <source url="media/UI designe-28.png"/>
+      </image>
+      <image popbackmode="0" popoutscaling="100" tilt="0.510" clickmode="0" roty="0.000" hidepinned="0" id="Element14" rotz="0.000" pan="-272.620" stretch="1.000" height="1784" handcursor="0" fov="8.000" rotx="0.000" width="1209">
+        <source url="media/UI designe-27-1.png"/>
+        <source url="media/UI designe-27.png"/>
+      </image>
+      <sound ambientlevel="1.000" tilt="13.070" mode="2" nodechangekeep="1" loop="4" id="Element31" pan="-277.530" level="1.000" tiltsize="49.000" startmutedmobile="0" field="90.000" pansize="36.000">
+        <source url="media/Wateraong Song MP3.mp3" mono="0"/>
+        <source url="media/Wateraong Song MP3.mp3" mono="0"/>
+      </sound>
+    </media>
+    <transition zoomafteroutfov="40" zoomafterinfov="140" enabled="1" type="crossdissolve" blendtime="1" zoomoutpause="1" blendcolor="0x000000" zoomin="0" zoomfov="40" softedge="0" delay="none" zoomout="0" zoomspeed="2"/>
+    <autorotate startloaded="0" nodefilter="" nodedelay="120.00" enabled="1" horizonfromdefview="1" speed="0.040" useanimation="0" noderandom="0" delay="2.00" returntohorizon="0.000"/>
+    <flyintransition enabled="1" speed="1.01"/>
+    <animation syncanimationwithvideo="1" clipsrandom="0" animsequence="Animation01" useinautorotation="0">
+      <clip nodeid="" transitiontype="0" nextclipnodeid="node3" length="599" cliptitle="Clip01" nextcliptitle="Clip01" animtitle="Animation01" animtype="0" nextclipstartview="-349.974/-80.1342/326.174/9">
+        <keyframe additionaltrackid="" value="-349.974" property="0" transitiontime="0" type="0" time="0" valuestring=""/>
+        <keyframe additionaltrackid="" value="-80.1342" property="1" transitiontime="0" type="0" time="0" valuestring=""/>
+        <keyframe additionaltrackid="" value="326.174" property="2" transitiontime="0" type="0" time="0" valuestring=""/>
+        <keyframe additionaltrackid="" value="9" property="3" transitiontime="100" type="0" time="0" valuestring=""/>
+        <keyframe bezieroutvalue="84.99" transitiontime="0" type="2" time="90" valuestring="" bezierintime="75" bezierinvalue="84.99" additionaltrackid="" value="84.99" bezierouttime="200.7" property="0"/>
+        <keyframe bezieroutvalue="-10.47" transitiontime="0" type="2" time="90" valuestring="" bezierintime="75" bezierinvalue="-10.47" additionaltrackid="" value="-10.47" bezierouttime="200.7" property="1"/>
+        <keyframe bezieroutvalue="102.93" transitiontime="0" type="2" time="90" valuestring="" bezierintime="75" bezierinvalue="102.93" additionaltrackid="" value="102.93" bezierouttime="200.7" property="2"/>
+        <keyframe bezieroutvalue="-316.148" transitiontime="0" type="2" time="419" valuestring="" bezierintime="308.3" bezierinvalue="-316.148" additionaltrackid="" value="-316.148" bezierouttime="10419" property="0"/>
+        <keyframe bezieroutvalue="-73.8518" transitiontime="0" type="2" time="419" valuestring="" bezierintime="308.3" bezierinvalue="-73.8518" additionaltrackid="" value="-73.8518" bezierouttime="10419" property="1"/>
+        <keyframe bezieroutvalue="127.806" transitiontime="0" type="2" time="419" valuestring="" bezierintime="308.3" bezierinvalue="127.806" additionaltrackid="" value="127.806" bezierouttime="10419" property="2"/>
+      </clip>
+    </animation>
+    <control rubberband="0" zoomcentercursor="1" speedwheel="1" contextfullscreen="1" hideabout="0" contextprojections="0" dblclickfullscreen="0" lockedkeyboard="0" lockedwheel="0" contextvr="1" lockedmouse="0" sensitivity="8" lockedkeyboardzoom="0" invertwheel="0" simulatemass="1" invertcontrol="1"/>
+  </panorama>
+  <panorama id="node19">
+    <input leveltilesize="510" levelbias="0.400" levelingroll="0" leveltileurl="tiles/node19/cf_%c/l_%l/c_%x/tile_%y.jpg" levelbiashidpi="1.000" overlap="1" height="3600" levelingpitch="0" width="3600">
+      <level preload="0" predecode="0" height="3600" width="3600"/>
+      <level preload="0" predecode="0" height="1800" width="1800"/>
+      <level preload="0" predecode="0" height="900" width="900"/>
+      <level preload="1" predecode="1" height="450" width="450"/>
+      <preview strip="1" color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="2">
+      <start pan="76.871" tilt="-2.33543" projection="4" fov="112.162"/>
+      <flyin pan="0" tilt="-90" projection="9" fov="170"/>
+      <min pan="0" tilt="-90" fovpixel="2"/>
+      <max fovstereographic="330" fovfisheye="360" pan="360" tilt="90" scaletofit="1" fov="140"/>
+    </view>
+    <userdata nodeid="node19" description="" copyright="" datetime="02-11-2025 06:25 AM" altitude="835.55" info="" heading="0" longitude="77.73445129" title="Effulgence" author="" customnodeid="" source="" tags="IMAGES" comment="" latitude="12.97165788"/>
+    <hotspots wordwrap="1" height="20" smoothmovement="0" width="180">
+      <label textcolor="0x000000" backgroundalpha="1" bordercolor="0x000000" enabled="1" background="1" borderalpha="1" border="1" wordwrap="1" borderradius="1" height="20" textalpha="1" backgroundcolor="0xffffff" width="180"/>
+      <polystyle backgroundalpha="0.25098" bordercolor="0x0000ff" handcursor="1" mode="0" backgroundcolor="0x0000ff" borderalpha="1"/>
+    </hotspots>
+    <media>
+      <lensflare id="Lensflare01" alpha="80.000" pan="-355.320" tilt="2.770" blinding="50.000" type="6" color="0xffffff"/>
+    </media>
+    <transition zoomafteroutfov="40" zoomafterinfov="140" enabled="1" type="crossdissolve" blendtime="1" zoomoutpause="1" blendcolor="0x000000" zoomin="0" zoomfov="40" softedge="0" delay="none" zoomout="0" zoomspeed="2"/>
+    <autorotate startloaded="0" nodefilter="" nodedelay="120.00" enabled="1" horizonfromdefview="1" speed="0.040" useanimation="0" noderandom="0" delay="2.00" returntohorizon="0.000"/>
+    <flyintransition enabled="1" speed="1.01"/>
+    <animation syncanimationwithvideo="1" clipsrandom="0" animsequence="Animation01" useinautorotation="0"/>
+    <control rubberband="0" zoomcentercursor="1" speedwheel="1" contextfullscreen="1" hideabout="0" contextprojections="0" dblclickfullscreen="0" lockedkeyboard="0" lockedwheel="0" contextvr="1" lockedmouse="0" sensitivity="8" lockedkeyboardzoom="0" invertwheel="0" simulatemass="1" invertcontrol="1"/>
+  </panorama>
+  <panorama id="node20">
+    <input leveltilesize="510" levelbias="0.400" levelingroll="0" leveltileurl="tiles/node20/cf_%c/l_%l/c_%x/tile_%y.jpg" levelbiashidpi="1.000" overlap="1" height="3600" levelingpitch="0" width="3600">
+      <level preload="0" predecode="0" height="3600" width="3600"/>
+      <level preload="0" predecode="0" height="1800" width="1800"/>
+      <level preload="0" predecode="0" height="900" width="900"/>
+      <level preload="1" predecode="1" height="450" width="450"/>
+      <preview strip="1" color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="2">
+      <start pan="95.4443" tilt="-12.1463" projection="4" fov="131.018"/>
+      <flyin pan="0" tilt="-90" projection="9" fov="170"/>
+      <min pan="0" tilt="-90" fovpixel="2"/>
+      <max fovstereographic="330" fovfisheye="360" pan="360" tilt="90" scaletofit="1" fov="140"/>
+    </view>
+    <userdata nodeid="node20" description="" copyright="" datetime="" info="" heading="0" longitude="" title="Noctilume" author="" customnodeid="" source="" tags="IMAGEWITHDI" comment="" latitude=""/>
+    <hotspots wordwrap="1" height="20" smoothmovement="0" width="180">
+      <label textcolor="0x000000" backgroundalpha="1" bordercolor="0x000000" enabled="1" background="1" borderalpha="1" border="1" wordwrap="1" borderradius="1" height="20" textalpha="1" backgroundcolor="0xffffff" width="180"/>
+      <polystyle backgroundalpha="0.25098" bordercolor="0x0000ff" handcursor="1" mode="0" backgroundcolor="0x0000ff" borderalpha="1"/>
+    </hotspots>
+    <media/>
+    <transition zoomafteroutfov="40" zoomafterinfov="140" enabled="1" type="crossdissolve" blendtime="1" zoomoutpause="1" blendcolor="0x000000" zoomin="0" zoomfov="40" softedge="0" delay="none" zoomout="0" zoomspeed="2"/>
+    <autorotate startloaded="0" nodefilter="" nodedelay="120.00" enabled="1" horizonfromdefview="1" speed="0.040" useanimation="0" noderandom="0" delay="2.00" returntohorizon="0.000"/>
+    <flyintransition enabled="1" speed="1.01"/>
+    <animation syncanimationwithvideo="1" clipsrandom="0" animsequence="Animation01" useinautorotation="0"/>
+    <control rubberband="0" zoomcentercursor="1" speedwheel="1" contextfullscreen="1" hideabout="0" contextprojections="0" dblclickfullscreen="0" lockedkeyboard="0" lockedwheel="0" contextvr="1" lockedmouse="0" sensitivity="8" lockedkeyboardzoom="0" invertwheel="0" simulatemass="1" invertcontrol="1"/>
+  </panorama>
+  <masternode>
+    <userdata description="" copyright="" tags="" comment="" title="" author=""/>
+    <animationsequences>
+      <sequence title="Animation01">
+        <sequenceelement nodeid="node3" startview="-349.974/-80.1342/326.174/9" index="0" cliptitle="Clip01"/>
+      </sequence>
+    </animationsequences>
+  </masternode>
+</tour>

@@ -2,9 +2,14 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export const DownloadBrochureButton = () => {
+  const pathname = usePathname();
   const [isAnimating, setIsAnimating] = useState(false);
+
+  // Hide on tour pages
+  if (pathname === "/virtual-tour" || pathname === "/internal-tour") return null;
 
   const triggerAnimation = () => {
     setIsAnimating(false);

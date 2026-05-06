@@ -1,8 +1,14 @@
 "use client";
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
 export const WhatsAppButton = () => {
+  const pathname = usePathname();
+  
+  // Hide on tour pages
+  if (pathname === "/virtual-tour" || pathname === "/internal-tour") return null;
+
   const phoneNumber = "+919036575333";
   // The wa.me link requires the number without the plus sign for best compatibility
   const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}`;

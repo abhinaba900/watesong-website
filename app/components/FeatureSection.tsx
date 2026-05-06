@@ -97,6 +97,10 @@ const featuresData = [
     image: "/assets/Provision for island kitchen.webp",
   },
   { label: "No common walls", image: "/assets/No common walls.webp" },
+  {
+    label: "Breathtaking Aerial View",
+    image: "/360-tour/images/image_1.png",
+  },
 ];
 
 export const FeatureSection: React.FC = () => {
@@ -111,7 +115,7 @@ export const FeatureSection: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentAmenityIndex((prev) => (prev + 1) % amenitiesData.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -120,7 +124,7 @@ export const FeatureSection: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentFeatureIndex((prev) => (prev + 1) % featuresData.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 

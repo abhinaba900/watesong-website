@@ -5,7 +5,8 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { TourSelectionModal } from "./TourSelectionModal";
 
 interface NavigationPillProps {
   label: string;
@@ -113,7 +114,9 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,6 +126,9 @@ export const Navbar: React.FC = () => {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Hide Navbar on Tour pages
+  if (pathname === "/virtual-tour" || pathname === "/internal-tour") return null;
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -147,7 +153,7 @@ export const Navbar: React.FC = () => {
     { label: "Location", action: () => scrollToSection("location") },
     { label: "About Us", action: () => scrollToSection("about") },
     { label: "Contact Us", action: () => scrollToSection("contact") },
-    { label: "360° View", action: () => scrollToSection("hero") },
+    { label: "360° View", action: () => setIsTourModalOpen(true) },
   ];
 
   return (
@@ -400,6 +406,11 @@ export const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <TourSelectionModal
+        isOpen={isTourModalOpen}
+        onClose={() => setIsTourModalOpen(false)}
+      />
     </>
   );
 };
