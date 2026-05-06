@@ -252,7 +252,7 @@ export const FloorPlanSection: React.FC = () => {
         <div className="flex flex-col relative z-3 lg:flex-row xl:flex-row items-stretch justify-center w-full gap-8 lg:gap-[3vw] xl:gap-[3vw]">
           {/* LEFT PANE: Tabs and Image */}
           <div
-            className="w-full lg:w-[55%] xl:w-[55%] flex flex-col xl:h-[700px]"
+            className="w-full lg:w-[65%] xl:w-[70%] flex flex-col xl:h-[900px]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
@@ -263,7 +263,7 @@ export const FloorPlanSection: React.FC = () => {
             }}
           >
             {/* Tabs Row */}
-            <div className="flex w-full border border-white/30 rounded-sm overflow-hidden mb-[3vh]">
+            <div className="flex w-full border border-white/30 rounded-sm overflow-hidden mb-[3vh] relative z-30">
               {(Object.keys(floorPlanData) as TabType[]).map((tab) => (
                 <button
                   key={tab}
@@ -281,14 +281,14 @@ export const FloorPlanSection: React.FC = () => {
             </div>
 
             {/* Floor Plan Image */}
-            <div className="flex-1 flex justify-center items-center w-full relative min-h-[40vh] md:min-h-[50vh] lg:min-h-[32vh] xl:min-h-[50vh] pb-[2vh] px-[2vw]">
+            <div className="flex-1 flex justify-center items-center w-full relative min-h-[40vh] md:min-h-[50vh] lg:min-h-[32vh] xl:min-h-[50vh] pb-0 px-0">
               <Image
                 key={activeTab}
                 src={activeData.image}
                 alt={`Floor plan ${activeTab}`}
                 width={800}
                 height={800}
-                className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out]"
+                className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out] lg:scale-[1.15] xl:scale-[1.2]"
               />
             </div>
           </div>
@@ -299,7 +299,7 @@ export const FloorPlanSection: React.FC = () => {
             Floor Plans
           </h2>
           {/* RIGHT PANE: Lists and Area Table */}
-          <div className="w-full lg:w-[34%] xl:w-[34%] flex flex-row gap-[0vw]">
+          <div className="w-full lg:w-[28%] xl:w-[25%] flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
             <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[1.2rem] xl:gap-[2vh]">
               {activeData.roomsCol1.map((room, index) => {

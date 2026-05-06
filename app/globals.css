@@ -82,7 +82,7 @@ body::-webkit-scrollbar {
   animation-play-state: paused !important;
 }
 
-@media (min-width: 1800px) and (max-width: 2200px) {
+@media (min-width: 1800px) and (max-width: 2250px) {
   .floating-lotus-buttom-left {
     left: 4vw !important;
     width: 9vw !important;
