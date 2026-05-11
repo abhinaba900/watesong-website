@@ -138,13 +138,19 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) =
 
               {/* Captcha */}
               <div className="pt-4 pb-4">
-                <div className="bg-white p-1 rounded shadow-inner">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                    onChange={handleCaptchaChange}
-                    theme="light"
-                  />
+                <div className="bg-white p-1 rounded shadow-inner min-h-[78px] flex items-center justify-center">
+                  {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? (
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      onChange={handleCaptchaChange}
+                      theme="light"
+                    />
+                  ) : (
+                    <div className="text-gray-400 text-[10px] italic p-2 text-center">
+                      ReCAPTCHA configuration missing
+                    </div>
+                  )}
                 </div>
               </div>
 

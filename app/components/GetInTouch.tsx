@@ -107,15 +107,22 @@ export const GetInTouch: React.FC = () => {
           {/* Bottom Row: Captcha and Button */}
           <div className="flex flex-col md:flex-row items-center justify-end gap-6 lg:gap-10 mt-4">
             <div className="flex justify-center md:justify-end w-full md:w-auto">
-              <div className="bg-transparent overflow-hidden scale-90 md:scale-100 origin-left">
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                  onChange={handleCaptchaChange}
-                  theme="light"
-                />
+              <div className="bg-transparent overflow-hidden scale-90 md:scale-100 origin-left min-h-[78px]">
+                {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ? (
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    onChange={handleCaptchaChange}
+                    theme="light"
+                  />
+                ) : (
+                  <div className="text-white/50 text-xs italic p-4 border border-white/10 rounded-lg">
+                    ReCAPTCHA configuration missing
+                  </div>
+                )}
               </div>
             </div>
+
 
             {/* Middle Spacer for Desktop */}
 
