@@ -62,10 +62,10 @@ export const TourSelectionModal: React.FC<TourSelectionModalProps> = ({
 
             <div className="p-8 md:p-12">
               <div className="text-center mb-10">
-                <h2 className="font-overwave text-3xl md:text-4xl text-white mb-4 tracking-wider uppercase">
+                <h2 className="font-bold text-3xl md:text-4xl text-white mb-4 tracking-wider uppercase">
                   Explore Watersong
                 </h2>
-                <p className="text-white/70 max-w-xl mx-auto">
+                <p className="text-white/70  mx-auto">
                   Choose your preferred perspective to experience the ultimate luxury lifestyle.
                 </p>
               </div>
