@@ -66,7 +66,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Configuration Cluster */}
           <div className="flex flex-col items-start z-10 lg:ml-4 xl:ml-4">
-            <p className="text-white text-[1.4rem] lg:text-[1.8rem] xl:text-[2vw] uppercase tracking-wide drop-shadow-md leading-tight font-medium">
+            <p className="text-white text-[1.2rem] lg:text-[1.4rem] xl:text-[1.5vw] uppercase tracking-wide drop-shadow-md leading-tight font-medium">
               3 BHK+ HOMES FROM
               <br />
               2565 TO 3495 SQ. FT.
