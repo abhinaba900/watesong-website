@@ -243,7 +243,7 @@ export const FloorPlanSection: React.FC = () => {
         {/* Heading */}
         <h2
           style={{ letterSpacing: "-0.3px" }}
-          className="hidden lg:block xl:block font-overwave  floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[2.5rem] xl:text-[3.2vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
+          className="hidden lg:block xl:block font-bold  floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[2.5rem] xl:text-[2.4vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
         >
           Floor Plans
         </h2>
@@ -294,7 +294,7 @@ export const FloorPlanSection: React.FC = () => {
           </div>
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="block lg:hidden xl:hidden font-overwave text-white  text-[2rem] lg:text-[2.2vw] xl:text-[2.2vw] text-left lg:text-left xl:text-left  tracking-widest drop-shadow-lg uppercase"
+            className="block lg:hidden xl:hidden font-bold text-white  text-[2rem] lg:text-[2.2vw] xl:text-[2.2vw] text-left lg:text-left xl:text-left  tracking-widest drop-shadow-lg uppercase"
           >
             Floor Plans
           </h2>
@@ -423,7 +423,7 @@ export const FloorPlanSection: React.FC = () => {
           {/* Title */}
           <h2
             style={{ letterSpacing: "-0.3px" }}
-            className="font-overwave mb-8 master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 xl:mb-8 lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider drop-shadow-lg text-center lg:text-left xl:text-left leading-none flex gap-4 select-none"
+            className="font-bold mb-8 master-plan-with-proper-spacing-update text-white text-[2rem] lg:mb-8 xl:mb-8 lg:text-[2.5rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-lg text-center lg:text-left xl:text-left leading-none flex gap-4 select-none"
           >
             <span
               onClick={() => setGalleryTab("photos")}
@@ -571,7 +571,7 @@ export const FloorPlanSection: React.FC = () => {
           <div className="mb-8 lg:mb-[6vh] xl:mb-[6vh] text-center lg:text-left xl:text-left w-full lg:px-[5vw] xl:px-[5vw]">
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] lg:opacity-100 xl:opacity-100 mb-[4px] lg:mb-[-1vh] xl:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase"
+              className="font-bold text-white text-[2rem] lg:text-[2.5rem] xl:text-[2.4vw] lg:opacity-100 xl:opacity-100 mb-[4px] lg:mb-[-1vh] xl:mb-[-1vh]  tracking-widest drop-shadow-lg uppercase"
             >
               Location Map
             </h2>

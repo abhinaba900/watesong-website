@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import SmoothScroll from "./components/SmoothScroll";
-import { Navbar } from "./components/Navbar";
-import { DownloadBrochureButton } from "./components/DownloadBrochureButton";
-import { WhatsAppButton } from "./components/WhatsAppButton";
+import { ClientLayout } from "./components/ClientLayout";
+
 // 1. The Viewport Lock (CRITICAL FOR MOBILE SAFARI)
 export const viewport: Viewport = {
   width: "device-width",
@@ -27,12 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased overflow-x-hidden" cz-shortcut-listen="true">
-        <Navbar />
-        <SmoothScroll>
+        <ClientLayout>
           {children}
-        </SmoothScroll>
-        <WhatsAppButton />
-        <DownloadBrochureButton />
+        </ClientLayout>
       </body>
     </html>
   );

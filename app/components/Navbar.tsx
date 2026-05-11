@@ -12,6 +12,7 @@ interface NavigationPillProps {
   label: string;
   action?: () => void;
   isHighlight?: boolean;
+  textColor?: string;
 }
 
 const TopGlare: React.FC = () => (
@@ -44,6 +45,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
   label,
   action,
   isHighlight = false,
+  textColor,
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -90,7 +92,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
         backgroundColor: isHighlight
           ? "rgba(201, 160, 80, 0.9)"
           : "rgba(177, 178, 176, 0.6)",
-        color: isHighlight ? "#113239" : "white",
+        color: textColor ? textColor : (isHighlight ? "#113239" : "white"),
         boxShadow: `
           -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
           -16px 12px 30px -12px rgba(0,0,0,1),
@@ -102,7 +104,8 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
       <TopGlare />
       <RightGlare />
       <span
-        className={`relative z-10 opacity-90 ${isHighlight ? "text-[#113239] font-bold" : "text-white font-medium"} pointer-events-none drop-shadow-md`}
+        className={`relative z-10 opacity-90 ${textColor ? "" : (isHighlight ? "text-[#113239] font-bold" : "text-white font-medium")} pointer-events-none drop-shadow-md`}
+        style={textColor ? { color: textColor, fontWeight: "bold" } : {}}
       >
         {label}
       </span>
@@ -148,6 +151,7 @@ export const Navbar: React.FC = () => {
     label: string;
     action?: () => void;
     isHighlight?: boolean;
+    textColor?: string;
   };
 
   const navigationItems: NavigationItem[] = [
@@ -158,7 +162,7 @@ export const Navbar: React.FC = () => {
     { label: "Location", action: () => scrollToSection("location") },
     { label: "About Us", action: () => scrollToSection("about") },
     { label: "Contact Us", action: () => scrollToSection("contact") },
-    { label: "360° View", action: () => setIsTourModalOpen(true) },
+    { label: "360° View", action: () => setIsTourModalOpen(true), textColor: "#e30022" },
   ];
 
   return (
@@ -185,6 +189,7 @@ export const Navbar: React.FC = () => {
                     key={index}
                     label={item.label}
                     isHighlight={item.isHighlight}
+                    textColor={item.textColor}
                     action={
                       item.action
                         ? () => {
@@ -239,6 +244,7 @@ export const Navbar: React.FC = () => {
               label={item.label}
               action={item.action}
               isHighlight={item.isHighlight}
+              textColor={item.textColor}
             />
           ))}
         </nav>

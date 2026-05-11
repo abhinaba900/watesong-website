@@ -86,7 +86,8 @@ body::-webkit-scrollbar {
   .floating-lotus-buttom-left {
     left: 4vw !important;
     width: 9vw !important;
-    bottom: -2vh !important;
+    bottom: -7vh !important;
+
   }
 
   .top-right-floating-lotus {
@@ -146,7 +147,6 @@ body::-webkit-scrollbar {
   }
 
   .floor-plans-heading-in-other-screen{
-    margin-left: 2rem !important;
     margin-bottom: 4rem !important;
   }
 

@@ -19,7 +19,7 @@ export const HeroSection: React.FC = () => {
         {/* LEFT */}
         <div className="flex flex-col  items-start lg:items-start xl:items-start w-full lg:w-[45vw] xl:w-[45vw] h-auto lg:h-full xl:h-full justify-center relative pointer-events-auto gap-4 lg:gap-0 xl:gap-0">
           {/* Top Logo Cluster */}
-          <div className="flex flex-col items-start lg:items-start xl:items-start ml-1 mb-6 lg:mb-[2vh] xl:mb-[10vh] mt-4 lg:mt-0 xl:mt-0 z-10">
+          <div className="flex flex-col items-start lg:items-start xl:items-start ml-1 mb-6 lg:mb-[2vh] xl:mb-[6vh] mt-4 lg:mt-0 xl:mt-0 z-10">
             {/* PRIVAE Logo */}
             <div className="mb-1 lg:mb-2 xl:mb-2 lg:ml-2 xl:ml-2">
               <Image
@@ -37,10 +37,10 @@ export const HeroSection: React.FC = () => {
               alt="Watersong"
               width={500}
               height={150}
-              className="w-[226px] lg:w-[30vw] xl:w-[24vw] object-contain mb-1 -lg:mb-16 -xl:mb-16"
+              className="w-[226px] lg:w-[30vw] xl:w-[24vw] object-contain mb-4 lg:mb-2 xl:mb-2"
             />
 
-            <h2 className="text-white font-semibold text-[20px] lg:text-[1.3rem] xl:text-[1.5vw] lg:mt-[-1rem] xl:mt-[-1.5rem] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md">
+            <h2 className="text-white font-semibold text-[20px] lg:text-[1.3rem] xl:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md -mt-10">
               Lakefront Residences
             </h2>
             <p className="text-white font-medium text-[14px] lg:text-[1rem] xl:text-[1.1vw] lg:ml-[1vw] xl:ml-[1vw] text-center lg:text-left drop-shadow-md opacity-90">
@@ -48,25 +48,34 @@ export const HeroSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Spacious Premium Cluster */}
-          <div className="flex flex-col items-start lg:items-start xl:items-start z-10 lg:ml-4 xl:ml-4 mx-0 lg:mx-0 xl:mx-0">
-            <h2
-              style={{ letterSpacing: "-0.3px" }}
-              className="font-overwave text-white text-[2rem] lg:text-[2.5rem] xl:text-[3.2vw] uppercase tracking-wider mb-2 lg:mb-4 xl:mb-4 drop-shadow-lg text-center lg:text-left xl:text-left leading-none"
-            >
-              Spacious Premium
-            </h2>
+          {/* Feature Highlight Cluster */}
+          <div className="flex flex-col items-start z-10 lg:ml-4 xl:ml-4 gap-4 lg:gap-[1.5vh] xl:gap-[2vh] mb-8 lg:mb-[2vh] xl:mb-[6vh]">
+            <h3 className="text-white text-[1.8rem] lg:text-[2.2rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
+              <span className="font-bold">ONE</span> NEIGHBOUR
+            </h3>
+            <h3 className="text-white text-[1.8rem] lg:text-[2.2rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
+              <span className="font-bold">ONE</span> LAKE LOUNGE
+            </h3>
+            <h3 className="text-white text-[1.8rem] lg:text-[2.2rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
+              <span className="font-bold">ONE</span> ELEVATOR ACCESS
+            </h3>
+            <p className="text-white/80 text-[12px] lg:text-[14px] xl:text-[0.9vw] mt-1 italic drop-shadow-sm">
+              *One private elevator access per home per floor.
+            </p>
+          </div>
 
-            <p className="text-white/90 text-[16px] lg:text-[1.2rem] xl:text-[1.4vw] text-left lg:text-left xl:text-left font-light leading-relaxed drop-shadow-md">
-              3 BHK+ Homes from
+          {/* Configuration Cluster */}
+          <div className="flex flex-col items-start z-10 lg:ml-4 xl:ml-4">
+            <p className="text-white text-[1.4rem] lg:text-[1.8rem] xl:text-[2vw] uppercase tracking-wide drop-shadow-md leading-tight font-medium">
+              3 BHK+ HOMES FROM
               <br />
-              2565 to 3495 sq. ft.
+              2565 TO 3495 SQ. FT.
             </p>
           </div>
         </div>
 
         {/* Floating Lotus Bottom Left - Overflows the section */}
-        <div className="absolute  top-[22rem] floating-lotus-buttom-left lg:top-[38rem] xl:top-auto lg:bottom-[-10vh] xl:bottom-[-10vh] left-[8vw] lg:left-[2vw] xl:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw] xl:w-[10vw]">
+        <div className="absolute  top-[22rem] floating-lotus-buttom-left lg:top-[38rem] xl:top-auto lg:bottom-[-10vh] xl:bottom-[-12vh] left-[8vw] lg:left-[2vw] xl:left-[2vw] z-20 pointer-events-none w-[20vw] lg:w-[10vw] xl:w-[10vw]">
           <Image
             src="/assets/with-flower-lily-image.webp"
             alt="Lotus Flower"

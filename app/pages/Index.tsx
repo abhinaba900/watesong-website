@@ -30,6 +30,11 @@ const Footer = dynamic(
   () => import("@/components/Footer").then((mod) => mod.Footer),
   { ssr: true },
 );
+const GetInTouch = dynamic(
+  () => import("@/components/GetInTouch").then((mod) => mod.GetInTouch),
+  { ssr: true },
+);
+
 
 
 const Index = () => {
@@ -60,6 +65,11 @@ const Index = () => {
         <section id="floor-plans" className="relative z-10">
           <FloorPlanSection />
         </section>
+
+        <section id="get-in-touch" className="relative z-10">
+          <GetInTouch />
+        </section>
+
 
         <section id="about" className="relative z-10">
           <CompanySection />
