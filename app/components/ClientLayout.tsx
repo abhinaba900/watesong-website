@@ -6,6 +6,7 @@ import { Navbar } from "./Navbar";
 import { DownloadBrochureButton } from "./DownloadBrochureButton";
 import { EnquiryNowButton } from "./EnquiryNowButton";
 import { WhatsAppButton } from "./WhatsAppButton";
+import { CallButton } from "./CallButton";
 import { EnquiryModal } from "./EnquiryModal";
 
 export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
@@ -18,6 +19,7 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
         {children}
       </SmoothScroll>
       <WhatsAppButton />
+      <CallButton />
       <DownloadBrochureButton />
       <EnquiryNowButton onClick={() => setIsEnquiryModalOpen(true)} />
       
