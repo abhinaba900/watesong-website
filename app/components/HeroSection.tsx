@@ -37,10 +37,10 @@ export const HeroSection: React.FC = () => {
               alt="Watersong"
               width={500}
               height={150}
-              className="w-[226px] lg:w-[30vw] xl:w-[24vw] object-contain mb-4 lg:mb-2 xl:mb-2"
+              className="w-[226px] lg:w-[28vw] xl:w-[24vw] object-contain mb-4 lg:mb-2 xl:mb-2"
             />
 
-            <h2 className="text-white font-semibold text-[20px] lg:text-[1.3rem] xl:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md -mt-10">
+            <h2 className="text-white font-semibold text-[20px] lg:text-[1.3rem] xl:text-[1.5vw] tracking-wide mb-1 lg:ml-[1vw] text-center lg:text-left drop-shadow-md -mt-10 lg:-mt-5 xl:-mt-10">
               Lakefront Residences
             </h2>
             <p className="text-white font-medium text-[14px] lg:text-[1rem] xl:text-[1.1vw] lg:ml-[1vw] xl:ml-[1vw] text-center lg:text-left drop-shadow-md opacity-90">
@@ -50,13 +50,13 @@ export const HeroSection: React.FC = () => {
 
           {/* Feature Highlight Cluster */}
           <div className="flex flex-col items-start z-10 lg:ml-4 xl:ml-4 gap-4 lg:gap-[1.5vh] xl:gap-[2vh] mb-8 lg:mb-[2vh] xl:mb-[6vh]">
-            <h3 className="text-white text-[1.8rem] lg:text-[2.2rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
+            <h3 className="text-white text-[1.8rem] lg:text-[1.8rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
               <span className="font-bold">ONE</span> NEIGHBOUR
             </h3>
-            <h3 className="text-white text-[1.8rem] lg:text-[2.2rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
+            <h3 className="text-white text-[1.8rem] lg:text-[1.8rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
               <span className="font-bold">ONE</span> LAKE LOUNGE
             </h3>
-            <h3 className="text-white text-[1.8rem] lg:text-[2.2rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
+            <h3 className="text-white text-[1.8rem] lg:text-[1.8rem] xl:text-[2.4vw] uppercase tracking-wider drop-shadow-md leading-none font-medium">
               <span className="font-bold">ONE</span> ELEVATOR ACCESS
             </h3>
             <p className="text-white/80 text-[12px] lg:text-[14px] xl:text-[0.9vw] mt-1 italic drop-shadow-sm">

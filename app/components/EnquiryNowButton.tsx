@@ -24,7 +24,7 @@ export const EnquiryNowButton = ({ onClick }: { onClick: () => void }) => {
   const isHighlight = true; // Use the gold highlight by default
 
   return (
-    <div className="fixed z-50 top-[26rem] right-0 flex items-center justify-center pointer-events-auto">
+    <div className="fixed z-50 top-[26rem] lg:top-[30rem] 2xl:top-[26rem] right-0 flex items-center justify-center pointer-events-auto">
       <motion.button
         onMouseEnter={triggerAnimation}
         onClick={handleEnquiry}
@@ -45,7 +45,7 @@ export const EnquiryNowButton = ({ onClick }: { onClick: () => void }) => {
           times: [0, 0.2, 0.5, 0.8, 1],
         }}
         className={`relative font-medium flex items-center justify-center overflow-hidden
-                    py-4 px-1.5 lg:py-[1vw] lg:px-[0.6vw] xl:py-[1vw] xl:px-[0.6vw]
+                    py-4 px-1.5 lg:py-6 lg:px-2 2xl:py-[1vw] 2xl:px-[0.6vw]
                     rounded-l-2xl select-none outline-none border-none cursor-pointer origin-right`}
         style={{
           backgroundColor: isHighlight
@@ -61,7 +61,7 @@ export const EnquiryNowButton = ({ onClick }: { onClick: () => void }) => {
         }}
       >
         <span
-          className={`relative z-10 opacity-90 ${isHighlight ? "text-[#113239] font-bold" : "text-white font-medium"} pointer-events-none drop-shadow-md tracking-wider text-sm lg:text-[0.65vw] xl:text-[0.65vw]`}
+          className={`relative z-10 opacity-90 ${isHighlight ? "text-[#113239] font-bold" : "text-white font-medium"} pointer-events-none drop-shadow-md tracking-wider text-sm lg:text-base 2xl:text-[0.65vw]`}
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
           Enquire Now

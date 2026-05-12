@@ -165,13 +165,13 @@ export const FeatureSection: React.FC = () => {
           <div className="flex flex-col items-start lg:items-start xl:items-start gap-0 lg:gap-2 xl:gap-2 mb-6 lg:mb-0 xl:mb-0 gap-to-heading-and-subheading-in-just-forty-recidence-section">
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-bold text-white text-[1.6rem] lg:text-[2rem] xl:text-[2.4vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
+              className="font-bold text-white text-[1.6rem] lg:text-[1.8rem] xl:text-[2.4vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
             >
               Just forty Residences.
             </h2>
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-bold text-white text-[2rem] lg:text-[2.5rem] xl:text-[2.4vw] uppercase leading-tight lg:leading-none xl:leading-none tracking-wider mb-2 lg:mb-4 xl:mb-4 drop-shadow-lg text-left lg:text-left xl:text-left "
+              className="font-bold text-white text-[2rem] lg:text-[1.8rem] xl:text-[2.4vw] uppercase leading-tight lg:leading-none xl:leading-none tracking-wider mb-2 lg:mb-4 xl:mb-4 drop-shadow-lg text-left lg:text-left xl:text-left "
             >
               Just two homes <br className="block lg:hidden xl:hidden" /> per
               floor.
@@ -234,7 +234,7 @@ export const FeatureSection: React.FC = () => {
 
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-bold text-white text-[2rem] lg:text-[2.5rem] xl:text-[2.4vw] uppercase tracking-wider mb-3 lg:mb-0 xl:mb-0 drop-shadow-lg text-left  lg:mx-0 xl:mx-0 lg:text-left xl:text-left leading-none"
+              className="font-bold text-white text-[2rem] lg:text-[1.8rem] xl:text-[2.4vw] uppercase tracking-wider mb-3 lg:mb-0 xl:mb-0 drop-shadow-lg text-left  lg:mx-0 xl:mx-0 lg:text-left xl:text-left leading-none"
             >
               A Lake Lounge
             </h2>
@@ -330,7 +330,7 @@ export const FeatureSection: React.FC = () => {
             {/* HEADING */}
             <h2
               style={{ letterSpacing: "-0.3px" }}
-              className="font-bold text-white text-[2rem] lg:-mt-15 xl:-mt-15 mb-8 lg:mb-8 xl:mb-8 lg:text-[2.5rem] xl:text-[2.4vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
+              className="font-bold text-white text-[2rem] lg:-mt-15 xl:-mt-15 mb-8 lg:mb-8 xl:mb-8 lg:text-[1.8rem] xl:text-[2.4vw] uppercase tracking-wider mb-2 lg:mb-0 xl:mb-0 drop-shadow-lg text-left lg:text-left xl:text-left leading-none"
             >
               Healthy and <br className="hidden lg:block xl:block" /> Active
               Lifestyle
