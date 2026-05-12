@@ -13,6 +13,7 @@ interface NavigationPillProps {
   action?: () => void;
   isHighlight?: boolean;
   textColor?: string;
+  bgColor?: string;
 }
 
 const TopGlare: React.FC = () => (
@@ -46,6 +47,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
   action,
   isHighlight = false,
   textColor,
+  bgColor,
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -89,7 +91,9 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
                  rounded-full select-none outline-none border-none
                  ${action ? "cursor-pointer" : "cursor-default drop-shadow-sm"}`}
       style={{
-        backgroundColor: isHighlight
+        backgroundColor: bgColor
+          ? bgColor
+          : isHighlight
           ? "rgba(201, 160, 80, 0.9)"
           : "rgba(177, 178, 176, 0.6)",
         color: textColor ? textColor : (isHighlight ? "#113239" : "white"),
@@ -152,6 +156,7 @@ export const Navbar: React.FC = () => {
     action?: () => void;
     isHighlight?: boolean;
     textColor?: string;
+    bgColor?: string;
   };
 
   const navigationItems: NavigationItem[] = [
@@ -162,7 +167,7 @@ export const Navbar: React.FC = () => {
     { label: "Location", action: () => scrollToSection("location") },
     { label: "About Us", action: () => scrollToSection("about") },
     { label: "Contact Us", action: () => scrollToSection("contact") },
-    { label: "360° View", action: () => setIsTourModalOpen(true), textColor: "#e30022" },
+    { label: "360° View", action: () => setIsTourModalOpen(true), bgColor: "#e30022", textColor: "white" },
   ];
 
   return (
@@ -190,6 +195,7 @@ export const Navbar: React.FC = () => {
                     label={item.label}
                     isHighlight={item.isHighlight}
                     textColor={item.textColor}
+                    bgColor={item.bgColor}
                     action={
                       item.action
                         ? () => {
@@ -245,6 +251,7 @@ export const Navbar: React.FC = () => {
               action={item.action}
               isHighlight={item.isHighlight}
               textColor={item.textColor}
+              bgColor={item.bgColor}
             />
           ))}
         </nav>

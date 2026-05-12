@@ -156,16 +156,16 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) =
 
               {/* Submit Button */}
               <motion.button
-                whileHover={{ scale: 1.05, backgroundColor: "#153d3b" }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, backgroundColor: "#153d3b" }}
+                whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
                 type="submit"
-                className={`w-fit min-w-[280px] bg-[#1a4d4a] text-white font-medium py-3.5 px-12 rounded-full transition-all tracking-[0.1em] text-[1.1rem] shadow-lg border border-[#4da1a9]/40 uppercase flex items-center justify-center ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`w-full bg-[#1a4d4a] text-white font-medium py-3.5 px-12 rounded-full transition-all tracking-[0.1em] text-[1.1rem] shadow-lg border border-[#4da1a9]/40 uppercase flex items-center justify-center ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 style={{
                   background: "linear-gradient(180deg, #1a4d4a 0%, #153d3b 100%)",
                 }}
               >
-                {isSubmitting ? "PROCESSING..." : "SCHEDULE YOUR VISIT"}
+                {isSubmitting ? "PROCESSING..." : "Book your visit"}
               </motion.button>
             </form>
           </motion.div>

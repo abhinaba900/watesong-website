@@ -108,22 +108,26 @@ export const FeatureSection: React.FC = () => {
   }, []);
 
   const [currentAmenityIndex, setCurrentAmenityIndex] = useState(0);
+  const [isHoveringAmenities, setIsHoveringAmenities] = useState(false);
 
   useEffect(() => {
+    if (isHoveringAmenities) return;
     const timer = setInterval(() => {
       setCurrentAmenityIndex((prev) => (prev + 1) % amenitiesData.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isHoveringAmenities]);
 
   const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+  const [isHoveringFeatures, setIsHoveringFeatures] = useState(false);
 
   useEffect(() => {
+    if (isHoveringFeatures) return;
     const timer = setInterval(() => {
       setCurrentFeatureIndex((prev) => (prev + 1) % featuresData.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isHoveringFeatures]);
 
   return (
     <section
@@ -333,11 +337,16 @@ export const FeatureSection: React.FC = () => {
             </h2>
 
             {/* LIST */}
-            <ul className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-disc need-to-add-bullet-here xl:list-none ml-5 lg:ml-5 xl:ml-0 space-y-0">
+            <ul 
+              className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-disc need-to-add-bullet-here xl:list-none ml-5 lg:ml-5 xl:ml-0 space-y-0"
+              onMouseEnter={() => setIsHoveringAmenities(true)}
+              onMouseLeave={() => setIsHoveringAmenities(false)}
+            >
               {amenitiesData.map((item, index) => (
                 <li
                   key={item.label}
                   onClick={() => setCurrentAmenityIndex(index)}
+                  onMouseEnter={() => setCurrentAmenityIndex(index)}
                   className={`transition-all duration-500 cursor-pointer ${
                     index === currentAmenityIndex
                       ? "text-white opacity-100 font-bold scale-105 origin-left"
@@ -422,11 +431,16 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* LIST */}
-          <ul className="text-white/85 chikkad-madi-gandu font-medium leading-[1.3] lg:leading-[2] xl:leading-[2] text-[16px] lg:text-[1rem] xl:text-[1rem] mx-0 lg:mx-0 xl:mx-0 text-left list-disc space-y-1 relative z-10 mt-[0vh] lg:mt-auto xl:mt-auto">
+          <ul 
+            className="text-white/85 chikkad-madi-gandu font-medium leading-[1.3] lg:leading-[2] xl:leading-[2] text-[16px] lg:text-[1rem] xl:text-[1rem] mx-0 lg:mx-0 xl:mx-0 text-left list-disc space-y-1 relative z-10 mt-[0vh] lg:mt-auto xl:mt-auto"
+            onMouseEnter={() => setIsHoveringFeatures(true)}
+            onMouseLeave={() => setIsHoveringFeatures(false)}
+          >
             {featuresData.map((item, index) => (
               <li
                 key={item.label}
                 onClick={() => setCurrentFeatureIndex(index)}
+                onMouseEnter={() => setCurrentFeatureIndex(index)}
                 className={`transition-all duration-500 cursor-pointer ${
                   index === currentFeatureIndex
                     ? "text-white opacity-100 font-bold scale-105 origin-left"

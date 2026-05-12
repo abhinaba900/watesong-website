@@ -240,19 +240,15 @@ export const FloorPlanSection: React.FC = () => {
     <section className="relative pt-[0vh] lg:pt-[5vh] xl:pt-[10vh]  w-full flex flex-col justify-center px-[5vw]">
       {/* ─── Main Content (Layered over background) ─── */}
       <div className="relative z-20 pointer-events-auto">
-        {/* Heading */}
-        <h2
-          style={{ letterSpacing: "-0.3px" }}
-          className="hidden lg:block xl:block font-bold  floor-plans-heading-in-other-screen text-white text-[7vw] lg:text-[2.5rem] xl:text-[2.4vw] text-center lg:text-left xl:text-left mb-[2vh] lg:mb-8 xl:mb-8 tracking-widest drop-shadow-lg uppercase"
-        >
-          Floor Plans
-        </h2>
+        {/* Heading moved to right pane */}
 
         {/* Main Content Grid */}
         <div className="flex flex-col relative z-3 lg:flex-row xl:flex-row items-stretch justify-center w-full gap-8 lg:gap-[3vw] xl:gap-[3vw]">
-          {/* LEFT PANE: Tabs and Image */}
-          <div
-            className="w-full lg:w-[65%] xl:w-[65%] flex flex-col xl:h-[700px]"
+          {/* LEFT COLUMN WRAPPER */}
+          <div className="w-full lg:w-[65%] xl:w-[65%] flex flex-col gap-4 lg:gap-6 xl:gap-8">
+            {/* LEFT PANE: Tabs and Image */}
+            <div
+              className="w-full flex flex-col xl:h-[700px]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(199, 199, 199, 0.5) 29.43%, rgba(153, 153, 153, 0.2) 100%)",
@@ -291,15 +287,46 @@ export const FloorPlanSection: React.FC = () => {
                 className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out] lg:scale-[1.15] xl:scale-[1.2]"
               />
             </div>
+
+            </div>
+
+            {/* Area Table (Outside and Below Left Pane) */}
+            <div className="hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] lg:gap-y-[0.4rem] xl:gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+              {/* Table Rows */}
+              {[
+                { label: "SALEABLE AREA", value: activeData.areas.saleable },
+                { label: "RERA CARPET AREA", value: activeData.areas.rera },
+                {
+                  label: "EXCLUSIVE BALCONY",
+                  value: activeData.areas.balcony,
+                },
+                { label: "TOTAL AREA", value: activeData.areas.total },
+              ].map((row, idx) => (
+                <React.Fragment key={idx}>
+                  <div className="bg-white/40 flex items-center justify-start px-[1.5vw] py-[1.5vh]">
+                    <span className="text-black font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] leading-tight">
+                      {row.label}
+                    </span>
+                  </div>
+                  <div className="bg-white/40 flex items-center justify-center p-[1.5vh]">
+                    <span className="text-black font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] whitespace-nowrap">
+                      {row.value}
+                    </span>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
           </div>
-          <h2
-            style={{ letterSpacing: "-0.3px" }}
-            className="block lg:hidden xl:hidden font-bold text-white  text-[2rem] lg:text-[2.2vw] xl:text-[2.2vw] text-left lg:text-left xl:text-left  tracking-widest drop-shadow-lg uppercase"
-          >
-            Floor Plans
-          </h2>
-          {/* RIGHT PANE: Lists and Area Table */}
-          <div className="w-full lg:w-[28%] xl:w-[35%] flex flex-row gap-[0vw]">
+          {/* RIGHT COLUMN WRAPPER */}
+          <div className="w-full lg:w-[28%] xl:w-[35%] flex flex-col gap-[2vh] lg:gap-6 xl:gap-8">
+            <h2
+              style={{ letterSpacing: "-0.3px" }}
+              className="font-bold text-white text-[2rem] lg:text-[2.5rem] xl:text-[2.4vw] text-left lg:text-left xl:text-left tracking-widest drop-shadow-lg uppercase mb-2 lg:mb-0 xl:mb-0"
+            >
+              Floor Plans
+            </h2>
+            {/* RIGHT PANE: Lists and Area Table */}
+            <div className="w-full flex flex-row gap-[0vw]">
             {/* Column 1 (Rooms 1-10) */}
             <div className="w-1/2 flex flex-col gap-[1.5vh] lg:gap-[1.2rem] xl:gap-[2vh]">
               {activeData.roomsCol1.map((room, index) => {
@@ -361,33 +388,9 @@ export const FloorPlanSection: React.FC = () => {
                 ))}
               </div>
 
-              {/* Area Table (Bottom Right) */}
-              <div className="mt-[2vh] lg:mt-2 xl:mt-[2vh] hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] lg:gap-y-[0.4rem] xl:gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
-                {/* Table Rows */}
-                {[
-                  { label: "SALEABLE AREA", value: activeData.areas.saleable },
-                  { label: "RERA CARPET AREA", value: activeData.areas.rera },
-                  {
-                    label: "EXCLUSIVE BALCONY",
-                    value: activeData.areas.balcony,
-                  },
-                  { label: "TOTAL AREA", value: activeData.areas.total },
-                ].map((row, idx) => (
-                  <React.Fragment key={idx}>
-                    <div className="bg-white/40 flex items-center justify-start px-[1.5vw] py-[1vh]">
-                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] xl:text-[0.8vw] leading-tight">
-                        {row.label}
-                      </span>
-                    </div>
-                    <div className="bg-white/40 flex items-center justify-center p-[1vh]">
-                      <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] xl:text-[0.8vw] whitespace-nowrap">
-                        {row.value}
-                      </span>
-                    </div>
-                  </React.Fragment>
-                ))}
-              </div>
+              {/* Area Table moved to left pane */}
             </div>
+          </div>
           </div>
 
           {/* Area Table (Bottom Right) */}

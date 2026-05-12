@@ -60,7 +60,7 @@ const SocialIconButton: React.FC<{
 };
 
 export const ContactSection: React.FC = () => {
-  const [phoneNumber] = useState("7026112224");
+  const [phoneNumber] = useState("+91 70261-12224");
 
   const socialIcons = [
     {
@@ -82,7 +82,7 @@ export const ContactSection: React.FC = () => {
   ];
 
   const handleCallClick = () => {
-    window.location.href = `tel:${phoneNumber.replace(/\s/g, "")}`;
+    window.location.href = `tel:${phoneNumber.replace(/[\s-]/g, "")}`;
   };
 
   return (

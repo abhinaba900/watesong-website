@@ -64,7 +64,7 @@ export const EnquiryNowButton = ({ onClick }: { onClick: () => void }) => {
           className={`relative z-10 opacity-90 ${isHighlight ? "text-[#113239] font-bold" : "text-white font-medium"} pointer-events-none drop-shadow-md tracking-wider text-sm lg:text-[0.65vw] xl:text-[0.65vw]`}
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
-          Enquiry Now
+          Enquire Now
         </span>
       </motion.button>
     </div>
