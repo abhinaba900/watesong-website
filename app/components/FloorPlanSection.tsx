@@ -291,29 +291,25 @@ export const FloorPlanSection: React.FC = () => {
             </div>
 
             {/* Area Table (Outside and Below Left Pane) */}
-            <div className="hidden lg:grid xl:grid grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] lg:gap-y-[0.4rem] xl:gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+            <div className="hidden lg:grid xl:grid grid-cols-2 w-full gap-y-[0.8vh] lg:gap-y-[0.4rem] xl:gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
               {/* Table Rows */}
               {[
                 { label: "SALEABLE AREA", value: activeData.areas.saleable },
-                { label: "RERA CARPET AREA", value: activeData.areas.rera },
                 {
                   label: "EXCLUSIVE BALCONY",
                   value: activeData.areas.balcony,
                 },
+                { label: "RERA CARPET AREA", value: activeData.areas.rera },
                 { label: "TOTAL AREA", value: activeData.areas.total },
               ].map((row, idx) => (
-                <React.Fragment key={idx}>
-                  <div className="bg-white/40 flex items-center justify-start px-[1.5vw] py-[1.5vh]">
-                    <span className="text-black font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] leading-tight">
-                      {row.label}
-                    </span>
-                  </div>
-                  <div className="bg-white/40 flex items-center justify-center p-[1.5vh]">
-                    <span className="text-black font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] whitespace-nowrap">
-                      {row.value}
-                    </span>
-                  </div>
-                </React.Fragment>
+                <div key={idx} className="bg-white/40 flex items-center justify-between px-[1.5vw] py-[1.5vh]">
+                  <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] leading-tight">
+                    {row.label}
+                  </span>
+                  <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] whitespace-nowrap">
+                    {row.value}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
@@ -394,29 +390,25 @@ export const FloorPlanSection: React.FC = () => {
           </div>
 
           {/* Area Table (Bottom Right) */}
-          <div className="mt-[2vh] grid lg:hidden xl:hidden grid-cols-[1.5fr_1fr] w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
+          <div className="mt-[2vh] grid lg:hidden xl:hidden grid-cols-1 md:grid-cols-2 w-full gap-y-[0.8vh] gap-x-[0.5vw] animate-[fadeIn_0.5s_ease-in-out]">
             {/* Table Rows */}
             {[
               { label: "SALEABLE AREA", value: activeData.areas.saleable },
-              { label: "RERA CARPET AREA", value: activeData.areas.rera },
               {
                 label: "EXCLUSIVE BALCONY",
                 value: activeData.areas.balcony,
               },
+              { label: "RERA CARPET AREA", value: activeData.areas.rera },
               { label: "TOTAL AREA", value: activeData.areas.total },
             ].map((row, idx) => (
-              <React.Fragment key={idx}>
-                <div className="bg-white/40 flex items-center justify-start px-[1.5vw] py-[1vh]">
-                  <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] leading-tight">
-                    {row.label}
-                  </span>
-                </div>
-                <div className="bg-white/40 flex items-center justify-center p-[1vh]">
-                  <span className="text-black  font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] whitespace-nowrap">
-                    {row.value}
-                  </span>
-                </div>
-              </React.Fragment>
+              <div key={idx} className="bg-white/40 flex items-center justify-between px-[3vw] py-[1.5vh] md:px-[1.5vw]">
+                <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] leading-tight">
+                  {row.label}
+                </span>
+                <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[0.8vw] whitespace-nowrap">
+                  {row.value}
+                </span>
+              </div>
             ))}
           </div>
         </div>
