@@ -65,19 +65,19 @@ export const ContactSection: React.FC = () => {
   const socialIcons = [
     {
       icon: "/assets/instagram-icon.webp",
-      href: "https://www.instagram.com/habitatventures",
+      href: "https://www.instagram.com/privae_realty/",
     },
     {
       icon: "/assets/facebook-icon.webp",
-      href: "https://www.facebook.com/habitatventures",
+      href: "https://www.facebook.com/profile.php?id=61588515953675",
     },
     {
       icon: "/assets/linkedin-icon.webp",
-      href: "https://www.linkedin.com/company/habitatventures",
+      href: "https://www.linkedin.com/company/privae-reality-llp/",
     },
     {
       icon: "/assets/twtter-icon.webp",
-      href: "#",
+      href: "https://x.com/PrivaeRealty",
     },
   ];
 
