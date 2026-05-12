@@ -362,7 +362,7 @@ export const FeatureSection: React.FC = () => {
       </div>
 
       {/* ── BLOCK 3 ─ Features So Thoughtful ───────────────────────────── */}
-      <div className="relative iska-margin-and-sab-kam-karneka-gandu-container-class z-10 w-full flex flex-col flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-end xl:items-end px-[6vw] lg:px-[8vw] xl:px-[8vw] pb-30 lg:pb-[2vh] xl:pb-[2vh] py-[4vh] lg:py-[2vh] xl:py-[2vh] pt-0 lg:pt-[15vh] xl:pt-[20vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
+      <div className="relative iska-margin-and-sab-kam-karneka-gandu-container-class z-10 w-full flex flex-col flex-col-reverse lg:flex-row xl:flex-row items-center lg:items-end xl:items-end px-[6vw] lg:px-[8vw] xl:px-[8vw] pb-30 lg:pb-[4vh] xl:pb-[2vh] py-[4vh] lg:py-[2vh] xl:py-[2vh] pt-0 lg:pt-[15vh] xl:pt-[20vh] gap-8 lg:gap-[4vw] xl:gap-[4vw] pointer-events-none">
         {/* IMAGE LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}

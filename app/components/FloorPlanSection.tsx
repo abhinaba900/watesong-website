@@ -303,10 +303,10 @@ export const FloorPlanSection: React.FC = () => {
                 { label: "TOTAL AREA", value: activeData.areas.total },
               ].map((row, idx) => (
                 <div key={idx} className="bg-white/40 flex items-center justify-between px-[1.5vw] py-[1.5vh]">
-                  <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] leading-tight">
+                  <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1.5vw] xl:text-[1vw] leading-tight">
                     {row.label}
                   </span>
-                  <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw] whitespace-nowrap">
+                  <span className="text-white font-semibold text-[1rem] md:text-[1.5vw] lg:text-[1.5vw] xl:text-[1vw] whitespace-nowrap">
                     {row.value}
                   </span>
                 </div>

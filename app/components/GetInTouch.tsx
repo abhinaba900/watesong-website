@@ -61,7 +61,7 @@ export const GetInTouch: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full py-[8vh] px-[5vw] z-10 font-montserrat ">
+    <section className="relative w-full py-[8vh] lg:pb-0 px-[5vw] z-10 font-montserrat ">
       <div className="max-w-[1400px] mx-auto">
         <h2 className="font-bold text-white text-[2rem] mb-6 lg:text-[1.8rem] xl:text-[2.4vw] lg:opacity-100 xl:opacity-100 mb-[4px] lg:mb-[2vh] xl:mb-[4vh]  tracking-widest drop-shadow-lg uppercase">
           GET IN TOUCH
