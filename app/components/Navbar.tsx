@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { TourSelectionModal } from "./TourSelectionModal";
+import { useAudio } from "../context/AudioContext";
+
 
 interface NavigationPillProps {
   label: string;
@@ -118,8 +120,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
 };
 
 const MusicButton: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const { isPlaying, togglePlay } = useAudio();
   const [isAnimating, setIsAnimating] = useState(false);
 
   const triggerAnimation = () => {
@@ -127,85 +128,72 @@ const MusicButton: React.FC = () => {
     setTimeout(() => setIsAnimating(true), 10);
   };
 
-  const togglePlay = () => {
+  const handleToggle = () => {
     triggerAnimation();
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
+    togglePlay();
   };
 
   return (
-    <>
-      <audio
-        ref={audioRef}
-        src="/assets/Water and Soothing Meditation.mp3.mpeg"
-        loop
-      />
-      <motion.button
-        onMouseEnter={triggerAnimation}
-        onClick={togglePlay}
-        animate={
-          isAnimating
-            ? {
-                scale: [1, 1.1, 0.95, 1.05, 1],
-                scaleX: [1, 1.15, 0.85, 1.05, 1],
-                scaleY: [1, 0.85, 1.15, 0.95, 1],
-              }
-            : {
-                scale: 1,
-                scaleX: 1,
-                scaleY: 1,
-              }
-        }
-        whileTap={{ scale: 0.9 }}
-        onAnimationComplete={() => setIsAnimating(false)}
-        transition={{
-          duration: 0.5,
-          ease: "easeInOut",
-          times: [0, 0.2, 0.5, 0.8, 1],
-        }}
-        className={`relative flex items-center justify-center overflow-hidden
-                   w-12 h-12 lg:w-[2.5vh] lg:h-[2.5vh] xl:w-[4.5vh] xl:h-[4.5vh]
-                   rounded-full select-none outline-none border-none cursor-pointer drop-shadow-sm`}
-        style={{
-          backgroundColor: isPlaying ? "white" : "rgba(177, 178, 176, 0.6)",
-          boxShadow: `
-            -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
-            -16px 12px 30px -12px rgba(0,0,0,1),
-            0px 4px 4px 0px rgba(0,0,0,0.25),
-            0px 4px 4px 0px rgba(0,0,0,0.4) inset
-          `,
-        }}
-        title={isPlaying ? "Pause Music" : "Play Music"}
-      >
-        <div className="relative z-10 w-[45%] h-[45%] flex items-center justify-center pointer-events-none drop-shadow-md">
-          <svg viewBox="0 0 24 24" className="w-full h-full">
-            <path
-              fill={isPlaying ? "black" : "white"}
-              d="M21 3v13.5a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V6.47L9 8.1v11.4a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V5l14-2Z"
+    <motion.button
+      onMouseEnter={triggerAnimation}
+      onClick={handleToggle}
+      animate={
+        isAnimating
+          ? {
+              scale: [1, 1.1, 0.95, 1.05, 1],
+              scaleX: [1, 1.15, 0.85, 1.05, 1],
+              scaleY: [1, 0.85, 1.15, 0.95, 1],
+            }
+          : {
+              scale: 1,
+              scaleX: 1,
+              scaleY: 1,
+            }
+      }
+      whileTap={{ scale: 0.9 }}
+      onAnimationComplete={() => setIsAnimating(false)}
+      transition={{
+        duration: 0.5,
+        ease: "easeInOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+      }}
+      className={`relative flex items-center justify-center overflow-hidden
+                 w-12 h-12 lg:w-[2.5vh] lg:h-[2.5vh] xl:w-[4.5vh] xl:h-[4.5vh]
+                 rounded-full select-none outline-none border-none cursor-pointer drop-shadow-sm`}
+      style={{
+        backgroundColor: isPlaying ? "white" : "rgba(177, 178, 176, 0.6)",
+        boxShadow: `
+          -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
+          -16px 12px 30px -12px rgba(0,0,0,1),
+          0px 4px 4px 0px rgba(0,0,0,0.25),
+          0px 4px 4px 0px rgba(0,0,0,0.4) inset
+        `,
+      }}
+      title={isPlaying ? "Pause Music" : "Play Music"}
+    >
+      <div className="relative z-10 w-[45%] h-[45%] flex items-center justify-center pointer-events-none drop-shadow-md">
+        <svg viewBox="0 0 24 24" className="w-full h-full">
+          <path
+            fill={isPlaying ? "black" : "white"}
+            d="M21 3v13.5a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V6.47L9 8.1v11.4a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V5l14-2Z"
+          />
+          {!isPlaying && (
+            <line
+              x1="2"
+              y1="2"
+              x2="22"
+              y2="22"
+              stroke="white"
+              strokeWidth="2.5"
+              strokeLinecap="round"
             />
-            {!isPlaying && (
-              <line
-                x1="2"
-                y1="2"
-                x2="22"
-                y2="22"
-                stroke="white"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-            )}
-          </svg>
-        </div>
-      </motion.button>
-    </>
+          )}
+        </svg>
+      </div>
+    </motion.button>
   );
 };
+
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

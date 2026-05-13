@@ -8,12 +8,14 @@ import { EnquiryNowButton } from "./EnquiryNowButton";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { CallButton } from "./CallButton";
 import { EnquiryModal } from "./EnquiryModal";
+import { AudioProvider } from "../context/AudioContext";
+
 
 export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
 
   return (
-    <>
+    <AudioProvider>
       <Navbar />
       <SmoothScroll>
         {children}
@@ -27,6 +29,7 @@ export const ClientLayout = ({ children }: { children: React.ReactNode }) => {
         isOpen={isEnquiryModalOpen} 
         onClose={() => setIsEnquiryModalOpen(false)} 
       />
-    </>
+    </AudioProvider>
   );
+
 };
