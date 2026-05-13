@@ -60,7 +60,7 @@ const SocialIconButton: React.FC<{
 };
 
 export const ContactSection: React.FC = () => {
-  const [phoneNumber] = useState("+91 70261-12224");
+  const [phoneNumber] = useState("+91 7026112224");
 
   const socialIcons = [
     {
@@ -194,7 +194,7 @@ export const ContactSection: React.FC = () => {
           >
             {/* Copyright Section */}
             <div className="opacity-60 font-medium ">
-              © 2026 All Right Reserved by PRIVAE
+              © 2026 All Rights Reserved by PRIVAE
             </div>
 
             {/* Links Section */}
