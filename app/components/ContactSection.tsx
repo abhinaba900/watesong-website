@@ -60,7 +60,7 @@ const SocialIconButton: React.FC<{
 };
 
 export const ContactSection: React.FC = () => {
-  const [phoneNumber] = useState("+91 7026112224");
+  const [phoneNumber] = useState("+91 7026 112224");
 
   const socialIcons = [
     {
