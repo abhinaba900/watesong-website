@@ -117,6 +117,82 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
   );
 };
 
+const MusicButton: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const triggerAnimation = () => {
+    setIsAnimating(false);
+    setTimeout(() => setIsAnimating(true), 10);
+  };
+
+  const togglePlay = () => {
+    triggerAnimation();
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  return (
+    <>
+      <audio ref={audioRef} src="/assets/Water and Soothing Meditation.mp3.mpeg" loop />
+      <motion.button
+        onMouseEnter={triggerAnimation}
+        onClick={togglePlay}
+        animate={
+          isAnimating
+            ? {
+                scale: [1, 1.1, 0.95, 1.05, 1],
+                scaleX: [1, 1.15, 0.85, 1.05, 1],
+                scaleY: [1, 0.85, 1.15, 0.95, 1],
+              }
+            : {
+                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
+              }
+        }
+        whileTap={{ scale: 0.9 }}
+        onAnimationComplete={() => setIsAnimating(false)}
+        transition={{
+          duration: 0.5,
+          ease: "easeInOut",
+          times: [0, 0.2, 0.5, 0.8, 1],
+        }}
+        className={`relative flex items-center justify-center overflow-hidden
+                   w-12 h-12 lg:w-[2.5vh] lg:h-[2.5vh] xl:w-[4.5vh] xl:h-[4.5vh]
+                   rounded-full select-none outline-none border-none cursor-pointer drop-shadow-sm`}
+        style={{
+          backgroundColor: isPlaying ? "white" : "rgba(177, 178, 176, 0.6)",
+          boxShadow: `
+            -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
+            -16px 12px 30px -12px rgba(0,0,0,1),
+            0px 4px 4px 0px rgba(0,0,0,0.25),
+            0px 4px 4px 0px rgba(0,0,0,0.4) inset
+          `,
+        }}
+        title={isPlaying ? "Pause Music" : "Play Music"}
+      >
+        
+        <div className="relative z-10 w-[45%] h-[45%] flex items-center justify-center pointer-events-none drop-shadow-md">
+          <svg viewBox="0 0 24 24" className="w-full h-full">
+            <path fill={isPlaying ? "black" : "white"} d="M21 3v13.5a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V6.47L9 8.1v11.4a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V5l14-2Z" />
+            {!isPlaying && (
+              <line x1="2" y1="2" x2="22" y2="22" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+            )}
+          </svg>
+        </div>
+      </motion.button>
+    </>
+  );
+};
+
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -243,7 +319,7 @@ export const Navbar: React.FC = () => {
             />
           </Link>
         </div>
-        <nav className="hidden lg:flex xl:flex flex-wrap gap-x-[1.2vw] gap-y-[1vh] order-2 lg:order-1 xl:order-1 justify-center">
+        <nav className="hidden lg:flex xl:flex flex-wrap gap-x-[1.2vw] gap-y-[1vh] order-2 lg:order-1 xl:order-1 justify-center items-center">
           {navigationItems.map((item, index) => (
             <NavigationPill
               key={index}
@@ -254,13 +330,19 @@ export const Navbar: React.FC = () => {
               bgColor={item.bgColor}
             />
           ))}
+          <MusicButton />
         </nav>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="lg:hidden text-white order-2"
-        >
-          <Menu size={32} />
-        </button>
+        <div className="flex items-center gap-4 lg:hidden order-2">
+          <div className="scale-90 md:scale-100">
+            <MusicButton />
+          </div>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="text-white"
+          >
+            <Menu size={32} />
+          </button>
+        </div>
       </header>
 
       {/* Luxury Enquire Form Modal */}
