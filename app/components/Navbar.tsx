@@ -87,16 +87,16 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
         times: [0, 0.2, 0.5, 0.8, 1],
       }}
       className={`relative font-medium flex items-center justify-center whitespace-nowrap overflow-hidden
-                 w-full lg:w-auto xl:w-auto px-6 lg:px-[2.5vw] xl:px-[2.5vw] lg:min-w-[8vw] xl:min-w-[8vw] h-12 lg:h-[2.5vh] xl:h-[4.5vh] text-[1rem] lg:text-[0.73vw] xl:text-[0.73vw]
+                 w-full lg:w-auto xl:w-auto px-6 lg:px-[2.2vw] xl:px-[2.3vw] lg:min-w-[8vw] xl:min-w-[8vw] h-12 lg:h-[2.5vh] xl:h-[4.5vh] text-[1rem] lg:text-[0.73vw] xl:text-[0.73vw]
                  rounded-full select-none outline-none border-none
                  ${action ? "cursor-pointer" : "cursor-default drop-shadow-sm"}`}
       style={{
         backgroundColor: bgColor
           ? bgColor
           : isHighlight
-          ? "rgba(201, 160, 80, 0.9)"
-          : "rgba(177, 178, 176, 0.6)",
-        color: textColor ? textColor : (isHighlight ? "#113239" : "white"),
+            ? "rgba(201, 160, 80, 0.9)"
+            : "rgba(177, 178, 176, 0.6)",
+        color: textColor ? textColor : isHighlight ? "#113239" : "white",
         boxShadow: `
           -3px 5px 15px 3px rgba(0,0,0,0.4) inset,
           -16px 12px 30px -12px rgba(0,0,0,1),
@@ -108,7 +108,7 @@ const NavigationPill: React.FC<NavigationPillProps> = ({
       <TopGlare />
       <RightGlare />
       <span
-        className={`relative z-10 opacity-90 ${textColor ? "" : (isHighlight ? "text-[#113239] font-bold" : "text-white font-medium")} pointer-events-none drop-shadow-md`}
+        className={`relative z-10 opacity-90 ${textColor ? "" : isHighlight ? "text-[#113239] font-bold" : "text-white font-medium"} pointer-events-none drop-shadow-md`}
         style={textColor ? { color: textColor, fontWeight: "bold" } : {}}
       >
         {label}
@@ -141,7 +141,11 @@ const MusicButton: React.FC = () => {
 
   return (
     <>
-      <audio ref={audioRef} src="/assets/Water and Soothing Meditation.mp3.mpeg" loop />
+      <audio
+        ref={audioRef}
+        src="/assets/Water and Soothing Meditation.mp3.mpeg"
+        loop
+      />
       <motion.button
         onMouseEnter={triggerAnimation}
         onClick={togglePlay}
@@ -179,12 +183,22 @@ const MusicButton: React.FC = () => {
         }}
         title={isPlaying ? "Pause Music" : "Play Music"}
       >
-        
         <div className="relative z-10 w-[45%] h-[45%] flex items-center justify-center pointer-events-none drop-shadow-md">
           <svg viewBox="0 0 24 24" className="w-full h-full">
-            <path fill={isPlaying ? "black" : "white"} d="M21 3v13.5a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V6.47L9 8.1v11.4a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V5l14-2Z" />
+            <path
+              fill={isPlaying ? "black" : "white"}
+              d="M21 3v13.5a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V6.47L9 8.1v11.4a3.5 3.5 0 1 1-3.5-3.5c.54 0 1.05.12 1.5.34V5l14-2Z"
+            />
             {!isPlaying && (
-              <line x1="2" y1="2" x2="22" y2="22" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+              <line
+                x1="2"
+                y1="2"
+                x2="22"
+                y2="22"
+                stroke="white"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
             )}
           </svg>
         </div>
@@ -243,7 +257,12 @@ export const Navbar: React.FC = () => {
     { label: "Location", action: () => scrollToSection("location") },
     { label: "About Us", action: () => scrollToSection("about") },
     { label: "Contact Us", action: () => scrollToSection("contact") },
-    { label: "360° View", action: () => setIsTourModalOpen(true), bgColor: "#e30022", textColor: "white" },
+    {
+      label: "360° View",
+      action: () => setIsTourModalOpen(true),
+      bgColor: "#e30022",
+      textColor: "white",
+    },
   ];
 
   return (
@@ -336,10 +355,7 @@ export const Navbar: React.FC = () => {
           <div className="scale-90 md:scale-100">
             <MusicButton />
           </div>
-          <button
-            onClick={() => setIsOpen(true)}
-            className="text-white"
-          >
+          <button onClick={() => setIsOpen(true)} className="text-white">
             <Menu size={32} />
           </button>
         </div>
