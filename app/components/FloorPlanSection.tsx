@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Slider from "react-slick";
 
 // Slick carousel styles
@@ -53,9 +53,10 @@ const floorPlanData = {
       { id: "7", name: "M Dress", dims: `(6'1" X 6'10")` },
       { id: "8", name: "M Toilet", dims: `(8'10" X 5'2")` },
       { id: "9", name: "M Balcony", dims: `(7'5" X 7'5")` },
-      { id: "10", name: "Bed Room 2", dims: `(12'4" X 12'6")` },
     ],
     roomsCol2: [
+      { id: "10", name: "Bed Room 2", dims: `(12'4" X 12'6")` },
+
       { id: "11", name: "Dress 2", dims: `(6'5" X 5'9")` },
       { id: "12", name: "Toilet 2", dims: `(5'2" X 8'0")` },
       { id: "13", name: "Powder Room", dims: `(5'9" X 5'0")` },
@@ -91,9 +92,10 @@ const floorPlanData = {
       { id: "07", name: "M Dress", dims: `(5'2" X 6'10")` },
       { id: "08", name: "M Toilet", dims: `(8'0" X 5'2")` },
       { id: "09", name: "M Balcony", dims: `(8'0" X 7'6")` },
-      { id: "10", name: "Bed Room 2", dims: `(17'6" X 12'6")` },
     ],
     roomsCol2: [
+      { id: "10", name: "Bed Room 2", dims: `(17'6" X 12'6")` },
+
       { id: "11", name: "Dress 2", dims: `(3'11" X 6'10")` },
       { id: "12", name: "Toilet 2", dims: `(8'0" X 5'2")` },
       { id: "13", name: "Balcony", dims: `(8'0" X 7'6")` },
@@ -129,9 +131,10 @@ const floorPlanData = {
       { id: "07", name: "M Dress", dims: `(4'5" X 6'10")` },
       { id: "08", name: "M Toilet", dims: `(8'0" X 5'2")` },
       { id: "09", name: "M Balcony", dims: `(8'4" X 7'6")` },
-      { id: "10", name: "Bed Room 2", dims: `(12'6" X 12'6")` },
     ],
     roomsCol2: [
+      { id: "10", name: "Bed Room 2", dims: `(12'6" X 12'6")` },
+
       { id: "11", name: "Dress 2", dims: `(5'6" X 4'4")` },
       { id: "12", name: "Toilet 2", dims: `(5'2" X 8'0")` },
       { id: "13", name: "Powder Room", dims: `(5'6" X 6'0")` },
@@ -167,9 +170,10 @@ const floorPlanData = {
       { id: "07", name: "M Dress", dims: `(5'8" X 6'9")` },
       { id: "08", name: "M Toilet", dims: `(5'2" X 8'0")` },
       { id: "09", name: "M Balcony", dims: `(12'0" X 4'0")` },
-      { id: "10", name: "Bed Room 2", dims: `(12'6" X 12'6")` },
     ],
     roomsCol2: [
+      { id: "10", name: "Bed Room 2", dims: `(12'6" X 12'6")` },
+
       { id: "11", name: "Dress 2", dims: `(5'6" X 4'4")` },
       { id: "12", name: "Toilet 2", dims: `(5'2" X 8'0")` },
       { id: "13", name: "Balcony", dims: `(12'0" X 4'0")` },
@@ -192,6 +196,7 @@ type TabType = keyof typeof floorPlanData;
 export const FloorPlanSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("TYPE - 1");
   const [isMounted, setIsMounted] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const activeData = floorPlanData[activeTab];
 
@@ -276,15 +281,17 @@ export const FloorPlanSection: React.FC = () => {
               ))}
             </div>
 
-            {/* Floor Plan Image */}
-            <div className="flex-1 flex justify-center items-center w-full relative min-h-[40vh] md:min-h-[50vh] lg:min-h-[32vh] xl:min-h-[50vh] pb-0 px-0">
+            <div 
+              className="flex-1 flex justify-center items-center w-full relative min-h-[40vh] md:min-h-[50vh] lg:min-h-[32vh] xl:min-h-[50vh] pb-0 px-0 cursor-pointer"
+              onClick={() => setSelectedImage(activeData.image)}
+            >
               <Image
                 key={activeTab}
                 src={activeData.image}
                 alt={`Floor plan ${activeTab}`}
                 width={800}
                 height={800}
-                className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out] lg:scale-[1.15] xl:scale-[1.2]"
+                className="object-contain w-full h-full drop-shadow-xl animate-[fadeIn_0.5s_ease-in-out] lg:scale-[1.15] xl:scale-[1.2] transition-transform hover:scale-[1.18] lg:hover:scale-[1.2] xl:hover:scale-[1.25]"
               />
             </div>
 
@@ -596,6 +603,48 @@ export const FloorPlanSection: React.FC = () => {
             />
           </div>
         </div>
+
+        <AnimatePresence>
+          {selectedImage && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedImage(null)}
+                className="fixed inset-0 z-[100]  cursor-zoom-out"
+              />
+              
+              {/* Popup Content - Positioned Left Above */}
+              <motion.div
+                initial={{ x: -100, opacity: 0, scale: 0.9 }}
+                animate={{ x: 0, opacity: 1, scale: 1 }}
+                exit={{ x: -100, opacity: 0, scale: 0.9 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="fixed bottom-0 left-[5vw] z-[110] h-[92vh] w-[90vw] md:w-[75vw] max-w-[1400px] bg-white/10 backdrop-blur-md rounded-t-2xl border-x border-t border-white/20 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col p-2"
+              >
+                {/* Close Button - Internal */}
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute top-4 right-4 z-[120] text-white/50 hover:text-white transition-all duration-300 p-2 bg-black/20 rounded-full hover:bg-black/40"
+                >
+                  <X size={24} />
+                </button>
+
+                <div className="relative w-full h-full">
+                  <Image
+                    src={selectedImage}
+                    alt="Floor Plan Large View"
+                    fill
+                    className="object-contain scale-[1.2]"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
         <style
           dangerouslySetInnerHTML={{
