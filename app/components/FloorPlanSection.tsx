@@ -66,10 +66,10 @@ const floorPlanData = {
       { id: "17", name: "Balcony", dims: `(8'9" X 2'3")` },
     ],
     areas: {
-      saleable: "2565 sq.ft.",
-      rera: "1609 sq.ft.",
-      balcony: "193 sq.ft.",
-      total: "1802 sq.ft.",
+      saleable: "2565 Sq.Ft.",
+      rera: "1609 Sq.Ft.",
+      balcony: "193 Sq.Ft.",
+      total: "1802 Sq.Ft.",
     },
   },
   "TYPE - 2": {
