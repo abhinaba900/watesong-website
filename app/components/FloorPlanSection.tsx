@@ -622,7 +622,7 @@ export const FloorPlanSection: React.FC = () => {
                 animate={{ x: 0, opacity: 1, scale: 1 }}
                 exit={{ x: -100, opacity: 0, scale: 0.9 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="fixed bottom-0 left-[5vw] z-[110] h-[92vh] w-[90vw] md:w-[65vw] bg-white/10 backdrop-blur-md rounded-t-2xl border-x border-t border-white/20 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col p-2"
+                className="fixed bottom-0 left-[5vw] z-[110] h-[92vh] w-[90vw] md:w-[65vw] lg:w-[60vw] xl:w-[58vw] bg-white/10 backdrop-blur-md rounded-t-2xl border-x border-t border-white/20 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col p-2"
               >
                 {/* Close Button - Internal */}
                 <button
