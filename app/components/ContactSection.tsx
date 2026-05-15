@@ -114,7 +114,7 @@ export const ContactSection: React.FC = () => {
                 Lakefront Residences
               </h3>
               <p className="text-[14px] md:text-[2.2vw] lg:text-[1vw] xl:text-[1vw] font-medium opacity-80">
-                1 KM from Nallurhalli Metro, Whitefied
+                1 KM from Nallurhalli Metro, Whitefield
               </p>
             </div>
           </div>

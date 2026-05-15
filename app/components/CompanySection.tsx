@@ -20,22 +20,22 @@ export const CompanySection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex flex-col items-start text-left max-w-[95dvw] lg:max-w-[55dvw] xl:max-w-[55dvw]"
+          className="flex flex-col items-start text-left max-w-[95dvw] lg:max-w-[55dvw] xl:max-w-[52dvw]"
         >
           {/* Main Title */}
-          <h2 className="text-white font-normal lg:font-normal xl:font-normal uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.8vw] xl:text-[1.8vw]  lg:leading-[1.5] xl:leading-[1.5] mb-6 lg:mb-2 xl:mb-2 pointer-events-auto lg:leading-tight xl:leading-tight">
+          <h2 className="text-white font-normal lg:font-normal xl:font-normal uppercase tracking-wider text-[1.6rem] md:text-[2.2vw] lg:text-[1.8vw] xl:text-[1.8vw]  lg:leading-[1.5] xl:leading-[1.5] mb-6 lg:mb-2 xl:mb-6 pointer-events-auto lg:leading-tight xl:leading-tight">
             PRIVAE: <br className="lg:hidden" /> SEASONED EXPERIENCE.{" "}
             <br className="lg:hidden" /> FRESH THINKING.
           </h2>
 
           {/* Stats Bar */}
-          <div className="text-white font-normal uppercase tracking-widest text-[1.6rem] md:text-[2vw] lg:text-[1.8vw] xl:text-[1.8vw] mb-6 lg:mb-8 xl:mb-8 flex flex-wrap items-center gap-x-4 lg:gap-y-2 xl:gap-y-2 pointer-events-auto">
+          {/* <div className="text-white font-normal uppercase tracking-widest text-[1.6rem] md:text-[2vw] lg:text-[1.8vw] xl:text-[1.8vw] mb-6 lg:mb-8 xl:mb-8 flex flex-wrap items-center gap-x-4 lg:gap-y-2 xl:gap-y-2 pointer-events-auto">
             <span className=" font-normal whitespace-nowrap">20 YEARS</span>
             <span className="text-[#FF3B30] font-light hidden lg:block xl:block">|</span>
             <span className="font-normal whitespace-nowrap">
               4 MILLION SQ. FT.
             </span>
-          </div>
+          </div> */}
 
           {/* Descriptive Text */}
           <p className="text-white/80 chikkad-madi-gandu font-medium text-[1rem]  leading-[1.7] md:text-[1.8vw] lg:text-[1rem] xl:text-[1rem] lg:leading-[1.8] xl:leading-[1.8] pointer-events-auto z-20">

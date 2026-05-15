@@ -44,7 +44,7 @@ export const HeroSection: React.FC = () => {
               Lakefront Residences
             </h2>
             <p className="text-white font-medium text-[14px] lg:text-[1rem] xl:text-[1.1vw] lg:ml-[1vw] xl:ml-[1vw] text-center lg:text-left drop-shadow-md opacity-90">
-              1 KM from Nallurhalli Metro, Whitefied
+              1 KM from Nallurhalli Metro, Whitefield
             </p>
           </div>
 

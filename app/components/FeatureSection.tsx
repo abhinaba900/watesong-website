@@ -97,7 +97,6 @@ const featuresData = [
     image: "/assets/Provision for island kitchen.webp",
   },
   { label: "No common walls", image: "/assets/No common walls.webp" },
-  
 ];
 
 export const FeatureSection: React.FC = () => {
@@ -188,7 +187,7 @@ export const FeatureSection: React.FC = () => {
             Homes at Watersong are so private, it feels like a villa.{" "}
             <br className="hidden lg:hidden xl:block" /> No doors face each
             other. No shared walls. <br className="hidden lg:hidden xl:block" />{" "}
-            Only expansive balconies, open air & a serene lake view.
+            Only expansive balconies, fresh air & a serene lake view.
           </motion.p>
         </motion.div>
 
@@ -337,7 +336,7 @@ export const FeatureSection: React.FC = () => {
             </h2>
 
             {/* LIST */}
-            <ul 
+            <ul
               className="text-white/90 font-medium leading-[1.8] chikkad-madi-gandu text-[1rem] text-left lg:text-left xl:text-left lg:text-[16px] xl:text-[16px] lg:max-w-[90%] xl:max-w-[90%] lg:mx-0 xl:mx-0 list-disc lg:list-disc need-to-add-bullet-here xl:list-none ml-5 lg:ml-5 xl:ml-0 space-y-0"
               onMouseEnter={() => setIsHoveringAmenities(true)}
               onMouseLeave={() => setIsHoveringAmenities(false)}
@@ -431,7 +430,7 @@ export const FeatureSection: React.FC = () => {
           </div>
 
           {/* LIST */}
-          <ul 
+          <ul
             className="text-white/85 chikkad-madi-gandu font-medium leading-[1.3] lg:leading-[2] xl:leading-[2] text-[16px] lg:text-[1rem] xl:text-[1rem] mx-0 lg:mx-0 xl:mx-0 text-left list-disc space-y-1 relative z-10 mt-[0vh] lg:mt-auto xl:mt-auto"
             onMouseEnter={() => setIsHoveringFeatures(true)}
             onMouseLeave={() => setIsHoveringFeatures(false)}
